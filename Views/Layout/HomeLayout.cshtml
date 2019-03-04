@@ -80,19 +80,23 @@
                                     @if (SignInManager.IsSignedIn(User))
                                     {
                                         <li class="account">
-                                            <a asp-action="Login" title="">Chào @User.Identity.Name<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                                            <a title="">Chào @User.Identity.Name<i class="fa fa-angle-down" aria-hidden="true"></i></a>
                                             <ul class="unstyled">
                                                 <li>
-                                                    <a href="~/home/wishlist.html" title="">Hàng yêu thích</a>
+                                                    <a href="~/home/wishlist.html" title="">Đơn hàng của tôi</a>
                                                 </li>
                                                 <li>
-                                                    <a href="~/home/shop-cart.html" title="">Giỏ hàng</a>
+                                                    <a href="~/home/shop-cart.html" title="">Thông báo của tôi</a>
                                                 </li>
                                                 <li>
-                                                    <a href="~/home/my-account.html" title="">Thông tin tài khoản</a>
+                                                    <a href="~/home/my-account.html" title="">Tài khoản của tôi</a>
                                                 </li>
                                                 <li>
-                                                    <a href="~/home/shop-checkout.html" title="">Thanh toán</a>
+                                                    <a href="~/home/shop-checkout.html" title="">Sản phẩm yêu thích</a>
+                                                </li>
+                                                
+                                                <li>
+                                                    <a asp-action="HomeLogout" asp-controller="Account" title="">Thoát tài khoản</a>
                                                 </li>
                                             </ul><!-- /.unstyled -->
                                         </li>

@@ -83,5 +83,12 @@ namespace MyProjectMVC.Controllers
             }
             return View();
         }
+
+        [HttpGet, Route("logout")]
+        public async Task<IActionResult> HomeLogout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

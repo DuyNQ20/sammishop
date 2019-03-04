@@ -95,3 +95,8 @@ html, body, form, fieldset, table, tr, td, img, input, button, select, textarea,
 .name-product {
     width: 200px;
 }
+
+/*chỉnh chiều rộng popup Tài khoản*/
+ul.flat-unstyled > li > ul{
+    min-width: 130px;
+}
