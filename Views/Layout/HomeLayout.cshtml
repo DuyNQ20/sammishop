@@ -76,41 +76,35 @@
                         </div><!-- /.col-md-4 -->
                         <div class="col-md-4">
                             <ul class="flat-unstyled">
-                                <li class="account">
-                                    <a href="~/home/#" title="">Tài khoản<i class="fa fa-angle-down" aria-hidden="true"></i></a>
-                                    <ul class="unstyled">
-
-                                        @{
-                                            @if (SignInManager.IsSignedIn(User))
-                                            {
+                                @{
+                                    @if (SignInManager.IsSignedIn(User))
+                                    {
+                                        <li class="account">
+                                            <a asp-action="Login" title="">Chào @User.Identity.Name<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                                            <ul class="unstyled">
                                                 <li>
-                                                    <a asp-action="Login" title="">@User.Identity.Name</a>
+                                                    <a href="~/home/wishlist.html" title="">Hàng yêu thích</a>
                                                 </li>
-                                            }
-                                            else
-                                            {
                                                 <li>
-                                                    <a asp-action="HomeLogin" asp-controller="Account" title="">Đăng nhập</a>
+                                                    <a href="~/home/shop-cart.html" title="">Giỏ hàng</a>
                                                 </li>
-                                            }
+                                                <li>
+                                                    <a href="~/home/my-account.html" title="">Thông tin tài khoản</a>
+                                                </li>
+                                                <li>
+                                                    <a href="~/home/shop-checkout.html" title="">Thanh toán</a>
+                                                </li>
+                                            </ul><!-- /.unstyled -->
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li>
+                                            <a asp-action="HomeLogin" asp-controller="Account" title="">Đăng nhập</a>
+                                        </li>
+                                    }
 
-                                        }
-
-
-                                        <li>
-                                            <a href="~/home/wishlist.html" title="">Hàng yêu thích</a>
-                                        </li>
-                                        <li>
-                                            <a href="~/home/shop-cart.html" title="">Giỏ hàng</a>
-                                        </li>
-                                        <li>
-                                            <a href="~/home/my-account.html" title="">Thông tin tài khoản</a>
-                                        </li>
-                                        <li>
-                                            <a href="~/home/shop-checkout.html" title="">Thanh toán</a>
-                                        </li>
-                                    </ul><!-- /.unstyled -->
-                                </li>
+                                }
                                 <li>
                                     <a href="~/home/#" title="">USD<i class="fa fa-angle-down" aria-hidden="true"></i></a>
                                     <ul class="unstyled">
