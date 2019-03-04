@@ -8,7 +8,12 @@ section.flat-shop-cart h3, section.flat-shop-cart table,
 {
     font-family: Helvetica Neue,Helvetica,Arial,\\6587\6CC9\9A5B\6B63\9ED1,WenQuanYi Zen Hei,Hiragino Sans GB,\\5137\9ED1 Pro,LiHei Pro,Heiti TC,\\5FAE\8EDF\6B63\9ED1\9AD4,Microsoft JhengHei UI,Microsoft JhengHei,sans-serif;
 }
-   
+
+html, body, form, fieldset, table, tr, td, img, input, button, select, textarea, optgroup, option,
+.form-login .title h3, .form-register .title h3 {
+    font-family: Helvetica Neue,Helvetica,Arial,\\6587\6CC9\9A5B\6B63\9ED1,WenQuanYi Zen Hei,Hiragino Sans GB,\\5137\9ED1 Pro,LiHei Pro,Heiti TC,\\5FAE\8EDF\6B63\9ED1\9AD4,Microsoft JhengHei UI,Microsoft JhengHei,sans-serif;
+}
+
 
 /*chỉnh lại padding cho tiêu đề danh mục sản phẩm*/
 #mega-menu > .btn-mega {
@@ -22,11 +27,16 @@ section.flat-shop-cart h3, section.flat-shop-cart table,
     height: 209px;
 }
 
+/*Chỉnh font form login*/
+.form-login .form-box button, .today-deal a {
+    font-weight: normal;
+}
+
 /*chỉnh lại khoảng cách ở phần mô tả sản phẩm*/
 .col-md-12 p {
     margin-bottom: 1rem;
 }
-.col-md-12 strong, b, p{
+.col-md-12 strong, b, p {
     font-weight: bold;
     font-family: Roboto,Helvetica,Arial,sans-serif;
 }
