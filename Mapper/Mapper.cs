@@ -1,12 +1,12 @@
-﻿using MyProjectMVC.ViewModels;
-using MyProjectMVC.Models;
+﻿using SmartPhone.ViewModels;
+using SmartPhone.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 
-namespace MyProjectMVC.Mapper
+namespace SmartPhone.Mapper
 {
     public static class Mapper
     {

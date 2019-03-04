@@ -5,12 +5,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using MyProjectMVC.Data;
-using MyProjectMVC.Models;
-using MyProjectMVC.Mapper;
-using MyProjectMVC.ViewModels;
+using SmartPhone.Data;
+using SmartPhone.Models;
+using SmartPhone.Mapper;
+using SmartPhone.ViewModels;
 
-namespace MyProjectMVC.Controllers
+namespace SmartPhone.Controllers
 {
     public class CartsController : Controller
     {

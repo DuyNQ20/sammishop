@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 
-namespace MyProjectMVC.Models
+namespace SmartPhone.Models
 {
     public class Role : IdentityRole<int>
     {

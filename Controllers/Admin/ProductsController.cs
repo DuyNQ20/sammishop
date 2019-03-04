@@ -5,15 +5,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using MyProjectMVC.Data;
-using MyProjectMVC.Mapper;
-using MyProjectMVC.ViewModels;
+using SmartPhone.Data;
+using SmartPhone.Mapper;
+using SmartPhone.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 using System.IO;
-using MyProjectMVC.Lib;
+using SmartPhone.Lib;
 
-namespace MyProjectMVC.Models
+namespace SmartPhone.Models
 {
     [Route("admin/products")]
     public class ProductsController : Controller

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace MyProjectMVC.Controllers
+namespace SmartPhone.Controllers
 {
     public class AdminController : Controller
     {

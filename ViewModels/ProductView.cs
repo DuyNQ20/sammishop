@@ -1,10 +1,10 @@
-﻿using MyProjectMVC.Models;
+﻿using SmartPhone.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MyProjectMVC.ViewModels
+namespace SmartPhone.ViewModels
 {
     public class ProductView
     {

@@ -5,14 +5,14 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using MyProjectMVC.Models;
+using SmartPhone.Models;
 using Microsoft.AspNetCore.Http;
-using MyProjectMVC.Data;
+using SmartPhone.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
-using MyProjectMVC.ViewModels;
+using SmartPhone.ViewModels;
 
-namespace MyProjectMVC.Controllers
+namespace SmartPhone.Controllers
 {
     [Route("")]
     public class AccountController : Controller

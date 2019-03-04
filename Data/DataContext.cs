@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
-using MyProjectMVC.Models;
+using SmartPhone.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
-namespace MyProjectMVC.Data
+namespace SmartPhone.Data
 {
     public class DataContext : IdentityDbContext<User, Role, int>
     {

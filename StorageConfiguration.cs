@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace MyProjectMVC
+namespace SmartPhone
 {
     public class StorageConfiguration
     {

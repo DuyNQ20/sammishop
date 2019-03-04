@@ -5,12 +5,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using MyProjectMVC.Data;
-using MyProjectMVC.Models;
-using MyProjectMVC.ViewModels;
-using MyProjectMVC.Mapper;
+using SmartPhone.Data;
+using SmartPhone.Models;
+using SmartPhone.ViewModels;
+using SmartPhone.Mapper;
 
-namespace MyProjectMVC.Controllers
+namespace SmartPhone.Controllers
 {
     [Route("admin/products/categories")]
     public class ProductCategoriesController : Controller

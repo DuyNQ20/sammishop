@@ -3,9 +3,9 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using MyProjectMVC.Data;
+using SmartPhone.Data;
 
-namespace MyProjectMVC.Migrations
+namespace SmartPhone.Migrations
 {
     [DbContext(typeof(DataContext))]
     partial class DataContextModelSnapshot : ModelSnapshot
@@ -98,7 +98,7 @@ namespace MyProjectMVC.Migrations
                     b.ToTable("UserTocken");
                 });
 
-            modelBuilder.Entity("MyProjectMVC.Models.Cart", b =>
+            modelBuilder.Entity("SmartPhone.Models.Cart", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -150,7 +150,7 @@ namespace MyProjectMVC.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MyProjectMVC.Models.Color", b =>
+            modelBuilder.Entity("SmartPhone.Models.Color", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -194,7 +194,7 @@ namespace MyProjectMVC.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MyProjectMVC.Models.Comment", b =>
+            modelBuilder.Entity("SmartPhone.Models.Comment", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -248,7 +248,7 @@ namespace MyProjectMVC.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MyProjectMVC.Models.File", b =>
+            modelBuilder.Entity("SmartPhone.Models.File", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -310,7 +310,7 @@ namespace MyProjectMVC.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MyProjectMVC.Models.Product", b =>
+            modelBuilder.Entity("SmartPhone.Models.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -412,7 +412,7 @@ namespace MyProjectMVC.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MyProjectMVC.Models.ProductCategory", b =>
+            modelBuilder.Entity("SmartPhone.Models.ProductCategory", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -470,7 +470,7 @@ namespace MyProjectMVC.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MyProjectMVC.Models.Role", b =>
+            modelBuilder.Entity("SmartPhone.Models.Role", b =>
                 {
                     b.Property<int>("Id");
 
@@ -499,7 +499,7 @@ namespace MyProjectMVC.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MyProjectMVC.Models.Status", b =>
+            modelBuilder.Entity("SmartPhone.Models.Status", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -543,7 +543,7 @@ namespace MyProjectMVC.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MyProjectMVC.Models.Supplier", b =>
+            modelBuilder.Entity("SmartPhone.Models.Supplier", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -595,7 +595,7 @@ namespace MyProjectMVC.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MyProjectMVC.Models.User", b =>
+            modelBuilder.Entity("SmartPhone.Models.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -659,7 +659,7 @@ namespace MyProjectMVC.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MyProjectMVC.Models.Vendor", b =>
+            modelBuilder.Entity("SmartPhone.Models.Vendor", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -717,7 +717,7 @@ namespace MyProjectMVC.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
-                    b.HasOne("MyProjectMVC.Models.Role")
+                    b.HasOne("SmartPhone.Models.Role")
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -725,7 +725,7 @@ namespace MyProjectMVC.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<int>", b =>
                 {
-                    b.HasOne("MyProjectMVC.Models.User")
+                    b.HasOne("SmartPhone.Models.User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -733,7 +733,7 @@ namespace MyProjectMVC.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<int>", b =>
                 {
-                    b.HasOne("MyProjectMVC.Models.User")
+                    b.HasOne("SmartPhone.Models.User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -741,12 +741,12 @@ namespace MyProjectMVC.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<int>", b =>
                 {
-                    b.HasOne("MyProjectMVC.Models.Role")
+                    b.HasOne("SmartPhone.Models.Role")
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("MyProjectMVC.Models.User")
+                    b.HasOne("SmartPhone.Models.User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -754,72 +754,72 @@ namespace MyProjectMVC.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<int>", b =>
                 {
-                    b.HasOne("MyProjectMVC.Models.User")
+                    b.HasOne("SmartPhone.Models.User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("MyProjectMVC.Models.Cart", b =>
+            modelBuilder.Entity("SmartPhone.Models.Cart", b =>
                 {
-                    b.HasOne("MyProjectMVC.Models.Product", "Product")
+                    b.HasOne("SmartPhone.Models.Product", "Product")
                         .WithMany("Carts")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("MyProjectMVC.Models.User", "User")
+                    b.HasOne("SmartPhone.Models.User", "User")
                         .WithMany("Carts")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("MyProjectMVC.Models.Comment", b =>
+            modelBuilder.Entity("SmartPhone.Models.Comment", b =>
                 {
-                    b.HasOne("MyProjectMVC.Models.Product", "Product")
+                    b.HasOne("SmartPhone.Models.Product", "Product")
                         .WithMany("Comments")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("MyProjectMVC.Models.File", b =>
+            modelBuilder.Entity("SmartPhone.Models.File", b =>
                 {
-                    b.HasOne("MyProjectMVC.Models.Product", "Product")
+                    b.HasOne("SmartPhone.Models.Product", "Product")
                         .WithMany("Files")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("MyProjectMVC.Models.Product", b =>
+            modelBuilder.Entity("SmartPhone.Models.Product", b =>
                 {
-                    b.HasOne("MyProjectMVC.Models.Color", "Color")
+                    b.HasOne("SmartPhone.Models.Color", "Color")
                         .WithMany("Products")
                         .HasForeignKey("ColorId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("MyProjectMVC.Models.ProductCategory", "ProductCategory")
+                    b.HasOne("SmartPhone.Models.ProductCategory", "ProductCategory")
                         .WithMany("Products")
                         .HasForeignKey("ProductCategoryId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("MyProjectMVC.Models.Status", "Status")
+                    b.HasOne("SmartPhone.Models.Status", "Status")
                         .WithMany("Products")
                         .HasForeignKey("StatusId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("MyProjectMVC.Models.Supplier", "Supplier")
+                    b.HasOne("SmartPhone.Models.Supplier", "Supplier")
                         .WithMany()
                         .HasForeignKey("SupplierId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("MyProjectMVC.Models.Vendor", "Vendor")
+                    b.HasOne("SmartPhone.Models.Vendor", "Vendor")
                         .WithMany("Products")
                         .HasForeignKey("VendorId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("MyProjectMVC.Models.ProductCategory", b =>
+            modelBuilder.Entity("SmartPhone.Models.ProductCategory", b =>
                 {
-                    b.HasOne("MyProjectMVC.Models.Supplier")
+                    b.HasOne("SmartPhone.Models.Supplier")
                         .WithMany("ProductCategories")
                         .HasForeignKey("SupplierId");
                 });

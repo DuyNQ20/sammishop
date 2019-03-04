@@ -5,12 +5,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using MyProjectMVC.Data;
-using MyProjectMVC.Models;
-using MyProjectMVC.ViewModels;
+using SmartPhone.Data;
+using SmartPhone.Models;
+using SmartPhone.ViewModels;
 using Microsoft.AspNetCore.Http;
 
-namespace MyProjectMVC.Controllers.Home
+namespace SmartPhone.Controllers.Home
 {
     [Route("")]
     public class HomeController : Controller
