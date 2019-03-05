@@ -5,6 +5,9 @@
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
     <UserSecretsId>b0acab6a-971f-42aa-b912-3fc0f6c42e02</UserSecretsId>
     <SignAssembly>false</SignAssembly>
+    <StartupObject></StartupObject>
+    <ApplicationIcon />
+    <Win32Resource />
   </PropertyGroup>
 
 

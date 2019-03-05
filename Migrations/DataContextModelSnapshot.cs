@@ -130,9 +130,9 @@ namespace SmartPhone.Migrations
                         {
                             Id = 1,
                             Active = true,
-                            CreatedAt = new DateTimeOffset(new DateTime(2019, 3, 3, 20, 55, 35, 4, DateTimeKind.Unspecified).AddTicks(4246), new TimeSpan(0, 7, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2019, 3, 5, 9, 47, 25, 791, DateTimeKind.Unspecified).AddTicks(8339), new TimeSpan(0, 7, 0, 0, 0)),
                             CreatedBy = "Quang Duy",
-                            ModifiedAt = new DateTimeOffset(new DateTime(2019, 3, 3, 20, 55, 35, 4, DateTimeKind.Unspecified).AddTicks(4259), new TimeSpan(0, 7, 0, 0, 0)),
+                            ModifiedAt = new DateTimeOffset(new DateTime(2019, 3, 5, 9, 47, 25, 791, DateTimeKind.Unspecified).AddTicks(8348), new TimeSpan(0, 7, 0, 0, 0)),
                             ModifiedBy = "Quang Duy",
                             ProductId = 1,
                             UserId = 1
@@ -141,9 +141,9 @@ namespace SmartPhone.Migrations
                         {
                             Id = 2,
                             Active = true,
-                            CreatedAt = new DateTimeOffset(new DateTime(2019, 3, 3, 20, 55, 35, 4, DateTimeKind.Unspecified).AddTicks(4635), new TimeSpan(0, 7, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2019, 3, 5, 9, 47, 25, 791, DateTimeKind.Unspecified).AddTicks(8566), new TimeSpan(0, 7, 0, 0, 0)),
                             CreatedBy = "Quang Duy",
-                            ModifiedAt = new DateTimeOffset(new DateTime(2019, 3, 3, 20, 55, 35, 4, DateTimeKind.Unspecified).AddTicks(4644), new TimeSpan(0, 7, 0, 0, 0)),
+                            ModifiedAt = new DateTimeOffset(new DateTime(2019, 3, 5, 9, 47, 25, 791, DateTimeKind.Unspecified).AddTicks(8570), new TimeSpan(0, 7, 0, 0, 0)),
                             ModifiedBy = "Quang Duy",
                             ProductId = 2,
                             UserId = 1
@@ -176,9 +176,9 @@ namespace SmartPhone.Migrations
                         {
                             Id = 1,
                             Active = true,
-                            CreatedAt = new DateTimeOffset(new DateTime(2019, 3, 3, 20, 55, 35, 0, DateTimeKind.Unspecified).AddTicks(5999), new TimeSpan(0, 7, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2019, 3, 5, 9, 47, 25, 789, DateTimeKind.Unspecified).AddTicks(7945), new TimeSpan(0, 7, 0, 0, 0)),
                             CreatedBy = "Quang Duy",
-                            ModifiedAt = new DateTimeOffset(new DateTime(2019, 3, 3, 20, 55, 35, 0, DateTimeKind.Unspecified).AddTicks(6025), new TimeSpan(0, 7, 0, 0, 0)),
+                            ModifiedAt = new DateTimeOffset(new DateTime(2019, 3, 5, 9, 47, 25, 789, DateTimeKind.Unspecified).AddTicks(7958), new TimeSpan(0, 7, 0, 0, 0)),
                             ModifiedBy = "Quang Duy",
                             Name = "Xanh"
                         },
@@ -186,9 +186,9 @@ namespace SmartPhone.Migrations
                         {
                             Id = 2,
                             Active = true,
-                            CreatedAt = new DateTimeOffset(new DateTime(2019, 3, 3, 20, 55, 35, 0, DateTimeKind.Unspecified).AddTicks(6063), new TimeSpan(0, 7, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2019, 3, 5, 9, 47, 25, 789, DateTimeKind.Unspecified).AddTicks(7980), new TimeSpan(0, 7, 0, 0, 0)),
                             CreatedBy = "Quang Duy",
-                            ModifiedAt = new DateTimeOffset(new DateTime(2019, 3, 3, 20, 55, 35, 0, DateTimeKind.Unspecified).AddTicks(6067), new TimeSpan(0, 7, 0, 0, 0)),
+                            ModifiedAt = new DateTimeOffset(new DateTime(2019, 3, 5, 9, 47, 25, 789, DateTimeKind.Unspecified).AddTicks(7984), new TimeSpan(0, 7, 0, 0, 0)),
                             ModifiedBy = "Quang Duy",
                             Name = "Đỏ"
                         });
@@ -226,10 +226,10 @@ namespace SmartPhone.Migrations
                         {
                             Id = 1,
                             Active = true,
-                            CreatedAt = new DateTimeOffset(new DateTime(2019, 3, 3, 20, 55, 35, 3, DateTimeKind.Unspecified).AddTicks(1858), new TimeSpan(0, 7, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2019, 3, 5, 9, 47, 25, 791, DateTimeKind.Unspecified).AddTicks(1570), new TimeSpan(0, 7, 0, 0, 0)),
                             CreatedBy = "Quang Duy",
                             Delected = true,
-                            ModifiedAt = new DateTimeOffset(new DateTime(2019, 3, 3, 20, 55, 35, 3, DateTimeKind.Unspecified).AddTicks(1871), new TimeSpan(0, 7, 0, 0, 0)),
+                            ModifiedAt = new DateTimeOffset(new DateTime(2019, 3, 5, 9, 47, 25, 791, DateTimeKind.Unspecified).AddTicks(1578), new TimeSpan(0, 7, 0, 0, 0)),
                             ModifiedBy = "Quang Duy",
                             ProductId = 1,
                             content = "Nội dung bình luận 1 cho iphone"
@@ -238,10 +238,10 @@ namespace SmartPhone.Migrations
                         {
                             Id = 2,
                             Active = true,
-                            CreatedAt = new DateTimeOffset(new DateTime(2019, 3, 3, 20, 55, 35, 3, DateTimeKind.Unspecified).AddTicks(1926), new TimeSpan(0, 7, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2019, 3, 5, 9, 47, 25, 791, DateTimeKind.Unspecified).AddTicks(1608), new TimeSpan(0, 7, 0, 0, 0)),
                             CreatedBy = "Quang Duy",
                             Delected = false,
-                            ModifiedAt = new DateTimeOffset(new DateTime(2019, 3, 3, 20, 55, 35, 3, DateTimeKind.Unspecified).AddTicks(1926), new TimeSpan(0, 7, 0, 0, 0)),
+                            ModifiedAt = new DateTimeOffset(new DateTime(2019, 3, 5, 9, 47, 25, 791, DateTimeKind.Unspecified).AddTicks(1608), new TimeSpan(0, 7, 0, 0, 0)),
                             ModifiedBy = "Quang Duy",
                             ProductId = 1,
                             content = "Nội dung bình luận 2 cho iphone"
@@ -296,10 +296,10 @@ namespace SmartPhone.Migrations
                         {
                             Id = 1,
                             Active = false,
-                            CreatedAt = new DateTimeOffset(new DateTime(2019, 3, 3, 20, 55, 35, 4, DateTimeKind.Unspecified).AddTicks(94), new TimeSpan(0, 7, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2019, 3, 5, 9, 47, 25, 791, DateTimeKind.Unspecified).AddTicks(6021), new TimeSpan(0, 7, 0, 0, 0)),
                             CreatedBy = "Quang Duy",
                             Extention = ".png",
-                            ModifiedAt = new DateTimeOffset(new DateTime(2019, 3, 3, 20, 55, 35, 4, DateTimeKind.Unspecified).AddTicks(107), new TimeSpan(0, 7, 0, 0, 0)),
+                            ModifiedAt = new DateTimeOffset(new DateTime(2019, 3, 5, 9, 47, 25, 791, DateTimeKind.Unspecified).AddTicks(6030), new TimeSpan(0, 7, 0, 0, 0)),
                             ModifiedBy = "Quang Duy",
                             Name = "iphonex",
                             Path = "images\\smartphone\\iphonex.png",
@@ -371,12 +371,12 @@ namespace SmartPhone.Migrations
                             Id = 1,
                             Active = true,
                             ColorId = 1,
-                            CreatedAt = new DateTimeOffset(new DateTime(2019, 3, 3, 20, 55, 35, 2, DateTimeKind.Unspecified).AddTicks(6030), new TimeSpan(0, 7, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2019, 3, 5, 9, 47, 25, 790, DateTimeKind.Unspecified).AddTicks(8384), new TimeSpan(0, 7, 0, 0, 0)),
                             CreatedBy = "Quang Duy",
                             Decriptions = "Cuối cùng iPhone X cũng đã ra mắt trong sự kiện diễn ra rạng sáng nay (13/9) theo giờ Việt Nam. </br>Đây là sản phẩm được Apple tung ra để kỷ niệm 10 năm iPhone.",
                             Inventory = 1000,
                             IsNew = true,
-                            ModifiedAt = new DateTimeOffset(new DateTime(2019, 3, 3, 20, 55, 35, 2, DateTimeKind.Unspecified).AddTicks(6047), new TimeSpan(0, 7, 0, 0, 0)),
+                            ModifiedAt = new DateTimeOffset(new DateTime(2019, 3, 5, 9, 47, 25, 790, DateTimeKind.Unspecified).AddTicks(8392), new TimeSpan(0, 7, 0, 0, 0)),
                             ModifiedBy = "Quang Duy",
                             Name = "IPhone X",
                             OriginalPrice = 20000000m,
@@ -393,12 +393,12 @@ namespace SmartPhone.Migrations
                             Id = 2,
                             Active = true,
                             ColorId = 1,
-                            CreatedAt = new DateTimeOffset(new DateTime(2019, 3, 3, 20, 55, 35, 2, DateTimeKind.Unspecified).AddTicks(6598), new TimeSpan(0, 7, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2019, 3, 5, 9, 47, 25, 790, DateTimeKind.Unspecified).AddTicks(8666), new TimeSpan(0, 7, 0, 0, 0)),
                             CreatedBy = "Quang Duy",
                             Decriptions = "Cuối cùng iPhone X cũng đã ra mắt trong sự kiện diễn ra rạng sáng nay (13/9) theo giờ Việt Nam. </br>Đây là sản phẩm được Apple tung ra để kỷ niệm 10 năm iPhone.",
                             Inventory = 1000,
                             IsNew = true,
-                            ModifiedAt = new DateTimeOffset(new DateTime(2019, 3, 3, 20, 55, 35, 2, DateTimeKind.Unspecified).AddTicks(6607), new TimeSpan(0, 7, 0, 0, 0)),
+                            ModifiedAt = new DateTimeOffset(new DateTime(2019, 3, 5, 9, 47, 25, 790, DateTimeKind.Unspecified).AddTicks(8670), new TimeSpan(0, 7, 0, 0, 0)),
                             ModifiedBy = "Quang Duy",
                             Name = "Samsung X",
                             OriginalPrice = 20000000m,
@@ -442,9 +442,9 @@ namespace SmartPhone.Migrations
                         {
                             Id = 1,
                             Active = true,
-                            CreatedAt = new DateTimeOffset(new DateTime(2019, 3, 3, 20, 55, 34, 998, DateTimeKind.Unspecified).AddTicks(2859), new TimeSpan(0, 7, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2019, 3, 5, 9, 47, 25, 788, DateTimeKind.Unspecified).AddTicks(3406), new TimeSpan(0, 7, 0, 0, 0)),
                             CreatedBy = "Quang Duy",
-                            ModifiedAt = new DateTimeOffset(new DateTime(2019, 3, 3, 20, 55, 34, 998, DateTimeKind.Unspecified).AddTicks(2893), new TimeSpan(0, 7, 0, 0, 0)),
+                            ModifiedAt = new DateTimeOffset(new DateTime(2019, 3, 5, 9, 47, 25, 788, DateTimeKind.Unspecified).AddTicks(3414), new TimeSpan(0, 7, 0, 0, 0)),
                             ModifiedBy = "Quang Duy",
                             Name = "Điện thoại"
                         },
@@ -452,9 +452,9 @@ namespace SmartPhone.Migrations
                         {
                             Id = 2,
                             Active = true,
-                            CreatedAt = new DateTimeOffset(new DateTime(2019, 3, 3, 20, 55, 34, 998, DateTimeKind.Unspecified).AddTicks(2919), new TimeSpan(0, 7, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2019, 3, 5, 9, 47, 25, 788, DateTimeKind.Unspecified).AddTicks(3436), new TimeSpan(0, 7, 0, 0, 0)),
                             CreatedBy = "Quang Duy",
-                            ModifiedAt = new DateTimeOffset(new DateTime(2019, 3, 3, 20, 55, 34, 998, DateTimeKind.Unspecified).AddTicks(2923), new TimeSpan(0, 7, 0, 0, 0)),
+                            ModifiedAt = new DateTimeOffset(new DateTime(2019, 3, 5, 9, 47, 25, 788, DateTimeKind.Unspecified).AddTicks(3440), new TimeSpan(0, 7, 0, 0, 0)),
                             ModifiedBy = "Quang Duy",
                             Name = "Ipad"
                         },
@@ -462,9 +462,9 @@ namespace SmartPhone.Migrations
                         {
                             Id = 3,
                             Active = true,
-                            CreatedAt = new DateTimeOffset(new DateTime(2019, 3, 3, 20, 55, 34, 998, DateTimeKind.Unspecified).AddTicks(2927), new TimeSpan(0, 7, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2019, 3, 5, 9, 47, 25, 788, DateTimeKind.Unspecified).AddTicks(3440), new TimeSpan(0, 7, 0, 0, 0)),
                             CreatedBy = "Quang Duy",
-                            ModifiedAt = new DateTimeOffset(new DateTime(2019, 3, 3, 20, 55, 34, 998, DateTimeKind.Unspecified).AddTicks(2927), new TimeSpan(0, 7, 0, 0, 0)),
+                            ModifiedAt = new DateTimeOffset(new DateTime(2019, 3, 5, 9, 47, 25, 788, DateTimeKind.Unspecified).AddTicks(3444), new TimeSpan(0, 7, 0, 0, 0)),
                             ModifiedBy = "Quang Duy",
                             Name = "Laptop"
                         });
@@ -494,7 +494,7 @@ namespace SmartPhone.Migrations
                         new
                         {
                             Id = 0,
-                            ConcurrencyStamp = "ed2b50fa-82d1-4ef9-a638-4e80ea248e45",
+                            ConcurrencyStamp = "7dd0daeb-98e5-446b-901a-51688c483309",
                             Name = "Admin"
                         });
                 });
@@ -525,9 +525,9 @@ namespace SmartPhone.Migrations
                         {
                             Id = 1,
                             Active = true,
-                            CreatedAt = new DateTimeOffset(new DateTime(2019, 3, 3, 20, 55, 34, 998, DateTimeKind.Unspecified).AddTicks(5173), new TimeSpan(0, 7, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2019, 3, 5, 9, 47, 25, 788, DateTimeKind.Unspecified).AddTicks(5215), new TimeSpan(0, 7, 0, 0, 0)),
                             CreatedBy = "Quang Duy",
-                            ModifiedAt = new DateTimeOffset(new DateTime(2019, 3, 3, 20, 55, 34, 998, DateTimeKind.Unspecified).AddTicks(5181), new TimeSpan(0, 7, 0, 0, 0)),
+                            ModifiedAt = new DateTimeOffset(new DateTime(2019, 3, 5, 9, 47, 25, 788, DateTimeKind.Unspecified).AddTicks(5228), new TimeSpan(0, 7, 0, 0, 0)),
                             ModifiedBy = "Quang Duy",
                             Name = "Xuất bản"
                         },
@@ -535,9 +535,9 @@ namespace SmartPhone.Migrations
                         {
                             Id = 2,
                             Active = true,
-                            CreatedAt = new DateTimeOffset(new DateTime(2019, 3, 3, 20, 55, 34, 998, DateTimeKind.Unspecified).AddTicks(5202), new TimeSpan(0, 7, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2019, 3, 5, 9, 47, 25, 788, DateTimeKind.Unspecified).AddTicks(5245), new TimeSpan(0, 7, 0, 0, 0)),
                             CreatedBy = "Quang Duy",
-                            ModifiedAt = new DateTimeOffset(new DateTime(2019, 3, 3, 20, 55, 34, 998, DateTimeKind.Unspecified).AddTicks(5207), new TimeSpan(0, 7, 0, 0, 0)),
+                            ModifiedAt = new DateTimeOffset(new DateTime(2019, 3, 5, 9, 47, 25, 788, DateTimeKind.Unspecified).AddTicks(5249), new TimeSpan(0, 7, 0, 0, 0)),
                             ModifiedBy = "Quang Duy",
                             Name = "Chưa xuất bản"
                         });
@@ -573,11 +573,11 @@ namespace SmartPhone.Migrations
                         {
                             Id = 1,
                             Active = true,
-                            CreatedAt = new DateTimeOffset(new DateTime(2019, 3, 3, 20, 55, 34, 990, DateTimeKind.Unspecified).AddTicks(8623), new TimeSpan(0, 7, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2019, 3, 5, 9, 47, 25, 782, DateTimeKind.Unspecified).AddTicks(2643), new TimeSpan(0, 7, 0, 0, 0)),
                             CreatedBy = "Quang Duy",
                             Info = "Thông tin apple",
                             Logo = "Logo Apple",
-                            ModifiedAt = new DateTimeOffset(new DateTime(2019, 3, 3, 20, 55, 34, 994, DateTimeKind.Unspecified).AddTicks(6793), new TimeSpan(0, 7, 0, 0, 0)),
+                            ModifiedAt = new DateTimeOffset(new DateTime(2019, 3, 5, 9, 47, 25, 785, DateTimeKind.Unspecified).AddTicks(3643), new TimeSpan(0, 7, 0, 0, 0)),
                             ModifiedBy = "Quang Duy",
                             Name = "Apple"
                         },
@@ -585,11 +585,11 @@ namespace SmartPhone.Migrations
                         {
                             Id = 2,
                             Active = true,
-                            CreatedAt = new DateTimeOffset(new DateTime(2019, 3, 3, 20, 55, 34, 994, DateTimeKind.Unspecified).AddTicks(8948), new TimeSpan(0, 7, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2019, 3, 5, 9, 47, 25, 785, DateTimeKind.Unspecified).AddTicks(5387), new TimeSpan(0, 7, 0, 0, 0)),
                             CreatedBy = "Quang Duy",
                             Info = "Thông tin samsung",
                             Logo = "Logo Samsung",
-                            ModifiedAt = new DateTimeOffset(new DateTime(2019, 3, 3, 20, 55, 34, 994, DateTimeKind.Unspecified).AddTicks(8961), new TimeSpan(0, 7, 0, 0, 0)),
+                            ModifiedAt = new DateTimeOffset(new DateTime(2019, 3, 5, 9, 47, 25, 785, DateTimeKind.Unspecified).AddTicks(5404), new TimeSpan(0, 7, 0, 0, 0)),
                             ModifiedBy = "Quang Duy",
                             Name = "Samsung"
                         });
@@ -648,7 +648,7 @@ namespace SmartPhone.Migrations
                         {
                             Id = 1,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "bdd4f343-7d35-492d-bc98-0339aece7aa0",
+                            ConcurrencyStamp = "5acc98c6-0598-45a7-8fe0-714c09ea44bf",
                             Email = "quangduy@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
@@ -692,10 +692,10 @@ namespace SmartPhone.Migrations
                             Id = 1,
                             Active = true,
                             Address = "Địa chỉ Hà Nội",
-                            CreatedAt = new DateTimeOffset(new DateTime(2019, 3, 3, 20, 55, 34, 998, DateTimeKind.Unspecified).AddTicks(627), new TimeSpan(0, 7, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2019, 3, 5, 9, 47, 25, 788, DateTimeKind.Unspecified).AddTicks(1580), new TimeSpan(0, 7, 0, 0, 0)),
                             CreatedBy = "Quang Duy",
                             Email = "hoangha@gmail.com",
-                            ModifiedAt = new DateTimeOffset(new DateTime(2019, 3, 3, 20, 55, 34, 998, DateTimeKind.Unspecified).AddTicks(640), new TimeSpan(0, 7, 0, 0, 0)),
+                            ModifiedAt = new DateTimeOffset(new DateTime(2019, 3, 5, 9, 47, 25, 788, DateTimeKind.Unspecified).AddTicks(1588), new TimeSpan(0, 7, 0, 0, 0)),
                             ModifiedBy = "Quang Duy",
                             Name = "Hoàng Hà Mobile",
                             Phone = "0987654321"
@@ -705,10 +705,10 @@ namespace SmartPhone.Migrations
                             Id = 2,
                             Active = true,
                             Address = "Địa chỉ Cầu giấy",
-                            CreatedAt = new DateTimeOffset(new DateTime(2019, 3, 3, 20, 55, 34, 998, DateTimeKind.Unspecified).AddTicks(674), new TimeSpan(0, 7, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2019, 3, 5, 9, 47, 25, 788, DateTimeKind.Unspecified).AddTicks(1623), new TimeSpan(0, 7, 0, 0, 0)),
                             CreatedBy = "Quang Duy",
                             Email = "Cellphones@gmail.com",
-                            ModifiedAt = new DateTimeOffset(new DateTime(2019, 3, 3, 20, 55, 34, 998, DateTimeKind.Unspecified).AddTicks(678), new TimeSpan(0, 7, 0, 0, 0)),
+                            ModifiedAt = new DateTimeOffset(new DateTime(2019, 3, 5, 9, 47, 25, 788, DateTimeKind.Unspecified).AddTicks(1623), new TimeSpan(0, 7, 0, 0, 0)),
                             ModifiedBy = "Quang Duy",
                             Name = "CellPhone S",
                             Phone = "0123456789"
