@@ -1,6 +1,5 @@
-﻿@using Microsoft.AspNetCore.Identity
-@inject SignInManager<User> SignInManager
-@inject UserManager<User> UserManager
+﻿@using Microsoft.AspNetCore.Http;
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor;
 @{
     ViewData["Title"] = "HomeLayout";
 
@@ -77,10 +76,10 @@
                         <div class="col-md-4">
                             <ul class="flat-unstyled">
                                 @{
-                                    @if (SignInManager.IsSignedIn(User))
+                                    @if (HttpContextAccessor.HttpContext.Session.GetString("Username") != null)
                                     {
                                         <li class="account">
-                                            <a title="">Chào @User.Identity.Name<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                                            <a title="">Chào @HttpContextAccessor.HttpContext.Session.GetString("Username")<i class="fa fa-angle-down" aria-hidden="true"></i></a>
                                             <ul class="unstyled">
                                                 <li>
                                                     <a href="~/home/wishlist.html" title="">Đơn hàng của tôi</a>
@@ -94,7 +93,7 @@
                                                 <li>
                                                     <a href="~/home/shop-checkout.html" title="">Sản phẩm yêu thích</a>
                                                 </li>
-                                                
+
                                                 <li>
                                                     <a asp-action="HomeLogout" asp-controller="Account" title="">Thoát tài khoản</a>
                                                 </li>
