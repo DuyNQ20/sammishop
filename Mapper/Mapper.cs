@@ -217,6 +217,7 @@ namespace SmartPhone.Mapper
             destination.ProductId = source.ProductId;
             destination.ModifiedAt = now;
             destination.Active = source.Active;
+            destination.Quantity = source.Quantity;
         }
 
         public static void SaveMap(this Cart destination, CartView source)
@@ -224,10 +225,12 @@ namespace SmartPhone.Mapper
             
             var now = DateTime.UtcNow;
 
+            destination.CreatedAt = now;
             destination.UserId = source.UserId;
             destination.ProductId = source.ProductId;
             destination.ModifiedAt = now;
             destination.Active = source.Active;
+            destination.Quantity = source.Quantity;
         }
 
 

@@ -11,8 +11,13 @@ namespace SmartPhone.ViewModels
 
         public virtual int ProductId { get; set; }
 
-        public int UserId { get; set; }
+        public int? UserId { get; set; }
 
+        public int Quantity { get; set; }
 
+        public CartView()
+        {
+            Quantity = 1;
+        }
     }
 }

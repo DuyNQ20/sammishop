@@ -76,10 +76,10 @@
                         <div class="col-md-4">
                             <ul class="flat-unstyled">
                                 @{
-                                    @if (HttpContextAccessor.HttpContext.Session.GetString("Username") != null)
+                                    @if (HttpContextAccessor.HttpContext.Session.GetInt32("CustomerID") != null)
                                     {
                                         <li class="account">
-                                            <a title="">Chào @HttpContextAccessor.HttpContext.Session.GetString("Username")<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                                            <a title="">Chào @HttpContextAccessor.HttpContext.Session.GetString("Customer")<i class="fa fa-angle-down" aria-hidden="true"></i></a>
                                             <ul class="unstyled">
                                                 <li>
                                                     <a href="~/home/wishlist.html" title="">Đơn hàng của tôi</a>

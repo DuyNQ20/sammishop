@@ -9,6 +9,7 @@ using SmartPhone.Data;
 using SmartPhone.Models;
 using SmartPhone.Mapper;
 using SmartPhone.ViewModels;
+using Microsoft.AspNetCore.Http;
 
 namespace SmartPhone.Controllers
 {
@@ -45,90 +46,37 @@ namespace SmartPhone.Controllers
             {
                 return NotFound();
             }
-
             return View(cart);
-        }
-
-        // GET: Carts/Create
-        public async Task<IActionResult> Create(int ?id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-            var product = await _context.Products.FindAsync(id);
-
-            if (product == null)
-            {
-                return NotFound();
-            }
-            var cartView = new CartView {
-                UserId = 1,
-                ProductId = product.Id,
-                Active = true
-            };
-            var cart = new Cart();
-            cart.Map(cartView);
-            _context.Add(cart);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
         }
         
-
-        // GET: Carts/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> AddToCart(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            var cart = await _context.Carts.FirstOrDefaultAsync(x=>x.ProductId == id);
 
-            var cart = await _context.Carts.FindAsync(id);
-            if (cart == null)
+            if(cart != null)
             {
-                return NotFound();
+                cart.Quantity++;
+                _context.Carts.Update(cart);
+                await _context.SaveChangesAsync();
             }
-            ViewData["ProductId"] = new SelectList(_context.Products, "Id", "Id", cart.ProductId);
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", cart.UserId);
-            return View(cart);
+            else
+            {
+                var cartView = new CartView
+                {
+                    UserId = HttpContext.Session.GetInt32("CustomerID") == null ? HttpContext.Session.GetInt32("CustomerID") : null,
+                    ProductId = id,
+                    Active = true,
+                    Quantity = 1
+                };
+                cart = new Cart();
+                cart.SaveMap(cartView);
+                _context.Carts.Add(cart);
+                await _context.SaveChangesAsync();
+            }
+            return RedirectToAction(nameof(Index));
         }
 
-        // POST: Carts/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ProductId,UserId,Id,CreatedBy,ModifiedBy,Active,CreatedAt,ModifiedAt")] Cart cart)
-        {
-            if (id != cart.Id)
-            {
-                return NotFound();
-            }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(cart);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!CartExists(cart.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["ProductId"] = new SelectList(_context.Products, "Id", "Id", cart.ProductId);
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", cart.UserId);
-            return View(cart);
-        }
 
         // GET: Carts/Delete/5
         public async Task<IActionResult> Delete(int? id)

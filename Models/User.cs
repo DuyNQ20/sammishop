@@ -14,6 +14,6 @@ namespace SmartPhone.Models
         public int RoleId { get; set; }
         public virtual Role Role { get; set; }
 
-        public virtual List<Cart> Carts { get; set; }
+        //public virtual List<Cart> Carts { get; set; }
     }
 }

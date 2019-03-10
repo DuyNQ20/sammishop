@@ -39,7 +39,8 @@ namespace SmartPhone.Controllers
             var auth = _context.Users.FirstOrDefault(x => x.Username == model.Username & x.Password == model.Password);
             if(auth != null)
             {
-                HttpContext.Session.SetString("Username", auth.Name); 
+                HttpContext.Session.SetString("Customer", auth.Name);
+                HttpContext.Session.SetInt32("CustomerID", auth.Id);
             }
             return RedirectToAction("Index", "Home");
         }
@@ -71,7 +72,7 @@ namespace SmartPhone.Controllers
         [HttpGet, Route("logout")]
         public async Task<IActionResult> HomeLogout()
         {
-            HttpContext.Session.Remove("Username");
+            HttpContext.Session.Remove("CustomerID");
             return RedirectToAction("Index", "Home");
         }
     }
