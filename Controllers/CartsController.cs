@@ -30,32 +30,15 @@ namespace SmartPhone.Controllers
             return View(await dataContext.ToListAsync());
         }
 
-        // GET: Carts/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var cart = await _context.Carts
-                .Include(c => c.Product)
-                .Include(c => c.User)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (cart == null)
-            {
-                return NotFound();
-            }
-            return View(cart);
-        }
+       
         
-        public async Task<IActionResult> AddToCart(int id)
+        public async Task<IActionResult> AddToCart(int id, int quantity = 1)
         {
             var cart = await _context.Carts.FirstOrDefaultAsync(x=>x.ProductId == id);
 
             if(cart != null)
             {
-                cart.Quantity++;
+                cart.Quantity = cart.Quantity + quantity;
                 _context.Carts.Update(cart);
                 await _context.SaveChangesAsync();
             }
@@ -66,20 +49,52 @@ namespace SmartPhone.Controllers
                     UserId = HttpContext.Session.GetInt32("CustomerID") == null ? HttpContext.Session.GetInt32("CustomerID") : null,
                     ProductId = id,
                     Active = true,
-                    Quantity = 1
+                    Quantity = quantity
                 };
                 cart = new Cart();
                 cart.SaveMap(cartView);
                 _context.Carts.Add(cart);
                 await _context.SaveChangesAsync();
+                return RedirectToAction("Index", "Home");
             }
             return RedirectToAction(nameof(Index));
         }
 
+        public async Task<IActionResult> RemoveProductFromCart(int id)
+        {
+            var cart = await _context.Carts.FirstOrDefaultAsync(x => x.ProductId == id);
+
+            if (cart != null)
+            {
+                cart.Quantity--;
+                _context.Carts.Update(cart);
+                await _context.SaveChangesAsync();
+                
+            }
+            return RedirectToAction(nameof(Index));
+
+        }
+
+        public async Task<IActionResult> Create(int id)
+        {
+            var cartView = new CartView
+            {
+                UserId = HttpContext.Session.GetInt32("CustomerID") == null ? HttpContext.Session.GetInt32("CustomerID") : null,
+                ProductId = id,
+                Active = true,
+                Quantity = 1
+            };
+            var cart = new Cart();
+            cart.SaveMap(cartView);
+            _context.Carts.Add(cart);
+            await _context.SaveChangesAsync();
+
+            return Ok(cartView);
+        }
 
 
-        // GET: Carts/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+            // GET: Carts/Delete/5
+            public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {

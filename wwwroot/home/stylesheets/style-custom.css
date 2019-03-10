@@ -4,8 +4,7 @@
 section.flat-shop-cart h3, section.flat-shop-cart table,
 .table-cart tr td .total, .table-cart tr td .price,
 .cart-totals table tr td.subtotal,
-.cart-totals table tr td.price-total 
-{
+.cart-totals table tr td.price-total {
     font-family: Helvetica Neue,Helvetica,Arial,\\6587\6CC9\9A5B\6B63\9ED1,WenQuanYi Zen Hei,Hiragino Sans GB,\\5137\9ED1 Pro,LiHei Pro,Heiti TC,\\5FAE\8EDF\6B63\9ED1\9AD4,Microsoft JhengHei UI,Microsoft JhengHei,sans-serif;
 }
 
@@ -19,9 +18,10 @@ html, body, form, fieldset, table, tr, td, img, input, button, select, textarea,
 #mega-menu > .btn-mega {
     padding-left: 66px;
 }
-#mega-menu > .btn-mega > span{
-    left: 22px;
-}
+
+    #mega-menu > .btn-mega > span {
+        left: 22px;
+    }
 
 .imagebox .owl-carousel .owl-item img {
     height: 209px;
@@ -36,6 +36,7 @@ html, body, form, fieldset, table, tr, td, img, input, button, select, textarea,
 .col-md-12 p {
     margin-bottom: 1rem;
 }
+
 .col-md-12 strong, b, p {
     font-weight: bold;
     font-family: Roboto,Helvetica,Arial,sans-serif;
@@ -66,6 +67,7 @@ html, body, form, fieldset, table, tr, td, img, input, button, select, textarea,
     color: #727272;
     border: 2px solid #e5e5e5;
 }
+
 .table-cart tr td .quanlity input {
     width: 70%;
 }
@@ -83,20 +85,23 @@ html, body, form, fieldset, table, tr, td, img, input, button, select, textarea,
 }
 
 /*chỉnh chiều rộng cột sản phẩm*/
-.table-cart tr td:nth-child(1){
+.table-cart tr td:nth-child(1) {
     width: 55%;
 }
+
 .table-cart tr td:nth-child(3) {
-    width: 16%;
+    width: 20%;
 }
+
 .table-cart tr td:nth-child(2) {
     width: 22%;
 }
+
 .name-product {
     width: 200px;
 }
 
 /*chỉnh chiều rộng popup Tài khoản*/
-ul.flat-unstyled > li > ul{
+ul.flat-unstyled > li > ul {
     min-width: 130px;
 }
