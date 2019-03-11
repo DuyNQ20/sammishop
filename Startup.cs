@@ -48,7 +48,8 @@ namespace SmartPhone
             services.Configure<StorageConfiguration>(Configuration.GetSection("StorageConfiguration"));
             services
                .AddDbContext<DataContext>(options =>
-                   options.UseMySql(Configuration.GetConnectionString("DefaultConnection")))
+                   
+               options.UseMySql(Configuration.GetConnectionString("DefaultConnection")))
                    .AddMvc()
                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddSession();

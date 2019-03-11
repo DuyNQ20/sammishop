@@ -6,6 +6,7 @@
 }
 
 <section class="flat-shop-cart">
+    @{ decimal total = 0;}
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
@@ -30,6 +31,7 @@
                                         <div class="img-product">
                                             <a asp-action="Details" asp-controller="Home" asp-route-id="@item.Id">
                                                 @{
+                                                   
                                                     var image = item.Product.Files.FirstOrDefault(x => x.ProductId == item.ProductId & x.thumbnail);
                                                     if (image != null)
                                                     {
@@ -51,24 +53,19 @@
                                     </td>
                                     <td>
                                         <div class="quanlity">
-                                            <a asp-action="RemoveProductFromCart" asp-controller="Carts" asp-route-id="@item.ProductId"> <span  class="btn-down"></span></a>
+                                            <a asp-action="RemoveProductQuantityFromCart" asp-controller="Carts" asp-route-id="@item.ProductId"> <span  class="btn-down"></span></a>
                                             <input id="@Url.Content("sp"+item.ProductId)" class="number" value="@item.Quantity">
-                                            <a  asp-action="AddToCart" asp-controller="Carts" asp-route-id="@item.ProductId" > <span class="btn-up"></span></a>
+                                            <a  asp-action="AddProductQuantityFromCart" asp-controller="Carts" asp-route-id="@item.ProductId" > <span class="btn-up"></span></a>
                                         </div>
                                     </td>
                                     <td>
 
-                                        @{
-                                            var total = item.Product.SalePrice * item.Quantity;
-                                            {
                                         <div class="total">
-                                            @total.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR")) &#8363
-                                        </div>
+                                            @{
+                                               total = total + (item.Product.SalePrice * item.Quantity);
                                             }
-                                            
-                                        }
-
-
+                                            @item.Product.SalePrice.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR")) &#8363
+                                        </div>
                                         <div class="regular">
                                             @item.Product.OriginalPrice.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR")) &#8363
                                         </div>
@@ -102,7 +99,7 @@
                                 <tr>
                                     <td>Tạm tính</td>
                                     <td class="subtotal">
-                                        32.000.0000 &#8363
+                                        @total.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR")) &#8363
                                     </td>
                                 </tr>
                                 <tr>
@@ -119,7 +116,7 @@
                                 </tr>
                                 <tr>
                                     <td>Thành tiền</td>
-                                    <td class="price-total">32.000.0000 &#8363</td>
+                                    <td class="price-total">@total.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR")) &#8363</td>
                                 </tr>
                             </tbody>
                         </table>
