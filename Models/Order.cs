@@ -1,0 +1,27 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace SmartPhone.Models
+{
+    public class Order : BaseModel
+    {
+        public string Code { get; set; }
+
+        public string DeliveryAddress { get; set; }
+
+        public string Phone { get; set; }
+
+        public string Receiver { get; set; }
+
+        public int UserId { get; set; }
+        public User User { get; set; }
+
+        public int ProductId { get; set; }
+        public Product Product { get; set; }
+
+        public int OrderStatusId { get; set; }
+        public OrderStatus orderStatus { get; set; }
+    }
+}

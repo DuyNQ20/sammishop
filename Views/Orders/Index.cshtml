@@ -32,7 +32,7 @@
         <div class="row">
             <div class="col-md-7">
                 <div class="box-checkout">
-                    <form action="#" method="get" class="checkout" accept-charset="utf-8">
+                    <form asp-action="Order" method="post" class="checkout" accept-charset="utf-8">
                         <div class="shipping-address-fields">
                             <div class="fields-title">
                                 <h3 class="title">Địa chỉ giao hàng</h3>
@@ -49,12 +49,12 @@
                                     <div class="field-row">
                                         <p class="field-one-half">
                                             <label for="first-name-2">Họ tên </label>
-                                            <input asp-for="@item.User.Name" type="text" id="first-name-2" name="first-name-2" placeholder="Nhập họ tên">
+                                            <input asp-for="@item.User.Name" type="text" id="first-name-2" name="Name" placeholder="Nhập họ tên">
                                         </p>
 
                                         <p class="field-one-half">
                                             <label for="first-name-2">Số điện thoại </label>
-                                            <input asp-for="@item.User.Phone" type="text" id="address" name="first-name-2" placeholder="Nhập số điện thoại">
+                                            <input asp-for="@item.User.Phone" type="text" id="address" name="Phone" placeholder="Nhập số điện thoại">
                                         </p>
                                         <div class="clearfix"></div>
                                     </div>
@@ -62,7 +62,7 @@
 
                                     <div class="field-row">
                                         <label for="address-3">Địa chỉ *</label>
-                                        <input asp-for="@item.User.Address" type="text" id="address-3" name="address-3" placeholder="Nhập địa chỉ nhận hàng của bạn">
+                                        <input asp-for="@item.User.Address" type="text" id="address-3" name="Address" placeholder="Nhập địa chỉ nhận hàng của bạn">
                                     </div>
                                     break;
                                 }
@@ -77,14 +77,11 @@
 
 
 
-
-                    </form><!-- /.checkout -->
                 </div><!-- /.box-checkout -->
             </div><!-- /.col-md-7 -->
             <div class="col-md-5">
                 <div class="cart-totals style2">
                     <h3>Thông tin thanh toán</h3>
-                    <form action="#" method="get" accept-charset="utf-8">
                         @{ decimal total = 0;}
                         <table class="product">
                             <thead>
@@ -102,7 +99,7 @@
                                         var tong = item.Product.SalePrice * item.Quantity;
                                         total = total + tong;
                                     }
-                                    <td> @item.Quantity x <a style="color: #f28b00" asp-action="Details" asp-controller="Home" asp-route-id="@item.Id">@item.Product.Name </a></td>
+                                    <td> @item.Quantity x <a style="color: #f28b00" asp-action="Details" asp-controller="Home" asp-route-id="@item.ProductId">@item.Product.Name </a></td>
                                     <td>@tong.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR")) &#8363</td>
                                 </tr>
                                 }
@@ -146,7 +143,7 @@
                         </div><!-- /.btn-radio style2 -->
                        
                         <div class="btn-order">
-                            <a href="#" class="order" title="">Đặt hàng</a>
+                           <button class="order" type="submit" title="">Đặt hàng</button>
                         </div><!-- /.btn-order -->
                     </form>
                 </div><!-- /.cart-totals style2 -->

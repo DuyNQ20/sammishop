@@ -110,3 +110,20 @@ ul.flat-unstyled > li > ul {
 h3.title {
     font-weight: bolder !important;
 }
+
+
+/*chỉnh sửa lại nút đặt hàng*/
+.btn-order button {
+    display: block;
+    background-color: #f92400;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 30px;
+    width: 100%;
+}
+    .btn-order button:hover, .btn-order button:focus {
+        background-color: #cd0c0c;
+    }

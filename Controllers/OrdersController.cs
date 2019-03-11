@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using SmartPhone.Data;
 using SmartPhone.Lib;
 using SmartPhone.Models;
+using SmartPhone.ViewModels;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -36,6 +37,12 @@ namespace SmartPhone.Controllers
                 dataContext = HttpContext.Session.GetObject<List<Cart>>("Carts");
             }
             return View(dataContext);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Order(UserView userView)
+        {
+            return View();
         }
     }
 }
