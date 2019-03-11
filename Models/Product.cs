@@ -1,4 +1,5 @@
-﻿using SmartPhone.Data;
+﻿using Newtonsoft.Json;
+using SmartPhone.Data;
 using SmartPhone.Models;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace SmartPhone.Models
 {
+    [JsonObject(IsReference = true)]
     public class Product : BaseModel
     {
         public string Name { get; set; }

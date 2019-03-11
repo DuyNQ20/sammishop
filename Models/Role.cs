@@ -8,9 +8,12 @@ using Microsoft.AspNetCore.Identity;
 
 namespace SmartPhone.Models
 {
-    public class Role : IdentityRole<int>
+    public class Role : BaseModel
     {
-        [Required, Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int Id { get; set; }
+        public string Name { get; set; }
+
+        public int Level { get; set; }
+
+        public virtual List<User> Users { get; set; }
     }
 }

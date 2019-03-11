@@ -9,13 +9,15 @@ using SmartPhone.Data;
 using SmartPhone.Models;
 using SmartPhone.Mapper;
 using SmartPhone.ViewModels;
+using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
+using SmartPhone.Lib;
 
 namespace SmartPhone.Controllers
 {
     public class CartsController : Controller
     {
         private readonly DataContext _context;
-
         public CartsController(DataContext context)
         {
             _context = context;
@@ -24,135 +26,171 @@ namespace SmartPhone.Controllers
         // GET: Carts
         public async Task<IActionResult> Index()
         {
-            var dataContext = _context.Carts.Include(c => c.Product).Include(c => c.User).Include(c=>c.Product.Files).Include(c=>c.Product.Supplier);
-            
-            return View(await dataContext.ToListAsync());
+            var dataContext = new List<Cart>();
+            if (HttpContext.Session.GetInt32("CustomerID") != null)
+            {
+                dataContext = await _context.Carts.Include(c => c.Product).Include(c => c.User).Include(c => c.Product.Files).Include(c => c.Product.Supplier).Where(x => x.UserId == HttpContext.Session.GetInt32("CustomerID")).ToListAsync();
+            }
+            else
+            {
+                dataContext = HttpContext.Session.GetObject<List<Cart>>("Carts");
+            }
+
+
+            return View(dataContext);
         }
 
-        // GET: Carts/Details/5
-        public async Task<IActionResult> Details(int? id)
+
+        public async Task<IActionResult> AddToCart(int id, int quantity = 1)
         {
-            if (id == null)
+            // Nếu có User đăng nhập
+            if (HttpContext.Session.GetInt32("CustomerID") != null)
             {
-                return NotFound();
-            }
+                var cart = await _context.Carts.FirstOrDefaultAsync(x => x.ProductId == id & x.UserId == HttpContext.Session.GetInt32("CustomerID"));
 
-            var cart = await _context.Carts
-                .Include(c => c.Product)
-                .Include(c => c.User)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (cart == null)
-            {
-                return NotFound();
-            }
-
-            return View(cart);
-        }
-
-        // GET: Carts/Create
-        public async Task<IActionResult> Create(int ?id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-            var product = await _context.Products.FindAsync(id);
-
-            if (product == null)
-            {
-                return NotFound();
-            }
-            var cartView = new CartView {
-                UserId = 1,
-                ProductId = product.Id,
-                Active = true
-            };
-            var cart = new Cart();
-            cart.Map(cartView);
-            _context.Add(cart);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-        
-
-        // GET: Carts/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var cart = await _context.Carts.FindAsync(id);
-            if (cart == null)
-            {
-                return NotFound();
-            }
-            ViewData["ProductId"] = new SelectList(_context.Products, "Id", "Id", cart.ProductId);
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", cart.UserId);
-            return View(cart);
-        }
-
-        // POST: Carts/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ProductId,UserId,Id,CreatedBy,ModifiedBy,Active,CreatedAt,ModifiedAt")] Cart cart)
-        {
-            if (id != cart.Id)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
+                if (cart != null) // đã có sp trong giỏ hàng
                 {
-                    _context.Update(cart);
+                    cart.Quantity = cart.Quantity + quantity;
+                    _context.Carts.Update(cart);
                     await _context.SaveChangesAsync();
                 }
-                catch (DbUpdateConcurrencyException)
+                else // Nếu giỏ hàng chưa có gì
                 {
-                    if (!CartExists(cart.Id))
+                    var cartView = new CartView
                     {
-                        return NotFound();
+                        UserId = HttpContext.Session.GetInt32("CustomerID"),
+                        ProductId = id,
+                        Active = true,
+                        Quantity = quantity
+                    };
+
+                    cart = new Cart();
+                    cart.SaveMap(cartView);
+                    _context.Carts.Add(cart);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+            else // Nếu chưa đăng nhập
+            {
+                var _listCarts = new List<Cart>();
+
+                var cart = new Cart()
+                {
+                    UserId = null,
+                    ProductId = id,
+                    Active = true,
+                    Quantity = quantity,
+                    Product = _context.Products.Include(c => c.Files).Include(c => c.Supplier).FirstOrDefault(x => x.Id == id)
+                };
+
+                // Nếu giỏ hàng chưa có gì
+                if (HttpContext.Session.GetObject<List<Cart>>("Carts") == null)
+                {
+                    _listCarts.Add(cart);
+
+                    HttpContext.Session.SetObject("Carts", _listCarts.ToList());
+                }
+                else
+                {
+                    _listCarts = HttpContext.Session.GetObject<List<Cart>>("Carts");
+                    if (_listCarts.FirstOrDefault(x => x.ProductId == id) != null)
+                    {
+                        _listCarts.FirstOrDefault(x => x.ProductId == id).Quantity++;
                     }
                     else
                     {
-                        throw;
+                        _listCarts.Add(cart);
                     }
+
+                    HttpContext.Session.SetObject("Carts", _listCarts);
                 }
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["ProductId"] = new SelectList(_context.Products, "Id", "Id", cart.ProductId);
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", cart.UserId);
-            return View(cart);
-        }
 
-        // GET: Carts/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
             }
 
-            var cart = await _context.Carts.FindAsync(id);
-            if (cart == null)
-            {
-                return NotFound();
-            }
-            _context.Carts.Remove(cart);
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-      
-
-        private bool CartExists(int id)
+        public async Task<IActionResult> AddProductQuantityFromCart(int id)
         {
-            return _context.Carts.Any(e => e.Id == id);
+            if (HttpContext.Session.GetInt32("CustomerID") != null)
+            {
+                var cart = await _context.Carts.FirstOrDefaultAsync(x => x.ProductId == id);
+
+                if (cart != null && cart.Quantity > 1)
+                {
+                    cart.Quantity++;
+                    _context.Carts.Update(cart);
+                    await _context.SaveChangesAsync();
+                }
+            }
+            else
+            {
+                var _listCarts = HttpContext.Session.GetObject<List<Cart>>("Carts");
+                _listCarts.FirstOrDefault(x => x.ProductId == id).Quantity++;
+                HttpContext.Session.SetObject("Carts", _listCarts);
+            }
+
+            return RedirectToAction(nameof(Index));
         }
+
+        public async Task<IActionResult> RemoveProductQuantityFromCart(int id)
+        {
+            if (HttpContext.Session.GetInt32("CustomerID") != null) // đã đăng nhập
+            {
+                var cart = await _context.Carts.FirstOrDefaultAsync(x => x.ProductId == id);
+
+                if (cart != null && cart.Quantity > 1)
+                {
+                    cart.Quantity--;
+                    _context.Carts.Update(cart);
+                    await _context.SaveChangesAsync();
+                }
+            }
+            else // chưa đăng nhập
+            {
+
+                var _listCarts = HttpContext.Session.GetObject<List<Cart>>("Carts");
+                var cart = _listCarts.FirstOrDefault(x => x.ProductId == id);
+                if (cart != null && cart.Quantity > 1) // không cho trừ nếu là 1
+                {
+                    _listCarts.FirstOrDefault(x => x.ProductId == id).Quantity--;
+                    HttpContext.Session.SetObject("Carts", _listCarts);
+                }
+
+            }
+
+            return RedirectToAction(nameof(Index));
+
+        }
+
+
+
+        // GET: Carts/Delete/5
+        public async Task<IActionResult> Delete(int id)
+        {
+            if (HttpContext.Session.GetInt32("CustomerID") != null) // đã đăng nhập
+            {
+                var cart = await _context.Carts.FindAsync(id);
+                if (cart == null)
+                {
+                    return NotFound();
+                }
+                _context.Carts.Remove(cart);
+                await _context.SaveChangesAsync();
+            }
+            else
+            {
+                var _listCarts = HttpContext.Session.GetObject<List<Cart>>("Carts");
+                var cart = _listCarts.FirstOrDefault(x => x.ProductId == id);
+                _listCarts.Remove(cart);
+                HttpContext.Session.SetObject("Carts", _listCarts);
+            }
+
+
+            return RedirectToAction(nameof(Index));
+        }
+
+
     }
 }

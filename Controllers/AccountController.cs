@@ -17,16 +17,13 @@ namespace SmartPhone.Controllers
     [Route("")]
     public class AccountController : Controller
     {
-        private readonly UserManager<User> _userManager;
-        private readonly SignInManager<User> _signInManager;
-        private readonly IConfiguration _configuration;
-        public AccountController(UserManager<User> userManager, IConfiguration configuration, SignInManager<User> signInManager)
-        {
-            _userManager = userManager;
-            _configuration = configuration;
-            _signInManager = signInManager;
+        private readonly DataContext _context;
 
+        public AccountController(DataContext context)
+        {
+            _context = context;
         }
+
 
         [HttpGet, Route("login")]
         public IActionResult HomeLogin(string returnUrl = "")
@@ -39,55 +36,43 @@ namespace SmartPhone.Controllers
         [HttpPost, Route("login")]
         public async Task<IActionResult> Login(UserView model)
         {
-            if (ModelState.IsValid)
+            var auth = _context.Users.FirstOrDefault(x => x.Username == model.Username & x.Password == model.Password);
+            if(auth != null)
             {
-                var result = await _signInManager.PasswordSignInAsync(model.Username,
-                   model.Password, true, false);
-
-                if (result.Succeeded)
-                {
-                    if (!string.IsNullOrEmpty(model.ReturnUrl) && Url.IsLocalUrl(model.ReturnUrl))
-                    {
-                        return Redirect(model.ReturnUrl);
-                    }
-                    else
-                    {
-                        return RedirectToAction("Index", "Home");
-                    }
-                }
+                HttpContext.Session.SetString("Customer", auth.Name);
+                HttpContext.Session.SetInt32("CustomerID", auth.Id);
             }
-            ModelState.AddModelError("", "Invalid login attempt");
-            return View(model);
+            return RedirectToAction("Index", "Home");
         }
 
-        [HttpPost, Route("register")]
-        public async Task<IActionResult> Register([FromBody] UserView model)
-        {
-            if (ModelState.IsValid)
-            {
-                var user = new User { Email = model.Username, UserName = model.Username };
-                var result = await _userManager.CreateAsync(user, model.Password);
+        //[HttpPost, Route("register")]
+        //public async Task<IActionResult> Register([FromBody] UserView model)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        var user = new User { Email = model.Username, UserName = model.Username };
+        //        var result = await _userManager.CreateAsync(user, model.Password);
 
-                if (result.Succeeded)
-                {
-                    await _signInManager.SignInAsync(user, false);
-                    return RedirectToAction("Index", "Home");
-                }
-                else
-                {
-                    foreach (var error in result.Errors)
-                    {
-                        ModelState.AddModelError("", error.Description);
-                    }
-                }
-            }
-            return View();
-        }
+        //        if (result.Succeeded)
+        //        {
+        //            await _signInManager.SignInAsync(user, false);
+        //            return RedirectToAction("Index", "Home");
+        //        }
+        //        else
+        //        {
+        //            foreach (var error in result.Errors)
+        //            {
+        //                ModelState.AddModelError("", error.Description);
+        //            }
+        //        }
+        //    }
+        //    return View();
+        //}
 
         [HttpGet, Route("logout")]
         public async Task<IActionResult> HomeLogout()
         {
-            await _signInManager.SignOutAsync();
+            HttpContext.Session.Remove("CustomerID");
             return RedirectToAction("Index", "Home");
         }
     }

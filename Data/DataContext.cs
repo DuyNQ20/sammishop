@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace SmartPhone.Data
 {
-    public class DataContext : IdentityDbContext<User, Role, int>
+    public class DataContext : DbContext
     {
         private DbContextOptions<DataContext> Options { get; }
 
@@ -33,14 +33,8 @@ namespace SmartPhone.Data
             modelBuilder.Entity<Color>().ToTable("Color");
             // modelBuilder.Entity<User>().ToTable("User");
             modelBuilder.Entity<Cart>().ToTable("Cart");
-            modelBuilder.Entity<IdentityRoleClaim<int>>().ToTable("RoleClaim");
-            modelBuilder.Entity<Role>().ToTable("Role").HasIndex(p=>p.NormalizedName).IsUnique(false);
-            modelBuilder.Entity<IdentityUserClaim<int>>().ToTable("UserClaim");
-            modelBuilder.Entity<IdentityUserLogin<int>>().ToTable("UserLogin");
-            modelBuilder.Entity<IdentityUserRole<int>>().ToTable("UserRole");
-            //modelBuilder.Entity<User>().ToTable("Users").Property(p => p.Id).HasColumnName("UserId");
-            modelBuilder.Entity<User>().ToTable("User").HasIndex(p => p.NormalizedUserName).IsUnique(false);
-            modelBuilder.Entity<IdentityUserToken<int>>().ToTable("UserTocken");
+            modelBuilder.Entity<Role>().ToTable("Role");
+            modelBuilder.Entity<User>().ToTable("User");
 
 
 
@@ -156,20 +150,48 @@ namespace SmartPhone.Data
               }
            );
             modelBuilder.Entity<Role>().HasData(
-            new Role
-            {
-                Id = 1,
-                Name = "Admin"
+                new Role
+                {
+                    Id = 1,
+                    Name = "Admin",
+                    Level = 1,
+                    Active = true,
+                    CreatedAt = DateTime.Now,
+                    CreatedBy = "Quang Duy",
+                    ModifiedAt = DateTime.Now,
+                    ModifiedBy = "Quang Duy"
 
-            }
-         );
+                }
+            );
+            modelBuilder.Entity<Role>().HasData(
+                new Role
+                {
+                    Id = 2,
+                    Name = "Custommer",
+                    Level = 2,
+                    Active = true,
+                    CreatedAt = DateTime.Now,
+                    CreatedBy = "Quang Duy",
+                    ModifiedAt = DateTime.Now,
+                    ModifiedBy = "Quang Duy"
+
+                }
+            );
             modelBuilder.Entity<User>().HasData(
               new User
               {
                   Id = 1,
                   Email = "quangduy@gmail.com",
-                  UserName = "test",
-                  PasswordHash = "123"
+                  Username = "quangduy",
+                  Password = "123456",
+                  Name = "Nguyen Quang Duy",
+                  Address = "Ha Noi",
+                  RoleId = 1,
+                  Active = true,
+                  CreatedAt = DateTime.Now,
+                  CreatedBy = "Quang Duy",
+                  ModifiedAt = DateTime.Now,
+                  ModifiedBy = "Quang Duy"
               }
            );
 

@@ -6,16 +6,8 @@ using System.Threading.Tasks;
 
 namespace SmartPhone.Models
 {
-    public class Vendor : BaseModel
+    public class Vendor : InfoBase
     {
-        public string Name { get; set; }
-
-        public string Address { get; set; }
-
-        public string Email { get; set; }
-
-        public string Phone { get; set; }
-
         public virtual List<Product> Products { get; set; }
     }
 }
