@@ -1277,8 +1277,8 @@
         scrollbarWishlist();
         scrollbarCategories();
         scrollbarSearch();
-        googleMap();
-        googleMap_s2();
+        //googleMap();
+       // googleMap_s2();
         goTop();
         popup();
         zoomImage();

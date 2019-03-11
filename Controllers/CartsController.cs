@@ -117,7 +117,7 @@ namespace SmartPhone.Controllers
             {
                 var cart = await _context.Carts.FirstOrDefaultAsync(x => x.ProductId == id);
 
-                if (cart != null && cart.Quantity > 1)
+                if (cart != null)
                 {
                     cart.Quantity++;
                     _context.Carts.Update(cart);

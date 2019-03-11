@@ -40,3 +40,4 @@ function IncreaseOneUnit(id, operator) {
     if (number < 1) return;
     $("#" + id).val(number);
 }
+
