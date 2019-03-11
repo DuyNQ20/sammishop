@@ -182,7 +182,8 @@ namespace SmartPhone.Controllers
             else
             {
                 var _listCarts = HttpContext.Session.GetObject<List<Cart>>("Carts");
-                _listCarts.RemoveAt(id);
+                var cart = _listCarts.FirstOrDefault(x => x.ProductId == id);
+                _listCarts.Remove(cart);
                 HttpContext.Session.SetObject("Carts", _listCarts);
             }
 
