@@ -233,6 +233,58 @@ namespace SmartPhone.Mapper
             destination.Quantity = source.Quantity;
         }
 
+        // Order
+        public static void Map(this Order destination, OrderView source)
+        {
+            if (source == null)
+            {
+                throw new ArgumentNullException(nameof(source));
+            }
+
+            if (destination == null)
+            {
+                throw new ArgumentNullException(nameof(destination));
+            }
+
+            var now = DateTime.UtcNow;
+
+            if (destination.CreatedAt == DateTimeOffset.MinValue)
+            {
+                destination.CreatedAt = now;
+            }
+
+            destination.Code = source.Code;
+            destination.DeliveryAddress = source.DeliveryAddress;
+            destination.Phone = source.Phone;
+            destination.Receiver = source.Receiver;
+            destination.SalePrice = source.SalePrice;
+            destination.Quantity = source.Quantity;
+            destination.Total = source.Total;
+            destination.UserId = source.UserId;
+            destination.ProductId = source.ProductId;
+            destination.OrderStatusId = source.OrderStatusId;
+            destination.ModifiedAt = now;
+            destination.Active = true;
+        }
+
+        public static void SaveMap(this Order destination, OrderView source)
+        {
+            var now = DateTime.UtcNow;
+            destination.Code = source.Code;
+            destination.DeliveryAddress = source.DeliveryAddress;
+            destination.Phone = source.Phone;
+            destination.Receiver = source.Receiver;
+            destination.SalePrice = source.SalePrice;
+            destination.Quantity = source.Quantity;
+            destination.Total = source.Total;
+            destination.UserId = source.UserId;
+            destination.ProductId = source.ProductId;
+            destination.OrderStatusId = 1; // Trạng thái đang chờ
+            destination.ModifiedAt = now;
+            destination.Active = true;
+            destination.CreatedAt = now;
+        }
+
 
     }
 }

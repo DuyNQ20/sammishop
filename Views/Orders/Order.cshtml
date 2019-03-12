@@ -1,0 +1,106 @@
+﻿
+@{
+    ViewData["Title"] = "Order";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+
+<section class="flat-breadcrumb">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="breadcrumbs">
+                    <li class="trail-item">
+                        <a href="#" title="">Home</a>
+                        <span><img src="~/home/images/icons/arrow-right.png" alt=""></span>
+                    </li>
+                    <li class="trail-item">
+                        <a href="#" title="">Shop</a>
+                        <span><img src="~/home/images/icons/arrow-right.png" alt=""></span>
+                    </li>
+                    <li class="trail-end">
+                        <a href="#" title="">Smartphones</a>
+                    </li>
+                </ul><!-- /.breacrumbs -->
+            </div><!-- /.col-md-12 -->
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</section>
+
+<section class="flat-tracking background">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="order-tracking">
+                    <div class="title">
+                        <img width="200" src="~/home/images/National_Thank_You_Day.png" />
+                        <h3>Cảm ơn bạn đã đặt hàng của chúng tôi</h3>
+                        <p class="subscibe">
+                            Mã đơn hàng của bạn là: <span style="color: blue"> #@ViewData["Code"]</span>
+                        </p>
+
+                    </div><!-- /.title -->
+                    
+                </div><!-- /.order-tracking -->
+            </div><!-- /.col-md-12 -->
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</section><!-- /.flat-tracking -->
+
+<section class="flat-row flat-iconbox style1 background">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="iconbox style1 v1">
+                    <div class="box-header">
+                        <div class="image">
+                            <img src="images/icons/car.png" alt="">
+                        </div>
+                        <div class="box-title">
+                            <h3>Worldwide Shipping</h3>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div><!-- /.box-header -->
+                </div><!-- /.iconbox -->
+            </div><!-- /.col-md-3 -->
+            <div class="col-md-3">
+                <div class="iconbox style1 v1">
+                    <div class="box-header">
+                        <div class="image">
+                            <img src="images/icons/order.png" alt="">
+                        </div>
+                        <div class="box-title">
+                            <h3>Order Online Service</h3>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div><!-- /.box-header -->
+                </div><!-- /.iconbox -->
+            </div><!-- /.col-md-3 -->
+            <div class="col-md-3">
+                <div class="iconbox style1 v1">
+                    <div class="box-header">
+                        <div class="image">
+                            <img src="images/icons/payment.png" alt="">
+                        </div>
+                        <div class="box-title">
+                            <h3>Payment</h3>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div><!-- /.box-header -->
+                </div><!-- /.iconbox -->
+            </div><!-- /.col-md-3 -->
+            <div class="col-md-3">
+                <div class="iconbox style1 v1">
+                    <div class="box-header">
+                        <div class="image">
+                            <img src="images/icons/return.png" alt="">
+                        </div>
+                        <div class="box-title">
+                            <h3>Return 30 Days</h3>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div><!-- /.box-header -->
+                </div><!-- /.iconbox -->
+            </div><!-- /.col-md-3 -->
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</section><!-- /.flat-iconbox -->

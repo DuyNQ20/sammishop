@@ -35,6 +35,8 @@ namespace SmartPhone.Data
             modelBuilder.Entity<Cart>().ToTable("Cart");
             modelBuilder.Entity<Role>().ToTable("Role");
             modelBuilder.Entity<User>().ToTable("User");
+            modelBuilder.Entity<Order>().ToTable("Order");
+            modelBuilder.Entity<OrderStatus>().ToTable("OrderStatus");
 
 
 
@@ -340,6 +342,49 @@ namespace SmartPhone.Data
               }
            );
 
+            modelBuilder.Entity<OrderStatus>().HasData(
+             new OrderStatus
+             {
+                 Id = 1,
+                 Name = "Đang chờ",
+                 Active = true,
+                 CreatedAt = DateTime.Now,
+                 CreatedBy = "Quang Duy",
+                 ModifiedAt = DateTime.Now,
+                 ModifiedBy = "Quang Duy"
+             },
+             new OrderStatus
+             {
+                 Id = 2,
+                 Name = "Đang giao hàng",
+                 Active = true,
+                 CreatedAt = DateTime.Now,
+                 CreatedBy = "Quang Duy",
+                 ModifiedAt = DateTime.Now,
+                 ModifiedBy = "Quang Duy"
+             },
+             new OrderStatus
+             {
+                 Id = 3,
+                 Name = "Đã giao thành công",
+                 Active = true,
+                 CreatedAt = DateTime.Now,
+                 CreatedBy = "Quang Duy",
+                 ModifiedAt = DateTime.Now,
+                 ModifiedBy = "Quang Duy"
+             },
+             new OrderStatus
+             {
+                 Id = 4,
+                 Name = "Đã hủy",
+                 Active = true,
+                 CreatedAt = DateTime.Now,
+                 CreatedBy = "Quang Duy",
+                 ModifiedAt = DateTime.Now,
+                 ModifiedBy = "Quang Duy"
+             }
+          );
+
         }
 
         public DbSet<Comment> Comments { get; set; }
@@ -353,6 +398,8 @@ namespace SmartPhone.Data
         public new DbSet<User> Users { get; set; }
         public DbSet<Cart> Carts { get; set; }
         public new DbSet<Role> Roles { get; set; }
+        public new DbSet<Order> Orders { get; set; }
+        public new DbSet<OrderStatus> OrderStatus { get; set; }
 
 
 
