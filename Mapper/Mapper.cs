@@ -257,6 +257,9 @@ namespace SmartPhone.Mapper
             destination.DeliveryAddress = source.DeliveryAddress;
             destination.Phone = source.Phone;
             destination.Receiver = source.Receiver;
+            destination.SalePrice = source.SalePrice;
+            destination.Quantity = source.Quantity;
+            destination.Total = source.Total;
             destination.UserId = source.UserId;
             destination.ProductId = source.ProductId;
             destination.OrderStatusId = source.OrderStatusId;
@@ -271,9 +274,12 @@ namespace SmartPhone.Mapper
             destination.DeliveryAddress = source.DeliveryAddress;
             destination.Phone = source.Phone;
             destination.Receiver = source.Receiver;
+            destination.SalePrice = source.SalePrice;
+            destination.Quantity = source.Quantity;
+            destination.Total = source.Total;
             destination.UserId = source.UserId;
             destination.ProductId = source.ProductId;
-            destination.OrderStatusId = source.OrderStatusId;
+            destination.OrderStatusId = 1; // Trạng thái đang chờ
             destination.ModifiedAt = now;
             destination.Active = true;
             destination.CreatedAt = now;

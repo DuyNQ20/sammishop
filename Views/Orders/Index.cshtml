@@ -49,7 +49,7 @@
                                     <div class="field-row">
                                         <p class="field-one-half">
                                             <label for="first-name-2">Họ tên </label>
-                                            <input asp-for="@item.User.Name" type="text" id="first-name-2" name="Name" placeholder="Nhập họ tên">
+                                            <input asp-for="@item.User.Name" type="text" id="first-name-2" name="Receiver" placeholder="Nhập họ tên">
                                         </p>
 
                                         <p class="field-one-half">
@@ -62,7 +62,7 @@
 
                                     <div class="field-row">
                                         <label for="address-3">Địa chỉ *</label>
-                                        <input asp-for="@item.User.Address" type="text" id="address-3" name="Address" placeholder="Nhập địa chỉ nhận hàng của bạn">
+                                        <input asp-for="@item.User.Address" type="text" id="address-3" name="DeliveryAddress" placeholder="Nhập địa chỉ nhận hàng của bạn">
                                     </div>
                                     break;
                                 }
@@ -92,16 +92,15 @@
                             </thead>
                             <tbody>
                                 @foreach (var item in Model)
-                                {
-
+                                { 
                                 <tr>
                                     @{
                                         var tong = item.Product.SalePrice * item.Quantity;
                                         total = total + tong;
-                                    }
+                                    }                                   
                                     <td> @item.Quantity x <a style="color: #f28b00" asp-action="Details" asp-controller="Home" asp-route-id="@item.ProductId">@item.Product.Name </a></td>
                                     <td>@tong.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR")) &#8363</td>
-                                </tr>
+                                                                    </tr>
                                 }
                             </tbody>
                         </table><!-- /.product -->
