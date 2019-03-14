@@ -48,7 +48,7 @@
                         <div class="timkiem col-md-1">
                             <label>Tìm kiếm</label>
                         </div>
-                        <form class="app-search col-md-3" asp-controller="Products" asp-action="Search" method="get">
+                        <form class="app-search col-md-3" asp-action="Search" asp-controller="Orders" method="get">
                             <input type="text" placeholder="Search..." class="form-control" name="query">
                             <button type="submit" class="search-submit"><i class="fa fa-search"></i></button>
                         </form>
@@ -93,13 +93,6 @@
                                                 <a asp-action="UpdateStatus" asp-route-id="@item.Id"><i class="fa fa-shield"> Đang chờ</i></a>
 
                                             </td>
-                                            @*<td>
-                                                    <span class="list-img">@item.Price.ToString("#,### VNĐ")</span>
-                                                </td>
-                                                <td>
-                                                    <span class="list-img">@item.CreatedAt.ToString("dd/MM/yyyy")</span>
-                                                </td>*@
-
                                             <td class="text-center">
                                                 <a asp-action="Edit" asp-route-id="@item.Id"><i class="fa fa-pencil-square-o" aria-hidden="true"> Sửa</i></a>
                                             </td>

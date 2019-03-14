@@ -25,7 +25,7 @@ namespace SmartPhone.Controllers
             _context = context;
         }
 
-       [HttpGet("checkout/shipping")]
+        [HttpGet("checkout/shipping")]
         public async Task<IActionResult> Index()
         {
             var dataContext = new List<Cart>();
@@ -40,7 +40,7 @@ namespace SmartPhone.Controllers
             return View(dataContext);
         }
 
-       
+
         [HttpPost("checkout/shipping")]
         public async Task<IActionResult> Order(OrderView orderView)
         {
@@ -57,7 +57,7 @@ namespace SmartPhone.Controllers
             var code = random.Next(10000000, 999999999);
             decimal total = 0;
 
-            foreach(var item in dataContext)
+            foreach (var item in dataContext)
             {
                 total += item.Product.SalePrice * item.Quantity;
             }
@@ -69,7 +69,7 @@ namespace SmartPhone.Controllers
                 orderView.ProductId = item.ProductId;
                 orderView.Quantity = item.Quantity;
                 orderView.SalePrice = item.Product.SalePrice;
-                orderView.Code = "#"+code;
+                orderView.Code = "#" + code;
                 orderView.Total = total;
 
                 order.SaveMap(orderView);
@@ -88,13 +88,12 @@ namespace SmartPhone.Controllers
 
         //-------------------------------------------------------- Admin --------------------------------------------------------------
 
-        [HttpGet("admin/order")]
-        public async Task<IActionResult> GetAll()
+        // hàm sử dụng để chỉ show danh sách đơn đặt hàng k trùng mã code, giống groupby do chưa dùng đc group by trong linq nên xử lý vậy
+        public List<Order> ShowOrderList(List<Order> listOrder) 
         {
-            var dataContext = _context.Orders.OrderByDescending(x=>x.CreatedAt).ToList();
-            var list = new List<Order>();
             var codeOld = "";
-            foreach (var item in dataContext)
+            var list = new List<Order>();
+            foreach (var item in listOrder)
             {
                 var codeNew = item.Code;
                 if (codeNew != codeOld)
@@ -107,12 +106,54 @@ namespace SmartPhone.Controllers
                 }
                 codeOld = codeNew;
             }
-
-
-            return View(list);
+            return list;
         }
 
 
+        [HttpGet("admin/order")]
+        public async Task<IActionResult> GetAll()
+        {
+            var dataContext = _context.Orders.OrderByDescending(x => x.CreatedAt).ToList();
+            return View(ShowOrderList(dataContext));
+        }
 
+
+        [HttpGet, Route("admin/order/search")]
+        public async Task<IActionResult> Search([FromQuery]string query)
+        {
+            var list = _context.Orders.OrderByDescending(x => x.CreatedAt).ToList();
+            var dataContext = ShowOrderList(list);
+
+            var orders = new List<Order>();
+
+            if (!String.IsNullOrEmpty(query))
+            {
+                foreach (var item in dataContext)
+                {
+                    if (item.Code.ToLower().Contains(query.ToLower()))
+                    {
+                        orders.Add(item);
+                    }
+                }
+            }
+            return orders.Count == 0 ? View("GetAll", dataContext) : View("GetAll", orders);
+        }
+
+        [HttpGet, Route("delete/{id}")]
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var order = await _context.Orders.FindAsync(id);
+
+            var orders = await _context.Orders.Where(x=> x.Code == order.Code).ToListAsync();
+
+            _context.Orders.RemoveRange(orders);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(GetAll));
+        }
     }
 }
