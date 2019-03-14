@@ -15,7 +15,7 @@ using SmartPhone.ViewModels;
 
 namespace SmartPhone.Controllers
 {
-    [Route("checkout")]
+    [Route("")]
     public class OrdersController : Controller
     {
         private readonly DataContext _context;
@@ -25,7 +25,7 @@ namespace SmartPhone.Controllers
             _context = context;
         }
 
-        // GET: /<controller>/
+       [HttpGet("checkout/shipping")]
         public async Task<IActionResult> Index()
         {
             var dataContext = new List<Cart>();
@@ -41,7 +41,7 @@ namespace SmartPhone.Controllers
         }
 
        
-        [HttpPost]
+        [HttpPost("checkout/shipping")]
         public async Task<IActionResult> Order(OrderView orderView)
         {
             var dataContext = new List<Cart>();
@@ -55,6 +55,12 @@ namespace SmartPhone.Controllers
             }
 
             var code = random.Next(10000000, 999999999);
+            decimal total = 0;
+
+            foreach(var item in dataContext)
+            {
+                total += item.Product.SalePrice * item.Quantity;
+            }
 
             foreach (var item in dataContext)
             {
@@ -64,15 +70,49 @@ namespace SmartPhone.Controllers
                 orderView.Quantity = item.Quantity;
                 orderView.SalePrice = item.Product.SalePrice;
                 orderView.Code = "#"+code;
-                orderView.Total = item.Product.SalePrice * item.Quantity;
+                orderView.Total = total;
 
                 order.SaveMap(orderView);
                 _context.Orders.Add(order);
             }
+
+
+
             await _context.SaveChangesAsync();
 
             ViewData["Code"] = code;
             return View();
         }
+
+
+
+        //-------------------------------------------------------- Admin --------------------------------------------------------------
+
+        [HttpGet("admin/order")]
+        public async Task<IActionResult> GetAll()
+        {
+            var dataContext = _context.Orders.OrderByDescending(x=>x.CreatedAt).ToList();
+            var list = new List<Order>();
+            var codeOld = "";
+            foreach (var item in dataContext)
+            {
+                var codeNew = item.Code;
+                if (codeNew != codeOld)
+                {
+                    list.Add(item);
+                }
+                else
+                {
+
+                }
+                codeOld = codeNew;
+            }
+
+
+            return View(list);
+        }
+
+
+
     }
 }
