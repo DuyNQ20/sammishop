@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
+﻿
 namespace SmartPhone.Models
 {
     public class User : InfoBase
@@ -16,4 +12,4 @@ namespace SmartPhone.Models
 
         //public virtual List<Cart> Carts { get; set; }
     }
-}
+}   

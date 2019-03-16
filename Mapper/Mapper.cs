@@ -286,5 +286,51 @@ namespace SmartPhone.Mapper
         }
 
 
+        // User
+        // Order
+        public static void Map(this User destination, UserView source)
+        {
+            if (source == null)
+            {
+                throw new ArgumentNullException(nameof(source));
+            }
+
+            if (destination == null)
+            {
+                throw new ArgumentNullException(nameof(destination));
+            }
+
+            var now = DateTime.UtcNow;
+
+            if (destination.CreatedAt == DateTimeOffset.MinValue)
+            {
+                destination.CreatedAt = now;
+            }
+
+            destination.Name = source.Name;
+            destination.Address = source.Address;
+            destination.Phone = source.Phone;
+            destination.Email = source.Email;
+            destination.Username = source.Username;
+            destination.Password = source.Password;
+            destination.ModifiedAt = now;
+            destination.Active = true;
+        }
+
+        public static void SaveMap(this User destination, UserView source)
+        {
+            var now = DateTime.UtcNow;
+            destination.Name = source.Name;
+            destination.Address = source.Address;
+            destination.Phone = source.Phone;
+            destination.Email = source.Email;
+            destination.Username = source.Username;
+            destination.Password = source.Password;
+            destination.ModifiedAt = now;
+            destination.Active = true;
+            destination.CreatedAt = now;
+        }
+
+
     }
 }

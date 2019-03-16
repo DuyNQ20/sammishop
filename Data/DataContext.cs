@@ -395,11 +395,11 @@ namespace SmartPhone.Data
         public DbSet<ProductCategory> ProductCategorys { get; set; }
         public DbSet<Status> Statuses { get; set; }
         public DbSet<Color> Colors { get; set; }
-        public new DbSet<User> Users { get; set; }
+        public DbSet<User> Users { get; set; }
         public DbSet<Cart> Carts { get; set; }
-        public new DbSet<Role> Roles { get; set; }
-        public new DbSet<Order> Orders { get; set; }
-        public new DbSet<OrderStatus> OrderStatus { get; set; }
+        public DbSet<Role> Roles { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderStatus> OrderStatus { get; set; }
 
 
 

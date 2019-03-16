@@ -45,35 +45,18 @@ namespace SmartPhone.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        //[HttpPost, Route("register")]
-        //public async Task<IActionResult> Register([FromBody] UserView model)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        var user = new User { Email = model.Username, UserName = model.Username };
-        //        var result = await _userManager.CreateAsync(user, model.Password);
-
-        //        if (result.Succeeded)
-        //        {
-        //            await _signInManager.SignInAsync(user, false);
-        //            return RedirectToAction("Index", "Home");
-        //        }
-        //        else
-        //        {
-        //            foreach (var error in result.Errors)
-        //            {
-        //                ModelState.AddModelError("", error.Description);
-        //            }
-        //        }
-        //    }
-        //    return View();
-        //}
-
         [HttpGet, Route("logout")]
         public async Task<IActionResult> HomeLogout()
         {
             HttpContext.Session.Remove("CustomerID");
             return RedirectToAction("Index", "Home");
         }
+
+
+
+
+        //-------------------------------------------------------- Admin -------------------------------------------------------
+
+
     }
 }
