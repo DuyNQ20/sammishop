@@ -24,6 +24,7 @@ namespace SmartPhone.Controllers
         }
 
         // GET: Carts
+        [HttpGet("checkout/cart")]
         public async Task<IActionResult> Index()
         {
             var dataContext = new List<Cart>();

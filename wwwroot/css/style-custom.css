@@ -85,3 +85,9 @@ button.search-submit { /*Chỉnh button search*/
     border: none;
 }
  
+
+
+/*bỏ background btn thêm sản phẩm vào giỏ hàng*/
+button.add-cart{
+    background: none;
+}

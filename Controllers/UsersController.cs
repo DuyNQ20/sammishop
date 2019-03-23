@@ -10,7 +10,7 @@ using SmartPhone.Mapper;
 using SmartPhone.Models;
 using SmartPhone.ViewModels;
 
-namespace SmartPhone.Controllers.Admin
+namespace SmartPhone.Controllers
 {
     [Route("admin/users")]
     public class UsersController : Controller

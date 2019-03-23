@@ -10,10 +10,10 @@ using SmartPhone.Mapper;
 using SmartPhone.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
-using System.IO;
 using SmartPhone.Lib;
+using System.IO;
 
-namespace SmartPhone.Models
+namespace SmartPhone.Controllers
 {
     [Route("admin/products")]
     public class ProductsController : Controller
@@ -29,7 +29,7 @@ namespace SmartPhone.Models
 
         public void AddFilesForProduct(List<IFormFile> files, int productId, bool thumbnail = false)
         {
-            var list = new List<File>();
+            var list = new List<Models.File>();
 
             var path = Path.GetFullPath(Path.Combine(_storageConfiguration.StorageDirectory));
             Directory.CreateDirectory(path);
@@ -45,7 +45,7 @@ namespace SmartPhone.Models
                     using (var stream = new FileStream(filePath, FileMode.Create))
                     {
                         item.CopyTo(stream);
-                        var file = new File();
+                        var file = new Models.File();
                         if (thumbnail)
                             file.SaveMap(item, productId, true);
                         else
@@ -111,8 +111,8 @@ namespace SmartPhone.Models
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(ProductView productView, List<IFormFile> files, List<IFormFile> file)
         {
-            var product = new Product();
-            var listFile = new List<File>();
+            var product = new Models.Product();
+            var listFile = new List<Models.File>();
             //var path = System.IO.Path.GetFullPath(System.IO.Path.Combine(StorageConfiguration.StorageDirectory));
             //System.IO.Directory.CreateDirectory(path);
             product.SaveMap(productView);
@@ -225,7 +225,7 @@ namespace SmartPhone.Models
         public async Task<IActionResult> Search([FromQuery]string query)
         {
             var dataContext = _context.Products.Include(p => p.Files).Include(x => x.ProductCategory).ToList();
-            var products = new List<Product>();
+            var products = new List<Models.Product>();
 
             if (!String.IsNullOrEmpty(query))
             {

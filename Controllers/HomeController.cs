@@ -10,7 +10,7 @@ using SmartPhone.Models;
 using SmartPhone.ViewModels;
 using Microsoft.AspNetCore.Http;
 
-namespace SmartPhone.Controllers.Home
+namespace SmartPhone.Controllers
 {
     [Route("")]
     public class HomeController : Controller

@@ -149,3 +149,8 @@ h3.title {
     height: 40px;
     padding: 10px;
 }
+
+/*bỏ background sau khi thêm buton ở chi tiết sản phẩm*/
+button.add-cart {
+    background: none;
+}

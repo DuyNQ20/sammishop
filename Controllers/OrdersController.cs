@@ -25,65 +25,6 @@ namespace SmartPhone.Controllers
             _context = context;
         }
 
-        [HttpGet("checkout/shipping")]
-        public async Task<IActionResult> Index()
-        {
-            var dataContext = new List<Cart>();
-            if (HttpContext.Session.GetInt32("CustomerID") != null)
-            {
-                dataContext = await _context.Carts.Include(c => c.Product).Include(c => c.User).Include(c => c.Product.Files).Include(c => c.Product.Supplier).Where(x => x.UserId == HttpContext.Session.GetInt32("CustomerID")).ToListAsync();
-            }
-            else
-            {
-                dataContext = HttpContext.Session.GetObject<List<Cart>>("Carts");
-            }
-            return View(dataContext);
-        }
-
-
-        [HttpPost("checkout/shipping")]
-        public async Task<IActionResult> Order(OrderView orderView)
-        {
-            var dataContext = new List<Cart>();
-            if (HttpContext.Session.GetInt32("CustomerID") != null)
-            {
-                dataContext = await _context.Carts.Include(c => c.Product).Include(c => c.User).Include(c => c.Product.Files).Include(c => c.Product.Supplier).Where(x => x.UserId == HttpContext.Session.GetInt32("CustomerID")).ToListAsync();
-            }
-            else
-            {
-                dataContext = HttpContext.Session.GetObject<List<Cart>>("Carts");
-            }
-
-            var code = random.Next(10000000, 999999999);
-            decimal total = 0;
-
-            foreach (var item in dataContext)
-            {
-                total += item.Product.SalePrice * item.Quantity;
-            }
-
-            foreach (var item in dataContext)
-            {
-                Order order = new Order();
-                orderView.UserId = HttpContext.Session.GetInt32("CustomerID");
-                orderView.ProductId = item.ProductId;
-                orderView.Quantity = item.Quantity;
-                orderView.SalePrice = item.Product.SalePrice;
-                orderView.Code = "#" + code;
-                orderView.Total = total;
-
-                order.SaveMap(orderView);
-                _context.Orders.Add(order);
-            }
-
-
-
-            await _context.SaveChangesAsync();
-
-            ViewData["Code"] = code;
-            return View();
-        }
-
 
 
         //-------------------------------------------------------- Admin --------------------------------------------------------------
@@ -154,6 +95,6 @@ namespace SmartPhone.Controllers
             _context.Orders.RemoveRange(orders);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(GetAll));
-        }
+        } 
     }
 }
