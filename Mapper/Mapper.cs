@@ -1,10 +1,7 @@
-﻿using SmartPhone.ViewModels;
+﻿using Microsoft.AspNetCore.Http;
 using SmartPhone.Models;
+using SmartPhone.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 
 namespace SmartPhone.Mapper
 {

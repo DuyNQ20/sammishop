@@ -1,17 +1,14 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using SmartPhone.Data;
+using SmartPhone.Lib;
+using SmartPhone.Mapper;
+using SmartPhone.Models;
+using SmartPhone.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using SmartPhone.Data;
-using SmartPhone.Models;
-using SmartPhone.Mapper;
-using SmartPhone.ViewModels;
-using Microsoft.AspNetCore.Http;
-using Newtonsoft.Json;
-using SmartPhone.Lib;
 
 namespace SmartPhone.Controllers
 {

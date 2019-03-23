@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using SmartPhone.Data;
 using SmartPhone.Mapper;
 using SmartPhone.ViewModels;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Options;
-using SmartPhone.Lib;
+using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace SmartPhone.Controllers
 {

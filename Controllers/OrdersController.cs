@@ -1,21 +1,17 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using SmartPhone.Data;
+using SmartPhone.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using SmartPhone.Data;
-using SmartPhone.Lib;
-using SmartPhone.Mapper;
-using SmartPhone.Models;
-using SmartPhone.ViewModels;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace SmartPhone.Controllers
 {
-    [Route("")]
+    [Route("admin")]
     public class OrdersController : Controller
     {
         private readonly DataContext _context;
@@ -24,12 +20,7 @@ namespace SmartPhone.Controllers
         {
             _context = context;
         }
-
-
-
-        //-------------------------------------------------------- Admin --------------------------------------------------------------
-
-        // hàm sử dụng để chỉ show danh sách đơn đặt hàng k trùng mã code, giống groupby do chưa dùng đc group by trong linq nên xử lý vậy
+        
         public List<Order> ShowOrderList(List<Order> listOrder) 
         {
             var codeOld = "";
@@ -51,15 +42,15 @@ namespace SmartPhone.Controllers
         }
 
 
-        [HttpGet("admin/order")]
-        public async Task<IActionResult> GetAll()
+        [HttpGet("order")]
+        public async Task<IActionResult> Index()
         {
             var dataContext = _context.Orders.OrderByDescending(x => x.CreatedAt).ToList();
             return View(ShowOrderList(dataContext));
         }
 
 
-        [HttpGet, Route("admin/order/search")]
+        [HttpGet, Route("order/search")]
         public async Task<IActionResult> Search([FromQuery]string query)
         {
             var list = _context.Orders.OrderByDescending(x => x.CreatedAt).ToList();
@@ -77,7 +68,7 @@ namespace SmartPhone.Controllers
                     }
                 }
             }
-            return orders.Count == 0 ? View("GetAll", dataContext) : View("GetAll", orders);
+            return orders.Count == 0 ? View("Index", dataContext) : View("Index", orders);
         }
 
         [HttpGet, Route("delete/{id}")]
@@ -94,7 +85,7 @@ namespace SmartPhone.Controllers
 
             _context.Orders.RemoveRange(orders);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(GetAll));
+            return RedirectToAction(nameof(Index));
         } 
     }
 }

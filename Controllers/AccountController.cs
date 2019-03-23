@@ -1,20 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using SmartPhone.Data;
+using SmartPhone.ViewModels;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using SmartPhone.Models;
-using Microsoft.AspNetCore.Http;
-using SmartPhone.Data;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Configuration;
-using SmartPhone.ViewModels;
 
 namespace SmartPhone.Controllers
 {
-    [Route("")]
+    [Route("account")]
     public class AccountController : Controller
     {
         private readonly DataContext _context;
@@ -51,12 +44,5 @@ namespace SmartPhone.Controllers
             HttpContext.Session.Remove("CustomerID");
             return RedirectToAction("Index", "Home");
         }
-
-
-
-
-        //-------------------------------------------------------- Admin -------------------------------------------------------
-
-
     }
 }
