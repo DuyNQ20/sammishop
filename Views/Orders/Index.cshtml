@@ -62,6 +62,7 @@
                                         <th class="text-center">Mã ĐH</th>
                                         <th>Ngày đặt</th>
                                         <th>SĐT người nhận</th>
+                                        <th>Hình thức TT</th>
                                         <th>Tổng thanh toán</th>
                                         <th class="text-center">Trạng thái</th>
                                         <th class="text-center">Sửa</th>
@@ -72,35 +73,38 @@
                                     @{ var i = 1;}
                                     @foreach (var item in Model)
                                     {
-                                        <tr>
-                                            <td class="text-center">
-                                                <span class="list-img">@(i++)</span>
-                                            </td>
+                                    <tr>
+                                        <td class="text-center">
+                                            <span class="list-img">@(i++)</span>
+                                        </td>
 
-                                            <td class="text-center">
-                                                @item.Code
-                                            </td>
-                                            <td>
-                                                <span class="list-img">@item.CreatedAt.ToString("dd/MM/yyyy")</span>
-                                            </td>
-                                            <td>
-                                                <span class="list-img">@Html.DisplayFor(modelItem => item.Phone)</span>
-                                            </td>
-                                            <td>
-                                                <span class="list-img"> @item.Total.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR")) VNĐ </span>
-                                            </td>
-                                            <td class="text-center">
-                                                <a asp-action="UpdateStatus" asp-route-id="@item.Id"><i class="fa fa-shield"> Đang chờ</i></a>
+                                        <td class="text-center">
+                                            @item.Code
+                                        </td>
+                                        <td>
+                                            <span class="list-img">@item.CreatedAt.ToString("dd/MM/yyyy")</span>
+                                        </td>
+                                        <td>
+                                            <span class="list-img">@Html.DisplayFor(modelItem => item.Phone)</span>
+                                        </td>
+                                        <td>
+                                            <span class="list-img">@Html.DisplayFor(modelItem => item.PaymentMethod.Code)</span>
+                                        </td>
+                                        <td>
+                                            <span class="list-img"> @item.Total.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR")) VNĐ </span>
+                                        </td>
+                                        <td class="text-center">
+                                            <a asp-action="UpdateStatus" asp-route-id="@item.Id"><i class="fa fa-shield"> Đang chờ</i></a>
 
-                                            </td>
-                                            <td class="text-center">
-                                                <a asp-action="Edit" asp-route-id="@item.Id"><i class="fa fa-pencil-square-o" aria-hidden="true"> Sửa</i></a>
-                                            </td>
-                                            <td class="text-center">
+                                        </td>
+                                        <td class="text-center">
+                                            <a asp-action="Edit" asp-route-id="@item.Id"><i class="fa fa-pencil-square-o" aria-hidden="true"> Sửa</i></a>
+                                        </td>
+                                        <td class="text-center">
 
-                                                <a asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?');"><i class="fa fa-trash-o red"> Xóa</i></a>
-                                            </td>
-                                        </tr>
+                                            <a asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?');"><i class="fa fa-trash-o red"> Xóa</i></a>
+                                        </td>
+                                    </tr>
                                     }
 
 

@@ -20,6 +20,8 @@
 
         public int ProductId { get; set; }
 
+        public int PaymentMethodId { get; set; }
+
         public int OrderStatusId { get; set; }
     }
 }

@@ -45,7 +45,7 @@ namespace SmartPhone.Controllers
         [HttpGet("order")]
         public async Task<IActionResult> Index()
         {
-            var dataContext = _context.Orders.OrderByDescending(x => x.CreatedAt).ToList();
+            var dataContext = _context.Orders.Include(x=>x.PaymentMethod).OrderByDescending(x => x.CreatedAt).ToList();
             return View(ShowOrderList(dataContext));
         }
 

@@ -35,8 +35,7 @@ namespace SmartPhone.Data
             modelBuilder.Entity<User>().ToTable("User");
             modelBuilder.Entity<Order>().ToTable("Order");
             modelBuilder.Entity<OrderStatus>().ToTable("OrderStatus");
-
-
+            modelBuilder.Entity<PaymentMethod>().ToTable("PaymentMethod");
 
 
             modelBuilder.Entity<Supplier>().HasData(
@@ -323,10 +322,7 @@ namespace SmartPhone.Data
                   CreatedBy = "Quang Duy",
                   ModifiedAt = DateTime.Now,
                   ModifiedBy = "Quang Duy"
-              }
-           );
-
-            modelBuilder.Entity<Cart>().HasData(
+              },
               new Cart
               {
                   Id = 2,
@@ -339,6 +335,7 @@ namespace SmartPhone.Data
                   ModifiedBy = "Quang Duy"
               }
            );
+
 
             modelBuilder.Entity<OrderStatus>().HasData(
              new OrderStatus
@@ -383,6 +380,53 @@ namespace SmartPhone.Data
              }
           );
 
+            modelBuilder.Entity<PaymentMethod>().HasData(
+             new PaymentMethod
+             {
+                 Id = 1,
+                 Name = "Thanh toán tiền mặt khi nhận hàng",
+                 Code = "COD",
+                 Active = true,
+                 CreatedAt = DateTime.Now,
+                 CreatedBy = "Quang Duy",
+                 ModifiedAt = DateTime.Now,
+                 ModifiedBy = "Quang Duy"
+             },
+              new PaymentMethod
+              {
+                  Id = 2,
+                  Name = "Thanh toán bằng thẻ quốc tế Visa, Master, JCB",
+                  Code = "Visa - Master - JCB",
+                  Active = true,
+                  CreatedAt = DateTime.Now,
+                  CreatedBy = "Quang Duy",
+                  ModifiedAt = DateTime.Now,
+                  ModifiedBy = "Quang Duy"
+              },
+               new PaymentMethod
+               {
+                   Id = 3,
+                   Name = "Thẻ ATM nội địa/Internet Banking (Miễn phí thanh toán)",
+                   Code = "Visa - Master - JCB",
+                   Active = true,
+                   CreatedAt = DateTime.Now,
+                   CreatedBy = "Quang Duy",
+                   ModifiedAt = DateTime.Now,
+                   ModifiedBy = "Quang Duy"
+               },
+                new PaymentMethod
+                {
+                    Id = 4,
+                    Name = "Thanh toán bằng MoMo",
+                    Code = "MoMo",
+                    Active = true,
+                    CreatedAt = DateTime.Now,
+                    CreatedBy = "Quang Duy",
+                    ModifiedAt = DateTime.Now,
+                    ModifiedBy = "Quang Duy"
+                }
+          );
+
         }
 
         public DbSet<Comment> Comments { get; set; }
@@ -398,7 +442,7 @@ namespace SmartPhone.Data
         public DbSet<Role> Roles { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderStatus> OrderStatus { get; set; }
-
+        public DbSet<PaymentMethod> PaymentMethods { get; set; }
 
 
     }

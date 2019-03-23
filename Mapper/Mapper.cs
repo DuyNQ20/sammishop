@@ -276,7 +276,8 @@ namespace SmartPhone.Mapper
             destination.Total = source.Total;
             destination.UserId = source.UserId;
             destination.ProductId = source.ProductId;
-            destination.OrderStatusId = 1; // Trạng thái đang chờ
+            destination.PaymentMethodId = source.PaymentMethodId;
+            destination.OrderStatusId = 1; // Trạng thái đang chờ            
             destination.ModifiedAt = now;
             destination.Active = true;
             destination.CreatedAt = now;
