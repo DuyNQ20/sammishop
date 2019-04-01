@@ -1,7 +1,7 @@
-﻿@model SmartPhone.Models.ProductCategory
+﻿@model SmartPhone.Models.Discount
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Edit";
     Layout = "~/Views/Layout/AdminLayout.cshtml";
 }
 
@@ -9,15 +9,15 @@
     <div class="sb2-2-2">
         <ul>
             <li>
-                <a href="#"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                <a href="#"><i class="fa fa-home" aria-hidden="true"></i> Trang chủ</a>
             </li>
             <li class="active-bre">
-                <a href="#"> Edit Listing</a>
+                <a asp-action="Index"> Mã khuyến mãi</a>
             </li>
         </ul>
     </div>
     <div class="sb2-2-add-blog sb2-2-1">
-        <h2>Cập nhật sản phẩm</h2>
+        <h2>Cập nhật mã khuyến mãi</h2>
         <p></p>
         <p></p>
         <div class="tab-content">
@@ -28,22 +28,22 @@
                             <p>Airtport Hotels The Right Way To Start A Short Break Holiday</p>
                         </div>*@
                     <div class="bor">
-                        <form asp-action="Create" enctype="multipart/form-data">
+                        <form asp-action="Edit" enctype="multipart/form-data">
                             <input type="hidden" asp-for="Id" />
 
                             @*Bên trái*@
                             <div class="col s8">
                                 <div class="row">
                                     <div class="input-field col s12 tensp">
-                                        <input id="product-name" type="text" class="validate" asp-for="Name">
-                                        <label>Tên sản phẩm</label>
+                                        <input id="product-name" type="text" class="validate" asp-for="Code">
+                                        <label>Mã khuyến mãi</label>
                                     </div>
                                 </div>
 
                                 <div class="row test">
                                     <div class="col s12">
                                         <input type="checkbox" class="filled-in" id="filled-in-box-3" asp-for="Active" />
-                                        <label for="filled-in-box-3">Hiển thị</label>
+                                        <label for="filled-in-box-3">Xuất bản</label>
                                     </div>
                                 </div>
                             </div>

@@ -36,6 +36,8 @@ namespace SmartPhone.Data
             modelBuilder.Entity<Order>().ToTable("Order");
             modelBuilder.Entity<OrderStatus>().ToTable("OrderStatus");
             modelBuilder.Entity<PaymentMethod>().ToTable("PaymentMethod");
+            modelBuilder.Entity<DiscountCategory>().ToTable("DiscountCategory");
+            modelBuilder.Entity<Discount>().ToTable("Discount");
 
 
             modelBuilder.Entity<Supplier>().HasData(
@@ -427,7 +429,56 @@ namespace SmartPhone.Data
                 }
           );
 
+            modelBuilder.Entity<DiscountCategory>().HasData(
+               new DiscountCategory
+               {
+                   Id = 1,
+                   Name = "Counpon",
+                   Decriptions = "Khuyến mại theo %",
+                   Active = true,
+                   CreatedAt = DateTime.Now,
+                   CreatedBy = "Quang Duy",
+                   ModifiedAt = DateTime.Now,
+                   ModifiedBy = "Quang Duy"
+               },
+                new DiscountCategory
+                {
+                    Id = 2,
+                    Name = "Voucher",
+                    Decriptions = "Khuyến mại số tiền",
+                    Active = true,
+                    CreatedAt = DateTime.Now,
+                    CreatedBy = "Quang Duy",
+                    ModifiedAt = DateTime.Now,
+                    ModifiedBy = "Quang Duy"
+                }
+            );
+
+            modelBuilder.Entity<Discount>().HasData(
+              new Discount
+              {
+                  Id = 1,
+                  UserId = 1,
+                  Code = "MA10",
+                  DiscountMoney = 10000,
+                  Quantity = 1000,
+                  Descriptions = "Giảm 10.000 cho tất cả sản phẩm",
+                  DiscountCategoryId = 2,
+                  DateTimeStart = DateTime.Parse("31/03/2019"),
+                  DateTimeFinish = DateTime.Parse("03/04/2019"),
+                  ProductCategoriesId = 1,
+                  ProductsId = 1,
+                  Active = true,
+                  CreatedAt = DateTime.Now,
+                  CreatedBy = "Quang Duy",
+                  ModifiedAt = DateTime.Now,
+                  ModifiedBy = "Quang Duy"
+              }
+           );
+
         }
+
+
 
         public DbSet<Comment> Comments { get; set; }
         public DbSet<File> Files { get; set; }
@@ -443,6 +494,8 @@ namespace SmartPhone.Data
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderStatus> OrderStatus { get; set; }
         public DbSet<PaymentMethod> PaymentMethods { get; set; }
+        public DbSet<DiscountCategory> DiscountCategorys { get; set; }
+        public DbSet<Discount> Discounts { get; set; }
 
 
     }
