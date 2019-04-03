@@ -39,6 +39,7 @@ namespace SmartPhone.Data
             modelBuilder.Entity<DiscountCategory>().ToTable("DiscountCategory");
             modelBuilder.Entity<Discount>().ToTable("Discount");
             modelBuilder.Entity<DiscountProductCategory>().ToTable("DiscountProductCategory");
+            modelBuilder.Entity<DiscountProduct>().ToTable("DiscountProduct");
 
 
             modelBuilder.Entity<Supplier>().HasData(
@@ -550,6 +551,7 @@ namespace SmartPhone.Data
         public DbSet<DiscountCategory> DiscountCategories { get; set; }
         public DbSet<Discount> Discounts { get; set; }
         public DbSet<DiscountProductCategory> DiscountProductCategories { get; set; }
+        public DbSet<DiscountProduct> DiscountProducts { get; set; }
 
 
     }

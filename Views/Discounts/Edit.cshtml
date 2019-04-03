@@ -1,5 +1,5 @@
 ﻿@model SmartPhone.Models.Discount
-
+@using System.Web;
 @{
     ViewData["Title"] = "Edit";
     Layout = "~/Views/Layout/AdminLayout.cshtml";
@@ -47,7 +47,7 @@
                                 <div class="input-field col s6">
                                     <input id="coupon" type="text" class="@(Model.DiscountCategoryId==1?"money":"percent")" asp-for="DiscountMoney" value="@Model.DiscountMoney.ToString("#,##")">
                                     <span class="add-value">
-                                        <span class="money-unit">@(Model.DiscountCategoryId == 1 ? "&#8363" : "%")</span>
+                                        <span class="money-unit">@(Url.Content(Model.DiscountCategoryId == 1 ? HttpUtility.HtmlDecode("&#8363;") : "%"))</span>
                                     </span>
                                     <label>Giá trị khuyến mãi</label>
                                 </div>
@@ -58,13 +58,13 @@
                                     <h4>Áp dụng với</h4>
                                 </div>
                                 <div class="tab-inn fix">
-                                    @{ 
+                                    @{
                                         var check = 1;
                                         if (Model.DiscountProductCategories.Count > 0)
                                         {
                                             check = 2;
                                         }
-                                        if(Model.DiscountProducts.Count > 0)
+                                        if (Model.DiscountProducts.Count > 0)
                                         {
                                             check = 3;
                                         }
@@ -74,23 +74,41 @@
                                         <label for="test1">Tất cả đơn hàng</label>
                                     </p>
                                     <p>
-                                        <input class="with-gap" name="group1" type="radio" @(check==2?"checked":"") id="test2" />
+                                        <input class="with-gap" name="group1" type="radio" @(check == 2 ? "checked" : "") id="test2" />
                                         <label for="test2">Danh mục sản phẩm</label>
                                     </p>
                                     <p>
-                                        <input class="with-gap" name="group1" type="radio" @(check==3?"checked":"") id="test3" />
+                                        <input class="with-gap" name="group1" type="radio" @(check == 3 ? "checked" : "") id="test3" />
                                         <label for="test3">Sản phẩm</label>
                                     </p>
                                 </div>
                                 <div class="input-field col s12 multi-select-productcate @(check==2?"show":"hidden")">
-                                    @Html.ListBox("ProductCategory")
+                                    @Html.ListBox("DiscountProductCategoryId")
                                 </div>
                                 <div class="input-field col s12 multi-select-product @(check==3?"show":"hidden")">
-                                    @Html.ListBox("Product")
+                                    @Html.ListBox("DiscountProductId")
+                                </div>
+                            </div>
+                            <div class="box-inn-sp col-lg-12 box-second-inn">
+                                <div class="inn-title fix">
+                                    <h4>Thời gian</h4>
+                                </div>
+                                <div class="input-field col s6 ">
+                                    <input data-toggle="datepicker" type="text" class="validate" asp-for="DateTimeStart" value="@Model.DateTimeStart.ToString("dd/MM/yyyy")">
+                                    <label>Ngày bắt đầu</label>
+                                </div>
+                                <div class="input-field col s6 ">
+                                    <input data-toggle="datepicker" type="text" class="validate" asp-for="DateTimeFinish" value="@Model.DateTimeFinish.ToString("dd/MM/yyyy")">
+                                    <label>Ngày kết thúc</label>
                                 </div>
                             </div>
 
-                            <div class="box-inn-sp col-lg-12 box-second-inn">
+
+
+                        </div>
+                        <div class="col s4">
+
+                            <div class="box-inn-sp col-lg-12 ">
                                 <div class="inn-title fix">
                                     <h4>Giới hạn sử dụng</h4>
                                 </div>
@@ -98,33 +116,22 @@
                                     <input type="text" class="validate" asp-for="Quantity">
                                     <label>Số lượng mã</label>
                                 </div>
+
                             </div>
-
-                            
-
-                        </div>
-                        <div class="col s4">
-                            <div class="box-inn-sp col-lg-12">
+                            <div class=" box-inn-sp col-lg-12 box-second-inn ">
                                 <div class="inn-title fix">
-                                    <h4>Thời gian</h4>
+                                    <h4>Trạng thái</h4>
                                 </div>
-                                <div class="input-field col s12 ">
-                                    <input data-toggle="datepicker" type="text" class="validate" asp-for="DateTimeStart" value="@Model.DateTimeStart.ToString("dd/MM/yyyy")">
-                                    <label>Ngày bắt đầu</label>
-                                </div>
-                                <div class="input-field col s12 ">
-                                    <input data-toggle="datepicker" type="text" class="validate" asp-for="DateTimeFinish" value="@Model.DateTimeStart.ToString("dd/MM/yyyy")">
-                                    <label>Ngày kết thúc</label>
+                                <div class="tab-inn fix">
+                                    <p>
+                                        <input type="checkbox" class="filled-in" id="filled-in-box" asp-for="Active" />
+                                        <label for="filled-in-box">Kích hoạt</label>
+                                    </p>
                                 </div>
                             </div>
+
                         </div>
 
-                        <div class="row">
-                            <div class="col s12">
-                                <input type="checkbox" class="filled-in" id="filled-in-box-3" asp-for="Active" />
-                                <label for="filled-in-box-3">Xuất bản</label>
-                            </div>
-                        </div>
 
                         <div class="col s8">
                             <div class="row">

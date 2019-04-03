@@ -150,8 +150,11 @@ $(".input-field.col.s12").mouseup(function (e) {
 
 
 
-
-$('[data-toggle="datepicker"]').datepicker();
+$('[data-toggle="datepicker"]').datepicker({
+    format: 'dd/mm/yyyy',
+    'languages': 'vi-VN',
+    autoHide: true
+});
 
 
 //--------------------------- Chỉnh phần Áp dụng với Trong mục mã giảm giá --------------------------------

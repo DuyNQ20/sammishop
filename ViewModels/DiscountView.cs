@@ -9,9 +9,9 @@ namespace SmartPhone.ViewModels
     {
         public string Code { get; set; }
 
-        public decimal DiscountMoney { get; set; }
+        public string Descriptions { get; set; }
 
-        public int DiscountCategoryId { get; set; }
+        public decimal DiscountMoney { get; set; }
 
         public int Quantity { get; set; }
 
@@ -19,12 +19,10 @@ namespace SmartPhone.ViewModels
 
         public DateTime DateTimeFinish { get; set; }
 
+        public int DiscountCategoryId { get; set; }
+
         public int? UserId { get; set; }
-
-        public int? ProductsId { get; set; }
-
-        public int? ProductCategoriesId { get; set; }
-
+        
         public bool Active { get; set; }
     }
 }

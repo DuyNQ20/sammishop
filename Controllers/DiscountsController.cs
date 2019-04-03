@@ -102,15 +102,50 @@ namespace SmartPhone.Controllers
                 ProductSelected.Add(_context.Products.Find(item.ProductId));
             }
 
-            ViewBag.ProductCategory = new MultiSelectList(listProductCategory, "Id", "Name", ProductCategorySelected.Select(x=>x.Id).ToArray());
-            ViewBag.Product = new MultiSelectList(listProduct, "Id", "Name", ProductSelected.Select(x=>x.Id).ToArray());
+            ViewBag.DiscountProductCategoryId = new MultiSelectList(listProductCategory, "Id", "Name", ProductCategorySelected.Select(x=>x.Id).ToArray());
+            ViewBag.DiscountProductId = new MultiSelectList(listProduct, "Id", "Name", ProductSelected.Select(x=>x.Id).ToArray());
             ViewData["DiscountCategoryId"] = new SelectList(_context.DiscountCategories, "Id", "Decriptions", discount.DiscountCategoryId);
             return View(discount);
         }
 
+
+        public List<DiscountProductCategory> GetDiscountProductCategory(int discountId, int[] DiscountProductCategoryId)
+        {
+            var discountProductCategories = new List<DiscountProductCategory>();
+            foreach (var productCategoryId in DiscountProductCategoryId)
+            {
+                var discountProductCategory = new DiscountProductCategory();
+                discountProductCategory.SaveMap(new DiscountProductCategoryView()
+                {
+                    DiscountId = discountId,
+                    ProductCategoryId = productCategoryId,
+                    Active = true
+                });
+                discountProductCategories.Add(discountProductCategory);
+            }
+            return discountProductCategories;
+        }
+
+        public List<DiscountProduct> GetDiscountProduct(int discountId, int[] DiscountProductId)
+        {
+            var discountProducts = new List<DiscountProduct>();
+            foreach (var productId in DiscountProductId)
+            {
+                var discountProduct = new DiscountProduct();
+                discountProduct.SaveMap(new DiscountProductView()
+                {
+                    DiscountId = discountId,
+                    ProductId = productId,
+                    Active = true
+                });
+                discountProducts.Add(discountProduct);
+            }
+            return discountProducts;
+        }
+
         [ValidateAntiForgeryToken]
         [HttpPost, Route("edit/{id}")]
-        public async Task<IActionResult> Edit(int id, DiscountView discountView)
+        public async Task<IActionResult> Edit(int id, DiscountView discountView, int[] DiscountProductCategoryId, int[] DiscountProductId)
         {
             var discount = _context.Discounts.Find(id);
 
@@ -125,6 +160,16 @@ namespace SmartPhone.Controllers
                 {
                     discount.Map(discountView);
                     _context.Update(discount);
+
+
+                    // cập nhật lại Mã giảm giá cho DiscountProductCategory
+                    _context.RemoveRange(_context.DiscountProductCategories.Where(x => x.DiscountId == id)); // Xóa tất cả
+                    _context.AddRange(GetDiscountProductCategory(id, DiscountProductCategoryId));
+
+                    // cập nhật lại Mã giảm giá cho DiscountProduct
+                    _context.RemoveRange(_context.DiscountProducts.Where(x => x.DiscountId == id)); // Xóa tất cả
+                    _context.AddRange(GetDiscountProduct(id, DiscountProductId));
+
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)

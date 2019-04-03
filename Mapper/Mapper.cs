@@ -361,7 +361,7 @@ namespace SmartPhone.Mapper
             destination.Active = source.Active;
         }
 
-        public static void SaveMap(this Discount destination, Discount source)
+        public static void SaveMap(this Discount destination, DiscountView source)
         {
             var now = DateTime.UtcNow;
             destination.Code = source.Code;
@@ -371,6 +371,79 @@ namespace SmartPhone.Mapper
             destination.DateTimeFinish = source.DateTimeFinish;
             destination.UserId = source.UserId;
             destination.Quantity = source.Quantity;
+            destination.ModifiedAt = now;
+            destination.Active = source.Active;
+            destination.CreatedAt = now;
+        }
+
+
+        // DiscountProduct
+        public static void Map(this DiscountProduct destination, DiscountProductView source)
+        {
+            if (source == null)
+            {
+                throw new ArgumentNullException(nameof(source));
+            }
+
+            if (destination == null)
+            {
+                throw new ArgumentNullException(nameof(destination));
+            }
+
+            var now = DateTime.UtcNow;
+
+            if (destination.CreatedAt == DateTimeOffset.MinValue)
+            {
+                destination.CreatedAt = now;
+            }
+
+            destination.DiscountId = source.DiscountId;
+            destination.ProductId = source.ProductId;
+            destination.ModifiedAt = now;
+            destination.Active = source.Active;
+        }
+
+        public static void SaveMap(this DiscountProduct destination, DiscountProductView source)
+        {
+            var now = DateTime.UtcNow;
+            destination.DiscountId = source.DiscountId;
+            destination.ProductId = source.ProductId;
+            destination.ModifiedAt = now;
+            destination.Active = source.Active;
+            destination.CreatedAt = now;
+        }
+
+        // DiscountProductCategory
+        public static void Map(this DiscountProductCategory destination, DiscountProductCategoryView source)
+        {
+            if (source == null)
+            {
+                throw new ArgumentNullException(nameof(source));
+            }
+
+            if (destination == null)
+            {
+                throw new ArgumentNullException(nameof(destination));
+            }
+
+            var now = DateTime.UtcNow;
+
+            if (destination.CreatedAt == DateTimeOffset.MinValue)
+            {
+                destination.CreatedAt = now;
+            }
+
+            destination.DiscountId = source.DiscountId;
+            destination.ProductCategoryId = source.ProductCategoryId;
+            destination.ModifiedAt = now;
+            destination.Active = source.Active;
+        }
+
+        public static void SaveMap(this DiscountProductCategory destination, DiscountProductCategoryView source)
+        {
+            var now = DateTime.UtcNow;
+            destination.DiscountId = source.DiscountId;
+            destination.ProductCategoryId = source.ProductCategoryId;
             destination.ModifiedAt = now;
             destination.Active = source.Active;
             destination.CreatedAt = now;
