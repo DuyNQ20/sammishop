@@ -152,3 +152,28 @@ $(".input-field.col.s12").mouseup(function (e) {
 
 
 $('[data-toggle="datepicker"]').datepicker();
+
+
+//--------------------------- Chỉnh phần Áp dụng với Trong mục mã giảm giá --------------------------------
+
+$("#test1").next().click(function () {
+    $(".multi-select-productcate").addClass("hidden");
+    $(".multi-select-product").addClass("hidden");
+});
+
+$("#test2").next().click(function () {
+    $(".multi-select-productcate").removeClass("hidden");
+    $(".multi-select-product").addClass("hidden");
+});
+$("#test3").next().click(function () {
+    $(".multi-select-productcate").addClass("hidden");
+    $(".multi-select-product").removeClass("hidden");
+});
+
+//------- Disable select index = 0
+
+$("#Product option:first-child").attr("disabled", true);
+$("#Product option:first-child").attr("selected", true);
+
+$("#ProductCategory option:first-child").attr("disabled", true);
+$("#ProductCategory option:first-child").attr("selected", true);

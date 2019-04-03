@@ -25,8 +25,7 @@ namespace SmartPhone.Models
         public int? UserId { get; set; }
         public User User { get; set; }
 
-        public int? ProductsId { get; set; }
-        public Product Product { get; set; }
+        public virtual List<DiscountProduct> DiscountProducts { get; set; }
 
         public virtual List<DiscountProductCategory> DiscountProductCategories { get; set; }
         

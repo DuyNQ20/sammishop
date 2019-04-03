@@ -74,20 +74,36 @@ namespace SmartPhone.Controllers
                 return NotFound();
             }
 
-            var discount = await _context.Discounts.Include(x=>x.DiscountProductCategories).FirstOrDefaultAsync(x => x.Id == id);
+            var discount = await _context.Discounts.Include(x=>x.DiscountProductCategories).Include(x=>x.DiscountProducts).FirstOrDefaultAsync(x => x.Id == id);
             if (discount == null)
             {
                 return NotFound();
             }
+
+            // Thêm list Selected để view multiSelect ProductCategory
+            var listProductCategory = new List<ProductCategory>();
+            listProductCategory.Add(new ProductCategory() { Name = "Chọn danh mục áp dụng" });
+            listProductCategory.AddRange(_context.ProductCategorys.ToList());
             
-            // Kiếm tra để view multiSelect
             var ProductCategorySelected = new List<ProductCategory>();
             foreach(var item in discount.DiscountProductCategories)
             {
                ProductCategorySelected.Add(_context.ProductCategorys.Find(item.ProductCategoryId));
             }
 
-            ViewBag.ProductCategory = new MultiSelectList(_context.ProductCategorys, "Id", "Name", ProductCategorySelected.Select(x=>x.Id).ToArray());
+            // Thêm list Selected để view multiSelect Product
+            var listProduct = new List<Product>();
+            listProduct.Add(new Product() { Name = "Chọn sản phẩm áp dụng" });
+            listProduct.AddRange(_context.Products.ToList());
+
+            var ProductSelected = new List<Product>();
+            foreach (var item in discount.DiscountProducts)
+            {
+                ProductSelected.Add(_context.Products.Find(item.ProductId));
+            }
+
+            ViewBag.ProductCategory = new MultiSelectList(listProductCategory, "Id", "Name", ProductCategorySelected.Select(x=>x.Id).ToArray());
+            ViewBag.Product = new MultiSelectList(listProduct, "Id", "Name", ProductSelected.Select(x=>x.Id).ToArray());
             ViewData["DiscountCategoryId"] = new SelectList(_context.DiscountCategories, "Id", "Decriptions", discount.DiscountCategoryId);
             return View(discount);
         }

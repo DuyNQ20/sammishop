@@ -66,5 +66,7 @@ namespace SmartPhone.Models
         public virtual List<File> Files { get; set; }
 
         public virtual List<Cart> Carts { get; set; }
+
+        public virtual List<DiscountProduct> DiscountProducts { get; set; }
     }
 }

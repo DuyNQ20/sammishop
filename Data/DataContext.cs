@@ -467,7 +467,23 @@ namespace SmartPhone.Data
                   DiscountCategoryId = 2,
                   DateTimeStart = DateTime.Parse("31/03/2019"),
                   DateTimeFinish = DateTime.Parse("03/04/2019"),
-                  ProductsId = 1,
+                  Active = true,
+                  CreatedAt = DateTime.Now,
+                  CreatedBy = "Quang Duy",
+                  ModifiedAt = DateTime.Now,
+                  ModifiedBy = "Quang Duy"
+              },
+              new Discount
+              {
+                  Id = 2,
+                  UserId = 1,
+                  Code = "MA20",
+                  DiscountMoney = 20000,
+                  Quantity = 1000,
+                  Descriptions = "Giảm 20.000 cho tất cả sản phẩm",
+                  DiscountCategoryId = 2,
+                  DateTimeStart = DateTime.Parse("31/03/2019"),
+                  DateTimeFinish = DateTime.Parse("03/04/2019"),
                   Active = true,
                   CreatedAt = DateTime.Now,
                   CreatedBy = "Quang Duy",
@@ -493,6 +509,18 @@ namespace SmartPhone.Data
                    Id = 2,
                    DiscountId = 1,
                    ProductCategoryId = 2,
+                   Active = true,
+                   CreatedAt = DateTime.Now,
+                   CreatedBy = "Quang Duy",
+                   ModifiedAt = DateTime.Now,
+                   ModifiedBy = "Quang Duy"
+               }
+               ,
+               new DiscountProductCategory
+               {
+                   Id = 3,
+                   DiscountId = 2,
+                   ProductCategoryId = 1,
                    Active = true,
                    CreatedAt = DateTime.Now,
                    CreatedBy = "Quang Duy",
