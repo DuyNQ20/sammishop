@@ -357,7 +357,6 @@ namespace SmartPhone.Mapper
             destination.DateTimeFinish = source.DateTimeFinish;
             destination.UserId = source.UserId;
             destination.ProductsId = source.ProductsId;
-            destination.ProductCategoriesId = source.ProductCategoriesId;
             destination.Quantity = source.Quantity;
             destination.ModifiedAt = now;
             destination.Active = source.Active;
@@ -373,7 +372,6 @@ namespace SmartPhone.Mapper
             destination.DateTimeFinish = source.DateTimeFinish;
             destination.UserId = source.UserId;
             destination.ProductsId = source.ProductsId;
-            destination.ProductCategoriesId = source.ProductCategoriesId;
             destination.Quantity = source.Quantity;
             destination.ModifiedAt = now;
             destination.Active = source.Active;

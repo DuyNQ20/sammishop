@@ -17,6 +17,11 @@ $(document).ready(function () {
             return false;
         }
     });
+    $('#coupon').keypress(function (e) {
+        if (e.charCode < 48 || e.charCode > 57 || $(this).val().length > 20) {
+            return false;
+        }
+    });
 
 
 
@@ -31,6 +36,9 @@ $(document).ready(function () {
         convertNumber(this);
     });
     $('#inventory').keyup(function (e) {
+        convertNumber(this);
+    });
+    $('#coupon').keyup(function (e) {
         convertNumber(this);
     });
 
@@ -100,3 +108,47 @@ $('#phone-number').keypress(function (e) {
         return false;
     }
 });
+
+var money = $(".money").val();
+var percent = $(".percent").val();
+// chỉnh sửa phần mã khuyến mãi
+$("#DiscountCategoryId").change(function () {
+    $("#coupon").focus();
+    var giatri = $(this).val();
+    if (giatri == 1) {
+        $("#coupon").addClass("money"); // add để lưu giá trị lại
+        $("#coupon").removeClass("percent");
+        $("#coupon").val(money);
+
+        $(".add-value span").html("&#8363");
+        $(".add-value span").addClass("money-unit");// chỉnh lại kích thước ký tự
+    }
+    else {
+        $("#coupon").addClass("percent");// add để lưu giá trị lại
+        $("#coupon").removeClass("money");
+        $("#coupon").val(percent);
+        $(".add-value span").html("%");
+        $(".add-value span").removeClass("money-unit");
+        check = false;
+    }
+    
+    
+});
+
+$(".input-field.col.s12").mouseup(function (e) {
+    e.stopPropagation();
+});
+
+//$('.money').keyup(function (e) {
+//    money = $(this).val();
+//    alert("money" + money);
+//});
+//$('.percent').keyup(function (e) {
+//    percent = $(this).val();
+//    alert("percent" + percent);
+//});
+
+
+
+
+$('[data-toggle="datepicker"]').datepicker();

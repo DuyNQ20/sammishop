@@ -38,6 +38,7 @@ namespace SmartPhone.Data
             modelBuilder.Entity<PaymentMethod>().ToTable("PaymentMethod");
             modelBuilder.Entity<DiscountCategory>().ToTable("DiscountCategory");
             modelBuilder.Entity<Discount>().ToTable("Discount");
+            modelBuilder.Entity<DiscountProductCategory>().ToTable("DiscountProductCategory");
 
 
             modelBuilder.Entity<Supplier>().HasData(
@@ -430,28 +431,28 @@ namespace SmartPhone.Data
           );
 
             modelBuilder.Entity<DiscountCategory>().HasData(
-               new DiscountCategory
-               {
-                   Id = 1,
-                   Name = "Counpon",
-                   Decriptions = "Khuyến mại theo %",
-                   Active = true,
-                   CreatedAt = DateTime.Now,
-                   CreatedBy = "Quang Duy",
-                   ModifiedAt = DateTime.Now,
-                   ModifiedBy = "Quang Duy"
-               },
                 new DiscountCategory
                 {
-                    Id = 2,
+                    Id = 1,
                     Name = "Voucher",
-                    Decriptions = "Khuyến mại số tiền",
+                    Decriptions = "Khuyến mại theo số tiền",
                     Active = true,
                     CreatedAt = DateTime.Now,
                     CreatedBy = "Quang Duy",
                     ModifiedAt = DateTime.Now,
                     ModifiedBy = "Quang Duy"
-                }
+                },
+                 new DiscountCategory
+                 {
+                     Id = 2,
+                     Name = "Counpon",
+                     Decriptions = "Khuyến mại theo %",
+                     Active = true,
+                     CreatedAt = DateTime.Now,
+                     CreatedBy = "Quang Duy",
+                     ModifiedAt = DateTime.Now,
+                     ModifiedBy = "Quang Duy"
+                 }
             );
 
             modelBuilder.Entity<Discount>().HasData(
@@ -466,7 +467,6 @@ namespace SmartPhone.Data
                   DiscountCategoryId = 2,
                   DateTimeStart = DateTime.Parse("31/03/2019"),
                   DateTimeFinish = DateTime.Parse("03/04/2019"),
-                  ProductCategoriesId = 1,
                   ProductsId = 1,
                   Active = true,
                   CreatedAt = DateTime.Now,
@@ -474,6 +474,31 @@ namespace SmartPhone.Data
                   ModifiedAt = DateTime.Now,
                   ModifiedBy = "Quang Duy"
               }
+           );
+
+            modelBuilder.Entity<DiscountProductCategory>().HasData(
+              new DiscountProductCategory
+              {
+                  Id = 1,
+                  DiscountId = 1,
+                  ProductCategoryId = 1,
+                  Active = true,
+                  CreatedAt = DateTime.Now,
+                  CreatedBy = "Quang Duy",
+                  ModifiedAt = DateTime.Now,
+                  ModifiedBy = "Quang Duy"
+              },
+               new DiscountProductCategory
+               {
+                   Id = 2,
+                   DiscountId = 1,
+                   ProductCategoryId = 2,
+                   Active = true,
+                   CreatedAt = DateTime.Now,
+                   CreatedBy = "Quang Duy",
+                   ModifiedAt = DateTime.Now,
+                   ModifiedBy = "Quang Duy"
+               }
            );
 
         }
@@ -494,8 +519,9 @@ namespace SmartPhone.Data
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderStatus> OrderStatus { get; set; }
         public DbSet<PaymentMethod> PaymentMethods { get; set; }
-        public DbSet<DiscountCategory> DiscountCategorys { get; set; }
+        public DbSet<DiscountCategory> DiscountCategories { get; set; }
         public DbSet<Discount> Discounts { get; set; }
+        public DbSet<DiscountProductCategory> DiscountProductCategories { get; set; }
 
 
     }

@@ -91,3 +91,29 @@ button.search-submit { /*Chỉnh button search*/
 button.add-cart{
     background: none;
 }
+
+
+
+/*Thêm đơn vị cho mã khuyến mại vd: % hoặc đ */
+.unit{
+    display: none;
+}
+span.add-value span {
+    position: absolute;
+    bottom: 28px;
+    right: 15px;
+    font-weight: normal;
+    font-size: 17px;
+}
+.money-unit{
+    font-size: 22px;
+}
+
+.inn-title h4{
+    font-weight: 500;
+}
+.fix {
+    padding-left: 10px;
+    padding-bottom: 15px;
+    margin-bottom: 10px;
+}

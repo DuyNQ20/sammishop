@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SmartPhone.Data;
 using SmartPhone.Mapper;
@@ -63,6 +64,8 @@ namespace SmartPhone.Controllers
             return View(discount);
         }
 
+
+
         [HttpGet, Route("edit/{id}")]
         public async Task<IActionResult> Edit(int? id)
         {
@@ -71,11 +74,21 @@ namespace SmartPhone.Controllers
                 return NotFound();
             }
 
-            var discount = await _context.Discounts.FindAsync(id);
+            var discount = await _context.Discounts.Include(x=>x.DiscountProductCategories).FirstOrDefaultAsync(x => x.Id == id);
             if (discount == null)
             {
                 return NotFound();
             }
+            
+            // Kiếm tra để view multiSelect
+            var ProductCategorySelected = new List<ProductCategory>();
+            foreach(var item in discount.DiscountProductCategories)
+            {
+               ProductCategorySelected.Add(_context.ProductCategorys.Find(item.ProductCategoryId));
+            }
+
+            ViewBag.ProductCategory = new MultiSelectList(_context.ProductCategorys, "Id", "Name", ProductCategorySelected.Select(x=>x.Id).ToArray());
+            ViewData["DiscountCategoryId"] = new SelectList(_context.DiscountCategories, "Id", "Decriptions", discount.DiscountCategoryId);
             return View(discount);
         }
 

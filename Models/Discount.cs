@@ -21,7 +21,6 @@ namespace SmartPhone.Models
 
         public int DiscountCategoryId { get; set; }
         public DiscountCategory DiscountCategory { get; set; }
-        
 
         public int? UserId { get; set; }
         public User User { get; set; }
@@ -29,7 +28,7 @@ namespace SmartPhone.Models
         public int? ProductsId { get; set; }
         public Product Product { get; set; }
 
-        public int? ProductCategoriesId { get; set; }
-        public ProductCategory ProductCategory { get; set; }
+        public virtual List<DiscountProductCategory> DiscountProductCategories { get; set; }
+        
     }
 }
