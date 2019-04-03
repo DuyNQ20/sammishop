@@ -36,10 +36,12 @@
                                 <div class="inn-title fix">
                                     <h4>Tùy chọn khuyến mãi</h4>
                                 </div>
+
                                 <div class="input-field col s12 ">
                                     <input id="product-name" type="text" class="validate" asp-for="Code">
                                     <label>Mã khuyến mãi</label>
                                 </div>
+
                                 <div class="input-field col s6">
                                     @Html.DropDownList("DiscountCategoryId")
                                     <label>Hình thức khuyến mãi</label>
@@ -50,6 +52,10 @@
                                         <span class="money-unit">@(Url.Content(Model.DiscountCategoryId == 1 ? HttpUtility.HtmlDecode("&#8363;") : "%"))</span>
                                     </span>
                                     <label>Giá trị khuyến mãi</label>
+                                </div>
+                                <div class="input-field col s12 ">
+                                    <input type="text" class="validate" asp-for="Descriptions">
+                                    <label>Mô tả</label>
                                 </div>
                             </div>
                             <div class="box-inn-sp box-second-inn col-lg-12">

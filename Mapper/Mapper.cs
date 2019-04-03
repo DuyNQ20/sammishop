@@ -352,6 +352,7 @@ namespace SmartPhone.Mapper
 
             destination.Code = source.Code;
             destination.DiscountMoney = source.DiscountMoney;
+            destination.Descriptions = source.Descriptions;
             destination.DiscountCategoryId = source.DiscountCategoryId;
             destination.DateTimeStart = source.DateTimeStart;
             destination.DateTimeFinish = source.DateTimeFinish;
@@ -366,6 +367,7 @@ namespace SmartPhone.Mapper
             var now = DateTime.UtcNow;
             destination.Code = source.Code;
             destination.DiscountMoney = source.DiscountMoney;
+            destination.Descriptions = source.Descriptions;
             destination.DiscountCategoryId = source.DiscountCategoryId;
             destination.DateTimeStart = source.DateTimeStart;
             destination.DateTimeFinish = source.DateTimeFinish;
