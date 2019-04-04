@@ -148,13 +148,29 @@ $(".input-field.col.s12").mouseup(function (e) {
 //    alert("percent" + percent);
 //});
 
+$(".dateTimeStart").change(function () {
+    $('[data-toggle="datepicker-finish"]').datepicker('destroy');
+    $('[data-toggle="datepicker-finish"]').datepicker({
+        format: 'dd/mm/yyyy',
+        language: 'vi-VN',
+        autoHide: true,
+        startDate: $('[data-toggle="datepicker-start"]').datepicker('getDate')
+    });
+});
 
-
-$('[data-toggle="datepicker"]').datepicker({
+$('[data-toggle="datepicker-start"]').datepicker({
     format: 'dd/mm/yyyy',
-    'languages': 'vi-VN',
+    languages: 'vi-VN',
     autoHide: true
 });
+
+$('[data-toggle="datepicker-finish"]').datepicker({
+    format: 'dd/mm/yyyy',
+    language: 'vi-VN',
+    autoHide: true,
+    startDate: $('[data-toggle="datepicker-start"]').datepicker('getDate')
+});
+
 
 
 //--------------------------- Chỉnh phần Áp dụng với Trong mục mã giảm giá --------------------------------

@@ -17,7 +17,7 @@
         </ul>
     </div>
     <div class="sb2-2-add-blog sb2-2-1">
-        <h2>Cập nhật mã khuyến mãi</h2>
+        <h2>Thêm mã khuyến mãi</h2>
         <p></p>
         <p></p>
         <div class="tab-content">
@@ -100,11 +100,11 @@
                                     <h4>Thời gian</h4>
                                 </div>
                                 <div class="input-field col s6 ">
-                                    <input data-toggle="datepicker" type="text" class="validate" asp-for="DateTimeStart" value="@Model.DateTimeStart.ToString("dd/MM/yyyy")">
+                                    <input data-toggle="datepicker-start" type="text" class="dateTimeStart" asp-for="DateTimeStart" value="@Model.DateTimeStart.ToString("dd/MM/yyyy")">
                                     <label>Ngày bắt đầu</label>
                                 </div>
                                 <div class="input-field col s6 ">
-                                    <input data-toggle="datepicker" type="text" class="validate" asp-for="DateTimeFinish" value="@Model.DateTimeFinish.ToString("dd/MM/yyyy")">
+                                    <input data-toggle="datepicker-finish" type="text" class="dateTimeFinish" asp-for="DateTimeFinish" value="@Model.DateTimeFinish.ToString("dd/MM/yyyy")">
                                     <label>Ngày kết thúc</label>
                                 </div>
                             </div>
