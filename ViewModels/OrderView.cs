@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace SmartPhone.ViewModels
+﻿namespace SmartPhone.ViewModels
 {
     public class OrderView
     {
@@ -24,6 +19,8 @@ namespace SmartPhone.ViewModels
         public int? UserId { get; set; }
 
         public int ProductId { get; set; }
+
+        public int PaymentMethodId { get; set; }
 
         public int OrderStatusId { get; set; }
     }

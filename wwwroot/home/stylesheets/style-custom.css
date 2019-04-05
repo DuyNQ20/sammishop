@@ -128,3 +128,29 @@ h3.title {
     .btn-order button:hover, .btn-order button:focus {
         background-color: #cd0c0c;
     }
+
+
+/*chỉnh sửa thông báo giỏ hàng rỗng*/
+.flat-row-title.style1.notify {
+    width: 100%;
+}
+
+.notify .table-cart {
+    background: #fafafa;
+    text-align: center;
+    width: 100%;
+    height: 303px;
+    font-size: 25px;
+    padding-top: 11%;
+    box-sizing: border-box;
+}
+
+.notify div#mCSB_1_container {
+    height: 40px;
+    padding: 10px;
+}
+
+/*bỏ background sau khi thêm buton ở chi tiết sản phẩm*/
+button.add-cart {
+    background: none;
+}

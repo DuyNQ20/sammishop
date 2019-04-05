@@ -1,152 +1,120 @@
-﻿@model IEnumerable<SmartPhone.Models.Cart>
-
+﻿@model IEnumerable<SmartPhone.Models.Order>
 @{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Layout/HomeLayout.cshtml";
+    ViewData["Title"] = "GetAll";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
 }
 
-<section class="flat-breadcrumb">
-    <div class="container">
+<div class="sb2-2">
+    <div class="sb2-2-2">
+        <ul>
+            <li>
+                <a href="#"><i class="fa fa-home" aria-hidden="true"></i> Trang chủ</a>
+            </li>
+            <li class="active-bre">
+                <a href="#"> Sản phẩm</a>
+            </li>
+        </ul>
+    </div>
+    <div class="sb2-2-3">
         <div class="row">
             <div class="col-md-12">
-                <ul class="breadcrumbs">
-                    <li class="trail-item">
-                        <a href="#" title="">Home</a>
-                        <span><img src="~/home/images/icons/arrow-right.png" alt=""></span>
-                    </li>
-                    <li class="trail-item">
-                        <a href="#" title="">Shop</a>
-                        <span><img src="~/home/images/icons/arrow-right.png" alt=""></span>
-                    </li>
-                    <li class="trail-end">
-                        <a href="#" title="">Smartphones</a>
-                    </li>
-                </ul><!-- /.breacrumbs -->
-            </div><!-- /.col-md-12 -->
-        </div><!-- /.row -->
-    </div><!-- /.container -->
-</section>
+                <div class="box-inn-sp">
+                    <div class="inn-title">
+                        <h4><i class="fa fa-bookmark"></i> Danh sách đơn đặt hàng</h4>
+                        <a class="dropdown-button drop-down-meta" href="#" data-activates="dr-users"><i class="material-icons">more_vert</i></a>
+                        <ul id="dr-users" class="dropdown-content">
+                            <li>
+                                <a asp-action="Create">Thêm mới</a>
+                            </li>
+                            <li>
+                                <a href="#!">Sửa</a>
+                            </li>
+                            <li>
+                                <a href="#!">Cập nhật</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#!"><i class="material-icons">delete</i>Xóa</a>
+                            </li>
+                            <li>
+                                <a href="#!"><i class="material-icons">subject</i>View All</a>
+                            </li>
+                        </ul>
 
-<section class="flat-checkout">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-7">
-                <div class="box-checkout">
-                    <form asp-action="Order" method="post" class="checkout" accept-charset="utf-8">
-                        <div class="shipping-address-fields">
-                            <div class="fields-title">
-                                <h3 class="title">Địa chỉ giao hàng</h3>
-                                <span></span>
-                                <div class="clearfix"></div>
-                            </div><!-- /.fields-title -->
-                            <div class="fields-content">
-                                @*<div class="checkbox">
-            <input type="checkbox" id="create-account-2" name="create-account-2" checked>
-            <label for="create-account-2">Ship to a different address ?</label>
-        </div>*@
-                                @foreach (var item in Model)
-                                {
-                                    <div class="field-row">
-                                        <p class="field-one-half">
-                                            <label for="first-name-2">Họ tên </label>
-                                            <input asp-for="@item.User.Name" type="text" id="first-name-2" name="Receiver" placeholder="Nhập họ tên">
-                                        </p>
+                        <!-- Dropdown Structure -->
 
-                                        <p class="field-one-half">
-                                            <label for="first-name-2">Số điện thoại </label>
-                                            <input asp-for="@item.User.Phone" type="text" id="address" name="Phone" placeholder="Nhập số điện thoại">
-                                        </p>
-                                        <div class="clearfix"></div>
-                                    </div>
+                    </div>
+                    <div class="inn-title row">
+                        <div class="timkiem col-md-1">
+                            <label>Tìm kiếm</label>
+                        </div>
+                        <form class="app-search col-md-3" asp-action="Search" asp-controller="Orders" method="get">
+                            <input type="text" placeholder="Search..." class="form-control" name="query">
+                            <button type="submit" class="search-submit"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+                    <div class="tab-inn">
+                        <div class="table-responsive table-desi">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">STT</th>
+                                        <th class="text-center">Mã ĐH</th>
+                                        <th>Ngày đặt</th>
+                                        <th>SĐT người nhận</th>
+                                        <th>Hình thức TT</th>
+                                        <th>Tổng thanh toán</th>
+                                        <th class="text-center">Trạng thái</th>
+                                        <th class="text-center">Sửa</th>
+                                        <th class="text-center">Xóa</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{ var i = 1;}
+                                    @foreach (var item in Model)
+                                    {
+                                    <tr>
+                                        <td class="text-center">
+                                            <span class="list-img">@(i++)</span>
+                                        </td>
+
+                                        <td class="text-center">
+                                            @item.Code
+                                        </td>
+                                        <td>
+                                            <span class="list-img">@item.CreatedAt.ToString("dd/MM/yyyy")</span>
+                                        </td>
+                                        <td>
+                                            <span class="list-img">@Html.DisplayFor(modelItem => item.Phone)</span>
+                                        </td>
+                                        <td>
+                                            <span class="list-img">@Html.DisplayFor(modelItem => item.PaymentMethod.Code)</span>
+                                        </td>
+                                        <td>
+                                            <span class="list-img"> @item.Total.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR")) VNĐ </span>
+                                        </td>
+                                        <td class="text-center">
+                                            <a asp-action="UpdateStatus" asp-route-id="@item.Id"><i class="fa fa-shield"> Đang chờ</i></a>
+
+                                        </td>
+                                        <td class="text-center">
+                                            <a asp-action="Edit" asp-route-id="@item.Id"><i class="fa fa-pencil-square-o" aria-hidden="true"> Sửa</i></a>
+                                        </td>
+                                        <td class="text-center">
+
+                                            <a asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?');"><i class="fa fa-trash-o red"> Xóa</i></a>
+                                        </td>
+                                    </tr>
+                                    }
 
 
-                                    <div class="field-row">
-                                        <label for="address-3">Địa chỉ *</label>
-                                        <input asp-for="@item.User.Address" type="text" id="address-3" name="DeliveryAddress" placeholder="Nhập địa chỉ nhận hàng của bạn">
-                                    </div>
-                                    break;
-                                }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-
-                                <div class="field-row">
-                                    <label for="notes">Ghi chú</label>
-                                    <textarea id="notes" placeholder="Để lại lời nhắn cho người bán"></textarea>
-                                </div>
-                            </div><!-- /.fields-content -->
-                        </div><!-- /.shipping-address-fields -->
-
-
-
-                </div><!-- /.box-checkout -->
-            </div><!-- /.col-md-7 -->
-            <div class="col-md-5">
-                <div class="cart-totals style2">
-                    <h3>Thông tin thanh toán</h3>
-                        @{ decimal total = 0;}
-                        <table class="product">
-                            <thead>
-                                <tr>
-                                    <th>Sản phẩm</th>
-                                    <th>Tổng tiền</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var item in Model)
-                                { 
-                                <tr>
-                                    @{
-                                        var tong = item.Product.SalePrice * item.Quantity;
-                                        total = total + tong;
-                                    }                                   
-                                    <td> @item.Quantity x <a style="color: #f28b00" asp-action="Details" asp-controller="Home" asp-route-id="@item.ProductId">@item.Product.Name </a></td>
-                                    <td>@tong.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR")) &#8363</td>
-                                                                    </tr>
-                                }
-                            </tbody>
-                        </table><!-- /.product -->
-                        <table>
-                            <tbody>
-                                <tr>
-                                    <td>Tạm tính</td>
-                                    <td class="subtotal">@total.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR")) &#8363</td>
-                                </tr>
-                                <tr>
-                                    <td>Phí vận chuyển</td>
-                                    <td class="btn-radio">
-                                        <label for="free-shipping">Miễn phí</label>
-                                    </td><!-- /.btn-radio -->
-                                </tr>
-                                <tr>
-                                    <td>Tổng thanh toán</td>
-                                    <td class="price-total">@total.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR")) &#8363</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div class="btn-radio style2">
-                            <div class="radio-info">
-                                <input type="radio" id="flat-payment" checked name="radio-cash-2">
-                                <label for="flat-payment">Thanh toán tiền mặt khi nhận hàng</label>
-                            </div>
-                            <div class="radio-info">
-                                <input type="radio" id="bank-transfer" name="radio-cash-2">
-                                <label for="bank-transfer">Thanh toán bằng thẻ quốc tế Visa, Master, JCB</label>
-                            </div>
-                            <div class="radio-info">
-                                <input type="radio" id="cash-delivery" name="radio-cash-2">
-                                <label for="cash-delivery">Thẻ ATM nội địa/Internet Banking (Miễn phí thanh toán)</label>
-                            </div>
-                            <div class="radio-info">
-                                <input type="radio" id="paypal" name="radio-cash-2">
-                                <label for="paypal">Thanh toán bằng MoMo</label>
-                            </div>
-                        </div><!-- /.btn-radio style2 -->
-                       
-                        <div class="btn-order">
-                           <button class="order" type="submit" title="">Đặt hàng</button>
-                        </div><!-- /.btn-order -->
-                    </form>
-                </div><!-- /.cart-totals style2 -->
-            </div><!-- /.col-md-5 -->
-        </div><!-- /.row -->
-    </div><!-- /.container -->
-</section><!-- /.flat-checkout -->

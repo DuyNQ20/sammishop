@@ -1,20 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using SmartPhone.Data;
+using SmartPhone.ViewModels;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using SmartPhone.Models;
-using Microsoft.AspNetCore.Http;
-using SmartPhone.Data;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Configuration;
-using SmartPhone.ViewModels;
 
 namespace SmartPhone.Controllers
 {
-    [Route("")]
+    [Route("account")]
     public class AccountController : Controller
     {
         private readonly DataContext _context;
@@ -44,30 +37,6 @@ namespace SmartPhone.Controllers
             }
             return RedirectToAction("Index", "Home");
         }
-
-        //[HttpPost, Route("register")]
-        //public async Task<IActionResult> Register([FromBody] UserView model)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        var user = new User { Email = model.Username, UserName = model.Username };
-        //        var result = await _userManager.CreateAsync(user, model.Password);
-
-        //        if (result.Succeeded)
-        //        {
-        //            await _signInManager.SignInAsync(user, false);
-        //            return RedirectToAction("Index", "Home");
-        //        }
-        //        else
-        //        {
-        //            foreach (var error in result.Errors)
-        //            {
-        //                ModelState.AddModelError("", error.Description);
-        //            }
-        //        }
-        //    }
-        //    return View();
-        //}
 
         [HttpGet, Route("logout")]
         public async Task<IActionResult> HomeLogout()

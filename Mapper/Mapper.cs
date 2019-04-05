@@ -1,10 +1,7 @@
-﻿using SmartPhone.ViewModels;
+﻿using Microsoft.AspNetCore.Http;
 using SmartPhone.Models;
+using SmartPhone.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 
 namespace SmartPhone.Mapper
 {
@@ -279,9 +276,178 @@ namespace SmartPhone.Mapper
             destination.Total = source.Total;
             destination.UserId = source.UserId;
             destination.ProductId = source.ProductId;
-            destination.OrderStatusId = 1; // Trạng thái đang chờ
+            destination.PaymentMethodId = source.PaymentMethodId;
+            destination.OrderStatusId = 1; // Trạng thái đang chờ            
             destination.ModifiedAt = now;
             destination.Active = true;
+            destination.CreatedAt = now;
+        }
+
+
+        // User
+        // Order
+        public static void Map(this User destination, UserView source)
+        {
+            if (source == null)
+            {
+                throw new ArgumentNullException(nameof(source));
+            }
+
+            if (destination == null)
+            {
+                throw new ArgumentNullException(nameof(destination));
+            }
+
+            var now = DateTime.UtcNow;
+
+            if (destination.CreatedAt == DateTimeOffset.MinValue)
+            {
+                destination.CreatedAt = now;
+            }
+
+            destination.Name = source.Name;
+            destination.Address = source.Address;
+            destination.Phone = source.Phone;
+            destination.Email = source.Email;
+            destination.Username = source.Username;
+            destination.Password = source.Password;
+            destination.ModifiedAt = now;
+            destination.Active = true;
+        }
+
+        public static void SaveMap(this User destination, UserView source)
+        {
+            var now = DateTime.UtcNow;
+            destination.Name = source.Name;
+            destination.Address = source.Address;
+            destination.Phone = source.Phone;
+            destination.Email = source.Email;
+            destination.Username = source.Username;
+            destination.Password = source.Password;
+            destination.ModifiedAt = now;
+            destination.Active = true;
+            destination.CreatedAt = now;
+        }
+
+
+        // Discount
+        public static void Map(this Discount destination, DiscountView source)
+        {
+            if (source == null)
+            {
+                throw new ArgumentNullException(nameof(source));
+            }
+
+            if (destination == null)
+            {
+                throw new ArgumentNullException(nameof(destination));
+            }
+
+            var now = DateTime.UtcNow;
+
+            if (destination.CreatedAt == DateTimeOffset.MinValue)
+            {
+                destination.CreatedAt = now;
+            }
+
+            destination.Code = source.Code;
+            destination.DiscountMoney = source.DiscountMoney;
+            destination.Descriptions = source.Descriptions;
+            destination.DiscountCategoryId = source.DiscountCategoryId;
+            destination.DateTimeStart = source.DateTimeStart;
+            destination.DateTimeFinish = source.DateTimeFinish;
+            destination.UserId = source.UserId;
+            destination.Quantity = source.Quantity;
+            destination.ModifiedAt = now;
+            destination.Active = source.DateTimeFinish < DateTime.Now.Date ? false : true;
+        }
+
+        public static void SaveMap(this Discount destination, DiscountView source)
+        {
+            var now = DateTime.UtcNow;
+            destination.Code = source.Code;
+            destination.DiscountMoney = source.DiscountMoney;
+            destination.Descriptions = source.Descriptions;
+            destination.DiscountCategoryId = source.DiscountCategoryId;
+            destination.DateTimeStart = source.DateTimeStart;
+            destination.DateTimeFinish = source.DateTimeFinish;
+            destination.UserId = source.UserId;
+            destination.Quantity = source.Quantity;
+            destination.ModifiedAt = now;
+            destination.Active = source.DateTimeFinish < DateTime.Now.Date ? false : true;
+            destination.CreatedAt = now;
+        }
+
+
+        // DiscountProduct
+        public static void Map(this DiscountProduct destination, DiscountProductView source)
+        {
+            if (source == null)
+            {
+                throw new ArgumentNullException(nameof(source));
+            }
+
+            if (destination == null)
+            {
+                throw new ArgumentNullException(nameof(destination));
+            }
+
+            var now = DateTime.UtcNow;
+
+            if (destination.CreatedAt == DateTimeOffset.MinValue)
+            {
+                destination.CreatedAt = now;
+            }
+
+            destination.DiscountId = source.DiscountId;
+            destination.ProductId = source.ProductId;
+            destination.ModifiedAt = now;
+            destination.Active = source.Active;
+        }
+
+        public static void SaveMap(this DiscountProduct destination, DiscountProductView source)
+        {
+            var now = DateTime.UtcNow;
+            destination.DiscountId = source.DiscountId;
+            destination.ProductId = source.ProductId;
+            destination.ModifiedAt = now;
+            destination.Active = source.Active;
+            destination.CreatedAt = now;
+        }
+
+        // DiscountProductCategory
+        public static void Map(this DiscountProductCategory destination, DiscountProductCategoryView source)
+        {
+            if (source == null)
+            {
+                throw new ArgumentNullException(nameof(source));
+            }
+
+            if (destination == null)
+            {
+                throw new ArgumentNullException(nameof(destination));
+            }
+
+            var now = DateTime.UtcNow;
+
+            if (destination.CreatedAt == DateTimeOffset.MinValue)
+            {
+                destination.CreatedAt = now;
+            }
+
+            destination.DiscountId = source.DiscountId;
+            destination.ProductCategoryId = source.ProductCategoryId;
+            destination.ModifiedAt = now;
+            destination.Active = source.Active;
+        }
+
+        public static void SaveMap(this DiscountProductCategory destination, DiscountProductCategoryView source)
+        {
+            var now = DateTime.UtcNow;
+            destination.DiscountId = source.DiscountId;
+            destination.ProductCategoryId = source.ProductCategoryId;
+            destination.ModifiedAt = now;
+            destination.Active = source.Active;
             destination.CreatedAt = now;
         }
 

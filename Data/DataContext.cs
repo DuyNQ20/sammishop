@@ -1,8 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
 using SmartPhone.Models;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using System;
 
 namespace SmartPhone.Data
 {
@@ -37,8 +35,11 @@ namespace SmartPhone.Data
             modelBuilder.Entity<User>().ToTable("User");
             modelBuilder.Entity<Order>().ToTable("Order");
             modelBuilder.Entity<OrderStatus>().ToTable("OrderStatus");
-
-
+            modelBuilder.Entity<PaymentMethod>().ToTable("PaymentMethod");
+            modelBuilder.Entity<DiscountCategory>().ToTable("DiscountCategory");
+            modelBuilder.Entity<Discount>().ToTable("Discount");
+            modelBuilder.Entity<DiscountProductCategory>().ToTable("DiscountProductCategory");
+            modelBuilder.Entity<DiscountProduct>().ToTable("DiscountProduct");
 
 
             modelBuilder.Entity<Supplier>().HasData(
@@ -325,10 +326,7 @@ namespace SmartPhone.Data
                   CreatedBy = "Quang Duy",
                   ModifiedAt = DateTime.Now,
                   ModifiedBy = "Quang Duy"
-              }
-           );
-
-            modelBuilder.Entity<Cart>().HasData(
+              },
               new Cart
               {
                   Id = 2,
@@ -341,6 +339,7 @@ namespace SmartPhone.Data
                   ModifiedBy = "Quang Duy"
               }
            );
+
 
             modelBuilder.Entity<OrderStatus>().HasData(
              new OrderStatus
@@ -385,7 +384,155 @@ namespace SmartPhone.Data
              }
           );
 
+            modelBuilder.Entity<PaymentMethod>().HasData(
+             new PaymentMethod
+             {
+                 Id = 1,
+                 Name = "Thanh toán tiền mặt khi nhận hàng",
+                 Code = "COD",
+                 Active = true,
+                 CreatedAt = DateTime.Now,
+                 CreatedBy = "Quang Duy",
+                 ModifiedAt = DateTime.Now,
+                 ModifiedBy = "Quang Duy"
+             },
+              new PaymentMethod
+              {
+                  Id = 2,
+                  Name = "Thanh toán bằng thẻ quốc tế Visa, Master, JCB",
+                  Code = "Visa - Master - JCB",
+                  Active = true,
+                  CreatedAt = DateTime.Now,
+                  CreatedBy = "Quang Duy",
+                  ModifiedAt = DateTime.Now,
+                  ModifiedBy = "Quang Duy"
+              },
+               new PaymentMethod
+               {
+                   Id = 3,
+                   Name = "Thẻ ATM nội địa/Internet Banking (Miễn phí thanh toán)",
+                   Code = "Visa - Master - JCB",
+                   Active = true,
+                   CreatedAt = DateTime.Now,
+                   CreatedBy = "Quang Duy",
+                   ModifiedAt = DateTime.Now,
+                   ModifiedBy = "Quang Duy"
+               },
+                new PaymentMethod
+                {
+                    Id = 4,
+                    Name = "Thanh toán bằng MoMo",
+                    Code = "MoMo",
+                    Active = true,
+                    CreatedAt = DateTime.Now,
+                    CreatedBy = "Quang Duy",
+                    ModifiedAt = DateTime.Now,
+                    ModifiedBy = "Quang Duy"
+                }
+          );
+
+            modelBuilder.Entity<DiscountCategory>().HasData(
+                new DiscountCategory
+                {
+                    Id = 1,
+                    Name = "Voucher",
+                    Decriptions = "Khuyến mại theo số tiền",
+                    Active = true,
+                    CreatedAt = DateTime.Now,
+                    CreatedBy = "Quang Duy",
+                    ModifiedAt = DateTime.Now,
+                    ModifiedBy = "Quang Duy"
+                },
+                 new DiscountCategory
+                 {
+                     Id = 2,
+                     Name = "Counpon",
+                     Decriptions = "Khuyến mại theo %",
+                     Active = true,
+                     CreatedAt = DateTime.Now,
+                     CreatedBy = "Quang Duy",
+                     ModifiedAt = DateTime.Now,
+                     ModifiedBy = "Quang Duy"
+                 }
+            );
+
+            modelBuilder.Entity<Discount>().HasData(
+              new Discount
+              {
+                  Id = 1,
+                  UserId = 1,
+                  Code = "MA10",
+                  DiscountMoney = 10000,
+                  Quantity = 1000,
+                  Descriptions = "Giảm 10.000 cho tất cả sản phẩm",
+                  DiscountCategoryId = 2,
+                  DateTimeStart = DateTime.Parse("31/03/2019"),
+                  DateTimeFinish = DateTime.Parse("03/04/2019"),
+                  Active = true,
+                  CreatedAt = DateTime.Now,
+                  CreatedBy = "Quang Duy",
+                  ModifiedAt = DateTime.Now,
+                  ModifiedBy = "Quang Duy"
+              },
+              new Discount
+              {
+                  Id = 2,
+                  UserId = 1,
+                  Code = "MA20",
+                  DiscountMoney = 20000,
+                  Quantity = 1000,
+                  Descriptions = "Giảm 20.000 cho tất cả sản phẩm",
+                  DiscountCategoryId = 2,
+                  DateTimeStart = DateTime.Parse("31/03/2019"),
+                  DateTimeFinish = DateTime.Parse("03/04/2019"),
+                  Active = true,
+                  CreatedAt = DateTime.Now,
+                  CreatedBy = "Quang Duy",
+                  ModifiedAt = DateTime.Now,
+                  ModifiedBy = "Quang Duy"
+              }
+           );
+
+            modelBuilder.Entity<DiscountProductCategory>().HasData(
+              new DiscountProductCategory
+              {
+                  Id = 1,
+                  DiscountId = 1,
+                  ProductCategoryId = 1,
+                  Active = true,
+                  CreatedAt = DateTime.Now,
+                  CreatedBy = "Quang Duy",
+                  ModifiedAt = DateTime.Now,
+                  ModifiedBy = "Quang Duy"
+              },
+               new DiscountProductCategory
+               {
+                   Id = 2,
+                   DiscountId = 1,
+                   ProductCategoryId = 2,
+                   Active = true,
+                   CreatedAt = DateTime.Now,
+                   CreatedBy = "Quang Duy",
+                   ModifiedAt = DateTime.Now,
+                   ModifiedBy = "Quang Duy"
+               }
+               ,
+               new DiscountProductCategory
+               {
+                   Id = 3,
+                   DiscountId = 2,
+                   ProductCategoryId = 1,
+                   Active = true,
+                   CreatedAt = DateTime.Now,
+                   CreatedBy = "Quang Duy",
+                   ModifiedAt = DateTime.Now,
+                   ModifiedBy = "Quang Duy"
+               }
+           );
+
         }
+
+
 
         public DbSet<Comment> Comments { get; set; }
         public DbSet<File> Files { get; set; }
@@ -395,12 +542,16 @@ namespace SmartPhone.Data
         public DbSet<ProductCategory> ProductCategorys { get; set; }
         public DbSet<Status> Statuses { get; set; }
         public DbSet<Color> Colors { get; set; }
-        public new DbSet<User> Users { get; set; }
+        public DbSet<User> Users { get; set; }
         public DbSet<Cart> Carts { get; set; }
-        public new DbSet<Role> Roles { get; set; }
-        public new DbSet<Order> Orders { get; set; }
-        public new DbSet<OrderStatus> OrderStatus { get; set; }
-
+        public DbSet<Role> Roles { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderStatus> OrderStatus { get; set; }
+        public DbSet<PaymentMethod> PaymentMethods { get; set; }
+        public DbSet<DiscountCategory> DiscountCategories { get; set; }
+        public DbSet<Discount> Discounts { get; set; }
+        public DbSet<DiscountProductCategory> DiscountProductCategories { get; set; }
+        public DbSet<DiscountProduct> DiscountProducts { get; set; }
 
 
     }

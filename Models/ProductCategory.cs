@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace SmartPhone.Models
 {
@@ -10,5 +7,7 @@ namespace SmartPhone.Models
         public string Name { get; set; }
         
         public virtual List<Product> Products { get; set; }
+
+        public virtual List<DiscountProductCategory> DiscountProductCategories { get; set; }
     }
 }

@@ -1,10 +1,6 @@
 ﻿using Newtonsoft.Json;
-using SmartPhone.Data;
-using SmartPhone.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace SmartPhone.Models
 {
@@ -70,5 +66,7 @@ namespace SmartPhone.Models
         public virtual List<File> Files { get; set; }
 
         public virtual List<Cart> Carts { get; set; }
+
+        public virtual List<DiscountProduct> DiscountProducts { get; set; }
     }
 }

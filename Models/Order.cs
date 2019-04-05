@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace SmartPhone.Models
+﻿namespace SmartPhone.Models
 {
     public class Order : BaseModel
     {
@@ -20,6 +15,9 @@ namespace SmartPhone.Models
 
         public int ProductId { get; set; }
         public Product Product { get; set; }
+
+        public int? PaymentMethodId { get; set; }
+        public PaymentMethod PaymentMethod { get; set; }
 
         public int Quantity { get; set; }
 

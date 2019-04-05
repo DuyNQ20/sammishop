@@ -1,0 +1,165 @@
+﻿@model SmartPhone.Models.Discount
+@using System.Web;
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+
+<div class="sb2-2">
+    <div class="sb2-2-2">
+        <ul>
+            <li>
+                <a href="#"><i class="fa fa-home" aria-hidden="true"></i> Trang chủ</a>
+            </li>
+            <li class="active-bre">
+                <a asp-action="Index"> Mã khuyến mãi</a>
+            </li>
+        </ul>
+    </div>
+    <div class="sb2-2-add-blog sb2-2-1">
+        <h2>Thêm mã khuyến mãi</h2>
+        <p></p>
+        <p></p>
+        <div class="tab-content">
+            <div id="home" class="tab-pane fade in active">
+                <div class="sb2-2-3">
+                    @*<div class="inn-title">
+                            <h4>Listing Information</h4>
+                            <p>Airtport Hotels The Right Way To Start A Short Break Holiday</p>
+                        </div>*@
+                    <form asp-action="Edit" enctype="multipart/form-data">
+                        <input type="hidden" asp-for="Id" />
+
+                        @*Bên trái*@
+                        <div class="col s8" style="padding: 0 0.75rem">
+                            <div class="box-inn-sp col-lg-12">
+                                <div class="inn-title fix">
+                                    <h4>Tùy chọn khuyến mãi</h4>
+                                </div>
+
+                                <div class="input-field col s12 ">
+                                    <input id="product-name" type="text" class="validate" asp-for="Code">
+                                    <label>Mã khuyến mãi</label>
+                                </div>
+
+                                <div class="input-field col s6">
+                                    @Html.DropDownList("DiscountCategoryId")
+                                    <label>Hình thức khuyến mãi</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <input id="coupon" type="text" class="@(Model.DiscountCategoryId==1?"money":"percent")" asp-for="DiscountMoney" value="@Model.DiscountMoney.ToString("#,##")">
+                                    <span class="add-value">
+                                        <span class="money-unit">@(Url.Content(Model.DiscountCategoryId == 1 ? HttpUtility.HtmlDecode("&#8363;") : "%"))</span>
+                                    </span>
+                                    <label>Giá trị khuyến mãi</label>
+                                </div>
+                                <div class="input-field col s12 ">
+                                    <input type="text" class="validate" asp-for="Descriptions">
+                                    <label>Mô tả</label>
+                                </div>
+                            </div>
+                            <div class="box-inn-sp box-second-inn col-lg-12">
+
+                                <div class="inn-title fix">
+                                    <h4>Áp dụng với</h4>
+                                </div>
+                                <div class="tab-inn fix">
+                                    @{
+                                        var check = 1;
+                                        if (Model.DiscountProductCategories.Count > 0)
+                                        {
+                                            check = 2;
+                                        }
+                                        if (Model.DiscountProducts.Count > 0)
+                                        {
+                                            check = 3;
+                                        }
+                                    }
+                                    <p>
+                                        <input class="with-gap" name="group1" type="radio" checked id="test1" />
+                                        <label for="test1">Tất cả đơn hàng</label>
+                                    </p>
+                                    <p>
+                                        <input class="with-gap" name="group1" type="radio" @(check == 2 ? "checked" : "") id="test2" />
+                                        <label for="test2">Danh mục sản phẩm</label>
+                                    </p>
+                                    <p>
+                                        <input class="with-gap" name="group1" type="radio" @(check == 3 ? "checked" : "") id="test3" />
+                                        <label for="test3">Sản phẩm</label>
+                                    </p>
+                                </div>
+                                <div class="input-field col s12 multi-select-productcate @(check==2?"show":"hidden")">
+                                    @Html.ListBox("DiscountProductCategoryId")
+                                </div>
+                                <div class="input-field col s12 multi-select-product @(check==3?"show":"hidden")">
+                                    @Html.ListBox("DiscountProductId")
+                                </div>
+                            </div>
+                            <div class="box-inn-sp col-lg-12 box-second-inn">
+                                <div class="inn-title fix">
+                                    <h4>Thời gian</h4>
+                                </div>
+                                <div class="input-field col s6 ">
+                                    <input data-toggle="datepicker-start" type="text" class="dateTimeStart" asp-for="DateTimeStart" value="@Model.DateTimeStart.ToString("dd/MM/yyyy")">
+                                    <label>Ngày bắt đầu</label>
+                                </div>
+                                <div class="input-field col s6 ">
+                                    <input data-toggle="datepicker-finish" type="text" class="dateTimeFinish" asp-for="DateTimeFinish" value="@Model.DateTimeFinish.ToString("dd/MM/yyyy")">
+                                    <label>Ngày kết thúc</label>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                        <div class="col s4">
+
+                            <div class="box-inn-sp col-lg-12 ">
+                                <div class="inn-title fix">
+                                    <h4>Giới hạn sử dụng</h4>
+                                </div>
+                                <div class="input-field col s12 ">
+                                    <input type="text" class="validate" asp-for="Quantity">
+                                    <label>Số lượng mã</label>
+                                </div>
+
+                            </div>
+                            <div class=" box-inn-sp col-lg-12 box-second-inn ">
+                                <div class="inn-title fix">
+                                    <h4>Trạng thái</h4>
+                                </div>
+                                <div class="tab-inn fix">
+                                    <p>
+                                        <input type="checkbox" class="filled-in" id="filled-in-box" asp-for="Active" />
+                                        <label for="filled-in-box">Kích hoạt</label>
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="col s8">
+                            <div class="row">
+                                <div class="input-field col s8">
+                                    <button type="submit" class="btn btn-primary btn-sm">
+                                        <i class="fa fa-save"> </i> Lưu[Cập nhật]
+                                    </button>
+                                    <a asp-action="Index">
+                                        <button type="button" class="btn btn-primary btn-sm">
+                                            <i class="fa fa-times-circle "></i> Thoát
+                                        </button>
+                                    </a>
+
+                                    @*<input type="submit" class="waves-effect waves-light btn-large " value="Submit">*@
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="clear: both"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
