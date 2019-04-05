@@ -215,28 +215,24 @@ namespace SmartPhone.Controllers
 
 
 
-        private bool ProductExists(int id)
-        {
-            return _context.Products.Any(e => e.Id == id);
-        }
 
         [HttpGet, Route("search")]
         public async Task<IActionResult> Search([FromQuery]string query)
         {
-            var dataContext = _context.Products.Include(p => p.Files).Include(x => x.ProductCategory).ToList();
-            var products = new List<Models.Product>();
+            var dataContext = _context.Discounts.ToList();
+            var disounts = new List<Models.Discount>();
 
             if (!String.IsNullOrEmpty(query))
             {
                 foreach (var item in dataContext)
                 {
-                    if (item.Name.ToLower().Contains(query.ToLower()))
+                    if (item.Descriptions.ToLower().Contains(query.ToLower()))
                     {
-                        products.Add(item);
+                        disounts.Add(item);
                     }
                 }
             }
-            return products.Count == 0 ? View("index", dataContext) : View("index", products);
+            return disounts.Count == 0 ? View("index", dataContext) : View("index", disounts);
         }
 
 
