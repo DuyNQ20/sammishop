@@ -47,7 +47,7 @@
                                             <tr>
                                                 <td>
                                                     <div class="img-product">
-                                                        <a asp-action="Details" asp-controller="Home" asp-route-id="@item.Id">
+                                                        <a asp-action="Details" asp-controller="Home" asp-route-id="@item.ProductId">
                                                             @{
 
                                                                 var image = item.Product.Files.FirstOrDefault(x => x.ProductId == item.ProductId & x.thumbnail);
@@ -61,7 +61,7 @@
                                                     </div>
                                                     <div class="name-product">
                                                         <div class="row">
-                                                            <a asp-action="Details" asp-controller="Home" asp-route-id="@item.Id">
+                                                            <a asp-action="Details" asp-controller="Home" asp-route-id="@item.ProductId">
                                                                 @item.Product.Name
                                                             </a>
 
