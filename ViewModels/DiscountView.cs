@@ -22,7 +22,5 @@ namespace SmartPhone.ViewModels
         public int DiscountCategoryId { get; set; }
 
         public int? UserId { get; set; }
-        
-        public bool Active { get; set; }
     }
 }

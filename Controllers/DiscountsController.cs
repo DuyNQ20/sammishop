@@ -21,6 +21,7 @@ namespace SmartPhone.Controllers
         {
             _context = context;
         }
+        
 
         [HttpGet]
         public async Task<IActionResult> Index()
@@ -28,19 +29,6 @@ namespace SmartPhone.Controllers
             return View(await _context.Discounts.ToListAsync());
         }
 
-        [HttpGet, Route("update/status/{id}")]
-        public async Task<IActionResult> UpdateStatus(int? id)
-        {
-            var discount = _context.Discounts.Find(id);
-            if (discount == null)
-            {
-                return NotFound();
-            }
-            discount.Active = !discount.Active;
-            _context.Entry(discount).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
 
         // GET: ProductCategories/Create
         [HttpGet, Route("create")]

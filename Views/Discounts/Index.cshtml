@@ -94,7 +94,7 @@
                                             <span class="list-img">@item.DateTimeFinish.ToString("dd/MM/yyyy")</span>
                                         </td>
                                         <td class="text-center">
-                                            <a asp-action="UpdateStatus" asp-route-id="@item.Id"> <i class="@(@item.Active? "fa fa-check-circle" : "fa fa-ban red")">@Url.Content(@item.Active ? " Đang áp dụng" : " Hết hạn")</i></a>
+                                            <a > <i class="@(@item.Active? "fa fa-check-circle" : "fa fa-ban red")">@Url.Content(@item.Active ? " Đang áp dụng" : " Hết hạn")</i></a>
 
                                         </td>
                                         <td class="text-center">

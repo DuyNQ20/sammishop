@@ -73,5 +73,26 @@ namespace SmartPhone.Controllers
         {
             return _context.Products.Any(e => e.Id == id);
         }
+
+
+
+
+        // check ma giam gia con han su dung hay k?
+
+        [HttpGet("discount/check")]
+        public void UpdateStatus()
+        {
+            var discountList = _context.Discounts.ToList();
+            foreach (var discount in discountList)
+            {
+                if (discount != null)
+                {
+                    discount.Active = discount.DateTimeFinish < DateTime.Now.Date ? false : true;
+                    _context.Entry(discount).State = EntityState.Modified;
+                }
+            }
+            _context.SaveChangesAsync();
+
+        }
     }
 }

@@ -15,6 +15,8 @@ namespace SmartPhone
 {
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
+    using SmartPhone.Controllers;
+    using SmartPhone.Lib;
     using SmartPhone.Models;
 
     public class Startup
@@ -54,9 +56,7 @@ namespace SmartPhone
                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddSession();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-
-            
-           
+            services.AddSingleton<DiscountsController>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -82,6 +82,8 @@ namespace SmartPhone
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            Client.CheckDiscount();
         }
     }
 }

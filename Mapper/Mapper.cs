@@ -359,7 +359,7 @@ namespace SmartPhone.Mapper
             destination.UserId = source.UserId;
             destination.Quantity = source.Quantity;
             destination.ModifiedAt = now;
-            destination.Active = source.Active;
+            destination.Active = source.DateTimeFinish < DateTime.Now.Date ? false : true;
         }
 
         public static void SaveMap(this Discount destination, DiscountView source)
@@ -374,7 +374,7 @@ namespace SmartPhone.Mapper
             destination.UserId = source.UserId;
             destination.Quantity = source.Quantity;
             destination.ModifiedAt = now;
-            destination.Active = source.Active;
+            destination.Active = source.DateTimeFinish < DateTime.Now.Date ? false : true;
             destination.CreatedAt = now;
         }
 
