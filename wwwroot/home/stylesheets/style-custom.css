@@ -159,3 +159,8 @@ button.add-cart {
 .reviewed .status-product span.conhang {
     background-color: #f28b18;
 }
+
+.hethang {
+    background-color: #dedbdb !important;
+    cursor: no-drop;
+}
