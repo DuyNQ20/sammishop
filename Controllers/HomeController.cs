@@ -88,11 +88,10 @@ namespace SmartPhone.Controllers
                 if (discount != null)
                 {
                     discount.Active = discount.DateTimeFinish < DateTime.Now.Date ? false : true;
-                    _context.Entry(discount).State = EntityState.Modified;
+                    _context.Update(discount);
                 }
             }
             _context.SaveChangesAsync();
-
         }
     }
 }

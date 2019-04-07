@@ -34,7 +34,7 @@
                 <div class="flexslider">
                     <ul class="slides">
                         @{
-                            var listImage = Model.Files.Where(x => x.ProductId == Model.Id & x.thumbnail == false);
+                            var listImage = Model.Files.Where(x => x.ProductId == Model.Id).OrderByDescending(x=>x.thumbnail);
 
                             if (listImage != null)
                             {
@@ -42,7 +42,7 @@
                                 foreach (var image in listImage)
                                 {
                                     <li data-thumb="@Url.Content("~/" + image.Url + "/100/" + image.Name)">
-                                        <a href='#' id="@Url.Content("zoom"+dem++)" class='zoom'><img src="@Url.Content("~/" + image.Path)" alt='' width='400' height='300' /></a>
+                                        <a href='#' id="@Url.Content("zoom"+dem++)" class='zoom'><img src="@Url.Content("~/" + image.Url + "/1000/" + image.Name)" alt='' width='400' height='300' /></a>
                                         <span>NEW</span>
                                     </li>
                                 }
@@ -74,7 +74,7 @@
                                 </div>
                             </div>
                             <div class="status-product">
-                                Tình trạng <span>Còn hàng</span>
+                                Tình trạng: <span class="@Url.Content(Model.Inventory > 0? "conhang" : "")">@Url.Content(Model.Inventory > 0 ? "Còn "+Model.Inventory+" sản phẩm" : "Hết hàng")</span>
                             </div>
                         </div><!-- /.reviewed -->
                     </div><!-- /.header-detail -->

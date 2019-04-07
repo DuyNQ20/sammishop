@@ -204,6 +204,7 @@
                                 </ul>
                             </div>
                         </li>
+
                         <li>
                             <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-picture-o" aria-hidden="true"></i> Khách hàng</a>
                             <div class="collapsible-body left-sub-menu">
@@ -213,6 +214,22 @@
                                     </li>
                                     <li>
                                         <a href="sight-see-add.html">Add New Sight Seeing</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-h-square" aria-hidden="true"></i> Khuyến mãi</a>
+                            <div class="collapsible-body left-sub-menu">
+                                <ul>
+                                    <li>
+                                        @Html.ActionLink("Tất cả khuyến mãi", "index", "Discounts")
+                                    </li>
+                                    <li>
+                                        @Html.ActionLink("Khuyến mãi theo số tiền", "DiscountByMoney", "Discounts")
+                                    </li>
+                                    <li>
+                                        @Html.ActionLink("Khuyến mãi theo phần trăm", "DiscountByPercent", "Discounts")
                                     </li>
                                 </ul>
                             </div>

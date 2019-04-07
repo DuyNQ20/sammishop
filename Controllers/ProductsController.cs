@@ -33,7 +33,7 @@ namespace SmartPhone.Controllers
             var path = Path.GetFullPath(Path.Combine(_storageConfiguration.StorageDirectory));
             Directory.CreateDirectory(path);
 
-            int[] sizes = { 100, 200, 300, 400, 500, 600, 1024 };
+            int[] sizes = { 100, 1000 };
 
             foreach (var item in files)
             {
@@ -221,7 +221,7 @@ namespace SmartPhone.Controllers
         {
             var dataContext = _context.Discounts.ToList();
             var disounts = new List<Models.Discount>();
-
+            
             if (!String.IsNullOrEmpty(query))
             {
                 foreach (var item in dataContext)

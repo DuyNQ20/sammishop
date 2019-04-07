@@ -29,6 +29,18 @@ namespace SmartPhone.Controllers
             return View(await _context.Discounts.ToListAsync());
         }
 
+        [HttpGet("discount-by-money")]
+        public async Task<IActionResult> DiscountByMoney()
+        {
+            return View("Index",await _context.Discounts.Where(x=>x.DiscountCategoryId==1).ToListAsync());
+        }
+
+        [HttpGet("discount-by-percent")]
+        public async Task<IActionResult> DiscountByPercent()
+        {
+            return View("Index",await _context.Discounts.Where(x => x.DiscountCategoryId == 2).ToListAsync());
+        }
+
 
         // GET: ProductCategories/Create
         [HttpGet, Route("create")]

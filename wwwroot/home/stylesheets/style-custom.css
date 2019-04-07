@@ -154,3 +154,8 @@ h3.title {
 button.add-cart {
     background: none;
 }
+
+/*Chỉnh lại màu background sản phẩm còn trong kho*/
+.reviewed .status-product span.conhang {
+    background-color: #f28b18;
+}

@@ -95,26 +95,28 @@
                                     @Html.ListBox("DiscountProductId")
                                 </div>
                             </div>
-                            <div class="box-inn-sp col-lg-12 box-second-inn">
-                                <div class="inn-title fix">
-                                    <h4>Thời gian</h4>
-                                </div>
-                                <div class="input-field col s6 ">
-                                    <input data-toggle="datepicker-start" type="text" class="dateTimeStart" asp-for="DateTimeStart" value="@Model.DateTimeStart.ToString("dd/MM/yyyy")">
-                                    <label>Ngày bắt đầu</label>
-                                </div>
-                                <div class="input-field col s6 ">
-                                    <input data-toggle="datepicker-finish" type="text" class="dateTimeFinish" asp-for="DateTimeFinish" value="@Model.DateTimeFinish.ToString("dd/MM/yyyy")">
-                                    <label>Ngày kết thúc</label>
-                                </div>
-                            </div>
+                           
 
 
 
                         </div>
                         <div class="col s4">
 
-                            <div class="box-inn-sp col-lg-12 ">
+
+                            <div class="box-inn-sp col-lg-12">
+                                <div class="inn-title fix">
+                                    <h4>Thời gian</h4>
+                                </div>
+                                <div class="input-field col s12 ">
+                                    <input data-toggle="datepicker-start" type="text" class="dateTimeStart" asp-for="DateTimeStart" value="@Model.DateTimeStart.ToString("dd/MM/yyyy")">
+                                    <label>Ngày bắt đầu</label>
+                                </div>
+                                <div class="input-field col s12 ">
+                                    <input data-toggle="datepicker-finish" type="text" class="dateTimeFinish" asp-for="DateTimeFinish" value="@Model.DateTimeFinish.ToString("dd/MM/yyyy")">
+                                    <label>Ngày kết thúc</label>
+                                </div>
+                            </div>
+                            <div class="box-inn-sp col-lg-12  box-second-inn">
                                 <div class="inn-title fix">
                                     <h4>Giới hạn sử dụng</h4>
                                 </div>
@@ -123,17 +125,6 @@
                                     <label>Số lượng mã</label>
                                 </div>
 
-                            </div>
-                            <div class=" box-inn-sp col-lg-12 box-second-inn ">
-                                <div class="inn-title fix">
-                                    <h4>Trạng thái</h4>
-                                </div>
-                                <div class="tab-inn fix">
-                                    <p>
-                                        <input type="checkbox" class="filled-in" id="filled-in-box" asp-for="Active" />
-                                        <label for="filled-in-box">Kích hoạt</label>
-                                    </p>
-                                </div>
                             </div>
 
                         </div>
