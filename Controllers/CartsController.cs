@@ -20,22 +20,52 @@ namespace SmartPhone.Controllers
             _context = context;
         }
 
-        // GET: Carts
-        [HttpGet("checkout/cart")]
-        public async Task<IActionResult> Index()
+        public List<Cart> GetCarts()
         {
             var dataContext = new List<Cart>();
             if (HttpContext.Session.GetInt32("CustomerID") != null)
             {
-                dataContext = await _context.Carts.Include(c => c.Product).Include(c => c.User).Include(c => c.Product.Files).Include(c => c.Product.Supplier).Where(x => x.UserId == HttpContext.Session.GetInt32("CustomerID")).ToListAsync();
+                dataContext = _context.Carts.Include(c => c.Product).Include(c => c.User).Include(c => c.Product.Files).Include(c => c.Product.Supplier).Where(x => x.UserId == HttpContext.Session.GetInt32("CustomerID")).ToList();
             }
             else
             {
                 dataContext = HttpContext.Session.GetObject<List<Cart>>("Carts");
             }
 
+            return dataContext;
+        }
 
+        // GET: Carts
+        [HttpGet("checkout/cart")]
+        public async Task<IActionResult> Index()
+        {
+            var dataContext = GetCarts();
+            ViewData["Discount"] = HttpContext.Session.GetObject<Discount>("Discount");
             return View(dataContext);
+        }
+
+        // Kiểm tra mã giảm giá hợp lệ
+        [HttpGet("checkout/discount")]
+        public async Task<IActionResult> checkDiscount(string code)
+        {
+            var discount = await _context.Discounts.FirstOrDefaultAsync(x => x.Code == code & x.Quantity > 0 & x.Active == true);
+            if (discount != null)
+            {
+                var Carts = GetCarts();
+                foreach (var item in Carts)
+                {
+                    var checkDiscountProduct = _context.DiscountProducts.FirstOrDefault(x => x.DiscountId == discount.Id & x.ProductId == item.ProductId);
+                    var checkDiscountProductCategory = _context.DiscountProductCategories.FirstOrDefault(x => x.DiscountId == discount.Id & x.ProductCategoryId == item.Product.ProductCategoryId);
+                    if(checkDiscountProduct != null || checkDiscountProductCategory != null)
+                    {
+                        HttpContext.Session.SetObject("Discount", discount);
+                        break;
+                    }
+                
+                }
+
+            }
+            return RedirectToAction(nameof(Index));
         }
 
 
@@ -188,7 +218,6 @@ namespace SmartPhone.Controllers
 
             return RedirectToAction(nameof(Index));
         }
-
 
     }
 }

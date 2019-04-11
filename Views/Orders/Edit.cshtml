@@ -1,0 +1,66 @@
+﻿@model IEnumerable<SmartPhone.Models.Order>
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+
+<div class="sb2-2">
+    <div class="sb2-2-2">
+        <ul>
+            <li>
+                <a href="#"><i class="fa fa-home" aria-hidden="true"></i> Trang chủ</a>
+            </li>
+            <li class="active-bre">
+                <a asp-action="Index"> Đơn hàng</a>
+            </li>
+        </ul>
+    </div>
+    <div class="sb2-2-add-blog sb2-2-1">
+        <h2>Thông tin đơn hàng</h2>
+        <p></p>
+        <p></p>
+        <div class="tab-content">
+            <div id="home" class="tab-pane fade in active">
+                <div class="box-inn-sp">
+                    <div class="inn-title">
+                        <h4>Chi tiết hóa đơn</h4>
+                    </div>
+                    <div class="tab-inn">
+                        @{ decimal tempTotal = 0; decimal total = 0;}
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Sản phẩm</th>
+                                    <th class="text-right">Đơn giá</th>
+                                    <th class="text-right">Số lượng</th>
+                                    <th class="text-right">Tổng tạm</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    tempTotal = item.Product.SalePrice * item.Quantity;
+                                    total += tempTotal;
+                                    <tr>
+                                        <td>@item.Product.Name</td>
+                                        <td class="text-right">@item.Product.SalePrice.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR")) &#8363</td>
+                                        <td class="text-right">@item.Quantity</td>
+                                        <td class="text-right">@tempTotal.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR")) &#8363</td>
+                                    </tr>
+                                }
+
+                                <tr>
+                                    <td> </td>
+                                    <td class="text-right"> </td>
+                                    <td class="text-right">Tổng tạm tính</td>
+                                    <td class="text-right">@total.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR")) &#8363</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

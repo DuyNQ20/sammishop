@@ -114,7 +114,7 @@
                             </div><!-- /.quanlity-box -->
                             <div class="box-cart style2">
                                 <div class="btn-add-cart">
-                                    <button disabled class="add-cart" type="submit"> <a class="@Url.Content(Model.Inventory > 0? "" : "hethang")"><img src="~/home/images/icons/add-cart.png" alt="">Chọn mua</a></button>
+                                    <button @Url.Content(Model.Inventory > 0? "" : "disabled") class="add-cart" type="submit"> <a class="@Url.Content(Model.Inventory > 0? "" : "hethang")"><img src="~/home/images/icons/add-cart.png" alt="">Chọn mua</a></button>
                                 </div>
                                 <div class="compare-wishlist">
                                     <a href="compare.html" class="compare" title=""><img src="~/home/images/icons/compare.png" alt="">So sánh</a>
@@ -124,7 +124,7 @@
                             <div class="social-single">
                                 <span>SHARE</span>
                                 <ul class="social-list style2">
-                                    <li>
+                                    <li>    
                                         <a href="#" title="">
                                             <i class="fa fa-facebook" aria-hidden="true"></i>
                                         </a>

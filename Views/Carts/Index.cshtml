@@ -1,5 +1,4 @@
 ﻿@model IEnumerable<SmartPhone.Models.Cart>
-
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Layout/HomeLayout.cshtml";
@@ -18,12 +17,14 @@
                         </div>
                     </div>
                 </div>
+            </div>
         </section>
     }
     else
     {
         <section class="flat-shop-cart">
             @{ decimal total = 0;}
+            @{ Discount discount =  ViewData["Discount"] as Discount;}
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8">
@@ -101,9 +102,9 @@
                                 </tbody>
                             </table>
                             <div class="form-coupon">
-                                <form action="#" method="get" accept-charset="utf-8">
+                                <form asp-action="checkDiscount" asp-controller="Carts" method="get" accept-charset="utf-8">
                                     <div class="coupon-input">
-                                        <input type="text" name="coupon code" placeholder="Nhập ở đây">
+                                        <input type="text" name="code" placeholder="Nhập ở đây">
                                         <button type="submit">Mã khuyến mãi</button>
                                     </div>
                                 </form>
@@ -134,6 +135,19 @@
                                                 </div>
                                             </td><!-- /.btn-radio -->
                                         </tr>
+                                        @if (discount != null)
+                                        {
+                                            total -= discount.DiscountMoney;
+                                            <tr>
+                                                <td>Mã giảm giá</td>
+                                                <td class="btn-radio">
+                                                    <div>
+                                                        <label for="free-shipping">- @discount.DiscountMoney.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR")) &#8363</label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        }
+
                                         <tr>
                                             <td>Thành tiền</td>
                                             <td class="price-total">@total.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR")) &#8363</td>

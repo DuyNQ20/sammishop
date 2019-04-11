@@ -25,6 +25,8 @@
 
         public decimal Total { get; set; }
 
+        public decimal DiscountMoney { get; set; }
+
         public int OrderStatusId { get; set; }
         public OrderStatus orderStatus { get; set; }
     }

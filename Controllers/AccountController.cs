@@ -34,6 +34,7 @@ namespace SmartPhone.Controllers
             {
                 HttpContext.Session.SetString("Customer", auth.Name);
                 HttpContext.Session.SetInt32("CustomerID", auth.Id);
+                HttpContext.Session.Remove("Discount");
             }
             return RedirectToAction("Index", "Home");
         }
@@ -42,6 +43,7 @@ namespace SmartPhone.Controllers
         public async Task<IActionResult> HomeLogout()
         {
             HttpContext.Session.Remove("CustomerID");
+            HttpContext.Session.Remove("Discount");
             return RedirectToAction("Index", "Home");
         }
     }

@@ -196,3 +196,17 @@ $("#Product option:first-child").attr("selected", true);
 
 $("#ProductCategory option:first-child").attr("disabled", true);
 $("#ProductCategory option:first-child").attr("selected", true);
+
+//--------- Check xem họ đang chọn select Radio nào
+
+
+$("#test1").click(function () {
+    $("#checkRadio").val("true");
+});
+$("#test2").click(function () {
+    $("#checkRadio").val("false");
+});
+$("#test3").click(function () {
+    $("#checkRadio").val("false");
+});
+

@@ -75,23 +75,24 @@
                                             check = 3;
                                         }
                                     }
+                                    <input type="hidden" id="checkRadio" name="ApplyAll" value="@Url.Content(""+Model.ApplyAll)"/>
                                     <p>
                                         <input class="with-gap" name="group1" type="radio" checked id="test1" />
                                         <label for="test1">Tất cả đơn hàng</label>
                                     </p>
                                     <p>
-                                        <input class="with-gap" name="group1" type="radio" @(check == 2 ? "checked" : "") id="test2" />
+                                        <input class="with-gap" name="group1" type="radio" @((check == 2 & Model.ApplyAll == false) ? "checked" : "") id="test2" />
                                         <label for="test2">Danh mục sản phẩm</label>
                                     </p>
                                     <p>
-                                        <input class="with-gap" name="group1" type="radio" @(check == 3 ? "checked" : "") id="test3" />
+                                        <input class="with-gap" name="group1" type="radio" @((check == 3 & Model.ApplyAll == false) ? "checked" : "") id="test3" />
                                         <label for="test3">Sản phẩm</label>
                                     </p>
                                 </div>
-                                <div class="input-field col s12 multi-select-productcate @(check==2?"show":"hidden")">
+                                <div class="input-field col s12 multi-select-productcate @((check == 2 & Model.ApplyAll == false)?"show":"hidden")">
                                     @Html.ListBox("DiscountProductCategoryId")
                                 </div>
-                                <div class="input-field col s12 multi-select-product @(check==3?"show":"hidden")">
+                                <div class="input-field col s12 multi-select-product @((check == 3 & Model.ApplyAll == false)?"show":"hidden")">
                                     @Html.ListBox("DiscountProductId")
                                 </div>
                             </div>

@@ -37,7 +37,7 @@ namespace SmartPhone.Controllers
                 dataContext = HttpContext.Session.GetObject<List<Cart>>("Carts");
             }
 
-            ViewBag.Code = "#" + random.Next(10000000, 999999999);
+            ViewBag.Code = random.Next(10000000, 999999999);
             return View(dataContext);
         }
 
@@ -47,7 +47,7 @@ namespace SmartPhone.Controllers
         {
             if (_context.Orders.FirstOrDefault(x => x.Code == code) != null)
             {
-                ViewData["Code"] = code;
+                ViewData["Code"] = "#" + code;
                 return View();
             }
                
@@ -90,11 +90,22 @@ namespace SmartPhone.Controllers
             {
                 _context.Carts.RemoveRange(cartList);
             }
+
+            // Cập nhật lại số lượng tồn trong kho
+            foreach(var item in dataContext)
+            {
+                var product = _context.Products.Find(item.ProductId);
+                if(product != null)
+                {
+                    product.Inventory -= item.Quantity;
+                }
+                _context.Update(product);
+            }            
             await _context.SaveChangesAsync();
 
             
             
-            ViewData["Code"] = code;
+            ViewData["Code"] = "#" + code;
             return View();
         }
     }

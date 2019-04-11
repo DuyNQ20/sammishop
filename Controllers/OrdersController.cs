@@ -70,6 +70,31 @@ namespace SmartPhone.Controllers
             }
             return orders.Count == 0 ? View("Index", dataContext) : View("Index", orders);
         }
+        
+        [HttpGet, Route("edit/{id}")]
+        public async Task<IActionResult> Edit(string id)
+        {
+            if (id == null || id == "")
+            {
+                return NotFound();
+            }
+
+            var orders = _context.Orders.Include(x => x.Product).Where(x => x.Code == id).ToList();
+            if (orders == null)
+            {
+                return NotFound();
+            }
+            return View(orders);
+        }
+        
+        [HttpPost, Route("edit/{id}")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id)
+        {
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
 
         [HttpGet, Route("delete/{id}")]
         public async Task<IActionResult> Delete(int? id)

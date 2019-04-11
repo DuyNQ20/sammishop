@@ -356,6 +356,7 @@ namespace SmartPhone.Mapper
             destination.DiscountCategoryId = source.DiscountCategoryId;
             destination.DateTimeStart = source.DateTimeStart;
             destination.DateTimeFinish = source.DateTimeFinish;
+            destination.ApplyAll = source.ApplyAll;
             destination.UserId = source.UserId;
             destination.Quantity = source.Quantity;
             destination.ModifiedAt = now;
@@ -371,6 +372,7 @@ namespace SmartPhone.Mapper
             destination.DiscountCategoryId = source.DiscountCategoryId;
             destination.DateTimeStart = source.DateTimeStart;
             destination.DateTimeFinish = source.DateTimeFinish;
+            destination.ApplyAll = source.ApplyAll;
             destination.UserId = source.UserId;
             destination.Quantity = source.Quantity;
             destination.ModifiedAt = now;

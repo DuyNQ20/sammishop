@@ -22,6 +22,8 @@ namespace SmartPhone.Models
         public int DiscountCategoryId { get; set; }
         public DiscountCategory DiscountCategory { get; set; }
 
+        public bool ApplyAll { get; set; }
+
         public int? UserId { get; set; }
         public User User { get; set; }
 

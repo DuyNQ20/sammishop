@@ -79,7 +79,7 @@
                                         </td>
 
                                         <td class="text-center">
-                                            @item.Code
+                                            #@item.Code
                                         </td>
                                         <td>
                                             <span class="list-img">@item.CreatedAt.ToString("dd/MM/yyyy")</span>
@@ -98,7 +98,7 @@
 
                                         </td>
                                         <td class="text-center">
-                                            <a asp-action="Edit" asp-route-id="@item.Id"><i class="fa fa-pencil-square-o" aria-hidden="true"> Sửa</i></a>
+                                            <a asp-action="Edit" asp-route-id="@item.Code"><i class="fa fa-pencil-square-o" aria-hidden="true"> Sửa</i></a>
                                         </td>
                                         <td class="text-center">
 

@@ -19,6 +19,8 @@ namespace SmartPhone.ViewModels
 
         public DateTime DateTimeFinish { get; set; }
 
+        public bool ApplyAll { get; set; }
+
         public int DiscountCategoryId { get; set; }
 
         public int? UserId { get; set; }
