@@ -85,6 +85,7 @@
                 <div class="cart-totals style2">
                     <h3>Thông tin thanh toán</h3>
                     @{ decimal total = 0;}
+                    @{ Discount discount = ViewData["Discount"] as Discount;}
                     <table class="product">
                         <thead>
                             <tr>
@@ -118,6 +119,18 @@
                                     <label for="free-shipping">Miễn phí</label>
                                 </td><!-- /.btn-radio -->
                             </tr>
+                            @if (discount != null)
+                            {
+                                total -= discount.DiscountMoney;
+                                <tr>
+                                    <td>Mã giảm giá</td>
+                                    <td class="btn-radio">
+                                        <div>
+                                            <label for="free-shipping">- @discount.DiscountMoney.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR")) &#8363</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
                             <tr>
                                 <td>Tổng thanh toán</td>
                                 <td class="price-total">@total.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR")) &#8363</td>

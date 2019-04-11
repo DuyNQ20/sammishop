@@ -36,7 +36,7 @@ namespace SmartPhone.Controllers
             {
                 dataContext = HttpContext.Session.GetObject<List<Cart>>("Carts");
             }
-
+            ViewData["Discount"] = HttpContext.Session.GetObject<Discount>("Discount");
             ViewBag.Code = random.Next(10000000, 999999999);
             return View(dataContext);
         }
