@@ -16,7 +16,7 @@ namespace SmartPhone.Controllers
     public class DiscountsController : Controller
     {
         private readonly DataContext _context;
-
+        public static string DiscountNotify = "";
         public DiscountsController(DataContext context)
         {
             _context = context;

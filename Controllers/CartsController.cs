@@ -41,6 +41,8 @@ namespace SmartPhone.Controllers
         {
             var dataContext = GetCarts();
             ViewData["Discount"] = HttpContext.Session.GetObject<Discount>("Discount");
+            ViewData["DiscountNotify"] = DiscountsController.DiscountNotify;
+            
             return View(dataContext);
         }
 
@@ -48,23 +50,45 @@ namespace SmartPhone.Controllers
         [HttpGet("checkout/discount")]
         public async Task<IActionResult> checkDiscount(string code)
         {
+            DiscountsController.DiscountNotify = "";
+            HttpContext.Session.Remove("Discount");
+            HttpContext.Session.Remove("DiscountNotify");
             var discount = await _context.Discounts.FirstOrDefaultAsync(x => x.Code == code & x.Quantity > 0 & x.Active == true);
+            bool check = true;
             if (discount != null)
             {
-                var Carts = GetCarts();
-                foreach (var item in Carts)
+                if (!discount.ApplyAll)
                 {
-                    var checkDiscountProduct = _context.DiscountProducts.FirstOrDefault(x => x.DiscountId == discount.Id & x.ProductId == item.ProductId);
-                    var checkDiscountProductCategory = _context.DiscountProductCategories.FirstOrDefault(x => x.DiscountId == discount.Id & x.ProductCategoryId == item.Product.ProductCategoryId);
-                    if(checkDiscountProduct != null || checkDiscountProductCategory != null)
+                    var Carts = GetCarts();
+                    foreach (var item in Carts)
                     {
-                        HttpContext.Session.SetObject("Discount", discount);
-                        break;
+                        var checkDiscountProduct = _context.DiscountProducts.FirstOrDefault(x => x.DiscountId == discount.Id & x.ProductId == item.ProductId);
+                        var checkDiscountProductCategory = _context.DiscountProductCategories.FirstOrDefault(x => x.DiscountId == discount.Id & x.ProductCategoryId == item.Product.ProductCategoryId);
+                        if (checkDiscountProduct == null && checkDiscountProductCategory == null) // Nếu 1 trong số sp trong giỏ hàng k thuộc ngành giảm giá
+                        {
+                            check = false; // không cho áp dụng
+                            break;
+                        }
+
                     }
-                
                 }
+               
 
             }
+            else
+            {
+                check = false;
+            }
+
+            if (check)
+            {
+                HttpContext.Session.SetObject("Discount", discount);
+            }
+            else
+            {
+                DiscountsController.DiscountNotify = "Mã giảm giá không hợp lệ";
+            }
+
             return RedirectToAction(nameof(Index));
         }
 

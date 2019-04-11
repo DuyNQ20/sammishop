@@ -24,7 +24,7 @@
     {
         <section class="flat-shop-cart">
             @{ decimal total = 0;}
-            @{ Discount discount =  ViewData["Discount"] as Discount;}
+            @{  Discount discount = ViewData["Discount"] as Discount;}
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8">
@@ -107,6 +107,10 @@
                                         <input type="text" name="code" placeholder="Nhập ở đây">
                                         <button type="submit">Mã khuyến mãi</button>
                                     </div>
+                                    <div class="discount-notify">
+                                        <label>@ViewData["DiscountNotify"]</label>
+                                    </div>
+
                                 </form>
                             </div><!-- /.form-coupon -->
                         </div><!-- /.table-cart -->
