@@ -173,3 +173,7 @@ button.add-cart {
     margin-top: 10px;
     color: red;
 }
+
+.text-bold{
+    font-weight: bold;
+}

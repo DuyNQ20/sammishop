@@ -11,7 +11,7 @@
                 <a href="#"><i class="fa fa-home" aria-hidden="true"></i> Trang chủ</a>
             </li>
             <li class="active-bre">
-                <a asp-action="Index"> Đơn hàng</a>
+                <a asp-action="Index"> Mã khuyến mãi</a>
             </li>
         </ul>
     </div>
@@ -21,43 +21,139 @@
         <p></p>
         <div class="tab-content">
             <div id="home" class="tab-pane fade in active">
-                <div class="box-inn-sp">
-                    <div class="inn-title">
-                        <h4>Chi tiết hóa đơn</h4>
-                    </div>
-                    <div class="tab-inn">
-                        @{ decimal tempTotal = 0; decimal total = 0;}
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Sản phẩm</th>
-                                    <th class="text-right">Đơn giá</th>
-                                    <th class="text-right">Số lượng</th>
-                                    <th class="text-right">Tổng tạm</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var item in Model)
-                                {
-                                    tempTotal = item.Product.SalePrice * item.Quantity;
-                                    total += tempTotal;
-                                    <tr>
-                                        <td>@item.Product.Name</td>
-                                        <td class="text-right">@item.Product.SalePrice.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR")) &#8363</td>
-                                        <td class="text-right">@item.Quantity</td>
-                                        <td class="text-right">@tempTotal.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR")) &#8363</td>
-                                    </tr>
-                                }
+                <div class="sb2-2-3">
+                    @*<div class="inn-title">
+                            <h4>Listing Information</h4>
+                            <p>Airtport Hotels The Right Way To Start A Short Break Holiday</p>
+                        </div>*@
+                    <form asp-action="Edit" enctype="multipart/form-data">
+                        @*Bên trái*@
+                        <div class="col s8" style="padding: 0 0.75rem">
+                            <div class="box-inn-sp col-lg-12">
+                                <div class="inn-title fix">
+                                    <h4>Chi tiết hóa đơn</h4>
+                                </div>
 
-                                <tr>
-                                    <td> </td>
-                                    <td class="text-right"> </td>
-                                    <td class="text-right">Tổng tạm tính</td>
-                                    <td class="text-right">@total.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR")) &#8363</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                                <div class="input-field col s12 ">
+                                    @{ decimal tempTotal = 0; decimal total = 0;}
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Sản phẩm</th>
+                                                <th class="text-right">Đơn giá</th>
+                                                <th class="text-right">Số lượng</th>
+                                                <th class="text-right">Tổng tạm</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model)
+                                            {
+                                                tempTotal = item.Product.SalePrice * item.Quantity;
+                                                total += tempTotal;
+                                                <tr>
+                                                    <td>@item.Product.Name</td>
+                                                    <td class="text-right">@item.Product.SalePrice.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR")) &#8363</td>
+                                                    <td class="text-right">@item.Quantity</td>
+                                                    <td class="text-right">@tempTotal.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR")) &#8363</td>
+                                                </tr>
+                                            }
+
+                                            <tr>
+                                                <td> </td>
+                                                <td class="text-right"> </td>
+                                                <td class="text-right">Tổng tạm tính</td>
+                                                <td class="text-right">@total.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR")) &#8363</td>
+                                            </tr>
+                                            @foreach (var item in Model)
+                                            {
+                                                total -= item.DiscountMoney;
+                                                <tr>
+                                                    <td> </td>
+                                                    <td class="text-right"> </td>
+                                                    <td class="text-right">Giảm giá</td>
+                                                    <td class="text-right"> @Url.Content(item.DiscountMoney==0?"0":"- " + item.DiscountMoney.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR"))) &#8363</td>
+                                                </tr>
+                                                <tr>
+                                                    <td> </td>
+                                                    <td class="text-right"> </td>
+                                                    <td class="text-right">Phí vận chuyển</td>
+                                                    <td class="text-right">0 &#8363</td>
+                                                </tr>
+                                                <tr>
+                                                    <td> </td>
+                                                    <td class="text-right"> </td>
+                                                    <td class="text-right text-bold">Tổng trị giá đơn hàng</td>
+                                                    <td class="text-right text-bold">@total.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR")) &#8363</td>
+                                                </tr>
+                                                break;
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                          
+                        </div>
+                        <div class="col s4">
+                            @foreach (var item in Model)
+                            {
+                                <div class="box-inn-sp col-lg-12">
+                                    <div class="inn-title fix">
+                                        <h4>Tài khoản</h4>
+                                    </div>
+                                    <div class="input-field col s12 ">
+                                        <input type="text" class="validate" asp-for="@item.User.Email">
+                                        <label>Liên hệ</label>
+                                    </div>
+                                </div>
+
+                                <div class="box-inn-sp col-lg-12  box-second-inn">
+                                    <div class="inn-title fix">
+                                        <h4>Địa chỉ giao hàng</h4>
+                                    </div>
+                                    <div class="input-field col s12 ">
+                                        <input type="text" class="validate" asp-for="@item.Receiver">
+                                        <label>Họ tên</label>
+                                    </div>
+                                    <div class="input-field col s12 ">
+                                        <input type="text" class="validate" asp-for="@item.Phone">
+                                        <label>Số điện thoại</label>
+                                    </div>
+                                    <div class="input-field col s12 ">
+                                        <input type="text" class="validate" asp-for="@item.DeliveryAddress">
+                                        <label>Địa chỉ</label>
+                                    </div>
+                                    <div class="input-field col s12 ">
+                                        <input type="text" class="validate">
+                                        <label>Nội dung ghi chú</label>
+                                    </div>
+                                </div>
+
+
+                                break;
+                            }
+                            
+                        </div>
+                            
+                            <div class="col s8">
+                                <div class="row">
+                                    <div class="input-field col s8">
+                                        <button type="submit" class="btn btn-primary btn-sm green">
+                                            <i class="fa fa-truck"></i> Giao hàng
+                                        </button>
+                                        <a asp-action="Index">
+                                            <button type="button" class="btn btn-primary btn-sm red">
+                                                <i class="fa fa-times-circle"></i> Thoát
+                                            </button>
+                                        </a>
+
+                                        @*<input type="submit" class="waves-effect waves-light btn-large " value="Submit">*@
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="clear: both"></div>
+                        </form>
                 </div>
             </div>
         </div>

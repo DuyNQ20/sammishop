@@ -169,7 +169,7 @@ namespace SmartPhone.Controllers
         [HttpGet, Route("search")]
         public async Task<IActionResult> Search([FromQuery]string query)
         {
-            var dataContext = _context.Discounts.Where(x=>x.Descriptions == query).ToList();
+            var dataContext = _context.Discounts.ToList();
             var discount = new List<Discount>();
 
             if (!String.IsNullOrEmpty(query))

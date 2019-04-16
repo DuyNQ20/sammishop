@@ -257,6 +257,7 @@ namespace SmartPhone.Mapper
             destination.SalePrice = source.SalePrice;
             destination.Quantity = source.Quantity;
             destination.Total = source.Total;
+            destination.DiscountMoney = source.DiscountMoney;
             destination.UserId = source.UserId;
             destination.ProductId = source.ProductId;
             destination.OrderStatusId = source.OrderStatusId;
@@ -274,6 +275,7 @@ namespace SmartPhone.Mapper
             destination.SalePrice = source.SalePrice;
             destination.Quantity = source.Quantity;
             destination.Total = source.Total;
+            destination.DiscountMoney = source.DiscountMoney;
             destination.UserId = source.UserId;
             destination.ProductId = source.ProductId;
             destination.PaymentMethodId = source.PaymentMethodId;

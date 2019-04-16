@@ -79,7 +79,7 @@ namespace SmartPhone.Controllers
                 return NotFound();
             }
 
-            var orders = _context.Orders.Include(x => x.Product).Where(x => x.Code == id).ToList();
+            var orders = _context.Orders.Include(x => x.Product).Include(x=>x.User).Where(x => x.Code == id).ToList();
             if (orders == null)
             {
                 return NotFound();

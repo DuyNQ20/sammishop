@@ -16,6 +16,8 @@
 
         public decimal Total { get; set; }
 
+        public decimal DiscountMoney { get; set; }
+
         public int? UserId { get; set; }
 
         public int ProductId { get; set; }

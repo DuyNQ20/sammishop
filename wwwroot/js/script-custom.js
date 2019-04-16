@@ -191,11 +191,11 @@ $("#test3").next().click(function () {
 
 //------- Disable select index = 0
 
-$("#Product option:first-child").attr("disabled", true);
-$("#Product option:first-child").attr("selected", true);
+$("#DiscountProductId option:first-child").attr("disabled", true);
+$("#DiscountProductId option:first-child").attr("selected", true);
 
-$("#ProductCategory option:first-child").attr("disabled", true);
-$("#ProductCategory option:first-child").attr("selected", true);
+$("#DiscountProductCategoryId option:first-child").attr("disabled", true);
+$("#DiscountProductCategoryId option:first-child").attr("selected", true);
 
 //--------- Check xem họ đang chọn select Radio nào
 

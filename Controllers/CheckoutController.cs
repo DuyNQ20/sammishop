@@ -45,14 +45,16 @@ namespace SmartPhone.Controllers
         [HttpPost("order")]
         public async Task<IActionResult> Order(OrderView orderView, string code)
         {
+
             if (_context.Orders.FirstOrDefault(x => x.Code == code) != null)
             {
                 ViewData["Code"] = "#" + code;
                 return View();
             }
-               
+
 
             var dataContext = new List<Cart>();
+
             if (HttpContext.Session.GetInt32("CustomerID") != null)
             {
                 dataContext = await _context.Carts.Include(c => c.Product).Include(c => c.User).Include(c => c.Product.Files).Include(c => c.Product.Supplier).Where(x => x.UserId == HttpContext.Session.GetInt32("CustomerID")).ToListAsync();
@@ -70,6 +72,7 @@ namespace SmartPhone.Controllers
                 total += item.Product.SalePrice * item.Quantity;
             }
 
+            var discount = HttpContext.Session.GetObject<Discount>("Discount"); // lấy mã giảm giá nếu có
             foreach (var item in dataContext)
             {
                 Order order = new Order();
@@ -78,7 +81,8 @@ namespace SmartPhone.Controllers
                 orderView.Quantity = item.Quantity;
                 orderView.SalePrice = item.Product.SalePrice;
                 orderView.Code = code;
-                orderView.Total = total;
+                orderView.DiscountMoney = discount == null ? 0 : discount.DiscountMoney;
+                orderView.Total = total - (discount == null ? 0 : discount.DiscountMoney);
 
                 order.SaveMap(orderView);
                 _context.Orders.Add(order);
@@ -86,25 +90,30 @@ namespace SmartPhone.Controllers
 
             // Xóa cart
             var cartList = _context.Carts.Where(x => x.UserId == HttpContext.Session.GetInt32("CustomerID")).ToList();
-            if(cartList != null)
+            if (cartList != null)
             {
                 _context.Carts.RemoveRange(cartList);
             }
 
             // Cập nhật lại số lượng tồn trong kho
-            foreach(var item in dataContext)
+            foreach (var item in dataContext)
             {
                 var product = _context.Products.Find(item.ProductId);
-                if(product != null)
+                if (product != null)
                 {
                     product.Inventory -= item.Quantity;
                 }
                 _context.Update(product);
-            }            
-            await _context.SaveChangesAsync();
+            }
 
-            
-            
+            // Giảm số lượng mã giảm giá
+            if (discount != null)
+            {
+                discount.Quantity--;
+                _context.Update(discount);
+            }
+
+            await _context.SaveChangesAsync();
             ViewData["Code"] = "#" + code;
             return View();
         }

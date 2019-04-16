@@ -67,15 +67,17 @@
 .drop-down-meta {
     top: 99px;
 }
+
 .timkiem.col-md-1 {
     transform: translateY(73%);
     padding-right: 0;
 }
+
     .timkiem.col-md-1 label {
         font-size: 15px;
     }
 
-       
+
 button.search-submit { /*Chỉnh button search*/
     position: absolute;
     top: 7px;
@@ -84,20 +86,21 @@ button.search-submit { /*Chỉnh button search*/
     background: none;
     border: none;
 }
- 
+
 
 
 /*bỏ background btn thêm sản phẩm vào giỏ hàng*/
-button.add-cart{
+button.add-cart {
     background: none;
 }
 
 
 
 /*Thêm đơn vị cho mã khuyến mại vd: % hoặc đ */
-.unit{
+.unit {
     display: none;
 }
+
 span.add-value span {
     position: absolute;
     bottom: 28px;
@@ -105,15 +108,35 @@ span.add-value span {
     font-weight: normal;
     font-size: 17px;
 }
-.money-unit{
+
+.money-unit {
     font-size: 22px;
 }
 
-.inn-title h4{
+.inn-title h4 {
     font-weight: 500;
 }
+
 .fix {
     padding-left: 10px;
     padding-bottom: 15px;
     margin-bottom: 10px;
 }
+
+.text-bold {
+    font-weight: bold;
+}
+
+/*bỏ border chỗ vận chuyển*/
+.transit {
+    margin-bottom: 0px;
+    border-bottom: none;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+    .transit h4 {
+        line-height: 18px;
+        padding-top: 10px;
+        box-sizing: border-box;
+    }
