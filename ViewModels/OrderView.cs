@@ -10,6 +10,8 @@
 
         public string Receiver { get; set; }
 
+        public string Note { get; set; } // ghi chu khach hang
+
         public int Quantity { get; set; }
 
         public decimal SalePrice { get; set; }

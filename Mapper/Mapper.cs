@@ -254,6 +254,7 @@ namespace SmartPhone.Mapper
             destination.DeliveryAddress = source.DeliveryAddress;
             destination.Phone = source.Phone;
             destination.Receiver = source.Receiver;
+            destination.Note = source.Note;
             destination.SalePrice = source.SalePrice;
             destination.Quantity = source.Quantity;
             destination.Total = source.Total;
@@ -272,6 +273,7 @@ namespace SmartPhone.Mapper
             destination.DeliveryAddress = source.DeliveryAddress;
             destination.Phone = source.Phone;
             destination.Receiver = source.Receiver;
+            destination.Note = source.Note;
             destination.SalePrice = source.SalePrice;
             destination.Quantity = source.Quantity;
             destination.Total = source.Total;
@@ -287,7 +289,6 @@ namespace SmartPhone.Mapper
 
 
         // User
-        // Order
         public static void Map(this User destination, UserView source)
         {
             if (source == null)

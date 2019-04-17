@@ -1,0 +1,176 @@
+﻿@model IEnumerable<SmartPhone.Models.Order>
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+
+<div class="sb2-2">
+    <div class="sb2-2-2">
+        <ul>
+            <li>
+                <a href="#"><i class="fa fa-home" aria-hidden="true"></i> Trang chủ</a>
+            </li>
+            <li class="active-bre">
+                <a asp-action="Index"> In hóa đơn</a>
+            </li>
+        </ul>
+    </div>
+    <div class="sb2-2-add-blog sb2-2-1">
+        <h2>In hóa đơn</h2>
+        <p></p>
+        <p></p>
+        <div class="tab-content">
+            <div id="home" class="tab-pane fade in active">
+                <div class="sb2-2-3">
+
+                    <form asp-action="Print" enctype="multipart/form-data">
+
+                        @*Bên trái*@
+                        <div class="col s10 offset-l1" style="padding: 0 0.75rem">
+                            <div class="box-inn-sp col-lg-12 bill">
+                                <div class="input-field col s10 offset-l1 bill-logo">
+                                    <div class="col s3">
+                                        <img src="~/images/Atom_editor_logo_black.svg.png" />
+                                    </div>
+                                    <div class="col s9">
+                                        <br />
+                                        <p>Hỗ trợ: Support@smartphone.com</p>
+                                        <p>Hotline đặt hàng: 1800 6776 (8h - 21h kể cả Thứ 7, CN)</p>
+                                        <p>Hotline: 1900 6776 (1000đ/phút, 8h - 21h kể cả Thứ 7, CN)</p>
+                                        <p>Hoặc truy cập: http://smarphone.vn</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="input-field col s10 offset-l1">
+                                    <br />
+                                    <br />
+                                    @foreach (var item in Model)
+                                    {
+                                        <input type="hidden" name="@item.Id" />
+                                        <p>Mã đơn hàng: <b>#@item.Code</b></p>
+                                        <p>Ngày đặt: @item.CreatedAt.ToString("dd/MM/yyyy")</p>
+                                        <p>Phương thức thanh toán: @item.PaymentMethod.Name</p>
+                                        <p>Phương thức vận chuyển: Giao hàng tiêu chuẩn - Miễn phí</p>
+                                        break;
+                                    }
+
+                                </div>
+
+                                <div class="input-field col s10 center offset-l1">
+                                    <table class="bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Thông tin thanh toán</th>
+                                                <th>Địa chỉ giao hàng</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                @foreach (var item in Model)
+                                                {
+                                                    <td>
+                                                        <b><p>@item.User.Name</p></b>
+                                                        <p>@item.User.Email</p>
+                                                        <p>@item.User.Phone</p>
+                                                    </td>
+
+                                                    <td>
+                                                        <b><p>@item.Receiver</p></b>
+                                                        <p>@item.DeliveryAddress</p>
+                                                        <p>@item.Phone</p>
+                                                    </td>
+                                                    break;
+                                                }
+
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="input-field col s10 center offset-l1">
+                                    @{ decimal tempTotal = 0; decimal total = 0;}
+                                    <table class="bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Sản phẩm</th>
+                                                <th class="text-right">Đơn giá</th>
+                                                <th class="text-right">Số lượng</th>
+                                                <th class="text-right">Tổng tạm</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model)
+                                            {
+                                                tempTotal = item.Product.SalePrice * item.Quantity;
+                                                total += tempTotal;
+                                                <tr>
+                                                    <td>@item.Product.Name</td>
+                                                    <td class="text-right">@item.Product.SalePrice.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR")) &#8363</td>
+                                                    <td class="text-right">@item.Quantity</td>
+                                                    <td class="text-right">@tempTotal.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR")) &#8363</td>
+                                                </tr>
+                                            }
+
+                                            <tr>
+                                                <td> </td>
+                                                <td class="text-right"> </td>
+                                                <td class="text-right">Tổng tạm tính</td>
+                                                <td class="text-right">@total.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR")) &#8363</td>
+                                            </tr>
+                                            @foreach (var item in Model)
+                                            {
+                                                total -= item.DiscountMoney;
+                                                <tr>
+                                                    <td> </td>
+                                                    <td class="text-right"> </td>
+                                                    <td class="text-right">Giảm giá</td>
+                                                    <td class="text-right"> @Url.Content(item.DiscountMoney == 0 ? "0" : "- " + item.DiscountMoney.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR"))) &#8363</td>
+                                                </tr>
+                                                <tr>
+                                                    <td> </td>
+                                                    <td class="text-right"> </td>
+                                                    <td class="text-right">Phí vận chuyển</td>
+                                                    <td class="text-right">0 &#8363</td>
+                                                </tr>
+                                                <tr>
+                                                    <td> </td>
+                                                    <td class="text-right"> </td>
+                                                    <td class="text-right text-bold">Tổng trị giá đơn hàng</td>
+                                                    <td class="text-right text-bold">@total.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR")) &#8363</td>
+                                                </tr>
+                                                break;
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col s8">
+                            <div class="row">
+                                <div class="input-field col s8">
+                                    <button type="submit" class="btn btn-primary btn-sm green" formtarget="_blank" asp-route-id="abc">
+                                        <i class="fa fa-print"></i> In hóa đơn
+                                    </button>
+                                    <a asp-action="Index">
+                                        <button type="button" class="btn btn-primary btn-sm red">
+                                            <i class="fa fa-times-circle"></i> Thoát
+                                        </button>
+                                    </a>
+
+                                    @*<input type="submit" class="waves-effect waves-light btn-large " value="Submit">*@
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="clear: both"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

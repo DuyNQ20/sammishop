@@ -140,3 +140,35 @@ span.add-value span {
         padding-top: 10px;
         box-sizing: border-box;
     }
+
+/*Thêm border phần bill*/
+.bill table, .bill td, .bill th {
+    border: 1px solid #d0d0d0;
+}
+
+.bill {
+    padding-top: 50px;
+    padding-bottom: 70px;
+    width: 100%;
+}
+
+.bill-logo .col.s3 {
+    height: 123px;
+    padding: 0;
+    float: left;
+    padding-top: 18px;
+}
+
+.clear-both {
+    clear: both;
+}
+
+.bill-logo .col.s9 {
+    padding: 0;
+    float: left;
+    padding-left: 7%;
+}
+
+.bill-logo .col.s3 img {
+    height: 100%;
+}

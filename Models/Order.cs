@@ -13,6 +13,8 @@
         public int? UserId { get; set; }
         public User User { get; set; }
 
+        public string Note { get; set; } // ghi chu khach hang
+
         public int ProductId { get; set; }
         public Product Product { get; set; }
 

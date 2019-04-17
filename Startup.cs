@@ -15,6 +15,7 @@ namespace SmartPhone
 {
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
+    using Rotativa.AspNetCore;
     using SmartPhone.Controllers;
     using SmartPhone.Lib;
     using SmartPhone.Models;
@@ -47,10 +48,11 @@ namespace SmartPhone
             //    options.Cookie.HttpOnly = true;
             //});
 
+            
             services.Configure<StorageConfiguration>(Configuration.GetSection("StorageConfiguration"));
             services
                .AddDbContext<DataContext>(options =>
-                   
+
                options.UseMySql(Configuration.GetConnectionString("DefaultConnection")))
                    .AddMvc()
                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
@@ -78,10 +80,13 @@ namespace SmartPhone
             app.UseSession();
             app.UseMvc(routes =>
             {
-                routes.MapRoute(
+               
+                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            RotativaConfiguration.Setup(env);
 
             Client.CheckDiscount();
         }

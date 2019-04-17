@@ -96,7 +96,7 @@
                         </div>
                         <div class="col s4">
                             @foreach (var item in Model)
-                            {
+                                    {
                                 <div class="box-inn-sp col-lg-12">
                                     <div class="inn-title fix">
                                         <h4>Tài khoản</h4>
@@ -112,19 +112,19 @@
                                         <h4>Địa chỉ giao hàng</h4>
                                     </div>
                                     <div class="input-field col s12 ">
-                                        <input type="text" class="validate" asp-for="@item.Receiver">
+                                        <input type="text" class="validate" asp-for="@item.Receiver" name="Receiver">
                                         <label>Họ tên</label>
                                     </div>
                                     <div class="input-field col s12 ">
-                                        <input type="text" class="validate" asp-for="@item.Phone">
+                                        <input type="text" class="validate" asp-for="@item.Phone" name="Phone">
                                         <label>Số điện thoại</label>
                                     </div>
                                     <div class="input-field col s12 ">
-                                        <input type="text" class="validate" asp-for="@item.DeliveryAddress">
+                                        <input type="text" class="validate" asp-for="@item.DeliveryAddress" name="DeliveryAddress">
                                         <label>Địa chỉ</label>
                                     </div>
                                     <div class="input-field col s12 ">
-                                        <input type="text" class="validate">
+                                        <input type="text" class="validate" asp-for="@item.Note" name="Note">
                                         <label>Nội dung ghi chú</label>
                                     </div>
                                 </div>

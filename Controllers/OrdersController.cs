@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Rotativa.AspNetCore;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -89,12 +90,62 @@ namespace SmartPhone.Controllers
         
         [HttpPost, Route("edit/{id}")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id)
+        public async Task<IActionResult> Edit(string id, string Receiver, string Phone, string DeliveryAddress, string Note)
         {
-
+            if (id == null || id == "")
+            {
+                return NotFound();
+            }
+            // Cập nhật thông tin giao hàng nếu khách hàng có yêu cầu
+            var orders = _context.Orders.Where(x => x.Code == id).ToList();
+            foreach(var item in orders)
+            {
+                item.Receiver = Receiver;
+                item.Phone = Phone;
+                item.DeliveryAddress = DeliveryAddress;
+                item.Note = Note;
+                _context.Update(item);
+            }
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Bill", new { idd = id });
         }
+
+
+        [HttpGet, Route("bill/{idd}")]
+        public async Task<IActionResult> Bill(string idd)
+        {
+            string id = idd;
+            if (id == null || id == "")
+            {
+                return NotFound();
+            }
+
+            var orders = _context.Orders.Include(x => x.Product).Include(x => x.User).Include(x=>x.PaymentMethod).Where(x => x.Code == id).ToList();
+            if (orders == null)
+            {
+                return NotFound();
+            }
+            return View(orders);
+        }
+
+        [HttpPost, Route("bill/{id}")]
+        public async Task<IActionResult> Print(string id)
+        {
+            if (id == null || id == "")
+            {
+                return NotFound();
+            }
+
+            var orders = _context.Orders.Include(x => x.Product).Include(x => x.User).Include(x => x.PaymentMethod).Where(x => x.Code == id).ToList();
+            if (orders == null)
+            {
+                return NotFound();
+            }
+            return new ViewAsPdf(orders);
+        }
+
+
+
 
         [HttpGet, Route("delete/{id}")]
         public async Task<IActionResult> Delete(int? id)
