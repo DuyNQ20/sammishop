@@ -46,8 +46,38 @@ namespace SmartPhone.Controllers
         [HttpGet("order")]
         public async Task<IActionResult> Index()
         {
-            var dataContext = _context.Orders.Include(x=>x.PaymentMethod).OrderByDescending(x => x.CreatedAt).ToList();
+            var dataContext = _context.Orders.Include(x=>x.PaymentMethod).Include(x => x.orderStatus).OrderByDescending(x => x.CreatedAt).ToList();
+            ViewBag.OrderStatus = "";
+
             return View(ShowOrderList(dataContext));
+        }
+
+        [HttpGet("ordercancel")]
+        public async Task<IActionResult> OrderCancel(string id)
+        {
+            var orders = _context.Orders.Where(x => x.Code == id).ToList();
+            foreach (var item in orders)
+            {
+                item.OrderStatusId = 4; // id hủy đơn hàng
+                _context.Update(item);
+            }
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet("done/{id}")]
+        public async Task<IActionResult> Done(string id)
+        {
+            var orders = _context.Orders.Where(x => x.Code == id).ToList();
+            foreach (var item in orders)
+            {
+                item.OrderStatusId = 3; // id hủy đơn hàng
+                _context.Update(item);
+            }
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
         }
 
 
@@ -80,7 +110,7 @@ namespace SmartPhone.Controllers
                 return NotFound();
             }
 
-            var orders = _context.Orders.Include(x => x.Product).Include(x=>x.User).Where(x => x.Code == id).ToList();
+            var orders = _context.Orders.Include(x => x.Product).Include(x=>x.orderStatus).Include(x=>x.User).Where(x => x.Code == id).ToList();
             if (orders == null)
             {
                 return NotFound();
@@ -104,6 +134,7 @@ namespace SmartPhone.Controllers
                 item.Phone = Phone;
                 item.DeliveryAddress = DeliveryAddress;
                 item.Note = Note;
+                item.OrderStatusId = 2;
                 _context.Update(item);
             }
             await _context.SaveChangesAsync();
@@ -121,6 +152,13 @@ namespace SmartPhone.Controllers
             }
 
             var orders = _context.Orders.Include(x => x.Product).Include(x => x.User).Include(x=>x.PaymentMethod).Where(x => x.Code == id).ToList();
+            // thay đổi lại trạng thái đơn hàng
+            foreach(var item in orders)
+            {
+                item.OrderStatusId = 2; // Sang trạng thái đang giao hàng
+                _context.Update(item);
+            }
+            _context.SaveChanges();
             if (orders == null)
             {
                 return NotFound();

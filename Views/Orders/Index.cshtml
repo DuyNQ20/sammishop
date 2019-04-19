@@ -94,7 +94,17 @@
                                             <span class="list-img"> @item.Total.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR")) VNĐ </span>
                                         </td>
                                         <td class="text-center">
-                                            <a asp-action="UpdateStatus" asp-route-id="@item.Id"><i class="fa fa-shield"> Đang chờ</i></a>
+                                            @{ 
+                                                var cls = "";
+
+                                                // hiển thị icon ra view
+                                                if (item.OrderStatusId == 1) { cls = "fa fa-shield"; }
+                                                else if (item.OrderStatusId == 2){ cls = "fa fa-truck"; }
+                                                else if (item.OrderStatusId == 3) { cls = "fa fa-check"; }
+                                                else { cls = "fa fa-times-circle red"; }
+
+                                            }
+                                            <a asp-action="UpdateStatus" asp-route-id="@item.Id"><i class= "@cls"> @item.orderStatus.Name</i></a>
 
                                         </td>
                                         <td class="text-center">

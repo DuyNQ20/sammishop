@@ -92,7 +92,14 @@
                                 </div>
 
                             </div>
-                          
+                            <div class="box-inn-sp col-lg-12 box-second-inn">
+                                <div class="inn-title fix transit col-lg-6">
+                                    <h4>Trạng thái đơn hàng</h4>
+                                </div>
+                                <div class="inn-title fix transit col-lg-6 table-desi">
+                                    <h4><a><i class="fa fa-shield right"> @Model.ElementAt(0).orderStatus.Name</i></a></h4>
+                                </div>
+                            </div>
                         </div>
                         <div class="col s4">
                             @foreach (var item in Model)
@@ -138,18 +145,35 @@
                             <div class="col s8">
                                 <div class="row">
                                     <div class="input-field col s8">
-                                        <button type="submit" class="btn btn-primary btn-sm green">
-                                            <i class="fa fa-truck"></i> Giao hàng
-                                        </button>
+                                        @if (@Model.ElementAt(0).OrderStatusId == 2) // Nếu đang ở trạng thái giao hàng thì sẽ thay thế nút đó thành giao hàng thành công
+                                        {
+                                            <a  asp-action="Done" asp-route-id="@Model.ElementAt(0).Code" >
+                                                <button type="button" class="btn btn-primary btn-sm green" onclick="return confirm('Xác nhận giao hàng thành công?');">
+                                                    <i class="fa fa-truck"></i> Giao hàng thành công
+                                                </button>
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <button type="submit" class="btn btn-primary btn-sm green" onclick="return confirm('Xác nhận giao hàng?');">
+                                                <i class="fa fa-truck"></i> Giao hàng
+                                            </button>
+                                        }
                                         <a asp-action="Index">
                                             <button type="button" class="btn btn-primary btn-sm red">
                                                 <i class="fa fa-times-circle"></i> Thoát
                                             </button>
                                         </a>
-
-                                        @*<input type="submit" class="waves-effect waves-light btn-large " value="Submit">*@
+                                    </div>
+                                    <div class="input-field ">
+                                        <a class="right" asp-action="OrderCancel" asp-route-id="@Model.ElementAt(0).Code" onclick="return confirm('Xác nhận hủy đơn hàng?');">
+                                            <button type="button" class="btn btn-primary btn-sm red right">
+                                                <i class="fa fa-minus-octagon"></i> Hủy đơn hàng
+                                            </button>
+                                        </a>
                                     </div>
                                 </div>
+                               
                             </div>
 
                             <div style="clear: both"></div>
