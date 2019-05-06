@@ -4,50 +4,86 @@
     Layout = "~/Views/Layout/HomeLayout.cshtml";
 }
 
-<div class="container">
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th class="text-center">STT</th>
-                <th class="text-center">Mã ĐH</th>
-                <th>Ngày đặt</th>
-                <th>Sản phẩm</th>
-                <th>Tổng tiền</th>
-                <th class="text-center">Trạng thái</th>
-            </tr>
-        </thead>
-        <tbody>
-            @{ var i = 1;}
-            @foreach (var item in Model)
-            {
-                    <tr>
-                        <td class="text-center">
-                            <span class="list-img">@(i++)</span>
-                        </td>
 
-                        <td class="text-center">
-                            <a asp-action="MyOrderDetail" asp-route-id="@item.Code" style="color: blue !important">#@item.Code</a> 
-                        </td>
-                        <td>
-                            <span class="list-img">@item.CreatedAt.ToString("dd/MM/yyyy")</span>
-                        </td>
-                        <td>
-                            <span class="list-img">@Html.DisplayFor(modelItem => item.Product.Name)</span>
-                        </td>
-                        <td>
-                            <span class="list-img"> @item.Total.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR")) VNĐ </span>
-                        </td>
-                        <td class="text-center">
-                            <a asp-action="UpdateStatus" asp-route-id="@item.Id"> @item.orderStatus.Name</a>
+@if (Model.Count() < 1)
+{
+    <section class="flat-tracking background">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="order-tracking">
+                        <div class="title">
+                            <h3>Bạn chưa có đơn hàng nào !</h3>
+                            Quay lại trang chủ để tiếp tục mua hàng <h3><button><a asp-action="Index" asp-controller="Home">Trang chủ</a></button></h3>
 
-                        </td>
-                    </tr>
-                
-            }
+                        </div><!-- /.title -->
+
+                    </div><!-- /.order-tracking -->
+                </div><!-- /.col-md-12 -->
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </section><!-- /.flat-tracking -->
+}
+else
+{
+
+    <section class="flat-tracking background">
+        <div class="container my-order ">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="text-left">Đơn hàng của tôi</h3>
+                    <div class="order-tracking">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">STT</th>
+                                    <th>Mã ĐH</th>
+                                    <th>Ngày đặt</th>
+                                    <th>Sản phẩm</th>
+                                    <th>Tổng tiền</th>
+                                    <th class="text-center">Trạng thái</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{ var i = 1;}
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td class="text-center">
+                                            <span class="list-img">@(i++)</span>
+                                        </td>
+
+                                        <td class="text-left">
+                                            <a asp-action="MyOrderDetail" asp-route-id="@item.Code" style="color: blue !important">#@item.Code</a>
+                                        </td>
+                                        <td class="text-left">
+                                            <span class="list-img">@item.CreatedAt.ToString("dd/MM/yyyy")</span>
+                                        </td>
+                                        <td class="text-left">
+                                            <span class="list-img">@Html.DisplayFor(modelItem => item.Product.Name)</span>
+                                        </td>
+                                        <td class="text-left">
+                                            <span class="list-img"> @item.Total.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR")) VNĐ </span>
+                                        </td>
+                                        <td class="text-center">
+                                            <a asp-action="UpdateStatus" asp-route-id="@item.Id"> @item.orderStatus.Name</a>
+
+                                        </td>
+                                    </tr>
+
+                                }
 
 
-        </tbody>
-    </table>
-</div>
+                            </tbody>
+                        </table>
+                    </div><!-- /.col-md-12 -->
+                </div><!-- /.row -->
+        </div><!-- /.container -->
+    </section><!-- /.flat-tracking -->
+
+
+}
+
+
 
 

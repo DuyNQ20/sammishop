@@ -177,3 +177,15 @@ button.add-cart {
 .text-bold{
     font-weight: bold;
 }
+
+
+ /*chỉnh lại kích thước đơn hàng của tôi*/
+.my-order .order-tracking {
+    padding-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.my-order h3.text-left {
+    padding-bottom: 15px;
+}

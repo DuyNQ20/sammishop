@@ -4,72 +4,78 @@
     Layout = "~/Views/Layout/HomeLayout.cshtml";
 }
 
-<div class="container">
+<section class="flat-tracking background">
+    <div class="container  my-order">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="order-tracking">
+                    @{ decimal tempTotal = 0; decimal total = 0;}
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th class="text-left">Sản phẩm</th>
+                                <th class="text-right">Đơn giá</th>
+                                <th class="text-right">Số lượng</th>
+                                <th class="text-right">Tổng tạm</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                tempTotal = item.Product.SalePrice * item.Quantity;
+                                total += tempTotal;
+                                <tr>
+                                    <td class="text-left">@item.Product.Name</td>
+                                    <td class="text-right">@item.Product.SalePrice.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR")) &#8363</td>
+                                    <td class="text-right">@item.Quantity</td>
+                                    <td class="text-right">@tempTotal.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR")) &#8363</td>
+                                </tr>
+                            }
 
+                            <tr>
+                                <td> </td>
+                                <td class="text-right"> </td>
+                                <td class="text-right">Tổng tạm tính</td>
+                                <td class="text-right">@total.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR")) &#8363</td>
+                            </tr>
+                            @foreach (var item in Model)
+                            {
+                                total -= item.DiscountMoney;
+                                <tr>
+                                    <td> </td>
+                                    <td class="text-right"> </td>
+                                    <td class="text-right">Giảm giá</td>
+                                    <td class="text-right"> @Url.Content(item.DiscountMoney == 0 ? "0" : "- " + item.DiscountMoney.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR"))) &#8363</td>
+                                </tr>
+                                <tr>
+                                    <td> </td>
+                                    <td class="text-right"> </td>
+                                    <td class="text-right">Phí vận chuyển</td>
+                                    <td class="text-right">0 &#8363</td>
+                                </tr>
+                                <tr>
+                                    <td> </td>
+                                    <td class="text-right"> </td>
+                                    <td class="text-right text-bold">Tổng trị giá đơn hàng</td>
+                                    <td class="text-right text-bold">@total.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR")) &#8363</td>
+                                </tr>
+                                break;
+                            }
+                        </tbody>
+                    </table>
+                    @if (@Model.ElementAt(0).OrderStatusId == 1)
+                    {
+                        <div class="input-field">
+                            <a asp-action="OrderCancel" asp-route-id="@Model.ElementAt(0).Code" onclick="return confirm('Xác nhận hủy đơn hàng?');">
+                                <button type="button" class="btn btn-danger btn-sm">
+                                    <i class="fa fa-minus-octagon"></i> Hủy đơn hàng
+                                </button>
+                            </a>
+                        </div>
+                    }
 
-    @{ decimal tempTotal = 0; decimal total = 0;}
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th>Sản phẩm</th>
-                <th class="text-right">Đơn giá</th>
-                <th class="text-right">Số lượng</th>
-                <th class="text-right">Tổng tạm</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                tempTotal = item.Product.SalePrice * item.Quantity;
-                total += tempTotal;
-                <tr>
-                    <td>@item.Product.Name</td>
-                    <td class="text-right">@item.Product.SalePrice.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR")) &#8363</td>
-                    <td class="text-right">@item.Quantity</td>
-                    <td class="text-right">@tempTotal.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR")) &#8363</td>
-                </tr>
-            }
-
-            <tr>
-                <td> </td>
-                <td class="text-right"> </td>
-                <td class="text-right">Tổng tạm tính</td>
-                <td class="text-right">@total.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR")) &#8363</td>
-            </tr>
-            @foreach (var item in Model)
-            {
-                total -= item.DiscountMoney;
-                <tr>
-                    <td> </td>
-                    <td class="text-right"> </td>
-                    <td class="text-right">Giảm giá</td>
-                    <td class="text-right"> @Url.Content(item.DiscountMoney == 0 ? "0" : "- " + item.DiscountMoney.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR"))) &#8363</td>
-                </tr>
-                <tr>
-                    <td> </td>
-                    <td class="text-right"> </td>
-                    <td class="text-right">Phí vận chuyển</td>
-                    <td class="text-right">0 &#8363</td>
-                </tr>
-                <tr>
-                    <td> </td>
-                    <td class="text-right"> </td>
-                    <td class="text-right text-bold">Tổng trị giá đơn hàng</td>
-                    <td class="text-right text-bold">@total.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR")) &#8363</td>
-                </tr>
-                break;
-            }
-        </tbody>
-    </table>
-    @if (@Model.ElementAt(0).OrderStatusId == 1)
-    {
-        <div class="input-field ">
-            <a class="right" asp-action="OrderCancel" asp-route-id="@Model.ElementAt(0).Code" onclick="return confirm('Xác nhận hủy đơn hàng?');">
-                <button type="button" class="btn btn-primary btn-sm red right">
-                    <i class="fa fa-minus-octagon"></i> Hủy đơn hàng
-                </button>
-            </a>
-        </div>
-    }
-
-</div>
+                </div><!-- /.order-tracking -->
+            </div><!-- /.col-md-12 -->
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</section><!-- /.flat-tracking -->
