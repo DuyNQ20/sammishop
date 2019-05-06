@@ -456,6 +456,41 @@ namespace SmartPhone.Mapper
             destination.CreatedAt = now;
         }
 
+        // History
+        public static void Map(this History destination, HistoryView source)
+        {
+            if (source == null)
+            {
+                throw new ArgumentNullException(nameof(source));
+            }
+
+            if (destination == null)
+            {
+                throw new ArgumentNullException(nameof(destination));
+            }
+
+            var now = DateTime.UtcNow;
+
+            if (destination.CreatedAt == DateTimeOffset.MinValue)
+            {
+                destination.CreatedAt = now;
+            }
+
+            destination.ProductId = source.ProductId;
+            destination.UserId = source.UserId;
+            destination.ModifiedAt = now;
+            destination.Active = source.Active;
+        }
+
+        public static void SaveMap(this History destination, HistoryView source)
+        {
+            var now = DateTime.UtcNow;
+            destination.ProductId = source.ProductId;
+            destination.UserId = source.UserId;
+            destination.ModifiedAt = now;
+            destination.Active = source.Active;
+            destination.CreatedAt = now;
+        }
 
     }
 }

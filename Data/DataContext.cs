@@ -40,6 +40,7 @@ namespace SmartPhone.Data
             modelBuilder.Entity<Discount>().ToTable("Discount");
             modelBuilder.Entity<DiscountProductCategory>().ToTable("DiscountProductCategory");
             modelBuilder.Entity<DiscountProduct>().ToTable("DiscountProduct");
+            modelBuilder.Entity<History>().ToTable("History");
 
 
             modelBuilder.Entity<Supplier>().HasData(
@@ -210,7 +211,10 @@ namespace SmartPhone.Data
                  CreatedBy = "Quang Duy",
                  ModifiedAt = DateTime.Now,
                  ModifiedBy = "Quang Duy"
-             },
+             }
+            
+          );
+            modelBuilder.Entity<Color>().HasData(
              new Color
              {
                  Id = 2,
@@ -221,6 +225,7 @@ namespace SmartPhone.Data
                  ModifiedAt = DateTime.Now,
                  ModifiedBy = "Quang Duy"
              }
+
           );
 
             modelBuilder.Entity<Product>().HasData(
@@ -554,6 +559,7 @@ namespace SmartPhone.Data
         public DbSet<Discount> Discounts { get; set; }
         public DbSet<DiscountProductCategory> DiscountProductCategories { get; set; }
         public DbSet<DiscountProduct> DiscountProducts { get; set; }
+        public DbSet<History> Histories { get; set; }
 
 
     }

@@ -80,7 +80,7 @@
                                             <a title="">Chào @HttpContextAccessor.HttpContext.Session.GetString("Customer")<i class="fa fa-angle-down" aria-hidden="true"></i></a>
                                             <ul class="unstyled">
                                                 <li>
-                                                    <a href="~/home/wishlist.html" title="">Đơn hàng của tôi</a>
+                                                    <a asp-action="MyOrder" title="">Đơn hàng của tôi</a>
                                                 </li>
                                                 <li>
                                                     <a href="~/home/shop-cart.html" title="">Thông báo của tôi</a>
@@ -280,55 +280,73 @@
                                                 <img src="~/home/images/icons/menu/01.png" alt="">
                                             </span>
                                             <span class="menu-title">
-                                                Laptops & Mac
+                                                Laptop - Thiết bị IT
                                             </span>
                                         </a>
                                         <div class="drop-menu">
                                             <div class="one-third">
                                                 <div class="cat-title">
-                                                    Laptop And Mac
+                                                    Laptop chính hãng
                                                 </div>
                                                 <ul>
                                                     <li>
-                                                        <a href="~/home/#" title="">Networking & Internet Devices</a>
+                                                        <a href="~/home/#" title="">Maccbook</a>
                                                     </li>
                                                     <li>
-                                                        <a href="~/home/#" title="">Laptops, Desktops & Monitors</a>
+                                                        <a href="~/home/#" title="">Dell</a>
                                                     </li>
                                                     <li>
-                                                        <a href="~/home/#" title="">Hard Drives & Memory Cards</a>
+                                                        <a href="~/home/#" title="">Asus</a>
                                                     </li>
                                                     <li>
-                                                        <a href="~/home/#" title="">Computer Accessories</a>
+                                                        <a href="~/home/#" title="">HP</a>
                                                     </li>
                                                     <li>
-                                                        <a href="~/home/#" title="">Software</a>
+                                                        <a href="~/home/#" title="">Lenovo</a>
                                                     </li>
                                                 </ul>
                                                 <div class="show">
-                                                    <a href="~/home/#" title="">Shop All</a>
+                                                    <a href="~/home/#" title="">Xem thêm</a>
                                                 </div>
                                             </div>
                                             <div class="one-third">
                                                 <div class="cat-title">
-                                                    Audio & Video
+                                                    Linh kiện máy tính
                                                 </div>
                                                 <ul>
                                                     <li>
-                                                        <a href="~/home/#" title="">Headphones & Speakers</a>
+                                                        <a href="~/home/#" title="">Tai nghe</a>
                                                     </li>
                                                     <li>
-                                                        <a href="~/home/#" title="">Home Entertainment Systems</a>
+                                                        <a href="~/home/#" title="">Chuột máy tính</a>
                                                     </li>
                                                     <li>
-                                                        <a href="~/home/#" title="">MP3 & Media Players</a>
+                                                        <a href="~/home/#" title="">Ổ cứng di động</a>
                                                     </li>
                                                     <li>
-                                                        <a href="~/home/#" title="">Software</a>
+                                                        <a href="~/home/#" title="">Ổ cứng HDD</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="~/home/#" title="">Ổ cứng SSD</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="~/home/#" title="">Bo mạch máy chủ - Mainboard</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="~/home/#" title="">Card màn hình - VGA</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="~/home/#" title="">CPU - Bộ xử lý</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="~/home/#" title="">Case - Nguồn máy tính - Tản nhiệt</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="~/home/#" title="">Ram máy tính</a>
                                                     </li>
                                                 </ul>
                                                 <div class="show">
-                                                    <a href="~/home/#" title="">Shop All</a>
+                                                    <a href="~/home/#" title="">Xem thêm</a>
                                                 </div>
                                             </div>
                                             <div class="one-third">
@@ -339,7 +357,7 @@
                                                                 Headphones
                                                             </div>
                                                             <div class="more-link">
-                                                                <a href="~/home/#" title="">Shop Now <img src="~/home/images/icons/right-2.png" alt=""></a>
+                                                                <a href="~/home/#" title="">Đến cửa hàng <img src="~/home/images/icons/right-2.png" alt=""></a>
                                                             </div>
                                                         </div>
                                                         <div class="banner-img">
@@ -353,7 +371,7 @@
                                                                 TV & Audio
                                                             </div>
                                                             <div class="more-link">
-                                                                <a href="~/home/#" title="">Shop Now <img src="~/home/images/icons/right-2.png" alt=""></a>
+                                                                <a href="~/home/#" title="">Đến cửa hàng <img src="~/home/images/icons/right-2.png" alt=""></a>
                                                             </div>
                                                         </div>
                                                         <div class="banner-img">
@@ -364,10 +382,10 @@
                                                     <li>
                                                         <div class="banner-text">
                                                             <div class="banner-title">
-                                                                Computers
+                                                                Laptop
                                                             </div>
                                                             <div class="more-link">
-                                                                <a href="~/home/#" title="">Shop Now <img src="~/home/images/icons/right-2.png" alt=""></a>
+                                                                <a href="~/home/#" title="">Đến cửa hàng <img src="~/home/images/icons/right-2.png" alt=""></a>
                                                             </div>
                                                         </div>
                                                         <div class="banner-img">
@@ -385,58 +403,64 @@
                                                 <img src="~/home/images/icons/menu/02.png" alt="">
                                             </span>
                                             <span class="menu-title">
-                                                Mobile & Tablet
+                                                Điện thoại - Tablet
                                             </span>
                                         </a>
                                         <div class="drop-menu">
                                             <div class="one-third">
                                                 <div class="cat-title">
-                                                    Laptop And Computer
+                                                    Smartphone Chính Hãng
                                                 </div>
                                                 <ul>
                                                     <li>
-                                                        <a href="~/home/#" title="">Networking & Internet Devices</a>
+                                                        <a href="~/home/#" title="">Apple</a>
                                                     </li>
                                                     <li>
-                                                        <a href="~/home/#" title="">Laptops, Desktops & Monitors</a>
+                                                        <a href="~/home/#" title="">Samsung</a>
                                                     </li>
                                                     <li>
-                                                        <a href="~/home/#" title="">Hard Drives & Memory Cards</a>
+                                                        <a href="~/home/#" title="">Oppo</a>
                                                     </li>
                                                     <li>
-                                                        <a href="~/home/#" title="">Printers & Ink</a>
+                                                        <a href="~/home/#" title="">Huawei</a>
                                                     </li>
                                                     <li>
-                                                        <a href="~/home/#" title="">Networking & Internet Devices</a>
+                                                        <a href="~/home/#" title="">Nokia</a>
                                                     </li>
                                                     <li>
-                                                        <a href="~/home/#" title="">Computer Accessories</a>
+                                                        <a href="~/home/#" title="">Xiaomi</a>
                                                     </li>
                                                     <li>
-                                                        <a href="~/home/#" title="">Software</a>
+                                                        <a href="~/home/#" title="">Asus</a>
                                                     </li>
                                                 </ul>
                                                 <div class="show">
-                                                    <a href="~/home/#" title="">Shop All</a>
+                                                    <a href="~/home/#" title="">Xem thêm</a>
                                                 </div>
                                             </div>
                                             <div class="one-third">
                                                 <div class="cat-title">
-                                                    Audio & Video
+                                                    Máy Tính Bảng
                                                 </div>
                                                 <ul>
                                                     <li>
-                                                        <a href="~/home/#" title="">Headphones & Speakers</a>
+                                                        <a href="~/home/#" title="">Máy đọc sách</a>
                                                     </li>
                                                     <li>
-                                                        <a href="~/home/#" title="">Home Entertainment Systems</a>
+                                                        <a href="~/home/#" title="">Điện thoại phổ thông</a>
                                                     </li>
                                                     <li>
-                                                        <a href="~/home/#" title="">MP3 & Media Players</a>
+                                                        <a href="~/home/#" title="">Phụ kiện điện thoại</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="~/home/#" title="">Smartphone selfie</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="~/home/#" title="">Smartphone 2 sim 2 sóng</a>
                                                     </li>
                                                 </ul>
                                                 <div class="show">
-                                                    <a href="~/home/#" title="">Shop All</a>
+                                                    <a href="~/home/#" title="">Xem thêm</a>
                                                 </div>
                                             </div>
                                             <div class="one-third">
@@ -447,7 +471,7 @@
                                                                 Headphones
                                                             </div>
                                                             <div class="more-link">
-                                                                <a href="~/home/#" title="">Shop Now <img src="~/home/images/icons/right-2.png" alt=""></a>
+                                                                <a href="~/home/#" title="">Xem thêm <img src="~/home/images/icons/right-2.png" alt=""></a>
                                                             </div>
                                                         </div>
                                                         <div class="banner-img">
@@ -461,7 +485,7 @@
                                                                 TV & Audio
                                                             </div>
                                                             <div class="more-link">
-                                                                <a href="~/home/#" title="">Shop Now <img src="~/home/images/icons/right-2.png" alt=""></a>
+                                                                <a href="~/home/#" title="">Xem thêm <img src="~/home/images/icons/right-2.png" alt=""></a>
                                                             </div>
                                                         </div>
                                                         <div class="banner-img">
@@ -475,7 +499,7 @@
                                                                 Computers
                                                             </div>
                                                             <div class="more-link">
-                                                                <a href="~/home/#" title="">Shop Now <img src="~/home/images/icons/right-2.png" alt=""></a>
+                                                                <a href="~/home/#" title="">Xem thêm <img src="~/home/images/icons/right-2.png" alt=""></a>
                                                             </div>
                                                         </div>
                                                         <div class="banner-img">
@@ -493,52 +517,52 @@
                                                 <img src="~/home/images/icons/menu/03.png" alt="">
                                             </span>
                                             <span class="menu-title">
-                                                Home Devices
+                                                Phụ kiện - Thiêt bị số
                                             </span>
                                         </a>
                                         <div class="drop-menu">
                                             <div class="one-third">
                                                 <div class="cat-title">
-                                                    Home Devices
+                                                    Thiết Bị Âm Thanh
                                                 </div>
                                                 <ul>
                                                     <li>
-                                                        <a href="~/home/#" title="">Internet Devices</a>
+                                                        <a href="~/home/#" title="">Tai nghe nhét tai</a>
                                                     </li>
                                                     <li>
-                                                        <a href="~/home/#" title="">Desktops & Monitors</a>
+                                                        <a href="~/home/#" title="">Tai nghe chụp tai</a>
                                                     </li>
                                                     <li>
-                                                        <a href="~/home/#" title="">Hard Drives & Memory Cards</a>
+                                                        <a href="~/home/#" title="">Tai nghe Bluetooth đàm thoại</a>
                                                     </li>
                                                     <li>
-                                                        <a href="~/home/#" title="">Networking</a>
+                                                        <a href="~/home/#" title="">Tai nghe nhạc Bluetooth</a>
                                                     </li>
                                                     <li>
-                                                        <a href="~/home/#" title="">Software</a>
+                                                        <a href="~/home/#" title="">Tai nghe Bluetooth Thể Thao</a>
                                                     </li>
                                                 </ul>
                                                 <div class="show">
-                                                    <a href="~/home/#" title="">Shop All</a>
+                                                    <a href="~/home/#" title="">Xem thêm</a>
                                                 </div>
                                             </div>
                                             <div class="one-third">
                                                 <div class="cat-title">
-                                                    Audio
+                                                    Phụ kiện điện thoại
                                                 </div>
                                                 <ul>
                                                     <li>
-                                                        <a href="~/home/#" title="">Home Entertainment Systems</a>
+                                                        <a href="~/home/#" title="">Pin sạc dự phòng</a>
                                                     </li>
                                                     <li>
-                                                        <a href="~/home/#" title="">MP3 & Media Players</a>
+                                                        <a href="~/home/#" title="">Dây cáp sạc</a>
                                                     </li>
                                                     <li>
-                                                        <a href="~/home/#" title="">Software</a>
+                                                        <a href="~/home/#" title="">Đế sạc không dây</a>
                                                     </li>
                                                 </ul>
                                                 <div class="show">
-                                                    <a href="~/home/#" title="">Shop All</a>
+                                                    <a href="~/home/#" title="">Xem thêm</a>
                                                 </div>
                                             </div>
                                             <div class="one-third">
@@ -549,7 +573,7 @@
                                                                 Headphones
                                                             </div>
                                                             <div class="more-link">
-                                                                <a href="~/home/#" title="">Shop Now <img src="~/home/images/icons/right-2.png" alt=""></a>
+                                                                <a href="~/home/#" title="">Xem thêm <img src="~/home/images/icons/right-2.png" alt=""></a>
                                                             </div>
                                                         </div>
                                                         <div class="banner-img">
@@ -563,7 +587,7 @@
                                                                 TV & Audio
                                                             </div>
                                                             <div class="more-link">
-                                                                <a href="~/home/#" title="">Shop Now <img src="~/home/images/icons/right-2.png" alt=""></a>
+                                                                <a href="~/home/#" title="">Xem thêm <img src="~/home/images/icons/right-2.png" alt=""></a>
                                                             </div>
                                                         </div>
                                                         <div class="banner-img">
@@ -577,7 +601,7 @@
                                                                 Computers
                                                             </div>
                                                             <div class="more-link">
-                                                                <a href="~/home/#" title="">Shop Now <img src="~/home/images/icons/right-2.png" alt=""></a>
+                                                                <a href="~/home/#" title="">Xem thêm <img src="~/home/images/icons/right-2.png" alt=""></a>
                                                             </div>
                                                         </div>
                                                         <div class="banner-img">
@@ -595,131 +619,20 @@
                                                 <img src="~/home/images/icons/menu/04.png" alt="">
                                             </span>
                                             <span class="menu-title">
-                                                Software
+                                                Phần mềm
                                             </span>
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="~/home/#" title="">
-                                            <span class="menu-img">
-                                                <img src="~/home/images/icons/menu/05.png" alt="">
-                                            </span>
-                                            <span class="menu-title">
-                                                TV & Audio
-                                            </span>
-                                        </a>
-                                    </li>
+                                   
                                     <li>
                                         <a href="~/home/#" title="">
                                             <span class="menu-img">
                                                 <img src="~/home/images/icons/menu/06.png" alt="">
                                             </span>
                                             <span class="menu-title">
-                                                Sports & Fitness
+                                                Thể thao
                                             </span>
                                         </a>
-                                    </li>
-                                    <li>
-                                        <a href="~/home/#" title="" class="dropdown">
-                                            <span class="menu-img">
-                                                <img src="~/home/images/icons/menu/07.png" alt="">
-                                            </span>
-                                            <span class="menu-title">
-                                                Games & Toys
-                                            </span>
-                                        </a>
-                                        <div class="drop-menu">
-                                            <div class="one-third">
-                                                <div class="cat-title">
-                                                    Games & Toys
-                                                </div>
-                                                <ul>
-                                                    <li>
-                                                        <a href="~/home/#" title="">Internet Devices</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="~/home/#" title="">Desktops & Monitors</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="~/home/#" title="">Hard Drives & Memory Cards</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="~/home/#" title="">Networking</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="~/home/#" title="">Software</a>
-                                                    </li>
-                                                </ul>
-                                                <div class="show">
-                                                    <a href="~/home/#" title="">Shop All</a>
-                                                </div>
-                                            </div>
-                                            <div class="one-third">
-                                                <div class="cat-title">
-                                                    Audio
-                                                </div>
-                                                <ul>
-                                                    <li>
-                                                        <a href="~/home/#" title="">Home Entertainment Systems</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="~/home/#" title="">MP3 & Media Players</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="~/home/#" title="">Software</a>
-                                                    </li>
-                                                </ul>
-                                                <div class="show">
-                                                    <a href="~/home/#" title="">Shop All</a>
-                                                </div>
-                                            </div>
-                                            <div class="one-third">
-                                                <ul class="banner">
-                                                    <li>
-                                                        <div class="banner-text">
-                                                            <div class="banner-title">
-                                                                Headphones
-                                                            </div>
-                                                            <div class="more-link">
-                                                                <a href="~/home/#" title="">Shop Now <img src="~/home/images/icons/right-2.png" alt=""></a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="banner-img">
-                                                            <img src="~/home/images/banner_boxes/menu-01.png" alt="">
-                                                        </div>
-                                                        <div class="clearfix"></div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="banner-text">
-                                                            <div class="banner-title">
-                                                                TV & Audio
-                                                            </div>
-                                                            <div class="more-link">
-                                                                <a href="~/home/#" title="">Shop Now <img src="~/home/images/icons/right-2.png" alt=""></a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="banner-img">
-                                                            <img src="~/home/images/banner_boxes/menu-02.png" alt="">
-                                                        </div>
-                                                        <div class="clearfix"></div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="banner-text">
-                                                            <div class="banner-title">
-                                                                Computers
-                                                            </div>
-                                                            <div class="more-link">
-                                                                <a href="~/home/#" title="">Shop Now <img src="~/home/images/icons/right-2.png" alt=""></a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="banner-img">
-                                                            <img src="~/home/images/banner_boxes/menu-03.png" alt="">
-                                                        </div>
-                                                        <div class="clearfix"></div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
                                     </li>
                                     <li>
                                         <a href="~/home/#" title="">
@@ -727,219 +640,19 @@
                                                 <img src="~/home/images/icons/menu/08.png" alt="">
                                             </span>
                                             <span class="menu-title">
-                                                Video Cameras
+                                                Máy quay phim
                                             </span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="~/home/#" title="" class="dropdown">
-                                            <span class="menu-img">
-                                                <img src="~/home/images/icons/menu/09.png" alt="">
-                                            </span>
-                                            <span class="menu-title">
-                                                Accessories
-                                            </span>
-                                        </a>
-                                        <div class="drop-menu">
-                                            <div class="one-third">
-                                                <div class="cat-title">
-                                                    Accessories
-                                                </div>
-                                                <ul>
-                                                    <li>
-                                                        <a href="~/home/#" title="">Internet Devices</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="~/home/#" title="">Desktops & Monitors</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="~/home/#" title="">Hard Drives & Memory Cards</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="~/home/#" title="">Networking</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="~/home/#" title="">Software</a>
-                                                    </li>
-                                                </ul>
-                                                <div class="show">
-                                                    <a href="~/home/#" title="">Shop All</a>
-                                                </div>
-                                            </div>
-                                            <div class="one-third">
-                                                <div class="cat-title">
-                                                    Audio
-                                                </div>
-                                                <ul>
-                                                    <li>
-                                                        <a href="~/home/#" title="">Home Entertainment Systems</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="~/home/#" title="">MP3 & Media Players</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="~/home/#" title="">Software</a>
-                                                    </li>
-                                                </ul>
-                                                <div class="show">
-                                                    <a href="~/home/#" title="">Shop All</a>
-                                                </div>
-                                            </div>
-                                            <div class="one-third">
-                                                <ul class="banner">
-                                                    <li>
-                                                        <div class="banner-text">
-                                                            <div class="banner-title">
-                                                                Headphones
-                                                            </div>
-                                                            <div class="more-link">
-                                                                <a href="~/home/#" title="">Shop Now <img src="~/home/images/icons/right-2.png" alt=""></a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="banner-img">
-                                                            <img src="~/home/images/banner_boxes/menu-01.png" alt="">
-                                                        </div>
-                                                        <div class="clearfix"></div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="banner-text">
-                                                            <div class="banner-title">
-                                                                TV & Audio
-                                                            </div>
-                                                            <div class="more-link">
-                                                                <a href="~/home/#" title="">Shop Now <img src="~/home/images/icons/right-2.png" alt=""></a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="banner-img">
-                                                            <img src="~/home/images/banner_boxes/menu-02.png" alt="">
-                                                        </div>
-                                                        <div class="clearfix"></div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="banner-text">
-                                                            <div class="banner-title">
-                                                                Computers
-                                                            </div>
-                                                            <div class="more-link">
-                                                                <a href="~/home/#" title="">Shop Now <img src="~/home/images/icons/right-2.png" alt=""></a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="banner-img">
-                                                            <img src="~/home/images/banner_boxes/menu-03.png" alt="">
-                                                        </div>
-                                                        <div class="clearfix"></div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <a href="~/home/#" title="" class="dropdown">
+                                        <a href="~/home/#" title="">
                                             <span class="menu-img">
                                                 <img src="~/home/images/icons/menu/10.png" alt="">
                                             </span>
                                             <span class="menu-title">
-                                                Security
+                                                Bảo mật
                                             </span>
                                         </a>
-                                        <div class="drop-menu">
-                                            <div class="one-third">
-                                                <div class="cat-title">
-                                                    Security
-                                                </div>
-                                                <ul>
-                                                    <li>
-                                                        <a href="~/home/#" title="">Internet Devices</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="~/home/#" title="">Desktops & Monitors</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="~/home/#" title="">Hard Drives & Memory Cards</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="~/home/#" title="">Networking</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="~/home/#" title="">Software</a>
-                                                    </li>
-                                                </ul>
-                                                <div class="show">
-                                                    <a href="~/home/#" title="">Shop All</a>
-                                                </div>
-                                            </div>
-                                            <div class="one-third">
-                                                <div class="cat-title">
-                                                    Audio
-                                                </div>
-                                                <ul>
-                                                    <li>
-                                                        <a href="~/home/#" title="">Home Entertainment Systems</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="~/home/#" title="">MP3 & Media Players</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="~/home/#" title="">Software</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="~/home/#" title="">Hard Drives & Memory Cards</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="~/home/#" title="">Networking</a>
-                                                    </li>
-                                                </ul>
-                                                <div class="show">
-                                                    <a href="~/home/#" title="">Shop All</a>
-                                                </div>
-                                            </div>
-                                            <div class="one-third">
-                                                <ul class="banner">
-                                                    <li>
-                                                        <div class="banner-text">
-                                                            <div class="banner-title">
-                                                                Headphones
-                                                            </div>
-                                                            <div class="more-link">
-                                                                <a href="~/home/#" title="">Shop Now <img src="~/home/images/icons/right-2.png" alt=""></a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="banner-img">
-                                                            <img src="~/home/images/banner_boxes/menu-01.png" alt="">
-                                                        </div>
-                                                        <div class="clearfix"></div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="banner-text">
-                                                            <div class="banner-title">
-                                                                TV & Audio
-                                                            </div>
-                                                            <div class="more-link">
-                                                                <a href="~/home/#" title="">Shop Now <img src="~/home/images/icons/right-2.png" alt=""></a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="banner-img">
-                                                            <img src="~/home/images/banner_boxes/menu-02.png" alt="">
-                                                        </div>
-                                                        <div class="clearfix"></div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="banner-text">
-                                                            <div class="banner-title">
-                                                                Computers
-                                                            </div>
-                                                            <div class="more-link">
-                                                                <a href="~/home/#" title="">Shop Now <img src="~/home/images/icons/right-2.png" alt=""></a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="banner-img">
-                                                            <img src="~/home/images/banner_boxes/menu-03.png" alt="">
-                                                        </div>
-                                                        <div class="clearfix"></div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
                                     </li>
                                 </ul>
                             </div>
@@ -950,226 +663,77 @@
                                     <ul class="menu">
                                         <li class="column-1">
                                             <a asp-action="Index" asp-controller="Home" title="">Trang chủ</a>
-                                            <ul class="submenu">
-                                                <li>
-                                                    <a href="~/home/index-2.html" title=""><i class="fa fa-angle-right" aria-hidden="true"></i>Home Layout 01</a>
-                                                </li>
-                                                <li>
-                                                    <a href="~/home/index-v2.html" title=""><i class="fa fa-angle-right" aria-hidden="true"></i>Home Layout 02</a>
-                                                </li>
-
-                                            </ul><!-- /.submenu -->
+                                           
                                         </li><!-- /.column-1 -->
                                         <li class="column-1">
                                             <a href="~/home/shop.html" title="">Cửa hàng</a>
+                                        </li><!-- /.column-1 -->
+                                        <li class="column-1">
+                                            <a href="~/home/#" title="">Điện thoại</a>
                                             <ul class="submenu">
                                                 <li>
-                                                    <a href="~/home/shop.html" title=""><i class="fa fa-angle-right" aria-hidden="true"></i>Shop left sidebar</a>
+                                                    <a href="~/home/#" title=""><i class="fa fa-angle-right" aria-hidden="true"></i>Hãng Apple</a>
                                                 </li>
                                                 <li>
-                                                    <a href="~/home/shop-v2.html" title=""><i class="fa fa-angle-right" aria-hidden="true"></i>Shop right sidebar</a>
+                                                    <a href="~/home/#" title=""><i class="fa fa-angle-right" aria-hidden="true"></i>Hãng Samsung</a>
                                                 </li>
                                                 <li>
-                                                    <a href="~/home/shop-v3.html" title=""><i class="fa fa-angle-right" aria-hidden="true"></i>Shop list view</a>
+                                                    <a href="~/home/#" title=""><i class="fa fa-angle-right" aria-hidden="true"></i>Hãng Oppo</a>
                                                 </li>
                                                 <li>
-                                                    <a href="~/home/shop-v4.html" title=""><i class="fa fa-angle-right" aria-hidden="true"></i>Shop full width</a>
+                                                    <a href="~/home/#" title=""><i class="fa fa-angle-right" aria-hidden="true"></i>Hãng Asus</a>
                                                 </li>
                                                 <li>
-                                                    <a href="~/home/shop-v5.html" title=""><i class="fa fa-angle-right" aria-hidden="true"></i>Shop 03 column</a>
+                                                    <a href="~/home/#" title=""><i class="fa fa-angle-right" aria-hidden="true"></i>Hãng Huawei</a>
                                                 </li>
                                                 <li>
-                                                    <a href="~/home/shop-cart.html" title=""><i class="fa fa-angle-right" aria-hidden="true"></i>Shop cart</a>
-                                                </li>
-                                                <li>
-                                                    <a href="~/home/shop-checkout.html" title=""><i class="fa fa-angle-right" aria-hidden="true"></i>Shop checkout</a>
+                                                    <a href="~/home/#" title=""><i class="fa fa-angle-right" aria-hidden="true"></i>Hãng Xiaomi</a>
                                                 </li>
                                             </ul><!-- /.submenu -->
                                         </li><!-- /.column-1 -->
                                         <li class="column-1">
-                                            <a href="~/home/#" title="">Features</a>
+                                            <a href="~/home/#" title="">Laptop</a>
                                             <ul class="submenu">
                                                 <li>
-                                                    <a href="~/home/#" title=""><i class="fa fa-angle-right" aria-hidden="true"></i>Home Theater Systems</a>
+                                                    <a href="~/home/#" title=""><i class="fa fa-angle-right" aria-hidden="true"></i>Hãng Apple</a>
                                                 </li>
                                                 <li>
-                                                    <a href="~/home/#" title=""><i class="fa fa-angle-right" aria-hidden="true"></i>Receivers & Amplifiers</a>
+                                                    <a href="~/home/#" title=""><i class="fa fa-angle-right" aria-hidden="true"></i>Hãng Samsung</a>
                                                 </li>
                                                 <li>
-                                                    <a href="~/home/#" title=""><i class="fa fa-angle-right" aria-hidden="true"></i>Speakers</a>
+                                                    <a href="~/home/#" title=""><i class="fa fa-angle-right" aria-hidden="true"></i>Hãng Oppo</a>
                                                 </li>
                                                 <li>
-                                                    <a href="~/home/#" title=""><i class="fa fa-angle-right" aria-hidden="true"></i>CD Players & Turntables</a>
+                                                    <a href="~/home/#" title=""><i class="fa fa-angle-right" aria-hidden="true"></i>Hãng Asus</a>
                                                 </li>
                                                 <li>
-                                                    <a href="~/home/#" title=""><i class="fa fa-angle-right" aria-hidden="true"></i>High-Resolution Audio</a>
+                                                    <a href="~/home/#" title=""><i class="fa fa-angle-right" aria-hidden="true"></i>Hãng Huawei</a>
                                                 </li>
                                                 <li>
-                                                    <a href="~/home/#" title=""><i class="fa fa-angle-right" aria-hidden="true"></i>4K Ultra HD TVs</a>
+                                                    <a href="~/home/#" title=""><i class="fa fa-angle-right" aria-hidden="true"></i>Hãng Xiaomi</a>
                                                 </li>
                                             </ul><!-- /.submenu -->
                                         </li><!-- /.column-1 -->
-                                        <li class="has-mega-menu">
-                                            <a href="~/home/#" title="">Electronic</a>
-                                            <div class="submenu">
-                                                <div class="row">
-                                                    <div class="col-lg-3 col-md-12">
-                                                        <h3 class="cat-title">Accessories</h3>
-                                                        <ul class="submenu-child">
-                                                            <li>
-                                                                <a href="~/home/#" title="">Electronics</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="~/home/#" title="">Furniture</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="~/home/#" title="">Accessories</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="~/home/#" title="">Divided</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="~/home/#" title="">Everyday Fashion</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="~/home/#" title="">Modern Classic</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="~/home/#" title="">Party</a>
-                                                            </li>
-                                                        </ul>
-                                                        <div class="show">
-                                                            <a href="~/home/#" title="">Shop All</a>
-                                                        </div>
-                                                    </div><!-- /.col-lg-3 col-md-12 -->
-                                                    <div class="col-lg-3 col-md-12">
-                                                        <h3 class="cat-title">Laptop And Computer</h3>
-                                                        <ul class="submenu-child">
-                                                            <li>
-                                                                <a href="~/home/#" title="">Networking & Internet Devices</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="~/home/#" title="">Laptops, Desktops & Monitors</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="~/home/#" title="">Hard Drives & Memory Cards</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="~/home/#" title="">Printers & Ink</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="~/home/#" title="">Networking & Internet Devices</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="~/home/#" title="">Computer Accessories</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="~/home/#" title="">Software</a>
-                                                            </li>
-                                                        </ul>
-                                                        <div class="show">
-                                                            <a href="~/home/#" title="">Shop All</a>
-                                                        </div>
-                                                    </div><!-- /.col-lg-3 col-md-12 -->
-                                                    <div class="col-lg-4 col-md-12">
-                                                        <h3 class="cat-title">Audio & Video</h3>
-                                                        <ul class="submenu-child">
-                                                            <li>
-                                                                <a href="~/home/#" title="">Headphones & Speakers</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="~/home/#" title="">Home Entertainment Systems</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="~/home/#" title="">MP3 & Media Players</a>
-                                                            </li>
-                                                        </ul>
-                                                        <div class="show">
-                                                            <a href="~/home/#" title="">Shop All</a>
-                                                        </div>
-                                                    </div><!-- /.col-lg-4 col-md-12 -->
-                                                    <div class="col-lg-2 col-md-12">
-                                                        <h3 class="cat-title">Home Audio</h3>
-                                                        <ul class="submenu-child">
-                                                            <li>
-                                                                <a href="~/home/#" title="">Home Theater Systems</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="~/home/#" title="">Receivers & Amplifiers</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="~/home/#" title="">Speakers</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="~/home/#" title="">CD Players & Turntables</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="~/home/#" title="">High-Resolution Audio</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="~/home/#" title="">4K Ultra HD TVs</a>
-                                                            </li>
-                                                        </ul>
-                                                        <div class="show">
-                                                            <a href="~/home/#" title="">Shop All</a>
-                                                        </div>
-                                                    </div><!-- /.col-lg-2 col-md-12 -->
-                                                </div><!-- /.row -->
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="banner-box">
-                                                            <div class="inner-box">
-                                                                <a href="~/home/#" title="">
-                                                                    <img src="~/home/images/banner_boxes/submenu-01.png" alt="">
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="banner-box">
-                                                            <div class="inner-box">
-                                                                <a href="~/home/#" title="">
-                                                                    <img src="~/home/images/banner_boxes/submenu-02.png" alt="">
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div><!-- /.row -->
-                                            </div><!-- /.submenu -->
-                                        </li><!-- /.has-mega-menu -->
                                         <li class="column-1">
                                             <a href="~/home/blog.html" title="">Tin tức</a>
                                             <ul class="submenu">
                                                 <li>
-                                                    <a href="~/home/blog.html" title=""><i class="fa fa-angle-right" aria-hidden="true"></i>Blog left sidebar</a>
+                                                    <a href="~/home/#" title=""><i class="fa fa-angle-right" aria-hidden="true"></i>Điện thoại</a>
                                                 </li>
                                                 <li>
-                                                    <a href="~/home/blog-v2.html" title=""><i class="fa fa-angle-right" aria-hidden="true"></i>Blog right sidebar</a>
+                                                    <a href="~/home/#" title=""><i class="fa fa-angle-right" aria-hidden="true"></i>Laptop</a>
                                                 </li>
                                                 <li>
-                                                    <a href="~/home/blog-v3.html" title=""><i class="fa fa-angle-right" aria-hidden="true"></i>Blog list</a>
+                                                    <a href="~/home/#" title=""><i class="fa fa-angle-right" aria-hidden="true"></i>Máy tính bảng</a>
                                                 </li>
                                                 <li>
-                                                    <a href="~/home/blog-v4.html" title=""><i class="fa fa-angle-right" aria-hidden="true"></i>Blog 02 column</a>
-                                                </li>
-                                                <li>
-                                                    <a href="~/home/blog-v5.html" title=""><i class="fa fa-angle-right" aria-hidden="true"></i>Blog full width</a>
-                                                </li>
-                                                <li>
-                                                    <a href="~/home/blog-single.html" title=""><i class="fa fa-angle-right" aria-hidden="true"></i>Blog single</a>
+                                                    <a href="~/home/#" title=""><i class="fa fa-angle-right" aria-hidden="true"></i>Phụ kiện công nghệ</a>
                                                 </li>
                                             </ul><!-- /.submenu -->
                                         </li><!-- /.column-1 -->
                                         <li class="column-1">
                                             <a href="~/home/contact.html" title="">Liên hệ</a>
-                                            <ul class="submenu">
-                                                <li>
-                                                    <a href="~/home/contact.html" title=""><i class="fa fa-angle-right" aria-hidden="true"></i>Contact 01</a>
-                                                </li>
-                                                <li>
-                                                    <a href="~/home/contact-v2.html" title=""><i class="fa fa-angle-right" aria-hidden="true"></i>Contact 02</a>
-                                                </li>
-                                            </ul><!-- /.submenu -->
+                                            
                                         </li><!-- /.column-1 -->
                                     </ul><!-- /.menu -->
                                 </div><!-- /.mainnav -->
@@ -1203,10 +767,10 @@
                                     <img src="~/home/images/icons/call.png" alt="">
                                 </div>
                                 <div class="info">
-                                    <p class="questions">Got Questions ? Call us 24/7!</p>
-                                    <p class="phone">Call Us: (888) 1234 56789</p>
+                                    <p class="questions">Liên hệ chúng tôi!</p>
+                                    <p class="phone">Hotline: 098 7654 321</p>
                                     <p class="address">
-                                        PO Box CT16122 Collins Street West, Victoria 8007,<br />Australia.
+                                        Nhổn, Minh Khai, Bắc Từ Liêm, Hà Nội
                                     </p>
                                 </div>
                             </div><!-- /.widget-content -->
@@ -1247,29 +811,29 @@
                     <div class="col-lg-3 col-md-6">
                         <div class="widget-ft widget-categories-ft">
                             <div class="widget-title">
-                                <h3>Find By Categories</h3>
+                                <h3>Về Techno Store</h3>
                             </div>
                             <ul class="cat-list-ft">
                                 <li>
-                                    <a href="~/home/#" title="">Desktops</a>
+                                    <a href="~/home/#" title="">Giới thiệu</a>
                                 </li>
                                 <li>
-                                    <a href="~/home/#" title="">Laptops & Notebooks</a>
+                                    <a href="~/home/#" title="">Tuyển dụng</a>
                                 </li>
                                 <li>
-                                    <a href="~/home/#" title="">Components</a>
+                                    <a href="~/home/#" title="">Chính sách bảo mật thanh toán</a>
                                 </li>
                                 <li>
-                                    <a href="~/home/#" title="">Tablets</a>
+                                    <a href="~/home/#" title="">Chính sách bảo mật thông tin</a>
                                 </li>
                                 <li>
-                                    <a href="~/home/#" title="">Software</a>
+                                    <a href="~/home/#" title="">Chính sách giải quyết khiếu nại</a>
                                 </li>
                                 <li>
-                                    <a href="~/home/#" title="">Phones & PDAs</a>
+                                    <a href="~/home/#" title="">Điều khoản sử dụng</a>
                                 </li>
                                 <li>
-                                    <a href="~/home/#" title="">Cameras</a>
+                                    <a href="~/home/#" title="">Bán hàng doanh nghiệp</a>
                                 </li>
                             </ul><!-- /.cat-list-ft -->
                         </div><!-- /.widget-categories-ft -->
@@ -1277,59 +841,34 @@
                     <div class="col-lg-2 col-md-6">
                         <div class="widget-ft widget-menu">
                             <div class="widget-title">
-                                <h3>Customer Care</h3>
+                                <h3>Hợp tác liên kết</h3>
                             </div>
                             <ul>
                                 <li>
                                     <a href="~/home/#" title="">
-                                        Contact us
+                                        Quy chế hoạt động sàn GDTMĐT
                                     </a>
                                 </li>
                                 <li>
                                     <a href="~/home/#" title="">
-                                        Site Map
+                                        Bán hàng cùng Techno Store
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="~/home/#" title="">
-                                        My Account
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="~/home/#" title="">
-                                        Wish List
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="~/home/#" title="">
-                                        Delivery Information
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="~/home/#" title="">
-                                        Privacy Policy
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="~/home/#" title="">
-                                        Terms & Conditions
-                                    </a>
-                                </li>
+                               
                             </ul>
                         </div><!-- /.widget-menu -->
                     </div><!-- /.col-lg-2 col-md-6 -->
                     <div class="col-lg-4 col-md-6">
                         <div class="widget-ft widget-newsletter">
                             <div class="widget-title">
-                                <h3>Sign Up To New Letter</h3>
+                                <h3>Đăng ký nhận bản tin Techno</h3>
                             </div>
                             <p>
-                                Make sure that you never miss our interesting <br />
-                                news by joining our newsletter program
+                                Đừng bỏ lỡ hàng ngàn sản phẩm và chương trình siêu hấp dẫn
                             </p>
                             <form action="#" class="subscribe-form" method="get" accept-charset="utf-8">
                                 <div class="subscribe-content">
-                                    <input type="text" name="email" class="subscribe-email" placeholder="Your E-Mail">
+                                    <input type="text" name="email" class="subscribe-email" placeholder="Địa chỉ email của bạn">
                                     <button type="submit"><img src="~/home/images/icons/right-2.png" alt=""></button>
                                 </div>
                             </form><!-- /.subscribe-form -->
@@ -1403,7 +942,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <p class="copyright"> All Rights Reserved © Techno Store 2017</p>
+                        <p class="copyright">© Bản quyền thuộc về Techno Store 2019 - Nguyễn Quang Duy - KTPM5 - K10</p>
                         <p class="btn-scroll">
                             <a href="~/home/#" title="">
                                 <img src="~/home/images/icons/top.png" alt="">

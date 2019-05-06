@@ -53,6 +53,7 @@ namespace SmartPhone
             services
                .AddDbContext<DataContext>(options =>
 
+               //options.UseSqlServer(Configuration.GetConnectionString("SqlServerConnection")))
                options.UseMySql(Configuration.GetConnectionString("DefaultConnection")))
                    .AddMvc()
                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
@@ -85,7 +86,6 @@ namespace SmartPhone
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
-
             RotativaConfiguration.Setup(env);
 
             Client.CheckDiscount();

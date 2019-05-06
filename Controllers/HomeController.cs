@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SmartPhone.Data;
+using SmartPhone.Mapper;
 using SmartPhone.Models;
 using System;
 using System.Collections.Generic;
@@ -23,6 +25,13 @@ namespace SmartPhone.Controllers
         public async Task<IActionResult> Index()
         {
             var dataContext = _context.Products.Include(p => p.Files).Include(x => x.ProductCategory);
+
+            // Kiểm tra trả về lịch sử đã xem cho user
+            ViewData["History"] = null;
+            if (HttpContext.Session.GetInt32("CustomerID") != null)
+            {
+                ViewData["History"] = _context.Histories.Include(x=>x.Product).ThenInclude(x=>x.Files).ToList();
+            }
             return View(await dataContext.ToListAsync());
         }
 
@@ -41,6 +50,24 @@ namespace SmartPhone.Controllers
                 .Include(p => p.Supplier)
                 .Include(p => p.Files)
                 .FirstOrDefaultAsync(m => m.Id == id);
+
+
+            // Nếu đã đăng nhập thì thêm vào db sản phẩm đã xem
+
+            if (HttpContext.Session.GetInt32("CustomerID") != null)
+            {
+                var history = _context.Histories.FirstOrDefault(x => x.UserId == HttpContext.Session.GetInt32("CustomerID") & x.ProductId == product.Id);
+                if (history == null)
+                {
+                    var historyView = new ViewModels.HistoryView() { ProductId = product.Id, UserId = HttpContext.Session.GetInt32("CustomerID"), Active = true };
+                    var historySave = new History();
+                    historySave.SaveMap(historyView);
+                    _context.Histories.Add(historySave);
+                    _context.SaveChanges();
+                }
+            }
+
+
             if (product == null)
             {
                 return NotFound();
@@ -94,6 +121,54 @@ namespace SmartPhone.Controllers
             _context.SaveChangesAsync();
         }
 
+        // MyOrder  -- Đơn hàng của tôi
+        [HttpGet, Route("order/history")]
+        public async Task<IActionResult> MyOrder()
+        {
+            var orders = _context.Orders.Include(x => x.Product).Include(x => x.orderStatus).Include(x => x.PaymentMethod).Where(x => x.UserId == HttpContext.Session.GetInt32("CustomerID")).OrderBy(x => x.CreatedAt).ToList();
+            return View(ShowOrderList(orders));
+        }
+
+        [HttpGet, Route("order/history/detail/{id}")]
+        public async Task<IActionResult> MyOrderDetail(string id)
+        {
+            var orders = _context.Orders.Include(x => x.Product).Include(x => x.orderStatus).Include(x => x.PaymentMethod).Where(x => x.UserId == HttpContext.Session.GetInt32("CustomerID") & x.Code == id).ToList();
+            return View(orders);
+        }
+
+        [HttpGet("ordercancel")]
+        public async Task<IActionResult> OrderCancel(string id)
+        {
+            var orders = _context.Orders.Where(x => x.Code == id).ToList();
+            foreach (var item in orders)
+            {
+                item.OrderStatusId = 4; // id hủy đơn hàng
+                _context.Update(item);
+            }
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(MyOrder));
+        }
+
+        public List<Order> ShowOrderList(List<Order> listOrder)
+        {
+            var codeOld = "";
+            var list = new List<Order>();
+            foreach (var item in listOrder)
+            {
+                var codeNew = item.Code;
+                if (codeNew != codeOld)
+                {
+                    list.Add(item);
+                }
+                else
+                {
+
+                }
+                codeOld = codeNew;
+            }
+            return list;
+        }
 
     }
 }
