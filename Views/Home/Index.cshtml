@@ -240,10 +240,10 @@
                                 </ul><!-- /.box-image -->
                                 <div class="box-content">
                                     <div class="cat-name">
-                                        <a href="~/home/#" title=""> @item.ProductCategory.Name</a>
+                                        <a asp-action="Details" asp-route-id="@item.Id"> @item.ProductCategory.Name</a>
                                     </div>
                                     <div class="product-name">
-                                        <a href="~/home/#" title=""> @item.Name</a>
+                                        <a asp-action="Details" asp-route-id="@item.Id"> @item.Name</a>
                                     </div>
                                     <div class="price">
                                         <span class="sale">@item.SalePrice.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR")) &#8363</span>
@@ -1112,10 +1112,10 @@
                                     </div><!-- /.box-image -->
                                     <div class="box-content">
                                         <div class="cat-name">
-                                            <a href="~/home/#" title=""> @item.Product.ProductCategory.Name</a>
+                                            <a asp-action="Details" asp-route-id="@item.ProductId"> @item.Product.ProductCategory.Name</a>
                                         </div>
                                         <div class="product-name">
-                                            <a href="~/home/#" title="">
+                                            <a asp-action="Details" asp-route-id="@item.ProductId">
                                                 @item.Product.Name
                                             </a>
                                         </div>

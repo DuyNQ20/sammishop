@@ -105,6 +105,7 @@ namespace SmartPhone.Controllers
                     cart.Quantity = cart.Quantity + quantity;
                     _context.Carts.Update(cart);
                     await _context.SaveChangesAsync();
+                   // HttpContext.Session.SetObject("Carts", _context.Carts.Include(x=>x.Product).Where(x => x.UserId == HttpContext.Session.GetInt32("CustomerID")).ToList());
                 }
                 else // Nếu giỏ hàng chưa có gì
                 {
@@ -120,6 +121,7 @@ namespace SmartPhone.Controllers
                     cart.SaveMap(cartView);
                     _context.Carts.Add(cart);
                     await _context.SaveChangesAsync();
+                   // HttpContext.Session.SetObject("Carts", _context.Carts.Include(x => x.Product).Where(x => x.UserId == HttpContext.Session.GetInt32("CustomerID")).ToList());
                     return RedirectToAction("Index", "Home");
                 }
             }
@@ -223,12 +225,12 @@ namespace SmartPhone.Controllers
         {
             if (HttpContext.Session.GetInt32("CustomerID") != null) // đã đăng nhập
             {
-                var cart = await _context.Carts.FindAsync(id);
+                var cart = _context.Carts.Where(x=>x.ProductId == id);
                 if (cart == null)
                 {
                     return NotFound();
                 }
-                _context.Carts.Remove(cart);
+                _context.Carts.RemoveRange(cart);
                 await _context.SaveChangesAsync();
             }
             else

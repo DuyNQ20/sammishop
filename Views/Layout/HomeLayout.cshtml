@@ -1,4 +1,5 @@
 ﻿@using Microsoft.AspNetCore.Http;
+@using SmartPhone.Lib;
 @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor;
 @{
     ViewData["Title"] = "HomeLayout";
@@ -207,60 +208,64 @@
                                         </li>
                                     </ul><!-- /.menu-compare-wishlist -->
                                 </div><!-- /.inner-box -->
+
+                                @{ var carts = HttpContextAccessor.HttpContext.Session.GetObject<List<Cart>>("Carts");}
                                 <div class="inner-box">
                                     <a asp-action="index" asp-controller="Carts" title="">
                                         <div class="icon-cart">
                                             <img src="~/home/images/icons/cart.png" alt="">
-                                            <span>4</span>
+                                            <span>@Url.Content(carts == null ? "0" : "" + @carts.Count())</span>
                                         </div>
                                         <div class="price">
                                             $0.00
                                         </div>
                                     </a>
-                                    <div class="dropdown-box">
-                                        <ul>
-                                            <li>
-                                                <div class="img-product">
-                                                    <img src="~/home/images/product/other/img-cart-1.jpg" alt="">
-                                                </div>
-                                                <div class="info-product">
-                                                    <div class="name">
-                                                        Samsung - Galaxy S6 4G LTE <br />with 32GB Memory Cell Phone
-                                                    </div>
-                                                    <div class="price">
-                                                        <span>1 x</span>
-                                                        <span>$250.00</span>
-                                                    </div>
-                                                </div>
-                                                <div class="clearfix"></div>
-                                                <span class="delete">x</span>
-                                            </li>
-                                            <li>
-                                                <div class="img-product">
-                                                    <img src="~/home/images/product/other/img-cart-2.jpg" alt="">
-                                                </div>
-                                                <div class="info-product">
-                                                    <div class="name">
-                                                        Sennheiser - Over-the-Ear Headphone System - Black
-                                                    </div>
-                                                    <div class="price">
-                                                        <span>1 x</span>
-                                                        <span>$250.00</span>
-                                                    </div>
-                                                </div>
-                                                <div class="clearfix"></div>
-                                                <span class="delete">x</span>
-                                            </li>
-                                        </ul>
-                                        <div class="total">
-                                            <span>Subtotal:</span>
-                                            <span class="price">$1,999.00</span>
+                                    @if (carts != null)
+                                    {
+                                        <div class="dropdown-box">
+                                            <ul>
+                                                @{ decimal total = 0; }
+                                                @foreach (var item in carts)
+                                                {
+                                                    total += (item.Product.SalePrice * item.Quantity);
+                                                    <li>
+                                                        <div class="img-product">
+                                                            @{
+
+                                                                var image = item.Product.Files.FirstOrDefault(x => x.ProductId == item.ProductId & x.thumbnail);
+                                                    if (image != null)
+                                                    {
+                                                        <img src="@Url.Content("~/"+image.Path)" />
+                                                    }
+
+                                                            }
+                                                        </div>
+                                                        <div class="info-product">
+                                                            <div class="name">
+                                                                @item.Product.Name
+                                                            </div>
+                                                            <div class="price">
+                                                                <span>@item.Quantity x</span>
+                                                                <span>@item.Product.SalePrice.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR")) &#8363</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                        <span class="delete">x</span>
+                                                    </li>
+                                                }
+
+                                            </ul>
+                                            <div class="total">
+                                                <span>Tổng tiền:</span>
+                                                <span class="price">@total.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR")) &#8363</span>
+                                            </div>
+                                            <div class="btn-cart">
+                                                <a href="~/home/shop-cart.html" class="view-cart" title="">Giỏ hàng</a>
+                                                <a href="~/home/shop-checkout.html" class="check-out" title="">Thanh toán</a>
+                                            </div>
                                         </div>
-                                        <div class="btn-cart">
-                                            <a href="~/home/shop-cart.html" class="view-cart" title="">Giỏ hàng</a>
-                                            <a href="~/home/shop-checkout.html" class="check-out" title="">Thanh toán</a>
-                                        </div>
-                                    </div>
+                                    }
+
                                 </div><!-- /.inner-box -->
                             </div><!-- /.box-cart -->
                         </div><!-- /.col-md-3 -->
@@ -623,7 +628,7 @@
                                             </span>
                                         </a>
                                     </li>
-                                   
+
                                     <li>
                                         <a href="~/home/#" title="">
                                             <span class="menu-img">
@@ -663,7 +668,7 @@
                                     <ul class="menu">
                                         <li class="column-1">
                                             <a asp-action="Index" asp-controller="Home" title="">Trang chủ</a>
-                                           
+
                                         </li><!-- /.column-1 -->
                                         <li class="column-1">
                                             <a href="~/home/shop.html" title="">Cửa hàng</a>
@@ -733,7 +738,7 @@
                                         </li><!-- /.column-1 -->
                                         <li class="column-1">
                                             <a href="~/home/contact.html" title="">Liên hệ</a>
-                                            
+
                                         </li><!-- /.column-1 -->
                                     </ul><!-- /.menu -->
                                 </div><!-- /.mainnav -->
@@ -854,7 +859,7 @@
                                         Bán hàng cùng Techno Store
                                     </a>
                                 </li>
-                               
+
                             </ul>
                         </div><!-- /.widget-menu -->
                     </div><!-- /.col-lg-2 col-md-6 -->

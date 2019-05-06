@@ -1,24 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using SmartPhone.Data;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SmartPhone.Data;
 
 namespace SmartPhone
 {
-    using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
     using Rotativa.AspNetCore;
     using SmartPhone.Controllers;
     using SmartPhone.Lib;
-    using SmartPhone.Models;
 
     public class Startup
     {
@@ -55,7 +48,7 @@ namespace SmartPhone
 
                //options.UseSqlServer(Configuration.GetConnectionString("SqlServerConnection")))
                options.UseMySql(Configuration.GetConnectionString("DefaultConnection")))
-                   .AddMvc()
+                   .AddMvc().AddJsonOptions(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore)
                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddSession();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
@@ -86,6 +79,7 @@ namespace SmartPhone
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
             RotativaConfiguration.Setup(env);
 
             Client.CheckDiscount();

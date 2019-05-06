@@ -5,7 +5,7 @@
 }
 
 @{
-    if (Model == null)
+    if (Model == null | Model.Count() == 0)
     {
         <section class="flat-shop-cart">
             <div class="container">

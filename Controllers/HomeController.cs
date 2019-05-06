@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SmartPhone.Data;
+using SmartPhone.Lib;
 using SmartPhone.Mapper;
 using SmartPhone.Models;
 using System;
@@ -31,7 +32,9 @@ namespace SmartPhone.Controllers
             if (HttpContext.Session.GetInt32("CustomerID") != null)
             {
                 ViewData["History"] = _context.Histories.Include(x=>x.Product).ThenInclude(x=>x.Files).ToList();
+                //HttpContext.Session.SetObject("Carts", _context.Carts.Where(x => x.UserId == HttpContext.Session.GetInt32("CustomerID")).ToList());
             }
+
             return View(await dataContext.ToListAsync());
         }
 
