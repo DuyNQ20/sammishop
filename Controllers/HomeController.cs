@@ -16,7 +16,7 @@ namespace SmartPhone.Controllers
     public class HomeController : Controller
     {
         private readonly DataContext _context;
-
+        decimal price = 2000000; // Giá so sánh để lấy sản phẩm tương tự
         public HomeController(DataContext context)
         {
             _context = context;
@@ -32,7 +32,6 @@ namespace SmartPhone.Controllers
             if (HttpContext.Session.GetInt32("CustomerID") != null)
             {
                 ViewData["History"] = _context.Histories.Include(x=>x.Product).ThenInclude(x=>x.Files).ToList();
-                //HttpContext.Session.SetObject("Carts", _context.Carts.Where(x => x.UserId == HttpContext.Session.GetInt32("CustomerID")).ToList());
             }
 
             return View(await dataContext.ToListAsync());
@@ -54,6 +53,10 @@ namespace SmartPhone.Controllers
                 .Include(p => p.Files)
                 .FirstOrDefaultAsync(m => m.Id == id);
 
+            if (product == null)
+            {
+                return NotFound();
+            }
 
             // Nếu đã đăng nhập thì thêm vào db sản phẩm đã xem
 
@@ -70,11 +73,9 @@ namespace SmartPhone.Controllers
                 }
             }
 
-
-            if (product == null)
-            {
-                return NotFound();
-            }
+            // Gợi ý những sản phẩm tương tự
+            
+            ViewData["SameProduct"] = _context.Products.Include(x => x.ProductCategory).Include(x=>x.Files).Where(x => x.Id != product.Id & x.ProductCategoryId == product.ProductCategoryId & (x.SalePrice > product.SalePrice - price) & (x.SalePrice < product.SalePrice + price)).ToList();
 
             return View(product);
         }
