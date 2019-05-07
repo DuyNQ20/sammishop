@@ -16,7 +16,28 @@ $(document).ready(function () {
             return false;
         }
     });
-})
+});
+
+// Xử lý hàng nhập quá số lượng tồn
+$('#number').keydown(function (e) {
+    var inventory = $("#Inventory").val();
+    var input = $(this).val() + String.fromCharCode(e.keyCode);
+    if (parseInt(input) > parseInt(inventory)) {
+        alert("số lượng sản phẩm tối đa được phép mua là " + inventory);
+        return false;
+    }
+});
+
+// Xử lý hàng nhập quá số lượng tồn
+$('.number').keydown(function (e) {
+    var idName = $(this).attr('id');
+    var inventory = $("." + idName).val();
+    var input = $(this).val() + String.fromCharCode(e.keyCode);
+    if (parseInt(input) > parseInt(inventory)) {
+        alert("số lượng sản phẩm tối đa được phép mua là " + inventory);
+        return false;
+    }
+});
 
 
 // cho tăng số lượng sản phẩm trong giỏ hàng

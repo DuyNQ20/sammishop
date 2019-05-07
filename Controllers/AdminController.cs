@@ -45,5 +45,11 @@ namespace SmartPhone.Controllers
             return View(model);
 
         }
+        [HttpGet, Route("logout")]
+        public async Task<IActionResult> AdminLogout()
+        {
+            HttpContext.Session.Remove("AdminID");
+            return RedirectToAction(nameof(AdminLogin));
+        }
     }
 }

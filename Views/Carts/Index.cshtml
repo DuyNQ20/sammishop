@@ -71,9 +71,11 @@
                                                     <div class="clearfix"></div>
                                                 </td>
                                                 <td>
+                                                    <input type="hidden" value="@item.Product.Inventory" class="@Url.Content("sp"+item.ProductId)"/>
                                                     <div class="quanlity">
                                                         <a asp-action="RemoveProductQuantityFromCart" asp-controller="Carts" asp-route-id="@item.ProductId"> <span class="btn-down"></span></a>
-                                                        <input id="@Url.Content("sp"+item.ProductId)" class="number" value="@item.Quantity">
+                                                        <input id="@Url.Content("sp"+item.ProductId)" class="number" value="@item.Quantity" name="quantity">
+                                                        
                                                         <a asp-action="AddProductQuantityFromCart" asp-controller="Carts" asp-route-id="@item.ProductId"> <span class="btn-up"></span></a>
                                                     </div>
                                                 </td>

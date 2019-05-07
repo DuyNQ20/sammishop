@@ -35,6 +35,8 @@ namespace SmartPhone.Controllers
             else
             {
                 dataContext = HttpContext.Session.GetObject<List<Cart>>("Carts");
+
+                return RedirectToAction("HomeLogin", "Account");
             }
             ViewData["Discount"] = HttpContext.Session.GetObject<Discount>("Discount");
             ViewBag.Code = random.Next(10000000, 999999999);

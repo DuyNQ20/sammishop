@@ -74,6 +74,7 @@
                                 </div>
                             </div>
                             <div class="status-product">
+                                <input type="hidden" value="@Model.Inventory" id="Inventory" />
                                 Tình trạng: <span class="@Url.Content(Model.Inventory > 0? "conhang" : "")">@Url.Content(Model.Inventory > 0 ? "Còn "+Model.Inventory+" sản phẩm" : "Hết hàng")</span>
                             </div>
                         </div><!-- /.reviewed -->
