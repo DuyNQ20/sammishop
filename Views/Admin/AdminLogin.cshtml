@@ -1,0 +1,36 @@
+﻿@model SmartPhone.ViewModels.UserView
+@{
+    ViewData["Title"] = "AdminLogin";
+    Layout = "~/Views/Layout/ResourceLayout.cshtml";
+}
+
+<div class="blog-login">
+    <div class="blog-login-in">
+        <form asp-action="AdminLogin" method="post">
+            <img src="images/logo.png" alt="" />
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="first_name1" type="text" class="validate" asp-for="Username" name="Username">
+                    <label for="first_name1">Email/User Name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="last_name" type="password" asp-for="Password" class="validate" name="Password">
+                    <label for="last_name">Mật khẩu</label>
+                </div>
+            </div>
+            @if (ViewBag.Erro != "")
+            {
+                <span style="color: red">@ViewBag.Erro</span>
+            }
+            <div class="row">
+                <div class="input-field col s12">
+                    <button type="submit" class="waves-effect waves-light btn-large btn-log-in">Đăng nhập</button>
+                </div>
+            </div>
+            <a href="forgot.html" class="for-pass">Quên mật khẩu?</a>
+        </form>
+    </div>
+</div>
+

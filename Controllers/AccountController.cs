@@ -27,16 +27,19 @@ namespace SmartPhone.Controllers
         }
 
         [HttpPost, Route("login")]
-        public async Task<IActionResult> Login(UserView model)
+        public async Task<IActionResult> HomeLogin(UserView model)
         {
-            var auth = _context.Users.FirstOrDefault(x => x.Username == model.Username & x.Password == model.Password);
+            var auth = _context.Users.FirstOrDefault(x => (x.Username == model.Username | x.Email == model.Username) & x.Password == model.Password & x.RoleId == 2);
             if(auth != null)
             {
+                ViewBag.Erro = "";
                 HttpContext.Session.SetString("Customer", auth.Name);
                 HttpContext.Session.SetInt32("CustomerID", auth.Id);
                 HttpContext.Session.Remove("Discount");
+                return RedirectToAction("Index", "Home");
             }
-            return RedirectToAction("Index", "Home");
+            ViewBag.Erro = "Tài khoản hoặc mật khẩu không đúng!";
+            return View(model);
         }
 
         [HttpGet, Route("logout")]

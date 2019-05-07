@@ -186,11 +186,26 @@ namespace SmartPhone.Data
               {
                   Id = 1,
                   Email = "quangduy@gmail.com",
-                  Username = "quangduy",
+                  Username = "admin",
                   Password = "123456",
                   Name = "Nguyen Quang Duy",
                   Address = "Ha Noi",
                   RoleId = 1,
+                  Active = true,
+                  CreatedAt = DateTime.Now,
+                  CreatedBy = "Quang Duy",
+                  ModifiedAt = DateTime.Now,
+                  ModifiedBy = "Quang Duy"
+              },
+              new User
+              {
+                  Id = 2,
+                  Email = "customer@gmail.com",
+                  Username = "customer",
+                  Password = "123456",
+                  Name = "Nguyen Quang Duy",
+                  Address = "Ha Noi",
+                  RoleId = 2,
                   Active = true,
                   CreatedAt = DateTime.Now,
                   CreatedBy = "Quang Duy",

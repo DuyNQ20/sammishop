@@ -12,7 +12,7 @@
                     <div class="title">
                         <h3>Đăng nhập</h3>
                     </div>
-                    <form asp-action="Login" method="post" accept-charset="utf-8">
+                    <form asp-action="HomeLogin" method="post" accept-charset="utf-8">
                         <div class="form-box">
                             <label for="name-login">Email / Username <span style="color: red">*</span> </label>
                             <input type="text" id="name-login" name="Username" placeholder="Nhập Email hoặc Username">
@@ -21,6 +21,10 @@
                             <label for="password-login">Mật khẩu <span style="color: red">*</span> </label>
                             <input type="password" id="password-login" name="Password" placeholder="Nhập mật khẩu">
                         </div><!-- /.form-box -->
+                        @if (ViewBag.Erro != "")
+                        {
+                            <span style="color: red">@ViewBag.Erro</span>
+                        }
                         <div class="form-box checkbox">
                             <input type="checkbox" id="remember" checked="" name="remember">
                             <label for="remember">Nhớ mật khẩu</label>

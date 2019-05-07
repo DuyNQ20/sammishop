@@ -1,4 +1,5 @@
-﻿
+﻿@using Microsoft.AspNetCore.Http;
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor;
 @{
     ViewData["Title"] = "AdminLayout";
 }
@@ -123,9 +124,12 @@
                         <li>
                             <img src="~/images/placeholder.jpg" alt="">
                         </li>
-                        <li>
-                            <h5>Victoria Baker <span> Santa Ana, CA</span></h5>
-                        </li>
+                        @if (HttpContextAccessor.HttpContext.Session.GetInt32("AdminID") != null)
+                        {
+                            <li>
+                                <h5>@HttpContextAccessor.HttpContext.Session.GetString("Admin") <span> Quản trị viên</span></h5>
+                            </li>
+                        }
                         <li></li>
                     </ul>
                 </div>
@@ -391,7 +395,7 @@
 
     <link href="~/datepicker/dist/datepicker.css" rel="stylesheet">
     <script src="~/datepicker/dist/datepicker.js"></script>
-   
+
     <script src="~/js/script-custom.js"></script>
 
 
