@@ -87,7 +87,10 @@ namespace SmartPhone.Controllers
         public async Task<IActionResult> Index()
         {
             var dataContext = _context.Products.Include(p => p.Files).Include(x => x.ProductCategory);
-
+            //if(TempData["Erro"] != null & TempData.ContainsKey("Erro"))
+            //{
+            //    ViewBag.Erro = Convert.ToBoolean(TempData["Erro"]);
+            //}
             return View(await dataContext.ToListAsync());
         }
 
@@ -206,10 +209,18 @@ namespace SmartPhone.Controllers
             {
                 return NotFound();
             }
-
+            //TempData["Erro"] = false;
             var product = await _context.Products.FindAsync(id);
-            _context.Products.Remove(product);
-            await _context.SaveChangesAsync();
+            //try
+            //{
+                _context.Products.Remove(product);
+                await _context.SaveChangesAsync();
+            //}
+            //catch(Exception ex)
+            //{
+            //    TempData["Erro"] = true;
+            //}
+            
             return RedirectToAction(nameof(Index));
         }
 

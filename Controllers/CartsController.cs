@@ -92,6 +92,90 @@ namespace SmartPhone.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [HttpPost]
+        public async Task<IActionResult> AddToCartPost(int id, int quantity = 1)
+        {
+            var product = _context.Products.Find(id);
+            if (product.Inventory >= quantity)
+            {
+                // Nếu có User đăng nhập
+                if (HttpContext.Session.GetInt32("CustomerID") != null)
+                {
+                    var cart = await _context.Carts.FirstOrDefaultAsync(x => x.ProductId == id & x.UserId == HttpContext.Session.GetInt32("CustomerID"));
+
+                    if (cart != null) // đã có sp trong giỏ hàng
+                    {
+                        cart.Quantity = quantity;
+                        if (cart.Quantity <= product.Inventory)
+                        {
+                            _context.Carts.Update(cart);
+                            await _context.SaveChangesAsync();
+                        }
+                        // HttpContext.Session.SetObject("Carts", _context.Carts.Include(x=>x.Product).Where(x => x.UserId == HttpContext.Session.GetInt32("CustomerID")).ToList());
+                    }
+                    else // Nếu giỏ hàng chưa có gì
+                    {
+                        var cartView = new CartView
+                        {
+                            UserId = HttpContext.Session.GetInt32("CustomerID"),
+                            ProductId = id,
+                            Active = true,
+                            Quantity = quantity
+                        };
+
+                        cart = new Cart();
+                        cart.SaveMap(cartView);
+                        _context.Carts.Add(cart);
+                        await _context.SaveChangesAsync();
+                        // HttpContext.Session.SetObject("Carts", _context.Carts.Include(x => x.Product).Where(x => x.UserId == HttpContext.Session.GetInt32("CustomerID")).ToList());
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+                else // Nếu chưa đăng nhập
+                {
+                    var _listCarts = new List<Cart>();
+
+                    var cart = new Cart()
+                    {
+                        UserId = null,
+                        ProductId = id,
+                        Active = true,
+                        Quantity = quantity,
+                        Product = _context.Products.Include(c => c.Files).Include(c => c.Supplier).FirstOrDefault(x => x.Id == id)
+                    };
+
+                    // Nếu giỏ hàng chưa có gì
+                    if (HttpContext.Session.GetObject<List<Cart>>("Carts") == null)
+                    {
+                        _listCarts.Add(cart);
+
+                        HttpContext.Session.SetObject("Carts", _listCarts.ToList());
+                    }
+                    else
+                    {
+                        _listCarts = HttpContext.Session.GetObject<List<Cart>>("Carts");
+                        if (_listCarts.FirstOrDefault(x => x.ProductId == id) != null)
+                        {
+                            if ((_listCarts.FirstOrDefault(x => x.ProductId == id).Quantity + 1) <= product.Inventory)
+                            {
+                                _listCarts.FirstOrDefault(x => x.ProductId == id).Quantity = quantity;
+                            }
+                        }
+                        else
+                        {
+                            _listCarts.Add(cart);
+                        }
+
+                        HttpContext.Session.SetObject("Carts", _listCarts);
+                    }
+
+                }
+
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+
 
         public async Task<IActionResult> AddToCart(int id, int quantity = 1)
         {
@@ -158,7 +242,7 @@ namespace SmartPhone.Controllers
                         {
                             if ((_listCarts.FirstOrDefault(x => x.ProductId == id).Quantity + 1) <= product.Inventory)
                             {
-                                _listCarts.FirstOrDefault(x => x.ProductId == id).Quantity++;
+                                _listCarts.FirstOrDefault(x => x.ProductId == id).Quantity+=quantity;
                             }
                         }
                         else
@@ -181,7 +265,7 @@ namespace SmartPhone.Controllers
             var product = _context.Products.Find(id);
             if (HttpContext.Session.GetInt32("CustomerID") != null)
             {
-                var cart = await _context.Carts.FirstOrDefaultAsync(x => x.ProductId == id);
+                var cart = await _context.Carts.FirstOrDefaultAsync(x => x.ProductId == id & x.UserId == HttpContext.Session.GetInt32("CustomerID"));
 
                 if (cart != null)
                 {
@@ -213,7 +297,7 @@ namespace SmartPhone.Controllers
         {
             if (HttpContext.Session.GetInt32("CustomerID") != null) // đã đăng nhập
             {
-                var cart = await _context.Carts.FirstOrDefaultAsync(x => x.ProductId == id);
+                var cart = await _context.Carts.FirstOrDefaultAsync(x => x.ProductId == id & x.UserId == HttpContext.Session.GetInt32("CustomerID"));
 
                 if (cart != null && cart.Quantity > 1)
                 {
@@ -246,7 +330,7 @@ namespace SmartPhone.Controllers
         {
             if (HttpContext.Session.GetInt32("CustomerID") != null) // đã đăng nhập
             {
-                var cart = _context.Carts.Where(x => x.ProductId == id);
+                var cart = _context.Carts.Where(x => x.ProductId == id & x.UserId == HttpContext.Session.GetInt32("CustomerID"));
                 if (cart == null)
                 {
                     return NotFound();

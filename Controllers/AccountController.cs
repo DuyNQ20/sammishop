@@ -47,6 +47,7 @@ namespace SmartPhone.Controllers
         {
             HttpContext.Session.Remove("CustomerID");
             HttpContext.Session.Remove("Discount");
+            HttpContext.Session.Remove("Customer");
             return RedirectToAction("Index", "Home");
         }
     }

@@ -5,7 +5,7 @@
 }
 
 @{
-    if (Model == null | Model.Count() == 0)
+    if (Model == null || Model.Count() == 0)
     {
         <section class="flat-shop-cart">
             <div class="container">
@@ -24,14 +24,16 @@
     {
         <section class="flat-shop-cart">
             @{ decimal total = 0;}
-            @{  Discount discount = ViewData["Discount"] as Discount;}
+            @{ Discount discount = ViewData["Discount"] as Discount;}
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8">
                         <div class="flat-row-title style1">
                             <h3>Giỏ hàng</h3>
                         </div>
+
                         <div class="table-cart">
+
                             <table>
                                 <thead>
                                     <tr>
@@ -41,6 +43,7 @@
                                         <th></th>
                                     </tr>
                                 </thead>
+
                                 <tbody>
                                     @{
                                         @foreach (var item in Model)
@@ -70,15 +73,28 @@
                                                     </div>
                                                     <div class="clearfix"></div>
                                                 </td>
+
                                                 <td>
-                                                    <input type="hidden" value="@item.Product.Inventory" class="@Url.Content("sp"+item.ProductId)"/>
-                                                    <div class="quanlity">
-                                                        <a asp-action="RemoveProductQuantityFromCart" asp-controller="Carts" asp-route-id="@item.ProductId"> <span class="btn-down"></span></a>
-                                                        <input id="@Url.Content("sp"+item.ProductId)" class="number" value="@item.Quantity" name="quantity">
-                                                        
-                                                        <a asp-action="AddProductQuantityFromCart" asp-controller="Carts" asp-route-id="@item.ProductId"> <span class="btn-up"></span></a>
-                                                    </div>
+                                                    <input type="hidden" value="@item.Product.Inventory" class="@Url.Content("sp"+item.ProductId)" />
+
+                                                    
+                                                    <form method="post" asp-action="AddToCartPost">
+                                                        <input type="hidden" name="id" value="@item.ProductId" />
+                                                        <div class="quanlity">
+                                                            <a asp-action="RemoveProductQuantityFromCart" asp-controller="Carts" asp-route-id="@item.ProductId"> <span class="btn-down"></span></a>
+
+                                                            <input type="number" id="@Url.Content("sp"+item.ProductId)" value="@item.Quantity" name="quantity">
+                                                            <input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;"
+       tabindex="-1" />
+
+                                                            <a asp-action="AddProductQuantityFromCart" asp-controller="Carts" asp-route-id="@item.ProductId"> <span class="btn-up"></span></a>
+                                                        </div>
+                                                    </form>
+
+
+
                                                 </td>
+
                                                 <td>
 
                                                     <div class="total">
@@ -103,6 +119,7 @@
 
                                 </tbody>
                             </table>
+
                             <div class="form-coupon">
                                 <form asp-action="checkDiscount" asp-controller="Carts" method="get" accept-charset="utf-8">
                                     <div class="coupon-input">

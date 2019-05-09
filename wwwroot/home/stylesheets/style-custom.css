@@ -189,3 +189,11 @@ button.add-cart {
 .my-order h3.text-left {
     padding-bottom: 15px;
 }
+
+
+/*Xóa nút lên xuống input number*/
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

@@ -6,7 +6,9 @@
 }
 
 
+
 <div class="sb2-2">
+    @*<div class="delete-erro"></div>*@
     <div class="sb2-2-2">
         <ul>
             <li>
@@ -121,7 +123,7 @@
                                             </td>
                                             <td class="text-center">
 
-                                                <a asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?');"><i class="fa fa-trash-o red"> Xóa</i></a>
+                                                <a asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('Lưu ý: Xóa sản phẩm sẽ bị xóa hết dữ liệu liên quan. Bạn có chắc chắn muốn xóa sản phẩm này không?');"><i class="fa fa-trash-o red"> Xóa</i></a>
                                             </td>
 
 

@@ -210,3 +210,9 @@ $("#test3").click(function () {
     $("#checkRadio").val("false");
 });
 
+
+// Báo lỗi khi xóa sản phẩm khi có trong hóa đơn
+
+//$('.delete-erro').animate(
+//    alert("Bạn không thể xóa sản phẩm vì đang có")
+//);

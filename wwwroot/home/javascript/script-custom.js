@@ -7,7 +7,7 @@ $(document).ready(function () {
             return false;
         }
     });
-})
+});
 
 $(document).ready(function () {
     // Không cho phép nhập chữ và quá 20 ký tự
