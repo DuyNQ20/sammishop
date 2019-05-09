@@ -1082,7 +1082,7 @@
 @if (HttpContextAccessor.HttpContext.Session.GetInt32("CustomerID") != null)
 {
     var histories = ViewData["History"] as List<History>;
-    @if (histories.Count > 0)
+    @if (histories != null && histories.Count > 0)
     {
         <section class="flat-imagebox style4">
             <div class="container">
