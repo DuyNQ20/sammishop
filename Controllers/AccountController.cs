@@ -36,6 +36,7 @@ namespace SmartPhone.Controllers
                 HttpContext.Session.SetString("Customer", auth.Name);
                 HttpContext.Session.SetInt32("CustomerID", auth.Id);
                 HttpContext.Session.Remove("Discount");
+                HttpContext.Session.Remove("Carts");
                 return RedirectToAction("Index", "Home");
             }
             ViewBag.Erro = "Tài khoản hoặc mật khẩu không đúng!";
@@ -48,6 +49,7 @@ namespace SmartPhone.Controllers
             HttpContext.Session.Remove("CustomerID");
             HttpContext.Session.Remove("Discount");
             HttpContext.Session.Remove("Customer");
+            HttpContext.Session.Remove("Carts");
             return RedirectToAction("Index", "Home");
         }
     }

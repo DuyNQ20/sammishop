@@ -51,12 +51,13 @@
                                     <div class="field-row">
                                         <p class="field-one-half">
                                             <label for="first-name-2">Họ tên </label>
-                                            <input asp-for="@item.User.Name" type="text" id="first-name-2" name="Receiver" placeholder="Nhập họ tên">
+                                            <input required asp-for="@item.User.Name" type="text" id="first-name-2" name="Receiver" placeholder="Nhập họ tên">
                                         </p>
 
                                         <p class="field-one-half">
                                             <label for="first-name-2">Số điện thoại </label>
-                                            <input asp-for="@item.User.Phone" type="text" id="address" name="Phone" placeholder="Nhập số điện thoại">
+                                            <input required asp-for="@item.User.Phone" type="text" id="phone" name="Phone" placeholder="Nhập số điện thoại">
+                                            <span class="checkphone" style="color: red; display: none">Số điện thoại không đúng</span>
                                         </p>
                                         <div class="clearfix"></div>
                                     </div>
@@ -64,7 +65,7 @@
 
                                     <div class="field-row">
                                         <label for="address-3">Địa chỉ *</label>
-                                        <input asp-for="@item.User.Address" type="text" id="address-3" name="DeliveryAddress" placeholder="Nhập địa chỉ nhận hàng của bạn">
+                                        <input required asp-for="@item.User.Address" type="text" id="address-3" name="DeliveryAddress" placeholder="Nhập địa chỉ nhận hàng của bạn">
                                     </div>
                                     break;
                                 }
