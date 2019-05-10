@@ -86,11 +86,11 @@ namespace SmartPhone.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
+            if (HttpContext.Session.GetInt32("AdminID") == null)
+                return RedirectToAction("AdminLogin", "Admin");
+
             var dataContext = _context.Products.Include(p => p.Files).Include(x => x.ProductCategory);
-            //if(TempData["Erro"] != null & TempData.ContainsKey("Erro"))
-            //{
-            //    ViewBag.Erro = Convert.ToBoolean(TempData["Erro"]);
-            //}
+            
             return View(await dataContext.ToListAsync());
         }
 

@@ -67,6 +67,54 @@ namespace SmartPhone.Data
                     CreatedBy = "Quang Duy",
                     ModifiedAt = DateTime.Now,
                     ModifiedBy = "Quang Duy"
+                },
+                new Supplier
+                {
+                    Id = 3,
+                    Name = "Xiaomi",
+                    Info = "Thông tin xiaomi",
+                    Logo = "Logo Xiaomi",
+                    Active = true,
+                    CreatedAt = DateTime.Now,
+                    CreatedBy = "Quang Duy",
+                    ModifiedAt = DateTime.Now,
+                    ModifiedBy = "Quang Duy"
+                },
+                new Supplier
+                {
+                    Id = 4,
+                    Name = "Huwei",
+                    Info = "Thông tin Huwei",
+                    Logo = "Logo Huwei",
+                    Active = true,
+                    CreatedAt = DateTime.Now,
+                    CreatedBy = "Quang Duy",
+                    ModifiedAt = DateTime.Now,
+                    ModifiedBy = "Quang Duy"
+                },
+                new Supplier
+                {
+                    Id = 5,
+                    Name = "Oppo",
+                    Info = "Thông tin Oppo",
+                    Logo = "Logo Oppo",
+                    Active = true,
+                    CreatedAt = DateTime.Now,
+                    CreatedBy = "Quang Duy",
+                    ModifiedAt = DateTime.Now,
+                    ModifiedBy = "Quang Duy"
+                },
+                new Supplier
+                {
+                    Id = 6,
+                    Name = "Nokia",
+                    Info = "Thông tin Nokia",
+                    Logo = "Logo Nokia",
+                    Active = true,
+                    CreatedAt = DateTime.Now,
+                    CreatedBy = "Quang Duy",
+                    ModifiedAt = DateTime.Now,
+                    ModifiedBy = "Quang Duy"
                 }
              );
 

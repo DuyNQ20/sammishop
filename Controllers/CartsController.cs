@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using SmartPhone.Data;
 using SmartPhone.Lib;
 using SmartPhone.Mapper;
@@ -57,7 +58,7 @@ namespace SmartPhone.Controllers
             bool check = true;
             if (discount != null)
             {
-                if (!discount.ApplyAll)
+                if (discount.ApplyAll==false)
                 {
                     var Carts = GetCarts();
                     foreach (var item in Carts)

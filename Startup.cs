@@ -40,7 +40,6 @@ namespace SmartPhone
             //    options.IdleTimeout = TimeSpan.FromSeconds(10);
             //    options.Cookie.HttpOnly = true;
             //});
-
             
             services.Configure<StorageConfiguration>(Configuration.GetSection("StorageConfiguration"));
             services
@@ -48,7 +47,7 @@ namespace SmartPhone
 
                //options.UseSqlServer(Configuration.GetConnectionString("SqlServerConnection")))
                options.UseMySql(Configuration.GetConnectionString("DefaultConnection")))
-                   .AddMvc().AddJsonOptions(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore)
+                   .AddMvc()
                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddSession();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
