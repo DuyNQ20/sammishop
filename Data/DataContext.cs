@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SmartPhone.Models;
+using Sammishop.Models;
 using System;
 
-namespace SmartPhone.Data
+namespace  Sammishop.Data
 {
     public class DataContext : DbContext
     {
@@ -47,74 +47,74 @@ namespace SmartPhone.Data
                 new Supplier
                 {
                     Id = 1,
-                    Name = "Apple",
-                    Info = "Thông tin apple",
-                    Logo = "Logo Apple",
+                    Name = "Loreal",
+                    Info = "Thông tin Loreal",
+                    Logo = "Logo Loreal",
                     Active = true,
                     CreatedAt = DateTime.Now,
-                    CreatedBy = "Quang Duy",
+                    CreatedBy = "Đào Thu Hoài",
                     ModifiedAt = DateTime.Now,
-                    ModifiedBy = "Quang Duy"
+                    ModifiedBy = "Đào Thu Hoài"
                 },
                 new Supplier
                 {
                     Id = 2,
-                    Name = "Samsung",
-                    Info = "Thông tin samsung",
-                    Logo = "Logo Samsung",
+                    Name = "Maybelline",
+                    Info = "Thông tin Maybelline",
+                    Logo = "Logo Maybelline",
                     Active = true,
                     CreatedAt = DateTime.Now,
-                    CreatedBy = "Quang Duy",
+                    CreatedBy = "Đào Thu Hoài",
                     ModifiedAt = DateTime.Now,
-                    ModifiedBy = "Quang Duy"
+                    ModifiedBy = "Đào Thu Hoài"
                 },
                 new Supplier
                 {
                     Id = 3,
-                    Name = "Xiaomi",
-                    Info = "Thông tin xiaomi",
-                    Logo = "Logo Xiaomi",
+                    Name = "Vichy",
+                    Info = "Thông tin Vichy",
+                    Logo = "Logo Vichy",
                     Active = true,
                     CreatedAt = DateTime.Now,
-                    CreatedBy = "Quang Duy",
+                    CreatedBy = "Đào Thu Hoài",
                     ModifiedAt = DateTime.Now,
-                    ModifiedBy = "Quang Duy"
+                    ModifiedBy = "Đào Thu Hoài"
                 },
                 new Supplier
                 {
                     Id = 4,
-                    Name = "Huwei",
-                    Info = "Thông tin Huwei",
-                    Logo = "Logo Huwei",
+                    Name = " Innisfree",
+                    Info = "Thông tin  Innisfree",
+                    Logo = "Logo  Innisfree",
                     Active = true,
                     CreatedAt = DateTime.Now,
-                    CreatedBy = "Quang Duy",
+                    CreatedBy = "Đào Thu Hoài",
                     ModifiedAt = DateTime.Now,
-                    ModifiedBy = "Quang Duy"
+                    ModifiedBy = "Đào Thu Hoài"
                 },
                 new Supplier
                 {
                     Id = 5,
-                    Name = "Oppo",
-                    Info = "Thông tin Oppo",
-                    Logo = "Logo Oppo",
+                    Name = "Some By Mi",
+                    Info = "Thông tin Some By Mi",
+                    Logo = "Logo Some By Mi",
                     Active = true,
                     CreatedAt = DateTime.Now,
-                    CreatedBy = "Quang Duy",
+                    CreatedBy = "Đào Thu Hoài",
                     ModifiedAt = DateTime.Now,
-                    ModifiedBy = "Quang Duy"
+                    ModifiedBy = "Đào Thu Hoài"
                 },
                 new Supplier
                 {
                     Id = 6,
-                    Name = "Nokia",
-                    Info = "Thông tin Nokia",
-                    Logo = "Logo Nokia",
+                    Name = "Black Rouge",
+                    Info = "Thông tin Black Rouge",
+                    Logo = "Logo Black Rouge",
                     Active = true,
                     CreatedAt = DateTime.Now,
-                    CreatedBy = "Quang Duy",
+                    CreatedBy = "Đào Thu Hoài",
                     ModifiedAt = DateTime.Now,
-                    ModifiedBy = "Quang Duy"
+                    ModifiedBy = "Đào Thu Hoài"
                 }
              );
 
@@ -122,28 +122,28 @@ namespace SmartPhone.Data
                 new Vendor
                 {
                     Id = 1,
-                    Name = "Hoàng Hà Mobile",
+                    Name = "Loreal",
                     Address = "Địa chỉ Hà Nội",
-                    Email = "hoangha@gmail.com",
+                    Email = "Loreal@gmail.com",
                     Phone = "0987654321",
                     Active = true,
                     CreatedAt = DateTime.Now,
-                    CreatedBy = "Quang Duy",
+                    CreatedBy = "Đào Thu Hoài",
                     ModifiedAt = DateTime.Now,
-                    ModifiedBy = "Quang Duy"
+                    ModifiedBy = "Đào Thu Hoài"
                 },
                 new Vendor
                 {
                     Id = 2,
-                    Name = "CellPhone S",
+                    Name = "Maybelline",
                     Address = "Địa chỉ Cầu giấy",
-                    Email = "Cellphones@gmail.com",
+                    Email = "Maybelline@gmail.com",
                     Phone = "0123456789",
                     Active = true,
                     CreatedAt = DateTime.Now,
-                    CreatedBy = "Quang Duy",
+                    CreatedBy = "Đào Thu Hoài",
                     ModifiedAt = DateTime.Now,
-                    ModifiedBy = "Quang Duy"
+                    ModifiedBy = "Đào Thu Hoài"
                 }
              );
 
@@ -151,32 +151,32 @@ namespace SmartPhone.Data
                new ProductCategory
                {
                    Id = 1,
-                   Name = "Điện thoại",
+                   Name = "Make Up",
                    Active = true,
                    CreatedAt = DateTime.Now,
-                   CreatedBy = "Quang Duy",
+                   CreatedBy = "Đào Thu Hoài",
                    ModifiedAt = DateTime.Now,
-                   ModifiedBy = "Quang Duy"
+                   ModifiedBy = "Đào Thu Hoài"
                },
                new ProductCategory
                {
                    Id = 2,
-                   Name = "Ipad",
+                   Name = "Skin Care",
                    Active = true,
                    CreatedAt = DateTime.Now,
-                   CreatedBy = "Quang Duy",
+                   CreatedBy = "Đào Thu Hoài",
                    ModifiedAt = DateTime.Now,
-                   ModifiedBy = "Quang Duy"
+                   ModifiedBy = "Đào Thu Hoài"
                },
                new ProductCategory
                {
                    Id = 3,
-                   Name = "Laptop",
+                   Name = "Chăm sóc tóc",
                    Active = true,
                    CreatedAt = DateTime.Now,
-                   CreatedBy = "Quang Duy",
+                   CreatedBy = "Đào Thu Hoài",
                    ModifiedAt = DateTime.Now,
-                   ModifiedBy = "Quang Duy"
+                   ModifiedBy = "Đào Thu Hoài"
                }
             );
             modelBuilder.Entity<Status>().HasData(
@@ -186,9 +186,9 @@ namespace SmartPhone.Data
                   Name = "Xuất bản",
                   Active = true,
                   CreatedAt = DateTime.Now,
-                  CreatedBy = "Quang Duy",
+                  CreatedBy = "Đào Thu Hoài",
                   ModifiedAt = DateTime.Now,
-                  ModifiedBy = "Quang Duy"
+                  ModifiedBy = "Đào Thu Hoài"
               },
               new Status
               {
@@ -196,9 +196,9 @@ namespace SmartPhone.Data
                   Name = "Chưa xuất bản",
                   Active = true,
                   CreatedAt = DateTime.Now,
-                  CreatedBy = "Quang Duy",
+                  CreatedBy = "Đào Thu Hoài",
                   ModifiedAt = DateTime.Now,
-                  ModifiedBy = "Quang Duy"
+                  ModifiedBy = "Đào Thu Hoài"
               }
            );
             modelBuilder.Entity<Role>().HasData(
@@ -209,9 +209,9 @@ namespace SmartPhone.Data
                     Level = 1,
                     Active = true,
                     CreatedAt = DateTime.Now,
-                    CreatedBy = "Quang Duy",
+                    CreatedBy = "Đào Thu Hoài",
                     ModifiedAt = DateTime.Now,
-                    ModifiedBy = "Quang Duy"
+                    ModifiedBy = "Đào Thu Hoài"
 
                 }
             );
@@ -223,9 +223,9 @@ namespace SmartPhone.Data
                     Level = 2,
                     Active = true,
                     CreatedAt = DateTime.Now,
-                    CreatedBy = "Quang Duy",
+                    CreatedBy = "Đào Thu Hoài",
                     ModifiedAt = DateTime.Now,
-                    ModifiedBy = "Quang Duy"
+                    ModifiedBy = "Đào Thu Hoài"
 
                 }
             );
@@ -233,17 +233,17 @@ namespace SmartPhone.Data
               new User
               {
                   Id = 1,
-                  Email = "quangduy@gmail.com",
+                  Email = "thuhoai@gmail.com",
                   Username = "admin",
                   Password = "123456",
-                  Name = "Nguyen Quang Duy",
+                  Name = "Đào Thu Hoài",
                   Address = "Ha Noi",
                   RoleId = 1,
                   Active = true,
                   CreatedAt = DateTime.Now,
-                  CreatedBy = "Quang Duy",
+                  CreatedBy = "Đào Thu Hoài",
                   ModifiedAt = DateTime.Now,
-                  ModifiedBy = "Quang Duy"
+                  ModifiedBy = "Đào Thu Hoài"
               },
               new User
               {
@@ -251,14 +251,14 @@ namespace SmartPhone.Data
                   Email = "customer@gmail.com",
                   Username = "customer",
                   Password = "123456",
-                  Name = "Nguyen Quang Duy",
+                  Name = "Đào Thu Hoài",
                   Address = "Ha Noi",
                   RoleId = 2,
                   Active = true,
                   CreatedAt = DateTime.Now,
-                  CreatedBy = "Quang Duy",
+                  CreatedBy = "Đào Thu Hoài",
                   ModifiedAt = DateTime.Now,
-                  ModifiedBy = "Quang Duy"
+                  ModifiedBy = "Đào Thu Hoài"
               }
            );
 
@@ -271,9 +271,9 @@ namespace SmartPhone.Data
                  Name = "Xanh",
                  Active = true,
                  CreatedAt = DateTime.Now,
-                 CreatedBy = "Quang Duy",
+                 CreatedBy = "Đào Thu Hoài",
                  ModifiedAt = DateTime.Now,
-                 ModifiedBy = "Quang Duy"
+                 ModifiedBy = "Đào Thu Hoài"
              }
             
           );
@@ -284,62 +284,60 @@ namespace SmartPhone.Data
                  Name = "Đỏ",
                  Active = true,
                  CreatedAt = DateTime.Now,
-                 CreatedBy = "Quang Duy",
+                 CreatedBy = "Đào Thu Hoài",
                  ModifiedAt = DateTime.Now,
-                 ModifiedBy = "Quang Duy"
+                 ModifiedBy = "Đào Thu Hoài"
              }
 
           );
 
             modelBuilder.Entity<Product>().HasData(
-               new Product
-               {
-                   Id = 1,
-                   Name = "IPhone X",
-                   OriginalPrice = 20000000,
-                   SalePrice = 25000000,
-                   Specifications = "Nhà sản xuất:Apple </br>Hệ điều hành: iOS 11 </br>Kích thước:	143,6 x 70,9 x 7,7 mm </br>Trọng lượng: 174g </br>Ngày giới thiệu:	13 / 09 / 2017",
-                   Decriptions = "Cuối cùng iPhone X cũng đã ra mắt trong sự kiện diễn ra rạng sáng nay (13/9) theo giờ Việt Nam. </br>Đây là sản phẩm được Apple tung ra để kỷ niệm 10 năm iPhone.",
-                   Inventory = 1000,
-                   IsNew = true,
-                   View = 500,
-                   VendorId = 1,
-                   ProductCategoryId = 1,
-                   ColorId = 1,
-                   StatusId = 1,
-                   SupplierId = 1,
-                   Active = true,
-                   CreatedAt = DateTime.Now,
-                   CreatedBy = "Quang Duy",
-                   ModifiedAt = DateTime.Now,
-                   ModifiedBy = "Quang Duy"
-               }
-            );
+              new Product
+              {
+                  Id = 1,
+                  Name = "NATURE REPUBLIC TINH CHẤT GREEN DERMA MILD CICA SERUM 50ML (IP04)",
+                  OriginalPrice = 410000,
+                  SalePrice = 287000,
+                  Specifications = "",
+                  Decriptions = "",
+                  Inventory = 1000,
+                  IsNew = true,
+                  View = 500,
+                  VendorId = 1,
+                  ProductCategoryId = 1,
+                  ColorId = 1,
+                  StatusId = 1,
+                  SupplierId = 1,
+                  Active = true,
+                  CreatedAt = DateTime.Now,
+                  CreatedBy = "Đào Thu Hoài",
+                  ModifiedAt = DateTime.Now,
+                  ModifiedBy = "Đào Thu Hoài"
+              },
+              new Product
+              {
+                  Id = 2,
+                  Name = "NATURE REPUBLIC TINH CHẤT GREEN DERMA MILD CICA SERUM 50ML (IP04)",
+                  OriginalPrice = 410000,
+                  SalePrice = 287000,
+                  Specifications = "",
+                  Decriptions = "",
+                  Inventory = 1000,
+                  IsNew = true,
+                  View = 500,
+                  VendorId = 1,
+                  ProductCategoryId = 1,
+                  ColorId = 1,
+                  StatusId = 1,
+                  SupplierId = 1,
+                  Active = true,
+                  CreatedAt = DateTime.Now,
+                  CreatedBy = "Đào Thu Hoài",
+                  ModifiedAt = DateTime.Now,
+                  ModifiedBy = "Đào Thu Hoài"
+              }
+           );
 
-            modelBuilder.Entity<Product>().HasData(
-               new Product
-               {
-                   Id = 2,
-                   Name = "Samsung X",
-                   OriginalPrice = 20000000,
-                   SalePrice = 25000000,
-                   Specifications = "Nhà sản xuất:Apple </br>Hệ điều hành: iOS 11 </br>Kích thước:	143,6 x 70,9 x 7,7 mm </br>Trọng lượng: 174g </br>Ngày giới thiệu:	13 / 09 / 2017",
-                   Decriptions = "Cuối cùng iPhone X cũng đã ra mắt trong sự kiện diễn ra rạng sáng nay (13/9) theo giờ Việt Nam. </br>Đây là sản phẩm được Apple tung ra để kỷ niệm 10 năm iPhone.",
-                   Inventory = 1000,
-                   IsNew = true,
-                   View = 500,
-                   VendorId = 1,
-                   ProductCategoryId = 1,
-                   ColorId = 1,
-                   StatusId = 1,
-                   SupplierId = 1,
-                   Active = true,
-                   CreatedAt = DateTime.Now,
-                   CreatedBy = "Quang Duy",
-                   ModifiedAt = DateTime.Now,
-                   ModifiedBy = "Quang Duy"
-               }
-            );
 
             modelBuilder.Entity<Comment>().HasData(
                new Comment
@@ -350,9 +348,9 @@ namespace SmartPhone.Data
                    Active = true,
                    Delected = true,
                    CreatedAt = DateTime.Now,
-                   CreatedBy = "Quang Duy",
+                   CreatedBy = "Đào Thu Hoài",
                    ModifiedAt = DateTime.Now,
-                   ModifiedBy = "Quang Duy"
+                   ModifiedBy = "Đào Thu Hoài"
                },
                 new Comment
                 {
@@ -362,9 +360,9 @@ namespace SmartPhone.Data
                     Delected = false,
                     Active = true,
                     CreatedAt = DateTime.Now,
-                    CreatedBy = "Quang Duy",
+                    CreatedBy = "Đào Thu Hoài",
                     ModifiedAt = DateTime.Now,
-                    ModifiedBy = "Quang Duy"
+                    ModifiedBy = "Đào Thu Hoài"
                 }
             );
             modelBuilder.Entity<File>().HasData(
@@ -377,9 +375,9 @@ namespace SmartPhone.Data
                    Extention = ".png",
                    thumbnail = true,
                    CreatedAt = DateTime.Now,
-                   CreatedBy = "Quang Duy",
+                   CreatedBy = "Đào Thu Hoài",
                    ModifiedAt = DateTime.Now,
-                   ModifiedBy = "Quang Duy"
+                   ModifiedBy = "Đào Thu Hoài"
                }
             );
 
@@ -391,9 +389,9 @@ namespace SmartPhone.Data
                   UserId = 1,
                   Active = true,
                   CreatedAt = DateTime.Now,
-                  CreatedBy = "Quang Duy",
+                  CreatedBy = "Đào Thu Hoài",
                   ModifiedAt = DateTime.Now,
-                  ModifiedBy = "Quang Duy"
+                  ModifiedBy = "Đào Thu Hoài"
               },
               new Cart
               {
@@ -402,9 +400,9 @@ namespace SmartPhone.Data
                   UserId = 1,
                   Active = true,
                   CreatedAt = DateTime.Now,
-                  CreatedBy = "Quang Duy",
+                  CreatedBy = "Đào Thu Hoài",
                   ModifiedAt = DateTime.Now,
-                  ModifiedBy = "Quang Duy"
+                  ModifiedBy = "Đào Thu Hoài"
               }
            );
 
@@ -416,9 +414,9 @@ namespace SmartPhone.Data
                  Name = "Đang chờ",
                  Active = true,
                  CreatedAt = DateTime.Now,
-                 CreatedBy = "Quang Duy",
+                 CreatedBy = "Đào Thu Hoài",
                  ModifiedAt = DateTime.Now,
-                 ModifiedBy = "Quang Duy"
+                 ModifiedBy = "Đào Thu Hoài"
              },
              new OrderStatus
              {
@@ -426,9 +424,9 @@ namespace SmartPhone.Data
                  Name = "Đang giao hàng",
                  Active = true,
                  CreatedAt = DateTime.Now,
-                 CreatedBy = "Quang Duy",
+                 CreatedBy = "Đào Thu Hoài",
                  ModifiedAt = DateTime.Now,
-                 ModifiedBy = "Quang Duy"
+                 ModifiedBy = "Đào Thu Hoài"
              },
              new OrderStatus
              {
@@ -436,9 +434,9 @@ namespace SmartPhone.Data
                  Name = "Đã giao thành công",
                  Active = true,
                  CreatedAt = DateTime.Now,
-                 CreatedBy = "Quang Duy",
+                 CreatedBy = "Đào Thu Hoài",
                  ModifiedAt = DateTime.Now,
-                 ModifiedBy = "Quang Duy"
+                 ModifiedBy = "Đào Thu Hoài"
              },
              new OrderStatus
              {
@@ -446,9 +444,9 @@ namespace SmartPhone.Data
                  Name = "Đã hủy",
                  Active = true,
                  CreatedAt = DateTime.Now,
-                 CreatedBy = "Quang Duy",
+                 CreatedBy = "Đào Thu Hoài",
                  ModifiedAt = DateTime.Now,
-                 ModifiedBy = "Quang Duy"
+                 ModifiedBy = "Đào Thu Hoài"
              }
           );
 
@@ -460,9 +458,9 @@ namespace SmartPhone.Data
                  Code = "COD",
                  Active = true,
                  CreatedAt = DateTime.Now,
-                 CreatedBy = "Quang Duy",
+                 CreatedBy = "Đào Thu Hoài",
                  ModifiedAt = DateTime.Now,
-                 ModifiedBy = "Quang Duy"
+                 ModifiedBy = "Đào Thu Hoài"
              },
               new PaymentMethod
               {
@@ -471,9 +469,9 @@ namespace SmartPhone.Data
                   Code = "Visa - Master - JCB",
                   Active = true,
                   CreatedAt = DateTime.Now,
-                  CreatedBy = "Quang Duy",
+                  CreatedBy = "Đào Thu Hoài",
                   ModifiedAt = DateTime.Now,
-                  ModifiedBy = "Quang Duy"
+                  ModifiedBy = "Đào Thu Hoài"
               },
                new PaymentMethod
                {
@@ -482,9 +480,9 @@ namespace SmartPhone.Data
                    Code = "Visa - Master - JCB",
                    Active = true,
                    CreatedAt = DateTime.Now,
-                   CreatedBy = "Quang Duy",
+                   CreatedBy = "Đào Thu Hoài",
                    ModifiedAt = DateTime.Now,
-                   ModifiedBy = "Quang Duy"
+                   ModifiedBy = "Đào Thu Hoài"
                },
                 new PaymentMethod
                 {
@@ -493,9 +491,9 @@ namespace SmartPhone.Data
                     Code = "MoMo",
                     Active = true,
                     CreatedAt = DateTime.Now,
-                    CreatedBy = "Quang Duy",
+                    CreatedBy = "Đào Thu Hoài",
                     ModifiedAt = DateTime.Now,
-                    ModifiedBy = "Quang Duy"
+                    ModifiedBy = "Đào Thu Hoài"
                 }
           );
 
@@ -507,9 +505,9 @@ namespace SmartPhone.Data
                     Decriptions = "Khuyến mại theo số tiền",
                     Active = true,
                     CreatedAt = DateTime.Now,
-                    CreatedBy = "Quang Duy",
+                    CreatedBy = "Đào Thu Hoài",
                     ModifiedAt = DateTime.Now,
-                    ModifiedBy = "Quang Duy"
+                    ModifiedBy = "Đào Thu Hoài"
                 },
                  new DiscountCategory
                  {
@@ -518,9 +516,9 @@ namespace SmartPhone.Data
                      Decriptions = "Khuyến mại theo %",
                      Active = true,
                      CreatedAt = DateTime.Now,
-                     CreatedBy = "Quang Duy",
+                     CreatedBy = "Đào Thu Hoài",
                      ModifiedAt = DateTime.Now,
-                     ModifiedBy = "Quang Duy"
+                     ModifiedBy = "Đào Thu Hoài"
                  }
             );
 
@@ -532,16 +530,16 @@ namespace SmartPhone.Data
                   Code = "MA10",
                   DiscountMoney = 10000,
                   Quantity = 1000,
-                  Descriptions = "Giảm 10.000 cho điện thoại",
+                  Descriptions = "Giảm 10.000 cho skin care",
                   DiscountCategoryId = 2,
-                  DateTimeStart = DateTime.Parse("31/03/2019"),
-                  DateTimeFinish = DateTime.Parse("03/04/2019"),
+                  DateTimeStart = DateTime.Parse("2022-03-31"),
+                  DateTimeFinish = DateTime.Parse("2022-04-30"),
                   ApplyAll = false,
                   Active = true,
                   CreatedAt = DateTime.Now,
-                  CreatedBy = "Quang Duy",
+                  CreatedBy = "Đào Thu Hoài",
                   ModifiedAt = DateTime.Now,
-                  ModifiedBy = "Quang Duy"
+                  ModifiedBy = "Đào Thu Hoài"
               },
               new Discount
               {
@@ -552,14 +550,14 @@ namespace SmartPhone.Data
                   Quantity = 1000,
                   Descriptions = "Giảm 20.000 cho tất cả sản phẩm",
                   DiscountCategoryId = 2,
-                  DateTimeStart = DateTime.Parse("31/03/2019"),
-                  DateTimeFinish = DateTime.Parse("03/04/2019"),
+                  DateTimeStart = DateTime.Parse("2022-03-31"),
+                  DateTimeFinish = DateTime.Parse("2022-04-30"),
                   ApplyAll = false,
                   Active = true,
                   CreatedAt = DateTime.Now,
-                  CreatedBy = "Quang Duy",
+                  CreatedBy = "Đào Thu Hoài",
                   ModifiedAt = DateTime.Now,
-                  ModifiedBy = "Quang Duy"
+                  ModifiedBy = "Đào Thu Hoài"
               }
            );
 
@@ -571,9 +569,9 @@ namespace SmartPhone.Data
                   ProductCategoryId = 1,
                   Active = true,
                   CreatedAt = DateTime.Now,
-                  CreatedBy = "Quang Duy",
+                  CreatedBy = "Đào Thu Hoài",
                   ModifiedAt = DateTime.Now,
-                  ModifiedBy = "Quang Duy"
+                  ModifiedBy = "Đào Thu Hoài"
               },
                new DiscountProductCategory
                {
@@ -582,9 +580,9 @@ namespace SmartPhone.Data
                    ProductCategoryId = 2,
                    Active = true,
                    CreatedAt = DateTime.Now,
-                   CreatedBy = "Quang Duy",
+                   CreatedBy = "Đào Thu Hoài",
                    ModifiedAt = DateTime.Now,
-                   ModifiedBy = "Quang Duy"
+                   ModifiedBy = "Đào Thu Hoài"
                }
                ,
                new DiscountProductCategory
@@ -594,9 +592,9 @@ namespace SmartPhone.Data
                    ProductCategoryId = 1,
                    Active = true,
                    CreatedAt = DateTime.Now,
-                   CreatedBy = "Quang Duy",
+                   CreatedBy = "Đào Thu Hoài",
                    ModifiedAt = DateTime.Now,
-                   ModifiedBy = "Quang Duy"
+                   ModifiedBy = "Đào Thu Hoài"
                }
            );
 

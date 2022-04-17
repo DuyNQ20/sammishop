@@ -1,5 +1,5 @@
 ﻿
-namespace SmartPhone.Models
+namespace Sammishop.Models
 {
     public class User : InfoBase
     {

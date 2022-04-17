@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace SmartPhone.Models
+namespace Sammishop.Models
 {
     public class Color : BaseModel
     {

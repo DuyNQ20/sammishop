@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SmartPhone.Models
+namespace Sammishop.Models
 {
     public class File : BaseModel
     {

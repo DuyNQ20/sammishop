@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace SmartPhone.Models
+namespace Sammishop.Models
 {
     [JsonObject(IsReference = true)]
     public class Product : BaseModel

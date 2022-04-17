@@ -1,16 +1,16 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using SmartPhone.Data;
-using SmartPhone.Lib;
-using SmartPhone.Mapper;
-using SmartPhone.Models;
+using Sammishop.Data;
+using Sammishop.Lib;
+using Sammishop.Mapper;
+using Sammishop.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SmartPhone.Controllers
+namespace  Sammishop.Controllers
 {
     [Route("")]
     public class HomeController : Controller

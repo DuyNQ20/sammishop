@@ -2,16 +2,16 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
-using SmartPhone.Data;
-using SmartPhone.Lib;
-using SmartPhone.Mapper;
-using SmartPhone.Models;
-using SmartPhone.ViewModels;
+using Sammishop.Data;
+using Sammishop.Lib;
+using Sammishop.Mapper;
+using Sammishop.Models;
+using Sammishop.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SmartPhone.Controllers
+namespace  Sammishop.Controllers
 {
     public class CartsController : Controller
     {

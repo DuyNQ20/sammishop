@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using SmartPhone.Data;
-using SmartPhone.ViewModels;
+using Sammishop.Data;
+using Sammishop.ViewModels;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SmartPhone.Controllers
+namespace  Sammishop.Controllers
 {
     [Route("account")]
     public class AccountController : Controller

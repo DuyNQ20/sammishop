@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
-using SmartPhone.Models;
-using SmartPhone.ViewModels;
+using Sammishop.Models;
+using Sammishop.ViewModels;
 using System;
 
-namespace SmartPhone.Mapper
+namespace  Sammishop.Mapper
 {
     public static class Mapper
     {

@@ -126,55 +126,30 @@
                 <div class="sb2-13">
                     <ul class="collapsible" data-collapsible="accordion">
                         <li>
-                            <a href="index.html" class="menu-active"><i class="fa fa-bar-chart" aria-hidden="true"></i> Thống kê</a>
+                            <a href="#" class=""><i class="fa fa-bar-chart" aria-hidden="true"></i> Thống kê</a>
                         </li>
-                        <li>
-                            <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-list-ul" aria-hidden="true"></i> Quản lý danh mục</a>
-                            <div class="collapsible-body left-sub-menu">
-                                <ul>
-                                    <li>
-                                        @Html.ActionLink("Loại sản phẩm", "index", "ProductCategories")
-                                    </li>
-                                    <li>
-                                        @Html.ActionLink("Nhà cung cấp", "index", "Vendors")
-                                    </li>
 
-                                </ul>
-                            </div>
-                        </li>
                         <li>
                             <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-umbrella" aria-hidden="true"></i> Sản phẩm</a>
                             <div class="collapsible-body left-sub-menu">
                                 <ul>
                                     <li>
-                                        @Html.ActionLink("Danh sách sản phẩm", "index", "Products")
+                                        @Html.ActionLink("Tất cả sản phẩm", "index", "Products")
                                     </li>
-                                    <li>
-                                        <a href="listing-add.html">Thêm mới</a>
-                                    </li>
-                                    <li>
-                                        <a href="listing-cat-all.html">Danh sách danh mục</a>
-                                    </li>
-                                    <li>
-                                        <a href="listing-cat-add.html">Thêm mới danh mục</a>
-                                    </li>
+                                    @*<li>
+                        <a href="listing-add.html">Thêm mới</a>
+                    </li>
+                    <li>
+                        <a href="listing-cat-all.html">Danh sách danh mục</a>
+                    </li>
+                    <li>
+                        <a href="listing-cat-add.html">Thêm mới danh mục</a>
+                    </li>*@
                                 </ul>
                             </div>
                         </li>
 
-                        <li>
-                            <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-user" aria-hidden="true"></i> Users</a>
-                            <div class="collapsible-body left-sub-menu">
-                                <ul>
-                                    <li>
-                                        <a href="user-all.html">All Users</a>
-                                    </li>
-                                    <li>
-                                        <a href="user-add.html">Add New user</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
+
 
                         <li>
                             <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-h-square" aria-hidden="true"></i> Đơn hàng</a>
@@ -184,30 +159,16 @@
                                         @Html.ActionLink("Tất cả đơn hàng", "index", "Orders")
                                     </li>
                                     <li>
-                                        <a href="hotel-add.html">Đơn hàng đang chờ</a>
+                                        <a href="#">Đơn hàng đang chờ</a>
                                     </li>
                                     <li>
-                                        <a href="hotel-room-type-all.html">Đơn hàng đang giao</a>
+                                        <a href="#">Đơn hàng đang giao</a>
                                     </li>
                                     <li>
-                                        <a href="hotel-room-type-add.html">Đơn hàng đã giao</a>
+                                        <a href="#">Đơn hàng đã giao</a>
                                     </li>
                                     <li>
-                                        <a href="hotel-room-type-add.html">Đơn hàng đã hủy</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-
-                        <li>
-                            <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-picture-o" aria-hidden="true"></i> Khách hàng</a>
-                            <div class="collapsible-body left-sub-menu">
-                                <ul>
-                                    <li>
-                                        <a href="sight-see-all.html">All Sight Seeings</a>
-                                    </li>
-                                    <li>
-                                        <a href="sight-see-add.html">Add New Sight Seeing</a>
+                                        <a href="#">Đơn hàng đã hủy</a>
                                     </li>
                                 </ul>
                             </div>
@@ -229,75 +190,114 @@
                             </div>
                         </li>
                         <li>
-                            <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-calendar-o" aria-hidden="true"></i> Sự kiện</a>
+                            <a href="javascript:void(0)" class="collapsible-header "><i class="fa fa-list-ul" aria-hidden="true"></i> Quản lý danh mục</a>
                             <div class="collapsible-body left-sub-menu">
                                 <ul>
                                     <li>
-                                        <a href="event-all.html">All Events</a>
+                                        @Html.ActionLink("Loại sản phẩm", "index", "ProductCategories")
                                     </li>
                                     <li>
-                                        <a href="event-add.html">Add New Event</a>
+                                        @Html.ActionLink("Nhà cung cấp", "index", "Vendors")
                                     </li>
+
                                 </ul>
                             </div>
                         </li>
                         <li>
-                            <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-braille" aria-hidden="true"></i> Dịch vụ</a>
-                            <div class="collapsible-body left-sub-menu">
-                                <ul>
-                                    <li>
-                                        <a href="ui-form.html">ui-form</a>
-                                    </li>
-                                    <li>
-                                        <a href="ui-kit.html">ui-kit</a>
-                                    </li>
-                                    <li>
-                                        <a href="ui-table.html">ui-table</a>
-                                    </li>
-                                    <li>
-                                        <a href="ui-pre-load.html">ui-pre-load</a>
-                                    </li>
-                                    <li>
-                                        <a href="ui-tab.html">ui-tab</a>
-                                    </li>
-                                    <li>
-                                        <a href="ui-icons.html">ui-icons</a>
-                                    </li>
-                                    <li>
-                                        <a href="ui-collapsible.html">ui-collapsible</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-usd" aria-hidden="true"></i> Tiền tệ</a>
-                            <div class="collapsible-body left-sub-menu">
-                                <ul>
-                                    <li>
-                                        <a href="discount.html">All Discounts</a>
-                                    </li>
-                                    <li>
-                                        <a href="discount-add.html">Add New Discounts</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="login.html" target="_blank"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
+                            <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-picture-o" aria-hidden="true"></i> Khách hàng</a>
+                            @*<div class="collapsible-body left-sub-menu">
+                <ul>
+                    <li>
+                        <a href="sight-see-all.html">All Sight Seeings</a>
+                    </li>
+                    <li>
+                        <a href="sight-see-add.html">Add New Sight Seeing</a>
+                    </li>
+                </ul>
+            </div>*@
                         </li>
 
                         <li>
+                            <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-calendar-o" aria-hidden="true"></i> Sự kiện</a>
+                            @*<div class="collapsible-body left-sub-menu">
+                <ul>
+                    <li>
+                        <a href="event-all.html">All Events</a>
+                    </li>
+                    <li>
+                        <a href="event-add.html">Add New Event</a>
+                    </li>
+                </ul>
+            </div>*@
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-braille" aria-hidden="true"></i> Dịch vụ</a>
+                            @*<div class="collapsible-body left-sub-menu">
+                <ul>
+                    <li>
+                        <a href="ui-form.html">ui-form</a>
+                    </li>
+                    <li>
+                        <a href="ui-kit.html">ui-kit</a>
+                    </li>
+                    <li>
+                        <a href="ui-table.html">ui-table</a>
+                    </li>
+                    <li>
+                        <a href="ui-pre-load.html">ui-pre-load</a>
+                    </li>
+                    <li>
+                        <a href="ui-tab.html">ui-tab</a>
+                    </li>
+                    <li>
+                        <a href="ui-icons.html">ui-icons</a>
+                    </li>
+                    <li>
+                        <a href="ui-collapsible.html">ui-collapsible</a>
+                    </li>
+                </ul>
+            </div>*@
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-user" aria-hidden="true"></i> Quản lý qài khoản</a>
+                            @*<div class="collapsible-body left-sub-menu">
+                <ul>
+                    <li>
+                        <a href="user-all.html">All Users</a>
+                    </li>
+                    <li>
+                        <a href="user-add.html">Add New user</a>
+                    </li>
+                </ul>
+            </div>*@
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-usd" aria-hidden="true"></i> Tiền tệ</a>
+                            @*<div class="collapsible-body left-sub-menu">
+                <ul>
+                    <li>
+                        <a href="discount.html">All Discounts</a>
+                    </li>
+                    <li>
+                        <a href="discount-add.html">Add New Discounts</a>
+                    </li>
+                </ul>
+            </div>*@
+                        </li>
+
+
+                        <li>
                             <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-tags" aria-hidden="true"></i> Offers</a>
-                            <div class="collapsible-body left-sub-menu">
-                                <ul>
-                                    <li>
-                                        <a href="offers.html">All Offers</a>
-                                    </li>
-                                    <li>
-                                        <a href="offers-add.html">Add New Offers</a>
-                                    </li>
-                                </ul>
-                            </div>
+                            @*<div class="collapsible-body left-sub-menu">
+                <ul>
+                    <li>
+                        <a href="offers.html">All Offers</a>
+                    </li>
+                    <li>
+                        <a href="offers-add.html">Add New Offers</a>
+                    </li>
+                </ul>
+            </div>*@
                         </li>
                         <li>
                             <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-ticket" aria-hidden="true"></i> Booking & Enquiry</a>
@@ -320,19 +320,22 @@
                         </li>
                         <li>
                             <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-rss" aria-hidden="true"></i> Blog & Articals</a>
-                            <div class="collapsible-body left-sub-menu">
-                                <ul>
-                                    <li>
-                                        <a href="blog-all.html">All Blogs</a>
-                                    </li>
-                                    <li>
-                                        <a href="blog-add.html">Add Blog</a>
-                                    </li>
-                                </ul>
-                            </div>
+                            @*<div class="collapsible-body left-sub-menu">
+                <ul>
+                    <li>
+                        <a href="blog-all.html">All Blogs</a>
+                    </li>
+                    <li>
+                        <a href="blog-add.html">Add Blog</a>
+                    </li>
+                </ul>
+            </div>*@
                         </li>
                         <li>
-                            <a href="social-media.html"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Social Media</a>
+                            <a href="#"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Social Media</a>
+                        </li>
+                        <li>
+                            <a href="#" target="_blank"><i class="fa fa-sign-in" aria-hidden="true"></i> Đăng xuất</a>
                         </li>
                     </ul>
                 </div>

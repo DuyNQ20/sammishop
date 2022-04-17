@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 
-namespace SmartPhone.Lib
+namespace  Sammishop.Lib
 {
     public static class SessionExtensions
     {

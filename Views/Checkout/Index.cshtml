@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SmartPhone.Models.Cart>
+﻿@model IEnumerable<Sammishop.Models.Cart>
 
 @{
     ViewData["Title"] = "Index";
@@ -31,9 +31,10 @@
 <section class="flat-checkout">
     <div class="container">
         <div class="row">
-            <div class="col-md-7">
-                <div class="box-checkout">
-                    <form asp-action="Order" method="post" class="checkout" accept-charset="utf-8">
+            <form asp-action="Order" method="post" class="checkout" accept-charset="utf-8">
+                <div class="col-md-7">
+                    <div class="box-checkout">
+
                         <input name="code" type="hidden" value="@ViewBag.Code" />
                         <div class="shipping-address-fields">
                             <div class="fields-title">
@@ -43,20 +44,20 @@
                             </div><!-- /.fields-title -->
                             <div class="fields-content">
                                 @*<div class="checkbox">
-                                        <input type="checkbox" id="create-account-2" name="create-account-2" checked>
-                                        <label for="create-account-2">Ship to a different address ?</label>
-                                    </div>*@
+                                <input type="checkbox" id="create-account-2" name="create-account-2" checked>
+                                <label for="create-account-2">Ship to a different address ?</label>
+                            </div>*@
                                 @foreach (var item in Model)
                                 {
                                     <div class="field-row">
                                         <p class="field-one-half">
                                             <label for="first-name-2">Họ tên </label>
-                                            <input required asp-for="@item.User.Name" type="text" id="first-name-2" name="Receiver" placeholder="Nhập họ tên">
+                                            <input required asp-for="@item.User.Name" type="text" id="first-name-2" name="Receiver" placeholder="Nhập họ tên" />
                                         </p>
 
                                         <p class="field-one-half">
                                             <label for="first-name-2">Số điện thoại </label>
-                                            <input required asp-for="@item.User.Phone" type="text" id="phone" name="Phone" placeholder="Nhập số điện thoại">
+                                            <input required asp-for="@item.User.Phone" type="text" id="phone" name="Phone" placeholder="Nhập số điện thoại" />
                                             <span class="checkphone" style="color: red; display: none">Số điện thoại không đúng</span>
                                         </p>
                                         <div class="clearfix"></div>
@@ -65,7 +66,7 @@
 
                                     <div class="field-row">
                                         <label for="address-3">Địa chỉ *</label>
-                                        <input required asp-for="@item.User.Address" type="text" id="address-3" name="DeliveryAddress" placeholder="Nhập địa chỉ nhận hàng của bạn">
+                                        <input required asp-for="@item.User.Address" type="text" id="address-3" name="DeliveryAddress" placeholder="Nhập địa chỉ nhận hàng của bạn" />
                                     </div>
                                     break;
                                 }
@@ -80,89 +81,90 @@
 
 
 
-                </div><!-- /.box-checkout -->
-            </div><!-- /.col-md-7 -->
-            <div class="col-md-5">
-                <div class="cart-totals style2">
-                    <h3>Thông tin thanh toán</h3>
-                    @{ decimal total = 0;}
-                    @{ Discount discount = ViewData["Discount"] as Discount;}
-                    <table class="product">
-                        <thead>
-                            <tr>
-                                <th>Sản phẩm</th>
-                                <th>Tổng tiền</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model)
-                            {
+                    </div><!-- /.box-checkout -->
+                </div><!-- /.col-md-7 -->
+                <div class="col-md-5">
+                    <div class="cart-totals style2">
+                        <h3>Thông tin thanh toán</h3>
+                        @{ decimal total = 0;}
+                        @{ Discount discount = ViewData["Discount"] as Discount;}
+                        <table class="product">
+                            <thead>
                                 <tr>
-                                    @{
-                                        var tong = item.Product.SalePrice * item.Quantity;
-                                        total = total + tong;
-                                    }
-                                    <td> @item.Quantity x <a style="color: #f28b00" asp-action="Details" asp-controller="Home" asp-route-id="@item.ProductId">@item.Product.Name </a></td>
-                                    <td>@tong.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR")) &#8363</td>
+                                    <th>Sản phẩm</th>
+                                    <th>Tổng tiền</th>
                                 </tr>
-                            }
-                        </tbody>
-                    </table><!-- /.product -->
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td>Tạm tính</td>
-                                <td class="subtotal">@total.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR")) &#8363</td>
-                            </tr>
-                            <tr>
-                                <td>Phí vận chuyển</td>
-                                <td class="btn-radio">
-                                    <label for="free-shipping">Miễn phí</label>
-                                </td><!-- /.btn-radio -->
-                            </tr>
-                            @if (discount != null)
-                            {
-                                total -= discount.DiscountMoney;
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        @{
+                                            var tong = item.Product.SalePrice * item.Quantity;
+                                            total = total + tong;
+                                        }
+                                        <td> @item.Quantity x <a style="color: #f28b00" asp-action="Details" asp-controller="Home" asp-route-id="@item.ProductId">@item.Product.Name </a></td>
+                                        <td>@tong.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR")) &#8363</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table><!-- /.product -->
+                        <table>
+                            <tbody>
                                 <tr>
-                                    <td>Mã giảm giá</td>
+                                    <td>Tạm tính</td>
+                                    <td class="subtotal">@total.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR")) &#8363</td>
+                                </tr>
+                                <tr>
+                                    <td>Phí vận chuyển</td>
                                     <td class="btn-radio">
-                                        <div>
-                                            <label for="free-shipping">- @discount.DiscountMoney.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR")) &#8363</label>
-                                        </div>
-                                    </td>
+                                        <label for="free-shipping">Miễn phí</label>
+                                    </td><!-- /.btn-radio -->
                                 </tr>
-                            }
-                            <tr>
-                                <td>Tổng thanh toán</td>
-                                <td class="price-total">@total.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR")) &#8363</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="btn-radio style2">
-                        <div class="radio-info">
-                            <input type="radio" id="flat-payment" checked name="PaymentMethodId" value="1">
-                            <label for="flat-payment">Thanh toán tiền mặt khi nhận hàng</label>
-                        </div>
-                        <div class="radio-info">
-                            <input type="radio" id="bank-transfer" name="PaymentMethodId" value="2">
-                            <label for="bank-transfer">Thanh toán bằng thẻ quốc tế Visa, Master, JCB</label>
-                        </div>
-                        <div class="radio-info">
-                            <input type="radio" id="cash-delivery" name="PaymentMethodId" value="3">
-                            <label for="cash-delivery">Thẻ ATM nội địa/Internet Banking (Miễn phí thanh toán)</label>
-                        </div>
-                        <div class="radio-info">
-                            <input type="radio" id="paypal" name="PaymentMethodId" value="4">
-                            <label for="paypal">Thanh toán bằng MoMo</label>
-                        </div>
-                    </div><!-- /.btn-radio style2 -->
+                                @if (discount != null)
+                                {
+                                    total -= discount.DiscountMoney;
+                                    <tr>
+                                        <td>Mã giảm giá</td>
+                                        <td class="btn-radio">
+                                            <div>
+                                                <label for="free-shipping">- @discount.DiscountMoney.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR")) &#8363</label>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                                <tr>
+                                    <td>Tổng thanh toán</td>
+                                    <td class="price-total">@total.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR")) &#8363</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="btn-radio style2">
+                            <div class="radio-info">
+                                <input type="radio" id="flat-payment" checked name="PaymentMethodId" value="1" />
+                                <label for="flat-payment">Thanh toán tiền mặt khi nhận hàng</label>
+                            </div>
+                            <div class="radio-info">
+                                <input type="radio" id="bank-transfer" name="PaymentMethodId" value="2" />
+                                <label for="bank-transfer">Thanh toán bằng thẻ quốc tế Visa, Master, JCB</label>
+                            </div>
+                            <div class="radio-info">
+                                <input type="radio" id="cash-delivery" name="PaymentMethodId" value="3" />
+                                <label for="cash-delivery">Thẻ ATM nội địa/Internet Banking (Miễn phí thanh toán)</label>
+                            </div>
+                            <div class="radio-info">
+                                <input type="radio" id="paypal" name="PaymentMethodId" value="4" />
+                                <label for="paypal">Thanh toán bằng MoMo</label>
+                            </div>
+                        </div><!-- /.btn-radio style2 -->
 
-                    <div class="btn-order">
-                        <button class="order" type="submit" title="">Đặt hàng</button>
-                    </div><!-- /.btn-order -->
-                    </form>
-                </div><!-- /.cart-totals style2 -->
+                        <div class="btn-order">
+                            <button class="order" type="submit" title="">Đặt hàng</button>
+                        </div><!-- /.btn-order -->
+            </form>
+        </div><!-- /.cart-totals style2 -->
             </div><!-- /.col-md-5 -->
-        </div><!-- /.row -->
+        
+            </div><!-- /.row -->
     </div><!-- /.container -->
 </section><!-- /.flat-checkout -->

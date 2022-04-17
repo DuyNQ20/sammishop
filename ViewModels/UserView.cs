@@ -1,4 +1,4 @@
-﻿namespace SmartPhone.ViewModels
+﻿namespace  Sammishop.ViewModels
 {
     public class UserView
     {

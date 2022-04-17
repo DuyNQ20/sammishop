@@ -3,16 +3,16 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
-using SmartPhone.Data;
-using SmartPhone.Mapper;
-using SmartPhone.ViewModels;
+using Sammishop.Data;
+using Sammishop.Mapper;
+using Sammishop.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SmartPhone.Controllers
+namespace  Sammishop.Controllers
 {
     [Route("admin/products")]
     public class ProductsController : Controller

@@ -1,4 +1,4 @@
-﻿namespace SmartPhone.Models
+﻿namespace Sammishop.Models
 {
     public class History : BaseModel
     {

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SmartPhone.Models.Order>
+﻿@model IEnumerable<Sammishop.Models.Order>
 @{
     ViewData["Title"] = "Edit";
     Layout = "~/Views/Layout/AdminLayout.cshtml";
@@ -71,7 +71,7 @@
                                                     <td> </td>
                                                     <td class="text-right"> </td>
                                                     <td class="text-right">Giảm giá</td>
-                                                    <td class="text-right"> @Url.Content(item.DiscountMoney==0?"0":"- " + item.DiscountMoney.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR"))) &#8363</td>
+                                                    <td class="text-right"> @Url.Content(item.DiscountMoney == 0 ? "0" : "- " + item.DiscountMoney.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR"))) &#8363</td>
                                                 </tr>
                                                 <tr>
                                                     <td> </td>
@@ -103,7 +103,7 @@
                         </div>
                         <div class="col s4">
                             @foreach (var item in Model)
-                                    {
+                            {
                                 <div class="box-inn-sp col-lg-12">
                                     <div class="inn-title fix">
                                         <h4>Tài khoản</h4>
@@ -139,15 +139,16 @@
 
                                 break;
                             }
-                            
+
                         </div>
-                            
+                        @if (@Model.ElementAt(0).OrderStatusId != 3)
+                        {
                             <div class="col s8">
                                 <div class="row">
                                     <div class="input-field col s8">
                                         @if (@Model.ElementAt(0).OrderStatusId == 2) // Nếu đang ở trạng thái giao hàng thì sẽ thay thế nút đó thành giao hàng thành công
                                         {
-                                            <a  asp-action="Done" asp-route-id="@Model.ElementAt(0).Code" >
+                                            <a asp-action="Done" asp-route-id="@Model.ElementAt(0).Code">
                                                 <button type="button" class="btn btn-primary btn-sm green" onclick="return confirm('Xác nhận giao hàng thành công?');">
                                                     <i class="fa fa-truck"></i> Giao hàng thành công
                                                 </button>
@@ -173,11 +174,21 @@
                                         </a>
                                     </div>
                                 </div>
-                               
-                            </div>
 
-                            <div style="clear: both"></div>
-                        </form>
+                            </div>
+                        }
+                        else
+                        {
+                            <a asp-action="Index">
+                                <button type="button" class="btn btn-primary btn-sm red">
+                                    <i class="fa fa-times-circle"></i> Thoát
+                                </button>
+                            </a>
+                        }
+
+
+                        <div style="clear: both"></div>
+                    </form>
                 </div>
             </div>
         </div>

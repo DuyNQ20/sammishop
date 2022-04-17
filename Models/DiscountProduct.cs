@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SmartPhone.Models
+namespace Sammishop.Models
 {
     public class DiscountProduct : BaseModel
     {

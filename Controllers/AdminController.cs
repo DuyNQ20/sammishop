@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using SmartPhone.Data;
-using SmartPhone.ViewModels;
+using Sammishop.Data;
+using Sammishop.ViewModels;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SmartPhone.Controllers
+namespace  Sammishop.Controllers
 {
     [Route("admin")]
     public class AdminController : Controller
@@ -19,6 +19,8 @@ namespace SmartPhone.Controllers
 
         public IActionResult Index()
         {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("Admin")))
+                return RedirectToAction(nameof(AdminLogin));
             return View();
         }
 
@@ -26,12 +28,11 @@ namespace SmartPhone.Controllers
         public IActionResult AdminLogin(string returnUrl = "")
         {
             var model = new UserView { ReturnUrl = returnUrl };
-
             return View(model);
         }
 
         [HttpPost, Route("login")]
-        public async Task<IActionResult> AdminLogin(UserView model)
+        public IActionResult AdminLogin(UserView model)
         {
             var auth = _context.Users.FirstOrDefault(x => (x.Username == model.Username | x.Email == model.Username) & x.Password == model.Password & x.RoleId == 1);
             if (auth != null)

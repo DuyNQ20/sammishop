@@ -5,7 +5,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Web;
 using Microsoft.AspNetCore.Http.Extensions;
-namespace SmartPhone.Lib
+namespace  Sammishop.Lib
 {
     public class Client
     {

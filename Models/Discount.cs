@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SmartPhone.Models
+namespace Sammishop.Models
 {
     public class Discount : BaseModel
     {
@@ -26,9 +26,9 @@ namespace SmartPhone.Models
 
         public int? UserId { get; set; }
         public User User { get; set; }
-
+        [Newtonsoft.Json.JsonIgnore]
         public virtual List<DiscountProduct> DiscountProducts { get; set; }
-
+        [Newtonsoft.Json.JsonIgnore]
         public virtual List<DiscountProductCategory> DiscountProductCategories { get; set; }
         
     }

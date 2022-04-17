@@ -197,3 +197,49 @@ input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+
+/*Đổi màu chủ đạo*/
+.header-bottom {
+    background-color: #DC1C4C;
+}
+
+#mainnav ul.menu > li:hover > a {
+    color: #dc1c4c;
+}
+
+#mega-menu > ul.menu > li:hover > a .menu-title {
+    color: #dc1c4c;
+}
+
+a:hover, a:focus {
+    color: #dc1c4c;
+}
+
+.sale {
+    color: #dc1c4c;
+}
+
+.imagebox .box-bottom .btn-add-cart a {
+    background-color: #f28b00;
+}
+
+.box-cart .inner-box > a:hover > div.icon-cart {
+    border-color: #dc1c4c;
+}
+
+.imagebox .box-bottom .btn-add-cart a:before {
+    background: #dc1c4c;
+}
+
+.imagebox span.item-new, .imagebox span.item-sale {
+    background-color: #dc1c4c;
+}
+/*Bỏ danh mục trong tìm kiếm rồi style lại*/
+.top-search form.form-search .box-search input {
+    padding-left: 54px;
+}
+
+.slider .slider-item .item-image {
+   padding-top: 0;
+   padding-right: 0;
+}

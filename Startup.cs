@@ -4,14 +4,16 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using SmartPhone.Data;
+using Sammishop.Data;
 
-namespace SmartPhone
+namespace  Sammishop
 {
     using Microsoft.EntityFrameworkCore;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Serialization;
     using Rotativa.AspNetCore;
-    using SmartPhone.Controllers;
-    using SmartPhone.Lib;
+    using Sammishop.Controllers;
+    using Sammishop.Lib;
 
     public class Startup
     {
@@ -40,7 +42,6 @@ namespace SmartPhone
             //    options.IdleTimeout = TimeSpan.FromSeconds(10);
             //    options.Cookie.HttpOnly = true;
             //});
-            
             services.Configure<StorageConfiguration>(Configuration.GetSection("StorageConfiguration"));
             services
                .AddDbContext<DataContext>(options =>
@@ -48,7 +49,10 @@ namespace SmartPhone
                //options.UseSqlServer(Configuration.GetConnectionString("SqlServerConnection")))
                options.UseMySql(Configuration.GetConnectionString("DefaultConnection")))
                    .AddMvc()
-               .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+               .SetCompatibilityVersion(CompatibilityVersion.Version_2_2).AddJsonOptions(options => {
+                   options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+                   options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+               }); ;
             services.AddSession();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<DiscountsController>();

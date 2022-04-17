@@ -1,16 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using SmartPhone.Data;
-using SmartPhone.Models;
+using Rotativa.AspNetCore;
+using Sammishop.Data;
+using Sammishop.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Rotativa.AspNetCore;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace SmartPhone.Controllers
+namespace Sammishop.Controllers
 {
     [Route("admin")]
     public class OrdersController : Controller
@@ -22,34 +22,13 @@ namespace SmartPhone.Controllers
             _context = context;
         }
         
-        public List<Order> ShowOrderList(List<Order> listOrder) 
-        {
-            var codeOld = "";
-            var list = new List<Order>();
-            foreach (var item in listOrder)
-            {
-                var codeNew = item.Code;
-                if (codeNew != codeOld)
-                {
-                    list.Add(item);
-                }
-                else
-                {
-
-                }
-                codeOld = codeNew;
-            }
-            return list;
-        }
-
-
         [HttpGet("order")]
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             var dataContext = _context.Orders.Include(x=>x.PaymentMethod).Include(x => x.orderStatus).OrderByDescending(x => x.CreatedAt).ToList();
             ViewBag.OrderStatus = "";
 
-            return View(ShowOrderList(dataContext));
+            return View(Common.ShowOrderList(dataContext));
         }
 
         [HttpGet("ordercancel")]
@@ -85,7 +64,7 @@ namespace SmartPhone.Controllers
         public async Task<IActionResult> Search([FromQuery]string query)
         {
             var list = _context.Orders.OrderByDescending(x => x.CreatedAt).ToList();
-            var dataContext = ShowOrderList(list);
+            var dataContext = Common.ShowOrderList(list);
 
             var orders = new List<Order>();
 

@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace SmartPhone
+namespace  Sammishop
 {
     public class StorageConfiguration
     {
