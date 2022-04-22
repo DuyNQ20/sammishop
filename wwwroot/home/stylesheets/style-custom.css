@@ -226,9 +226,12 @@ a:hover, a:focus {
 .box-cart .inner-box > a:hover > div.icon-cart {
     border-color: #dc1c4c;
 }
+.table-cart tr td .total {
+    border-color: #dc1c4c;
+}
 
 .imagebox .box-bottom .btn-add-cart a:before {
-    background: #dc1c4c;
+    color: #dc1c4c;
 }
 
 .imagebox span.item-new, .imagebox span.item-sale {
@@ -242,4 +245,9 @@ a:hover, a:focus {
 .slider .slider-item .item-image {
    padding-top: 0;
    padding-right: 0;
+}
+
+.box-cart.style2 .btn-add-cart a{
+    height: 48px;
+    line-height: 48px;
 }
