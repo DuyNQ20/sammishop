@@ -129,7 +129,7 @@ namespace  Sammishop.Controllers
                         _context.Carts.Add(cart);
                         await _context.SaveChangesAsync();
                         // HttpContext.Session.SetObject("Carts", _context.Carts.Include(x => x.Product).Where(x => x.UserId == HttpContext.Session.GetInt32("CustomerID")).ToList());
-                        return RedirectToAction("Index", "Home");
+                        //return RedirectToAction("Index", "Home");
                     }
                 }
                 else // Nếu chưa đăng nhập
@@ -213,7 +213,7 @@ namespace  Sammishop.Controllers
                         _context.Carts.Add(cart);
                         await _context.SaveChangesAsync();
                         // HttpContext.Session.SetObject("Carts", _context.Carts.Include(x => x.Product).Where(x => x.UserId == HttpContext.Session.GetInt32("CustomerID")).ToList());
-                        return RedirectToAction("Index", "Home");
+                        //return RedirectToAction("Index", "Home");
                     }
                 }
                 else // Nếu chưa đăng nhập
