@@ -2,6 +2,7 @@
 using Sammishop.Models;
 using Sammishop.ViewModels;
 using System;
+using System.Globalization;
 
 namespace  Sammishop.Mapper
 {
@@ -357,13 +358,13 @@ namespace  Sammishop.Mapper
             destination.DiscountMoney = source.DiscountMoney;
             destination.Descriptions = source.Descriptions;
             destination.DiscountCategoryId = source.DiscountCategoryId;
-            destination.DateTimeStart = source.DateTimeStart;
-            destination.DateTimeFinish = source.DateTimeFinish;
+            destination.DateTimeStart = source.DateTimeStart == default? DateTime.Now : DateTime.ParseExact(source.DateTimeStart, "dd/MM/yyyy", CultureInfo.InvariantCulture); ;
+            destination.DateTimeFinish = source.DateTimeFinish == default ? DateTime.Now : DateTime.ParseExact(source.DateTimeFinish, "dd/MM/yyyy", CultureInfo.InvariantCulture); ;
             destination.ApplyAll = source.ApplyAll;
             destination.UserId = source.UserId;
             destination.Quantity = source.Quantity;
             destination.ModifiedAt = now;
-            destination.Active = source.DateTimeFinish < DateTime.Now.Date ? false : true;
+            destination.Active = DateTime.ParseExact(source.DateTimeFinish, "dd/MM/yyyy", CultureInfo.InvariantCulture) < DateTime.ParseExact(source.DateTimeStart, "dd/MM/yyyy", CultureInfo.InvariantCulture) ? false : true;
         }
 
         public static void SaveMap(this Discount destination, DiscountView source)
@@ -373,13 +374,13 @@ namespace  Sammishop.Mapper
             destination.DiscountMoney = source.DiscountMoney;
             destination.Descriptions = source.Descriptions;
             destination.DiscountCategoryId = source.DiscountCategoryId;
-            destination.DateTimeStart = source.DateTimeStart;
-            destination.DateTimeFinish = source.DateTimeFinish;
+            destination.DateTimeStart = source.DateTimeStart == default ? DateTime.Now : DateTime.ParseExact(source.DateTimeStart, "dd/MM/yyyy", CultureInfo.InvariantCulture); ;
+            destination.DateTimeFinish = source.DateTimeFinish == default ? DateTime.Now : DateTime.ParseExact(source.DateTimeFinish, "dd/MM/yyyy", CultureInfo.InvariantCulture); ;
             destination.ApplyAll = source.ApplyAll;
             destination.UserId = source.UserId;
             destination.Quantity = source.Quantity;
             destination.ModifiedAt = now;
-            destination.Active = source.DateTimeFinish < DateTime.Now.Date ? false : true;
+            destination.Active = DateTime.ParseExact(source.DateTimeFinish, "dd/MM/yyyy", CultureInfo.InvariantCulture) <  DateTime.ParseExact(source.DateTimeStart, "dd/MM/yyyy", CultureInfo.InvariantCulture) ? false : true;
             destination.CreatedAt = now;
         }
 

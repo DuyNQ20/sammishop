@@ -229,6 +229,20 @@ namespace  Sammishop.Data
 
                 }
             );
+            modelBuilder.Entity<Role>().HasData(
+                new Role
+                {
+                    Id = 3,
+                    Name = "Employee",
+                    Level = 2,
+                    Active = true,
+                    CreatedAt = DateTime.Now,
+                    CreatedBy = "Đào Thu Hoài",
+                    ModifiedAt = DateTime.Now,
+                    ModifiedBy = "Đào Thu Hoài"
+
+                }
+            );
             modelBuilder.Entity<User>().HasData(
               new User
               {
@@ -259,7 +273,22 @@ namespace  Sammishop.Data
                   CreatedBy = "Đào Thu Hoài",
                   ModifiedAt = DateTime.Now,
                   ModifiedBy = "Đào Thu Hoài"
-              }
+              },
+            new User
+            {
+                Id = 3,
+                Email = "nhanvien@gmail.com",
+                Username = "nhanvien",
+                Password = "123456",
+                Name = "Nguyễn Quang Duy",
+                Address = "Ha Noi",
+                RoleId = 3,
+                Active = true,
+                CreatedAt = DateTime.Now,
+                CreatedBy = "Đào Thu Hoài",
+                ModifiedAt = DateTime.Now,
+                ModifiedBy = "Đào Thu Hoài"
+            }
            );
 
 

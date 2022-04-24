@@ -34,7 +34,7 @@ namespace  Sammishop.Controllers
         [HttpPost, Route("login")]
         public IActionResult AdminLogin(UserView model)
         {
-            var auth = _context.Users.FirstOrDefault(x => (x.Username == model.Username | x.Email == model.Username) & x.Password == model.Password & x.RoleId == 1);
+            var auth = _context.Users.FirstOrDefault(x => (x.Username == model.Username | x.Email == model.Username) & x.Password == model.Password & (x.RoleId == 1 || x.RoleId == 3));
             if (auth != null)
             {
                 ViewBag.Erro = "";

@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -15,9 +17,9 @@ namespace  Sammishop.ViewModels
 
         public int Quantity { get; set; }
 
-        public DateTime DateTimeStart { get; set; }
+        public string DateTimeStart { get; set; }
 
-        public DateTime DateTimeFinish { get; set; }
+        public string DateTimeFinish { get; set; }
 
         public bool ApplyAll { get; set; } = true;
 

@@ -58,21 +58,17 @@ namespace  Sammishop.Controllers
         {
             Discount discount = new Discount();
             discount.Map(discountView);
-            if (ModelState.IsValid)
-            {
-                _context.Add(discount);
-                await _context.SaveChangesAsync();
+            _context.Add(discount);
+            await _context.SaveChangesAsync();
 
-                // Thêm Mã giảm giá cho DiscountProductCategory
-                _context.AddRange(GetDiscountProductCategory(discount.Id, DiscountProductCategoryId));
+            // Thêm Mã giảm giá cho DiscountProductCategory
+            _context.AddRange(GetDiscountProductCategory(discount.Id, DiscountProductCategoryId));
 
-                // Thêm Mã giảm giá cho DiscountProduct
-                _context.AddRange(GetDiscountProduct(discount.Id, DiscountProductId));
+            // Thêm Mã giảm giá cho DiscountProduct
+            _context.AddRange(GetDiscountProduct(discount.Id, DiscountProductId));
 
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(discount);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
 
        

@@ -27,7 +27,7 @@
                             <h4>Listing Information</h4>
                             <p>Airtport Hotels The Right Way To Start A Short Break Holiday</p>
                         </div>*@
-                    <form asp-action="Edit" enctype="multipart/form-data">
+                    <form asp-action="Create" enctype="multipart/form-data">
                         <input type="hidden" asp-for="Id" />
 
                         @*Bên trái*@
@@ -96,7 +96,7 @@
                                     <h4>Thời gian</h4>
                                 </div>
                                 <div class="input-field col s12 ">
-                                    <input data-toggle="datepicker-start" type="text" class="dateTimeStart" asp-for="DateTimeStart" value="@DateTime.Now.ToString("dd/MM/yyyy")">
+                                    <input data-toggle="datepicker-start" type="text" class="dateTimeStart" asp-for="DateTimeStart"  value="@DateTime.Now.ToString("dd/MM/yyyy")">
                                     <label>Ngày bắt đầu</label>
                                 </div>
                                 <div class="input-field col s12 ">
