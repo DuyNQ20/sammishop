@@ -195,3 +195,10 @@ input:not([type]):focus:not([readonly]), input[type=text]:focus:not([readonly]),
     color: #dc1c4c;
 }
 */
+
+.btn, .btn-large {
+    background: #dc1c4c;
+}
+.sb2-13 {
+    height: 100%;
+}

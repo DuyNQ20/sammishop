@@ -40,6 +40,7 @@ namespace  Sammishop.Controllers
                 ViewBag.Erro = "";
                 HttpContext.Session.SetString("Admin", auth.Name);
                 HttpContext.Session.SetInt32("AdminID", auth.Id);
+                HttpContext.Session.SetInt32("RoleID", auth.RoleId);
                 return RedirectToAction("Index", "Products");
             }
             ViewBag.Erro = "Tài khoản hoặc mật khẩu không đúng!";
