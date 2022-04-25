@@ -3,3 +3,4 @@
 /.vs/
 /logs/
 *.Development.json
+/wwwroot/images/product
