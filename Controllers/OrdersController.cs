@@ -59,6 +59,57 @@ namespace Sammishop.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [HttpGet("order/pending")]
+        public async Task<IActionResult> OrderPending()
+        {
+            var dataContext = _context.Orders
+            .Include(x=>x.PaymentMethod)
+            .Include(x => x.orderStatus)
+            .Where(x => x.OrderStatusId == 1) // 1 đang chờ
+            .OrderByDescending(x => x.CreatedAt).ToList();
+            ViewBag.OrderStatus = "";
+
+            return View(Common.ShowOrderList(dataContext));
+        }
+
+        [HttpGet("order/delivering")]
+        public async Task<IActionResult> OrderDelivering()
+        {
+            var dataContext = _context.Orders
+            .Include(x=>x.PaymentMethod)
+            .Include(x => x.orderStatus)
+            .Where(x => x.OrderStatusId == 2) // 1 đang chờ
+            .OrderByDescending(x => x.CreatedAt).ToList();
+            ViewBag.OrderStatus = "";
+
+            return View(Common.ShowOrderList(dataContext));
+        }
+
+        [HttpGet("order/delivered")]
+        public async Task<IActionResult> OrderDelivered()
+        {
+            var dataContext = _context.Orders
+            .Include(x=>x.PaymentMethod)
+            .Include(x => x.orderStatus)
+            .Where(x => x.OrderStatusId == 3) // 1 đang chờ
+            .OrderByDescending(x => x.CreatedAt).ToList();
+            ViewBag.OrderStatus = "";
+
+            return View(Common.ShowOrderList(dataContext));
+        }
+
+[HttpGet("order/cancel")]
+        public async Task<IActionResult> OrderCancel()
+        {
+            var dataContext = _context.Orders
+            .Include(x=>x.PaymentMethod)
+            .Include(x => x.orderStatus)
+            .Where(x => x.OrderStatusId == 4) // 1 đang chờ
+            .OrderByDescending(x => x.CreatedAt).ToList();
+            ViewBag.OrderStatus = "";
+
+            return View(Common.ShowOrderList(dataContext));
+        }
 
         [HttpGet, Route("order/search")]
         public async Task<IActionResult> Search([FromQuery]string query)
