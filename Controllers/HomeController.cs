@@ -37,6 +37,12 @@ namespace  Sammishop.Controllers
             return View(await dataContext.ToListAsync());
         }
 
+        [HttpGet("NotFound")]
+        public IActionResult NotFound()
+        {
+            return View();
+        }
+
         // GET: Home/Details/5
         [HttpGet, Route("details")]
         public async Task<IActionResult> Details(int? id)
