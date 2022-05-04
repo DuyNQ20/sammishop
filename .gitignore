@@ -4,3 +4,4 @@
 /logs/
 *.Development.json
 /wwwroot/images/product
+/.vscode/
