@@ -98,7 +98,7 @@ namespace Sammishop.Controllers
             return View(Common.ShowOrderList(dataContext));
         }
 
-[HttpGet("order/cancel")]
+        [HttpGet("order/cancel")]
         public async Task<IActionResult> OrderCancel()
         {
             var dataContext = _context.Orders
@@ -114,22 +114,25 @@ namespace Sammishop.Controllers
         [HttpGet, Route("order/search")]
         public async Task<IActionResult> Search([FromQuery]string query)
         {
-            var list = _context.Orders.OrderByDescending(x => x.CreatedAt).ToList();
-            var dataContext = Common.ShowOrderList(list);
+            // var list = _context.Orders.OrderByDescending(x => x.CreatedAt).ToList();
+            // var dataContext = Common.ShowOrderList(list);
 
-            var orders = new List<Order>();
-
+            // var orders = new List<Order>();
+            var dataContext = _context.Orders.AsQueryable();
             if (!String.IsNullOrEmpty(query))
             {
-                foreach (var item in dataContext)
-                {
-                    if (item.Code.ToLower().Contains(query.ToLower()))
-                    {
-                        orders.Add(item);
-                    }
-                }
+                dataContext = dataContext.Where(x => x.Code.ToLower().Contains(query.ToLower()));
+                // foreach (var item in dataContext)
+                // {
+                //     if (item.Code.ToLower().Contains(query.ToLower()))
+                //     {
+                //         orders.Add(item);
+                //     }
+                // }
             }
-            return orders.Count == 0 ? View("Index", dataContext) : View("Index", orders);
+           
+            
+            return View("Index", dataContext.OrderByDescending(x => x.CreatedAt));
         }
         
         [HttpGet, Route("edit/{id}")]

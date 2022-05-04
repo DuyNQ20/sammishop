@@ -271,20 +271,37 @@ namespace  Sammishop.Controllers
         [HttpGet, Route("search")]
         public async Task<IActionResult> Search([FromQuery]string query)
         {
-            var dataContext = _context.Discounts.ToList();
-            var disounts = new List<Models.Discount>();
+            // var dataContext = _context.Discounts.ToList();
+            // var disounts = new List<Models.Discount>();
             
+            // if (!String.IsNullOrEmpty(query))
+            // {
+            //     foreach (var item in dataContext)
+            //     {
+            //         if (item.Descriptions.ToLower().Contains(query.ToLower()))
+            //         {
+            //             disounts.Add(item);
+            //         }
+            //     }
+            // }
+            //return disounts.Count == 0 ? View("index", dataContext) : View("index", disounts);
+
+           
+            if (HttpContext.Session.GetInt32("AdminID") == null)
+                return RedirectToAction("AdminLogin", "Admin");
+
+            var dataContext = _context.Products
+            .Include(p => p.Files)
+            .Include(x => x.ProductCategory)
+            .AsQueryable()
+            ;
+
             if (!String.IsNullOrEmpty(query))
             {
-                foreach (var item in dataContext)
-                {
-                    if (item.Descriptions.ToLower().Contains(query.ToLower()))
-                    {
-                        disounts.Add(item);
-                    }
-                }
+                dataContext = dataContext.Where(x => x.Name.ToUpper().Contains(query.ToUpper()));
             }
-            return disounts.Count == 0 ? View("index", dataContext) : View("index", disounts);
+            
+            return View("Index", await dataContext.ToListAsync());
         }
 
 

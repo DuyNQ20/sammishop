@@ -83,20 +83,24 @@ namespace  Sammishop.Controllers
         [HttpGet, Route("search")]
         public async Task<IActionResult> Search([FromQuery]string query)
         {
-            var dataContext = _context.Products.Include(p => p.Files).Include(x => x.ProductCategory).ToList();
-            var products = new List<Product>();
+            var dataContext = _context.Products
+            .Include(p => p.Files)
+            .Include(x => x.ProductCategory)
+            .AsQueryable();
+
+            // Kiểm tra trả về lịch sử đã xem cho user
+            ViewData["History"] = null;
+            if (HttpContext.Session.GetInt32("CustomerID") != null)
+            {
+                ViewData["History"] = _context.Histories.Include(x=>x.Product).ThenInclude(x=>x.Files).ToList();
+            }
 
             if (!String.IsNullOrEmpty(query))
             {
-                foreach (var item in dataContext)
-                {
-                    if (item.Name.ToLower().Contains(query.ToLower()))
-                    {
-                        products.Add(item);
-                    }
-                }
+                dataContext = dataContext.Where(x => x.Name.ToLower().Contains(query.ToLower()));
             }
-            return products.Count == 0 ? View("index", dataContext) : View("index", products);
+
+            return View("Index", await dataContext.ToListAsync());
         }
 
 

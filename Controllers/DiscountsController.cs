@@ -165,20 +165,27 @@ namespace  Sammishop.Controllers
         [HttpGet, Route("search")]
         public async Task<IActionResult> Search([FromQuery]string query)
         {
-            var dataContext = _context.Discounts.ToList();
-            var discount = new List<Discount>();
+            // var dataContext = _context.Discounts.ToList();
+            // var discount = new List<Discount>();
 
+            // if (!String.IsNullOrEmpty(query))
+            // {
+            //     foreach (var item in dataContext)
+            //     {
+            //         if (item.Descriptions.ToLower().Contains(query.ToLower()))
+            //         {
+            //             discount.Add(item);
+            //         }
+            //     }
+            // }
+            var dataContext = _context.Discounts.AsQueryable();
             if (!String.IsNullOrEmpty(query))
             {
-                foreach (var item in dataContext)
-                {
-                    if (item.Descriptions.ToLower().Contains(query.ToLower()))
-                    {
-                        discount.Add(item);
-                    }
-                }
+                dataContext = dataContext.Where(x => x.Code.ToLower().Contains(query.ToLower()));
             }
-            return discount.Count == 0 ? View("index", dataContext) : View("index", discount);
+            // discount.Count == 0 ? View("index", dataContext) : View("index", discount);
+
+            return View("index", dataContext);
         }
 
 
