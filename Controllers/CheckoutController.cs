@@ -30,13 +30,18 @@ namespace  Sammishop.Controllers
             var dataContext = new List<Cart>();
             if (HttpContext.Session.GetInt32("CustomerID") != null)
             {
-                dataContext = await _context.Carts.Include(c => c.Product).Include(c => c.User).Include(c => c.Product.Files).Include(c => c.Product.Supplier).Where(x => x.UserId == HttpContext.Session.GetInt32("CustomerID")).ToListAsync();
+                dataContext = await _context.Carts
+                .Include(c => c.Product)
+                .Include(c => c.User)
+                .Include(c => c.Product.Files)
+                .Include(c => c.Product.Supplier)
+                .Where(x => x.UserId == HttpContext.Session.GetInt32("CustomerID")).ToListAsync();
             }
             else
             {
                 dataContext = HttpContext.Session.GetObject<List<Cart>>("Carts");
 
-                return RedirectToAction("HomeLogin", "Account");
+                //return RedirectToAction("HomeLogin", "Account");
             }
             ViewData["Discount"] = HttpContext.Session.GetObject<Discount>("Discount");
             ViewBag.Code = random.Next(10000000, 999999999);
