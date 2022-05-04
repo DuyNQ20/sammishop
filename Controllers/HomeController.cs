@@ -16,7 +16,7 @@ namespace  Sammishop.Controllers
     public class HomeController : Controller
     {
         private readonly DataContext _context;
-        decimal price = 2000000; // Giá so sánh để lấy sản phẩm tương tự
+        decimal price = 50000; // Giá so sánh để lấy sản phẩm tương tự
         public HomeController(DataContext context)
         {
             _context = context;
@@ -81,7 +81,10 @@ namespace  Sammishop.Controllers
 
             // Gợi ý những sản phẩm tương tự
             
-            ViewData["SameProduct"] = _context.Products.Include(x => x.ProductCategory).Include(x=>x.Files).Where(x => x.Id != product.Id & x.ProductCategoryId == product.ProductCategoryId & (x.SalePrice > product.SalePrice - price) & (x.SalePrice < product.SalePrice + price)).ToList();
+            ViewData["SameProduct"] = _context.Products
+            .Include(x => x.ProductCategory)
+            .Include(x=>x.Files)
+            .Where(x => x.Id != product.Id & x.ProductCategoryId == product.ProductCategoryId & (x.SalePrice > product.SalePrice - price) & (x.SalePrice < product.SalePrice + price)).ToList();
 
             return View(product);
         }
