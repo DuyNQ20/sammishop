@@ -185,6 +185,47 @@ namespace  Sammishop.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [HttpGet, Route("edit/{id}/Inventory")]
+        public async Task<IActionResult> EditInventory(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var product = await _context.Products.Include(x => x.Files).FirstOrDefaultAsync(x => x.Id == id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+            ViewData["ProductCategoryId"] = new SelectList(_context.ProductCategorys, "Id", "Name", product.ProductCategoryId);
+            ViewData["SupplierId"] = new SelectList(_context.Suppliers, "Id", "Name", product.SupplierId);
+            ViewData["VendorId"] = new SelectList(_context.Vendors, "Id", "Name", product.VendorId);
+            ViewData["StatusId"] = new SelectList(_context.Statuses, "Id", "Name", product.StatusId);
+            return View(product);
+        }
+
+        // POST: Products/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost, Route("edit/{id}/Inventory")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditInventory(int id, int inventory)
+        {
+            // Cập nhật sản phẩm
+            var product = _context.Products.Find(id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+            product.Inventory = inventory;
+            _context.Entry(product).State = EntityState.Modified;
+
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
         [HttpGet, Route("update/status/{id}")]
         public async Task<IActionResult> UpdateStatus(int? id)
         {
