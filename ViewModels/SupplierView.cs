@@ -8,6 +8,6 @@
 
         public string Logo { get; set; }
 
-        public bool Active { get; set; }
+        public bool Active { get; set; } = true;
     }
 }

@@ -118,7 +118,7 @@ namespace  Sammishop.Mapper
 
             var now = DateTime.UtcNow;
 
-            if (destination.CreatedAt == null)
+            if (destination.CreatedAt == default)
             {
                 destination.CreatedAt = now;
             }
@@ -145,7 +145,7 @@ namespace  Sammishop.Mapper
 
             var now = DateTime.UtcNow;
 
-            if (destination.CreatedAt == null)
+            if (destination.CreatedAt == default)
             {
                 destination.CreatedAt = now;
             }
@@ -155,6 +155,7 @@ namespace  Sammishop.Mapper
             destination.Logo = source.Logo;
             destination.ModifiedAt = now;
             destination.Active = source.Active;
+            
 
         }
 
