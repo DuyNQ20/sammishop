@@ -42,7 +42,7 @@ namespace  Sammishop.Controllers
             {
                 ViewData["History"] = _context.Histories.Include(x=>x.Product).ThenInclude(x=>x.Files).ToList();
             }
-            int take = 10;
+            int take = 12;
             int skip = (page - 1) * take;
             int count = dataContext.Count();
             var totalPage = Math.Ceiling(decimal.Parse(count.ToString()) / take);
