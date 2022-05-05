@@ -251,3 +251,7 @@ a:hover, a:focus {
     height: 48px;
     line-height: 48px;
 }
+
+.blog-pagination{
+    display: block !important;
+}

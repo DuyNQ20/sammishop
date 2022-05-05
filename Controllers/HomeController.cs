@@ -23,7 +23,7 @@ namespace  Sammishop.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index([FromQuery] int page = 1)
         {
             var dataContext = _context.Products
             .Where(x => x.Active)
@@ -36,8 +36,17 @@ namespace  Sammishop.Controllers
             {
                 ViewData["History"] = _context.Histories.Include(x=>x.Product).ThenInclude(x=>x.Files).ToList();
             }
+            int take = 10;
+            int skip = (page - 1) * take;
+            int count = dataContext.Count();
+            var totalPage = Math.Ceiling(decimal.Parse(count.ToString()) / take);
+            
+            ViewBag.TotalPage = totalPage;
+            ViewBag.Take = take;
+            ViewBag.Count = count;
+            ViewBag.CurrentPage = page;
 
-            return View(await dataContext.ToListAsync());
+            return View(await dataContext.Skip(skip).Take(take).ToListAsync());
         }
 
         [HttpGet("NotFound")]
