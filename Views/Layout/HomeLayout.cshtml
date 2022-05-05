@@ -180,8 +180,9 @@
                                     <!--</div>--><!-- /.cat-wrap -->
                                     <div class="box-search">
                                         <input type="text" name="query" placeholder="Tìm kiếm tên sản phẩm">
+                                        <input type="text" name="page" value='@Context.Request.Query["page"]' hidden>
                                         <span class="btn-search">
-                                            <button asp-action="Search" type="submit" class="waves-effect"><img src="~/home/images/icons/search.png" alt=""></button>
+                                            <button asp-action="Index" type="submit" class="waves-effect"><img src="~/home/images/icons/search.png" alt=""></button>
                                         </span>
 
 

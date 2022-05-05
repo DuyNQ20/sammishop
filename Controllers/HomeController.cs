@@ -23,12 +23,18 @@ namespace  Sammishop.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index([FromQuery] int page = 1)
+        public async Task<IActionResult> Index(int page = 1, string query = null)
         {
             var dataContext = _context.Products
             .Where(x => x.Active)
             .Include(p => p.Files)
-            .Include(x => x.ProductCategory);
+            .Include(x => x.ProductCategory)
+            .AsQueryable();
+
+            if (!String.IsNullOrEmpty(query))
+            {
+                dataContext = dataContext.Where(x => x.Name.ToLower().Contains(query.ToLower()));
+            }
 
             // Kiểm tra trả về lịch sử đã xem cho user
             ViewData["History"] = null;
