@@ -25,7 +25,10 @@ namespace  Sammishop.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var dataContext = _context.Products.Include(p => p.Files).Include(x => x.ProductCategory);
+            var dataContext = _context.Products
+            .Where(x => x.Active)
+            .Include(p => p.Files)
+            .Include(x => x.ProductCategory);
 
             // Kiểm tra trả về lịch sử đã xem cho user
             ViewData["History"] = null;
