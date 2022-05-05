@@ -32,7 +32,7 @@ namespace Sammishop.Controllers
         }
 
         [HttpGet("ordercancel")]
-        public async Task<IActionResult> OrderCancel(string id)
+        public async Task<IActionResult> BtnOrderCancel(string id)
         {
             var orders = _context.Orders.Where(x => x.Code == id).ToList();
             foreach (var item in orders)
