@@ -155,7 +155,7 @@
                         </div><!-- /.col-md-3 -->
                         <div class="col-md-6">
                             <div class="top-search">
-                                <form action="#" method="get" class="form-search" accept-charset="utf-8">
+                                <form asp-action="Index" asp-controller="Home" method="get" class="form-search" accept-charset="utf-8">
                                     <!--<div class="cat-wrap">
                                         <select name="category">
                                             <option hidden value="">Danh mục</option>
@@ -182,7 +182,7 @@
                                         <input type="text" name="query" placeholder="Tìm kiếm tên sản phẩm">
                                         <input type="text" name="page" value='@Context.Request.Query["page"]' hidden>
                                         <span class="btn-search">
-                                            <button asp-action="Index" type="submit" class="waves-effect"><img src="~/home/images/icons/search.png" alt=""></button>
+                                            <button type="submit" class="waves-effect"><img src="~/home/images/icons/search.png" alt=""></button>
                                         </span>
 
 
@@ -609,6 +609,9 @@
     <script src="~/home/javascript/script-custom.js"></script>
      <script>
          $.ajax("/MenuPartial").done(x => $("#render-menu").html(x))
+
+         var urlParams = new URLSearchParams(window.location.search);
+         $('[name=query]').val(urlParams.get('query'))
      </script>
 
 </body>
