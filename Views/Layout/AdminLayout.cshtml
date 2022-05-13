@@ -245,7 +245,7 @@
                                 </div>
                             </li>
 
-                            <li>
+                            @* <li>
                                 <a href="javascript:void(0)" class="collapsible-header "><i class="fa fa-list-ul" aria-hidden="true"></i> Quản lý danh mục</a>
                                 <div class="collapsible-body left-sub-menu">
                                     <ul>
@@ -260,8 +260,22 @@
                                         </li>
                                     </ul>
                                 </div>
+                            </li> *@
+                            <li>
+                                <a href="/admin/products/categories">
+                                    <i class="fa fa-ticket"></i>Quản lý danh mục
+                                </a>
                             </li>
-
+                            <li>
+                                <a href="/admin/vendor/categories">
+                                    <i class="fa fa-user"></i>Quản lý nhà cung cấp
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/admin/supplier/categories"`@Url.Action("index", "Suppliers")`>
+                                    <i class="fa fa-plus-square-o"></i>Quản lý thương hiệu
+                                </a>
+                            </li>
                             <li>
                                 <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-picture-o" aria-hidden="true"></i> Khách hàng</a>
                             </li>
