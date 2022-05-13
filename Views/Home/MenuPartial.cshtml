@@ -1,13 +1,42 @@
+
+@using Microsoft.AspNetCore.Http;
 @model IEnumerable<Sammishop.Models.ProductCategory>
 
-    @foreach (var item in Model)
+@{
+    List<string> images = new List<string>{
+        "/home/images/icons/menu/dress.png",
+        "/home/images/icons/menu/polo.png",
+        "/home/images/icons/menu/baby.png",
+        "/home/images/icons/menu/shoe.png",
+        "/home/images/icons/menu/necklace.png",
+        "/home/images/icons/menu/handbag.png",
+        "/home/images/icons/menu/watch.png",
+        "/home/images/icons/menu/sunglasses.png",
+        "/home/images/icons/menu/01.png",
+        "/home/images/icons/menu/02.png",
+        "/home/images/icons/menu/03.png",
+        "/home/images/icons/menu/04.png",
+        "/home/images/icons/menu/05.png",
+        "/home/images/icons/menu/06.png",
+        "/home/images/icons/menu/07.png",
+        "/home/images/icons/menu/08.png",
+    };
+
+var dem = 0;
+    foreach (var item in Model)
     {
         <li>
-            <a href="?category=@{@item.Name}" title=""  >
+            <a href="?category=@item.Name" title=""  >
+                  <span class="menu-img">
+                    <img src=@images[dem] alt="">
+                </span>
                 <span class="menu-title">
-                    @item.Name
+                    @item.Name @dem
                 </span>
             </a>
-    
         </li>
+        dem++;
     }
+}
+
+    
