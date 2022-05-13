@@ -1,0 +1,13 @@
+@model IEnumerable<Sammishop.Models.ProductCategory>
+
+    @foreach (var item in Model)
+    {
+        <li>
+            <a href="?category=@{@item.Name}" title=""  >
+                <span class="menu-title">
+                    @item.Name
+                </span>
+            </a>
+    
+        </li>
+    }

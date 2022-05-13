@@ -23,7 +23,7 @@ namespace  Sammishop.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index(int page = 1, string query = null)
+        public async Task<IActionResult> Index(int page = 1, string query = null, string category = null)
         {
             var dataContext = _context.Products
             .Where(x => x.Active)
@@ -34,6 +34,11 @@ namespace  Sammishop.Controllers
             if (!String.IsNullOrEmpty(query))
             {
                 dataContext = dataContext.Where(x => x.Name.ToLower().Contains(query.ToLower()));
+            }
+
+            if (!String.IsNullOrEmpty(category))
+            {
+                dataContext = dataContext.Where(x => x.ProductCategory.Name == category);
             }
 
             // Kiểm tra trả về lịch sử đã xem cho user
@@ -53,6 +58,13 @@ namespace  Sammishop.Controllers
             ViewBag.CurrentPage = page;
 
             return View(await dataContext.Skip(skip).Take(take).ToListAsync());
+        }
+
+        [HttpGet("MenuPartial")]
+        public IActionResult MenuPartial()
+        {
+
+            return View(_context.ProductCategorys.ToList());
         }
 
         [HttpGet("NotFound")]
