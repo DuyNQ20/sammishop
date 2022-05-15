@@ -45,7 +45,8 @@ namespace  Sammishop.Controllers
             ViewData["History"] = null;
             if (HttpContext.Session.GetInt32("CustomerID") != null)
             {
-                ViewData["History"] = _context.Histories.Include(x=>x.Product).ThenInclude(x=>x.Files).ToList();
+                ViewData["History"] = _context.Histories.Include(x=>x.Product).ThenInclude(x => x.ProductCategory)
+                    .Include(x => x.Product).ThenInclude(x=>x.Files).ToList();
             }
             int take = 12;
             int skip = (page - 1) * take;
