@@ -57,7 +57,7 @@ namespace  Sammishop.Controllers
             ViewBag.Count = count;
             ViewBag.CurrentPage = page;
 
-            return View(await dataContext.Skip(skip).Take(take).ToListAsync());
+            return View(await dataContext.OrderByDescending(x => x.Id).Skip(skip).Take(take).ToListAsync());
         }
 
         [HttpGet("MenuPartial")]
